@@ -1,8 +1,13 @@
+
 @import "tailwindcss";
-
-@plugin "tailwindcss-animate";
-
+/* @plugin "tailwindcss-animate"; */
 @custom-variant dark (&:is(.dark *));
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
 
 @theme inline {
   --color-background: var(--background);
@@ -43,9 +48,57 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-}
+} 
 
 :root {
+  --green-darkest: #0f2e2f;
+  --green-dark: #113638;
+  --green-mid-dark: #1c5b5e;
+  --green-default: #247377;
+  --green-mid-light: #288085;
+  --green-light: #3bbdc4;
+  --green-lightest: #b7e1e3;
+
+  --blue-dark: #0d1736;
+  --blue-mid-dark: #102154;
+  --blue-default: #162a65;
+  --blue-mid-light: #2c5ca5;
+  --blue-light: #5798d1;
+
+  --white-default: #efefef;
+  --off-white-default: #d9d9d9;
+
+  --bg-deaffult-gradient: rgb(36, 115, 119);
+  --gradient-deafult: linear-gradient(
+    0deg,
+    rgba(36, 115, 119, 1) 0%,
+    rgba(22, 42, 101, 1) 100%
+  );
+
+  --black: #000000;
+  --off-black: #121212;
+  --gray: #292929;
+  --gray-light: #c7c7c7;
+  --white: var(--white-default);
+  --off-white: var(--off-white-default);
+  --highlight-color: var(--green-mid-light);
+  --primary-color: var(--green-mid-dark);
+  /* --primary-color:#3b0d11; */
+
+  --line-color-h1-hero-title: var(--green-default);
+
+  --title-font-family: "Montserrat", sans-serif;
+  --general-font-family: "Poppins", sans-serif;
+  --button-font-family: "Montserrat", sans-serif;
+
+  --footer-font-family: "Open Sans", sans-serif;
+  --alert-box-font-family: "Open Sans", sans-serif;
+  --inputs-font-family: "Open Sans", sans-serif;
+  --cite-font-family: "Open Sans", sans-serif;
+  --staff-font-family: "Open Sans", sans-serif;
+
+  --code-font-family: "Source Code Pro", monospace;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -124,6 +177,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--black);
+  text-align: justify;
+}
 /* Colocar media query para todos */
 .grid-word-summary {
   display: grid;
@@ -173,9 +237,9 @@
 @media (max-width: 1023px) {
   .grid-word-summary {
     grid-template-areas:
-    "a a"
-    "b c"
-    "d e";
+      "a a"
+      "b c"
+      "d e";
   }
 
   .grid-item-word-summary {
@@ -203,7 +267,7 @@
   }
 }
 
-.swiper-slide-active{
+.swiper-slide-active {
   width: 50% !important;
   transition: all;
 }
@@ -217,7 +281,7 @@
   transform: translateX(0);
 }
 
-.smed-title{
+.smed-title {
   opacity: 0;
   transition: all;
   transition-duration: 0.3s;
@@ -225,4 +289,46 @@
 
 .swiper-slide-active .smed-title {
   opacity: 1;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 20px;
+}
+
+h1, .h1{
+  font-size: 30px;
+}
+
+h2, .h2 {
+  font-size: 24px;
+  line-height: 1.167;
+}
+
+h3, .h3 {
+  font-size: 21px;
+  line-height: 1.167;
+}
+
+.open-sans {
+  font-family: "Open Sans", sans-serif;
 }

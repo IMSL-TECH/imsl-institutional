@@ -17,6 +17,8 @@ import { Facebook } from "@/components/icons/facebook";
 import Maps from "@/components/maps";
 import logo from "@/assets/logo/PNG BRANCA HORIZONTAL (1).png";
 import Carousel from "@/components/carousel";
+import Footer from "@/components/footer";
+import BackToTopButton from "@/components/back-to-top-button";
 
 const items = Array(6).fill({
   title: "intercessão",
@@ -111,9 +113,9 @@ export default function Home() {
               and suspendisse feugiat, blandit nulla at, porttitor lectus. Morbi
               vel dui at.
             </p>
-            <Button className="bg-white text-black hover:bg-white/90 w-fit px-6 uppercase">
+            <Link href="/events" className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase">
               CONHECER EVENTOS
-            </Button>
+            </Link>
           </div>
         </div>
       </Section>
@@ -123,7 +125,7 @@ export default function Home() {
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Próximos Eventos</h2>
           <Link
-            href="#"
+            href="/events"
             className=" h-10 px-3 text-white rounded-md flex items-center gap-2 bg-[#179389] hover:bg-teal-700 uppercase"
           >
             <p className="hidden md:flex">Ver mais</p>{" "}
@@ -157,7 +159,9 @@ export default function Home() {
                 <br />
                 ao vivo
               </p>
-              <p className="flex text-center justify-center lg:hidden">Assista a transmissão ao vivo</p>
+              <p className="flex text-center justify-center lg:hidden">
+                Assista a transmissão ao vivo
+              </p>
               {/* colocar ele reto por inteiro e somente no mobile e o conteudo todo em baixo flex */}
             </h2>
             <div className="w-full flex lg:flex-col justify-center lg:justify-start gap-4 lg:w-auto">
@@ -171,9 +175,13 @@ export default function Home() {
                   <p>A partir das 9h</p>
                 </div>
               </div>
-              <Button className="bg-[#179389] w-auto lg:w-36 hover:bg-teal-700 text-white flex items-center gap-2 uppercase">
+              <Link
+                href="https://www.youtube.com/c/MonteSi%C3%A3oLinhares"
+                target="_blak"
+                className="bg-[#179389] w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+              >
                 Saber mais <ChevronRight className="h-4 w-4" />
-              </Button>
+              </Link>
             </div>
           </div>
           <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
@@ -271,75 +279,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Footer */}
-      <Section
-        backgroundColor="bg-[#179389]"
-        className="py-8 flex justify-center gap-6"
-      >
-        <Link
-          href="#"
-          className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
-        >
-          <Instagram className="text-white w-7 h-7" />
-        </Link>
-        <Link
-          href="#"
-          className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
-        >
-          <YouTube className="text-white w-7 h-7" />
-        </Link>
-        <Link
-          href="#"
-          className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
-        >
-          <Facebook className="text-white w-7 h-7" />
-        </Link>
-      </Section>
-      <Section backgroundColor="bg-[#0F2E2F]" className=" text-white ">
-        <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="rounded-full flex items-center justify-center">
-                <Image src={logo} alt="Logo" className="w-52" />
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-bold">Programação fixa:</h3>
-              <div className="flex gap-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <p>Culto aos domingos 18h</p>
-              </div>
-
-              <h3 className="font-bold mt-6">Você precisa de ajuda?</h3>
-              <div className="flex gap-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <p>(47) 3333-4444</p>
-              </div>
-
-              <h3 className="font-bold mt-6">Localização:</h3>
-              <div className="flex gap-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <p>
-                  Avenida Prefeito Samuel Batista Cruz, 9259
-                  <br />
-                  Rio do Barro, Linhares/ES
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="h-[300px] relative rounded-lg overflow-hidden">
-            <Maps placeUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.812928913682!2d-40.069291117142!3d-19.377251177287768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb625d90ec2124f%3A0x1acfd1d9b825f1a6!2sIgreja%20Monte%20Si%C3%A3o%20Linhares!5e0!3m2!1spt-BR!2sbr!4v1741886781973!5m2!1spt-BR!2sbr" />
-          </div>
-        </div>
-
-        <div className="py-4 text-center lg:text-start text-sm border-t border-teal-700">
-          © Copyright Igreja Apostólica Monte Sião Linhares 2024 - Design by
-          Redeev™ | Desenvolvido por{" "}
-          <Link href={"https://www.reijanlopes.com/"}>Reijan Lopes</Link>
-        </div>
-      </Section>
+      <Footer />
+      <BackToTopButton />
     </section>
   );
 }
@@ -368,7 +309,7 @@ function BlogCard({
       />
       <div className="absolute inset-0"></div>
       <div className="absolute bottom-0 left-0 right-0 px-3 py-4">
-        <h1 className="text-xl font-bold mb-2">{title}</h1>
+        <h3 className="text-xl font-bold mb-2 !text-start">{title}</h3>
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 min-w-10 rounded-full bg-gray-300"></div>
           <div className="w-[calc(100%-52px)]">
