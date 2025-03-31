@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Website da Igreja Monte Sião Linhares
 
-## Getting Started
+Este repositório contém o código-fonte do site institucional da Igreja Monte Sião Linhares. Nosso objetivo é fornecer informações relevantes, promover eventos e facilitar a comunicação com nossos membros e visitantes.
 
-First, run the development server:
+## Sobre a Igreja
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Queremos ser uma igreja modelo de discipulado, relacionamento e cuidado, onde muitas gerações de discípulos operam o crescimento e desenvolvimento contínuo da Igreja enquanto comunidade. Nossa visão é ter muitas gerações de discípulos levantando e sustentando muitas gerações de discípulos.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Página Inicial**: Apresenta um resumo da igreja.
+- **Sobre**: Detalhes sobre nossa visão, missão e história.
+- **Agenda**: Calendário com os eventos e atividades da igreja.
+- **Contato**: Informações de contato e um formulário para envio de mensagens.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tecnologias Utilizadas
 
-## Learn More
+- [React](https://reactjs.org/): Biblioteca JavaScript para construção de interfaces de usuário.
+- [Next.js](https://nextjs.org/): Framework React para renderização do lado do servidor e geração de sites estáticos.
+- [Node.js](https://nodejs.org/): Ambiente de execução JavaScript no lado do servidor.
+- [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss): A utility-first CSS framework.
+- [Sanity](https://www.sanity.io/): Gerenciador de conteúdos.
 
-To learn more about Next.js, take a look at the following resources:
+## Como Executar o Projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Para rodar o projeto localmente, siga os passos abaixo:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/IMSL-TECH/imsl-institucional.git
+    ```
+2. Navegue até o diretório do projeto:
+    ```bash
+    cd imsl-institucional
+    ```
+3. Instale as dependências:
+    ```bash
+    npm install
+    ```
+4. Inicie o servidor de desenvolvimento:
+    ```bash
+    npm run dev
+    ```
+5. Abra o navegador e acesse `http://localhost:3000` para ver o site em execução.
 
-## Deploy on Vercel
+## Contribuição
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contribuições são bem-vindas! Se você deseja contribuir com este projeto, por favor, siga os passos abaixo:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature ou correção:
+    ```bash
+    git checkout -b minha-feature
+    ```
+3. Faça commit das suas alterações:
+    ```bash
+    git commit -m "Adiciona nova feature"
+    ```
+4. Envie para o repositório remoto:
+    ```bash
+    git push origin minha-feature
+    ```
+5. Abra um Pull Request para revisão.
+
+
+## Contato
+
+Se você tiver alguma dúvida ou sugestão sobre o site, entre em contato conosco através de [comunicacao.montesiao@gmail.com].
+
+---
+
+**Que Deus abençoe!**
