@@ -1,25 +1,20 @@
 "use client";
 
-import test from "@/assets/banners/banner.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-const items = [
-  { id: 1, image: test, title: "Cura" },
-  { id: 2, image: test, title: "Cura" },
-  { id: 3, image: test, title: "Cura" },
-  { id: 4, image: test, title: "Cura" },
-  { id: 5, image: test, title: "Cura" },
-  { id: 6, image: test, title: "Cura" },
-];
-const itemsPerView = 3;
-
-export default function Carousel() {
+type Item = {
+  title: string;
+  image: string;
+  link: string;
+};
+export default function Carousel({items}: {items: Item[]}) {
   return (
     <div className="w-full max-w-2xl mx-auto overflow-hidden">
       <Swiper
@@ -35,10 +30,13 @@ export default function Carousel() {
             key={index}
             className="!transition-all relative duration-500 !h-[277px]"
           >
+            <Link className="w-full h-full" href={item.link}>
             <Image
               src={item?.image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full transition-all object-cover rounded-lg"
+              height={200}
+              width={200}
+              className="w-full h-full transition-all object-cover rounded-lg "
             />
             <div className="flex justify-between items-center min-h-52 lg:h-full gap-4 text-white">
               {/* <div>{item?.title}</div> */}
@@ -51,6 +49,7 @@ export default function Carousel() {
                 <h3 className="text-xl font-bold mb-2">{item?.title}</h3>
               </div>
             </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

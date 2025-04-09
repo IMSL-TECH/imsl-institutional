@@ -42,7 +42,7 @@ export default function Navbar() {
   return (
     <nav className="flex items-center justify-between w-full py-4 text-white">
       <Link href="/">
-        <Image src={logoMS} alt="Banner monte sião linhares" />
+        <Image src={logoMS} alt="Banner Monte Sião Linhares" />
       </Link>
 
       {/* Menu Desktop */}

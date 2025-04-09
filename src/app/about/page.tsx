@@ -237,7 +237,7 @@ export default function About() {
               Pastor, palestrante e escritor com mais de 35 livros lançados.
               Ministro de cura interior desde 1991, foi treinado pelo Ministério
               REVER MAPI/CEPAL com certificação em Mestre em Cura Interior. É
-              pastor Sênior da igreja Monte Sião desde o ano 2000. É presidente
+              pastor Sênior da igreja Linhares desde o ano 2000. É presidente
               do Ministério Bálsamo de Gileade. É casado com a pastora Berenice
               e tem dois filhos, Mhayza e Marcos, casado com Bruna, pais da
               Karen, sua netinha. Para saber mais:{" "}
