@@ -25,7 +25,7 @@ export default function SmedCard({ items }: {items: SmedCardType[] }) {
         >
           <Image
             src={image}
-            alt="Banner monte sião linhares"
+            alt="Banner Monte Sião Linhares"
             fill
             className={`${isSelect === idx ? "" : "lg:grayscale-100"} transition-all duration-300 object-cover brightness-50 rounded-xl`}
             priority

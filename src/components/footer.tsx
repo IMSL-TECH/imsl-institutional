@@ -55,17 +55,22 @@ export default function Footer() {
               <h3 className="font-bold mt-6">Você precisa de ajuda?</h3>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <p>(47) 3333-4444</p>
+                <p>(27) 99528-0013</p>
               </div>
 
               <h3 className="font-bold mt-6">Localização:</h3>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <p>
-                  Avenida Prefeito Samuel Batista Cruz, 9259
-                  <br />
-                  Rio do Barro, Linhares/ES
-                </p>
+                <div className="w-2 min-w-2 h-2 bg-teal-400 rounded-full"></div>
+                <div>
+                  <p className="hidden lg:block">
+                    Avenida Prefeito Samuel Batista cruz, 8259
+                  </p>
+                  <p className="hidden lg:block">Três Barras, Linhares/ES</p>
+                  <p className="block lg:hidden">
+                    Avenida Prefeito Samuel Batista cruz, 8259, Três Barras,
+                    Linhares/ES
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -75,7 +80,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="py-4 text-center lg:text-start text-sm border-t border-teal-700">
+        <div className="py-4 text-center text-gray-400 text-sm border-t border-teal-700">
           © Copyright Igreja Apostólica Monte Sião Linhares 2024 - Design by
           Redeev™ | Desenvolvido por{" "}
           <Link href={"https://www.reijanlopes.com/"}>Reijan Lopes</Link>

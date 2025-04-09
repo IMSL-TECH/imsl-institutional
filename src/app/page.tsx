@@ -22,7 +22,7 @@ import BackToTopButton from "@/components/back-to-top-button";
 
 const items = Array(6).fill({
   title: "intercessão",
-  image: imageEvents,
+  image: "https://picsum.photos/800/600",
   link: "#",
 });
 
@@ -31,31 +31,31 @@ const blogPosts = [
     title: "Suspire por Jesus",
     author: "Pr. Daniel Santos",
     date: "Maio 15, 2023",
-    image: imageEvents,
+    image: "https://picsum.photos/800/600",
   },
   {
     title: "Mantenha a fé firme",
     author: "Pr. Gustavo Ramos",
     date: "Maio 10, 2023",
-    image: imageEvents,
+    image: "https://picsum.photos/800/600",
   },
   {
     title: "Em meio às tempestades, pesca abundante",
     author: "Pr. Gabriel Rocha",
     date: "Abril 28, 2023",
-    image: imageEvents,
+    image: "https://picsum.photos/800/600",
   },
   {
     title: "Por que você não obedece",
     author: "Pr. Matheus Oliveira",
     date: "Abril 20, 2023",
-    image: imageEvents,
+    image: "https://picsum.photos/800/600",
   },
   {
     title: "Conecte-se com Deus",
     author: "Pr. Gustavo Ramos",
     date: "Abril 15, 2023",
-    image: imageEvents,
+    image: "https://picsum.photos/800/600",
   },
 ];
 
@@ -64,10 +64,10 @@ const events = [
     title: "Ceia do Senhor",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    location: "Monte Sião",
+    location: "Monte Sião Linhares",
     date: "Sexta-feira, 20",
     time: "19h30 - 21h30",
-    image: imageEvents,
+    image: "https://picsum.photos/800/600",
   },
   {
     title: "Culto de Adoração",
@@ -75,7 +75,7 @@ const events = [
     location: "Igreja Central",
     date: "Domingo, 22",
     time: "18h00 - 20h00",
-    image: imageEvents,
+    image: "https://picsum.photos/800/600",
   },
   {
     title: "Estudo Bíblico",
@@ -83,7 +83,7 @@ const events = [
     location: "Sala 3",
     date: "Quarta-feira, 25",
     time: "19h00 - 20h30",
-    image: imageEvents,
+    image: "https://picsum.photos/800/600",
   },
 ];
 
@@ -94,7 +94,7 @@ export default function Home() {
       <section className="h-screen w-full absolute top-0 left-0">
         <Image
           src={bannerHome}
-          alt="Banner monte sião linhares"
+          alt="Banner Monte Sião Linhares"
           fill
           className="object-cover brightness-50"
           priority
@@ -108,13 +108,17 @@ export default function Home() {
               Conhecendo a Deus
               <br />e fazendo-o conhecido
             </h1>
-            <p className="text-white/80 text-center lg:text-start mb-8 max-w-xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-              and suspendisse feugiat, blandit nulla at, porttitor lectus. Morbi
-              vel dui at.
+            <p className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
+              Queremos ser uma igreja modelo de discipulado, relacionamento, e
+              cuidado, onde muitas gerações de discípulos operam o crescimento e
+              desenvolvimento contínuo da Igreja enquanto comunidade, sendo
+              modelo simples e praticável.
             </p>
-            <Link href="/events" className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase">
-              CONHECER EVENTOS
+            <Link
+              href="/events"
+              className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
+            >
+              Programação
             </Link>
           </div>
         </div>
@@ -162,23 +166,22 @@ export default function Home() {
               <p className="flex text-center justify-center lg:hidden">
                 Assista a transmissão ao vivo
               </p>
-              {/* colocar ele reto por inteiro e somente no mobile e o conteudo todo em baixo flex */}
             </h2>
-            <div className="w-full flex lg:flex-col justify-center lg:justify-start gap-4 lg:w-auto">
-              <div className="flex flex-col justify-center gap-1 mb-6">
+            <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-4 lg:w-auto">
+              <div className="flex flex-col justify-center gap-1">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                  <p>Todos os domingos</p>
+                  <p className="!text-left">Todos os domingos</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                  <p>A partir das 9h</p>
+                  <p>A partir das 18h</p>
                 </div>
               </div>
               <Link
                 href="https://www.youtube.com/c/MonteSi%C3%A3oLinhares"
                 target="_blak"
-                className="bg-[#179389] w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+                className="bg-[#179389] whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
               >
                 Saber mais <ChevronRight className="h-4 w-4" />
               </Link>
@@ -274,7 +277,7 @@ export default function Home() {
             <SmedCard items={items} />
           </div>
           <div className="flex lg:hidden">
-            <Carousel />
+            <Carousel items={items} />
           </div>
         </div>
       </Section>

@@ -40,7 +40,7 @@ export default function Home() {
                 comunicacao.montesiao@gmail.com
               </a>{" "}
               <br />
-              Telefone: (27) 3373-6313 | Horário para contato 13:30 às 17:30
+              Telefone: (27) 99528-0013 | Horário para contato 13:30 às 17:30
             </p>
 
             <Link

@@ -10,7 +10,7 @@ export default function PageHeader({ children, imgSrc }: Props) {
   return (
     <section className="h-[60vh] relative">
       <Image
-        alt="Banner monte sião linhares"
+        alt="Banner Monte Sião Linhares"
         fill
         className="object-cover brightness-50 -z-10"
         priority
