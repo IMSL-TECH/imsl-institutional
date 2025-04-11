@@ -9,53 +9,91 @@ import EventCard from "@/components/event-card";
 import Section from "@/components/section";
 import SmedCard from "@/components/smed-card";
 
-import imageEvents from "@/assets/Rectangle 45 (1).png";
 import livesMobile from "@/assets/Rectangle 57.png";
-import Instagram from "@/components/icons/instagram";
-import YouTube from "@/components/icons/youtube";
-import { Facebook } from "@/components/icons/facebook";
-import Maps from "@/components/maps";
-import logo from "@/assets/logo/PNG BRANCA HORIZONTAL (1).png";
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
 
-const items = Array(6).fill({
-  title: "intercessão",
-  image: "https://picsum.photos/800/600",
-  link: "#",
-});
+
+
+const heroSetup = {
+  // heroImage: "https://picsum.photos/1920/1080?random=25",
+  heroImage: bannerHome,
+  headline:"",
+  subtext:"",
+  CTA_hero_title:"",
+  CTA_hero_link:"",
+}
+
+const liveStreamsetup  = {
+  moreInfoLink: "https://www.youtube.com/c/MonteSi%C3%A3oLinhares",
+  LiveEmbedLink:"https://www.youtube.com/embed/mgQWqqWoS94",
+  SideBannerImage:livesMobile
+};
+
+const items = [
+  {
+    title: "Intercessão",
+    image: "https://picsum.photos/800/600?random=1",
+    link: "#",
+  },
+  {
+    title: "Cura Interior",
+    image: "https://picsum.photos/800/600?random=2",
+    link: "#",
+  },
+  {
+    title: "Homens e Mulheres",
+    image: "https://picsum.photos/800/600?random=3",
+    link: "#",
+  },
+  {
+    title: "Jovens",
+    image: "https://picsum.photos/800/600?random=4",
+    link: "#",
+  },
+  {
+    title: "Infaltil",
+    image: "https://picsum.photos/800/600?random=5",
+    link: "#",
+  },
+  {
+    title: "Casais",
+    image: "https://picsum.photos/800/600?random=6",
+    link: "#",
+  },
+]
 
 const blogPosts = [
   {
     title: "Suspire por Jesus",
     author: "Pr. Daniel Santos",
     date: "Maio 15, 2023",
-    image: "https://picsum.photos/800/600",
+    image: "https://picsum.photos/800/600?random=7",
   },
   {
     title: "Mantenha a fé firme",
     author: "Pr. Gustavo Ramos",
     date: "Maio 10, 2023",
-    image: "https://picsum.photos/800/600",
+    image: "https://picsum.photos/800/600?random=8",
   },
   {
     title: "Em meio às tempestades, pesca abundante",
     author: "Pr. Gabriel Rocha",
     date: "Abril 28, 2023",
-    image: "https://picsum.photos/800/600",
+    image: "https://picsum.photos/800/600?random=9",
   },
   {
     title: "Por que você não obedece",
     author: "Pr. Matheus Oliveira",
     date: "Abril 20, 2023",
-    image: "https://picsum.photos/800/600",
+    image: "https://picsum.photos/800/600?random=10",
   },
   {
     title: "Conecte-se com Deus",
     author: "Pr. Gustavo Ramos",
     date: "Abril 15, 2023",
-    image: "https://picsum.photos/800/600",
+    image: "https://picsum.photos/800/600?random=11",
   },
 ];
 
@@ -67,7 +105,7 @@ const events = [
     location: "Monte Sião Linhares",
     date: "Sexta-feira, 20",
     time: "19h30 - 21h30",
-    image: "https://picsum.photos/800/600",
+    image: "https://picsum.photos/800/600?random=12",
   },
   {
     title: "Culto de Adoração",
@@ -75,7 +113,7 @@ const events = [
     location: "Igreja Central",
     date: "Domingo, 22",
     time: "18h00 - 20h00",
-    image: "https://picsum.photos/800/600",
+    image: "https://picsum.photos/800/600?random=13",
   },
   {
     title: "Estudo Bíblico",
@@ -83,7 +121,7 @@ const events = [
     location: "Sala 3",
     date: "Quarta-feira, 25",
     time: "19h00 - 20h30",
-    image: "https://picsum.photos/800/600",
+    image: "https://picsum.photos/800/600?random=14",
   },
 ];
 
@@ -93,7 +131,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="h-screen w-full absolute top-0 left-0">
         <Image
-          src={bannerHome}
+          src={heroSetup.heroImage}
           alt="Banner Monte Sião Linhares"
           fill
           className="object-cover brightness-50"
@@ -110,9 +148,7 @@ export default function Home() {
             </h1>
             <p className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
               Queremos ser uma igreja modelo de discipulado, relacionamento, e
-              cuidado, onde muitas gerações de discípulos operam o crescimento e
-              desenvolvimento contínuo da Igreja enquanto comunidade, sendo
-              modelo simples e praticável.
+              cuidado, onde muitas gerações de discípulos operam o crescimento
             </p>
             <Link
               href="/events"
@@ -179,7 +215,7 @@ export default function Home() {
                 </div>
               </div>
               <Link
-                href="https://www.youtube.com/c/MonteSi%C3%A3oLinhares"
+                href={liveStreamsetup.moreInfoLink}
                 target="_blak"
                 className="bg-[#179389] whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
               >
@@ -187,46 +223,11 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
-            <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
-              LIVE
-            </div>
-            <Button className="rounded-full w-16 h-16 flex items-center justify-center">
-              <Play className="h-6 w-6 ml-1" />
-            </Button>
 
-            <div className="absolute bottom-4 left-4 right-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Play className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Pause className="h-4 w-4" />
-                </Button>
-                <div className="h-1 bg-white/20 flex-1 rounded-full overflow-hidden">
-                  <div className="h-full w-1/3 bg-white rounded-full"></div>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Volume2 className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-
+          {/* live player */}
+          {liveStreamsetup.LiveEmbedLink != "" ? LiveStreamPlayer(liveStreamsetup.LiveEmbedLink): FakeLiveStreamPlayer()}
           <div className="w-full grid-item-live-broadcast flex justify-end ">
-            <Image src={livesMobile} alt="Pastor" className="rounded-lg " />
+            <Image src={liveStreamsetup.SideBannerImage} alt="Pastor" className="rounded-lg " />
           </div>
         </div>
       </Section>
@@ -288,6 +289,74 @@ export default function Home() {
   );
 }
 
+
+
+function LiveStreamPlayer(liveEmbedLink:string){
+  return(
+
+  <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
+  {/* Selo LIVE no canto superior direito */}
+  <div className="absolute right-0 top-0 bg-red-500 text-white font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
+    LIVE
+  </div>
+
+  {/* Iframe do YouTube centralizado */}
+  <iframe
+    className="w-full h-full rounded-lg"
+    src={`${liveEmbedLink}?autoplay=1&mute=1&controls=1`}
+    title="Culto Online"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</div>
+  )
+} 
+
+function FakeLiveStreamPlayer(){
+  return(
+  <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
+            
+            <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
+              OFFILNE
+            </div>
+            <Button className="rounded-full w-16 h-16 flex items-center justify-center">
+              <Play className="h-6 w-6 ml-1" />
+            </Button>
+
+            <div className=" absolute bottom-4 left-4 right-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 text-white"
+                >
+                  <Play className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 text-white"
+                >
+                  <Pause className="h-4 w-4" />
+                </Button>
+                <div className="h-1 bg-white/20 flex-1 rounded-full overflow-hidden">
+                  <div className="h-full w-1/3 bg-white rounded-full"></div>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 text-white"
+                >
+                  <Volume2 className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
+  )
+}
+
+
 function BlogCard({
   title,
   author,
@@ -311,7 +380,7 @@ function BlogCard({
         className="w-full object-cover"
       />
       <div className="absolute inset-0"></div>
-      <div className="absolute bottom-0 left-0 right-0 px-3 py-4">
+      <div className="absolute bg-linear-to-b from-transparent from-0% to-black to-100% pt-10 bottom-0 left-0 right-0 px-3 py-4">
         <h3 className="text-xl font-bold mb-2 !text-start">{title}</h3>
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 min-w-10 rounded-full bg-gray-300"></div>

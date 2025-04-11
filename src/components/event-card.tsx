@@ -33,7 +33,7 @@ export default function EventCard({ items }: EventCardProps) {
             src={image}
             alt="Banner monte sião linhares"
             fill
-            className={`${isSelect === idx ? "lg:grayscale-0" : "lg:grayscale-100"} transition-all duration-300 object-cover brightness-50 rounded-xl`}
+            className={`${isSelect === idx ? "lg:grayscale-0 brightness-50" : "lg:grayscale-100 brightness-50"} transition-all duration-300 object-cover rounded-xl`}
             priority
           /> 
           <div className="relative flex flex-col pt-7 justify-between min-h-52 lg:h-full z-10 text-white">

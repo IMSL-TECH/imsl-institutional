@@ -21,6 +21,8 @@ interface EventList {
   location: string;
 }
 
+const pageHeaderImage = "https://picsum.photos/2000/1000?random=22"
+
 const eventsList = [
   {
     title: "2019 Kids Church Camp.",
@@ -107,7 +109,7 @@ function EventsItem({ title }: EventList) {
 export default function Event() {
   return (
     <>
-      <PageHeader imgSrc={banner.src}>Eventos</PageHeader>
+      <PageHeader imgSrc={pageHeaderImage}>Eventos</PageHeader>
       <Section className="mt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {eventsList.map(({ title, content, date, time, location }, idx) => (

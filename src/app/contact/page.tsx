@@ -5,10 +5,12 @@ import Footer from "@/components/footer";
 import Link from "next/link";
 // import PageContent from "@/components/pageContent";
 
+const pageHeaderImage = "https://picsum.photos/2000/1000?random=21"
+
 export default function Home() {
   return (
     <>
-      <PageHeader imgSrc={banner.src}>Contato</PageHeader>
+      <PageHeader imgSrc={pageHeaderImage}>Contato</PageHeader>
       <Section className="my-20">
         <p>
           Estamos aqui para servir você! Se você deseja saber mais sobre a nossa

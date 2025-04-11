@@ -4,6 +4,7 @@ import { useState } from "react";
 import Item from "./item";
 import Image, { StaticImageData } from "next/image";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface SmedCardType {
   title: string;
@@ -23,26 +24,29 @@ export default function SmedCard({ items }: {items: SmedCardType[] }) {
           setIsSelect={setIsSelect} 
           key={idx}
         >
+          <Link href={link}>
           <Image
             src={image}
             alt="Banner Monte Sião Linhares"
             fill
-            className={`${isSelect === idx ? "" : "lg:grayscale-100"} transition-all duration-300 object-cover brightness-50 rounded-xl`}
+            className={`${isSelect === idx ? "" : "lg:grayscale-100 brightness-50"} transition-all duration-300 object-cover  rounded-xl`}
             priority
           />
           <div className="flex justify-between items-center min-h-52 lg:h-full gap-4 text-white">
-            <div>{title}</div>
+            
             <div
             className={`border absolute top-4 right-4 flex items-center justify-center bg-white rounded-full h-10 w-10 transition-all duration-300 ${
               isSelect === idx ? "opacity-100" : "opacity-100 lg:opacity-0 lg:translate-x-4"
             }`}
           >
-            <ArrowRight className="w-5 h-5 text-black" />
+            <ArrowRight className=" w-5 h-5 text-black" />
           </div>
-            <div className="absolute bottom-0 left-0 p-4 pb-6">
-              <h3 className="text-xl font-bold mb-2">{title}</h3>
+            <div className=" absolute bottom-0 left-0 p-4 pb-6 bg-linear-to-b from-transparent from-0% to-black to-100% pt-16 w-full rounded-b-lg">
+              <h3 className={`text-xl font-bold mb-2 text-left`}>{title}</h3>
             </div>
           </div>
+          </Link>
+
         </Item>
       ))}
     </ul>
