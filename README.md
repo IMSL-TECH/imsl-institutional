@@ -43,24 +43,37 @@ Para rodar o projeto localmente, siga os passos abaixo:
     ```
 5. Abra o navegador e acesse `http://localhost:3000` para ver o site em execução.
 
-## Contribuição
+## Estrutura de Branches
 
-Contribuições são bem-vindas! Se você deseja contribuir com este projeto, por favor, siga os passos abaixo:
+Este projeto segue uma estrutura de desenvolvimento baseada em três branches principais:
 
-1. Faça um fork do repositório.
-2. Crie uma branch para sua feature ou correção:
+- `prod`: versão de produção (estável, publicada).
+- `prev`: versão de preview/testes (deploy para revisão antes de ir ao ar).
+- `feature/nome-da-feature`: branches temporárias para desenvolvimento de novas funcionalidades ou correções.
+
+## Fluxo de Contribuição com Pull Requests
+
+1. Crie uma branch a partir da `prev`:
     ```bash
-    git checkout -b minha-feature
+    git checkout prev
+    git pull
+    git checkout -b feature/minha-nova-feature
     ```
-3. Faça commit das suas alterações:
+
+2. Faça as alterações e commit:
     ```bash
-    git commit -m "Adiciona nova feature"
+    git add .
+    git commit -m "Descreve o que foi feito"
+    git push -u origin feature/minha-nova-feature
     ```
-4. Envie para o repositório remoto:
-    ```bash
-    git push origin minha-feature
-    ```
-5. Abra um Pull Request para revisão.
+
+3. Acesse o GitHub e crie um **Pull Request** da sua branch para `prev`.
+
+4. Aguarde revisão (por outro colaborador, se aplicável), e após aprovação, o merge será feito na `prev`.
+
+5. O ambiente de preview (gerenciado pela Vercel) será automaticamente atualizado com as mudanças da `prev`.
+
+6. Quando todas as mudanças estiverem testadas e aprovadas, um novo Pull Request deve ser criado da `prev` para a `prod`, que será o deploy final para produção.
 
 
 ## Contato
