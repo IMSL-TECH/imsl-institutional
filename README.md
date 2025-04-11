@@ -75,6 +75,7 @@ Este projeto segue uma estrutura de desenvolvimento baseada em três branches pr
 
 6. Quando todas as mudanças estiverem testadas e aprovadas, um novo Pull Request deve ser criado da `prev` para a `prod`, que será o deploy final para produção.
 
+
 ## Contato
 
 Se você tiver alguma dúvida ou sugestão sobre o site, entre em contato conosco através de [comunicacao.montesiao@gmail.com].
