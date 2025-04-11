@@ -9,13 +9,7 @@ import EventCard from "@/components/event-card";
 import Section from "@/components/section";
 import SmedCard from "@/components/smed-card";
 
-import imageEvents from "@/assets/Rectangle 45 (1).png";
 import livesMobile from "@/assets/Rectangle 57.png";
-import Instagram from "@/components/icons/instagram";
-import YouTube from "@/components/icons/youtube";
-import { Facebook } from "@/components/icons/facebook";
-import Maps from "@/components/maps";
-import logo from "@/assets/logo/PNG BRANCA HORIZONTAL (1).png";
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
@@ -154,9 +148,7 @@ export default function Home() {
             </h1>
             <p className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
               Queremos ser uma igreja modelo de discipulado, relacionamento, e
-              cuidado, onde muitas gerações de discípulos operam o crescimento e
-              desenvolvimento contínuo da Igreja enquanto comunidade, sendo
-              modelo simples e praticável.
+              cuidado, onde muitas gerações de discípulos operam o crescimento
             </p>
             <Link
               href="/events"
@@ -388,7 +380,7 @@ function BlogCard({
         className="w-full object-cover"
       />
       <div className="absolute inset-0"></div>
-      <div className="absolute bottom-0 left-0 right-0 px-3 py-4">
+      <div className="absolute bg-linear-to-b from-transparent from-0% to-black to-100% pt-10 bottom-0 left-0 right-0 px-3 py-4">
         <h3 className="text-xl font-bold mb-2 !text-start">{title}</h3>
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 min-w-10 rounded-full bg-gray-300"></div>

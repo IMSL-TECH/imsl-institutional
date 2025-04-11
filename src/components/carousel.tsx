@@ -45,8 +45,8 @@ export default function Carousel({items}: {items: Item[]}) {
               >
                 <ArrowRight className="w-5 h-5 text-black" />
               </div>
-              <div className="absolute bottom-0 left-0 p-4 pb-6 smed-title">
-                <h3 className="text-xl font-bold mb-2">{item?.title}</h3>
+              <div className="absolute bottom-0 left-0 p-4 pt-5 bg-linear-to-b w-full rounded-b-lg from-transparent from-0% to-black to-100% pb-6 smed-title">
+                <h3 className="text-xl font-bold !text-start mb-2">{item?.title}</h3>
               </div>
             </div>
             </Link>
