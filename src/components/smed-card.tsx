@@ -37,10 +37,10 @@ export default function SmedCard({ items }: {items: SmedCardType[] }) {
               isSelect === idx ? "opacity-100" : "opacity-100 lg:opacity-0 lg:translate-x-4"
             }`}
           >
-            <ArrowRight className="w-5 h-5 text-black" />
+            <ArrowRight className=" w-5 h-5 text-black" />
           </div>
-            <div className="absolute bottom-0 left-0 p-4 pb-6">
-              <h3 className="text-xl font-bold mb-2">{title}</h3>
+            <div className=" absolute bottom-0 left-0 p-4 pb-6">
+              <h3 className="text-xl font-bold mb-2 text-left">{title}</h3>
             </div>
           </div>
         </Item>

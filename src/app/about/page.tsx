@@ -9,6 +9,8 @@ import Section from "@/components/section";
 import Image from "next/image";
 import Link from "next/link";
 
+const pageHeaderImage = "https://picsum.photos/2000/1000?random=20"
+
 const fundamentalBeliefs = [
   {
     title: "Somos Igreja",
@@ -133,7 +135,7 @@ function FundamentalBeliefs({
 export default function About() {
   return (
     <>
-      <PageHeader imgSrc={banner.src}>Quem somos</PageHeader>
+      <PageHeader imgSrc={pageHeaderImage}>Quem somos</PageHeader>
       <Section className="mt-20">
         <p className="mb-24">
           Em tempos de grande confusão no mundo, não há nada mais importante

@@ -1,5 +1,6 @@
 import { Poppins, Montserrat, Open_Sans, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
+import { Metadata } from "next";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -24,6 +25,11 @@ const sourceCodePro = Source_Code_Pro({
   weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-source-code'
 });
+
+export const metadata: Metadata = {
+  title: 'Igreja Monte Sião Linhares',
+  description: 'Tomando posse da terra',
+}
 
 export default function RootLayout({
   children,

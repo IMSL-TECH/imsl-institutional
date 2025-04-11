@@ -82,7 +82,7 @@ export default function Footer() {
 
         <div className="py-4 text-center text-gray-400 text-sm border-t border-teal-700">
           © Copyright Igreja Apostólica Monte Sião Linhares 2024 - Design by
-          Redeev™ | Desenvolvido por{" "}
+          Redeem™ | Desenvolvido por{" "}
           <Link href={"https://www.reijanlopes.com/"}>Reijan Lopes</Link>
         </div>
       </Section>
