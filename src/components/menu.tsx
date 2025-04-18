@@ -10,9 +10,9 @@ import { usePathname } from "next/navigation";
 
 const menuList = [
   { label: "Home", link: "/" },
+  { label: "Eventos", link: "/events" },
   { label: "Resumo da palavra", link: "" },
   { label: "Sobre", link: "/about" },
-  { label: "Eventos", link: "/events" },
   { label: "Contatos", link: "/contact" },
 ];
 

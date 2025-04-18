@@ -3,35 +3,22 @@ import Link from "next/link";
 import { Play, ChevronRight, Volume2, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import bannerHome from "@/assets/banners/banner.png";
 import Menu from "@/components/menu";
 import EventCard from "@/components/event-card";
 import Section from "@/components/section";
 import SmedCard from "@/components/smed-card";
+import { PortableText, PortableTextComponents } from '@portabletext/react'
 
-import livesMobile from "@/assets/Rectangle 57.png";
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
+import { HomePage } from "@/type";
+import { sanityClient } from "@/lib/sanityClient";
+import { homePageQuery } from "@/lib/queries";
 
+import bannerFallback from "@/assets/banners/banner.png"
 
-
-const heroSetup = {
-  // heroImage: "https://picsum.photos/1920/1080?random=25",
-  heroImage: bannerHome,
-  headline:"",
-  subtext:"",
-  CTA_hero_title:"",
-  CTA_hero_link:"",
-}
-
-const liveStreamsetup  = {
-  moreInfoLink: "https://www.youtube.com/c/MonteSi%C3%A3oLinhares",
-  LiveEmbedLink:"https://www.youtube.com/embed/mgQWqqWoS94",
-  SideBannerImage:livesMobile
-};
-
-const items = [
+const smeds = [
   {
     title: "Intercessão",
     image: "https://picsum.photos/800/600?random=1",
@@ -125,13 +112,18 @@ const events = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+
+  const home_data: HomePage = await sanityClient.fetch(homePageQuery)
+
+  console.log(home_data.descriptionLive)
+
   return (
     <section className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="h-screen w-full absolute top-0 left-0">
         <Image
-          src={heroSetup.heroImage}
+          src={home_data.heroImage? home_data.heroImage:bannerFallback}
           alt="Banner Monte Sião Linhares"
           fill
           className="object-cover brightness-50"
@@ -143,19 +135,23 @@ export default function Home() {
           <Menu />
           <div className="flex flex-col justify-center items-center lg:items-start h-full max-w-4xl">
             <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
-              Conhecendo a Deus
-              <br />e fazendo-o conhecido
+              
+              <PortableText value={home_data.heroHeadline} />
+              
             </h1>
             <p className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
-              Queremos ser uma igreja modelo de discipulado, relacionamento, e
-              cuidado, onde muitas gerações de discípulos operam o crescimento
+              {home_data.heroDescription}
             </p>
+
+            {home_data.heroButtonTitle && 
             <Link
-              href="/events"
+              href={home_data.heroButtonLink}
               className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
             >
-              Programação
+              {home_data.heroButtonTitle}
             </Link>
+            }
+
           </div>
         </div>
       </Section>
@@ -181,54 +177,59 @@ export default function Home() {
         backgroundColor="bg-[#179389]"
         className=" text-white py-8 text-center"
       >
-        <p className="text-lg">
-          Não se esqueça de <span className="font-bold">seguir</span> as nossas{" "}
-          <span className="font-bold">redes sociais</span> e de ficarem atentos
-          em tudo o que acontece por lá.
-        </p>
+        <div className="text-lg">
+
+        <PortableText value={home_data.dividerText}/>
+            
+        </div>
       </Section>
 
       {/* Live Transmission Section */}
       <Section backgroundColor="bg-[#0F2E2F]" className="text-white py-24">
         <div className="grid-live-broadcast items-center">
           <div className="grid-item-live-broadcast">
-            <h2 className="w-full text-xl md:text-3xl font-bold mb-4">
-              <p className="hidden lg:flex">
-                Assista a<br />
-                transmissão
-                <br />
-                ao vivo
+            <h2 className="  w-full text-xl md:text-3xl font-bold mb-4">
+              <p className="hidden px-3 lg:flex text-center">
+               {home_data.titleLive}
               </p>
               <p className="flex text-center justify-center lg:hidden">
-                Assista a transmissão ao vivo
+              {home_data.titleLive}
               </p>
             </h2>
-            <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-4 lg:w-auto">
-              <div className="flex flex-col justify-center gap-1">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                  <p className="!text-left">Todos os domingos</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                  <p>A partir das 18h</p>
-                </div>
+            <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-7 lg:w-auto">
+              <div className=" flex flex-col justify-center gap-2">
+              
+                <PortableText components={portableTextStyle} value={home_data.descriptionLive} />
               </div>
+
+              {home_data.buttonLiveText && 
               <Link
-                href={liveStreamsetup.moreInfoLink}
+                href={home_data.butonLiveLink}
                 target="_blak"
-                className="bg-[#179389] whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+                className="bg-[#179389] hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
               >
-                Saber mais <ChevronRight className="h-4 w-4" />
+                {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
               </Link>
+              }
             </div>
           </div>
 
           {/* live player */}
-          {liveStreamsetup.LiveEmbedLink != "" ? LiveStreamPlayer(liveStreamsetup.LiveEmbedLink): FakeLiveStreamPlayer()}
+          {home_data.youtubeUrl != "" ? LiveStreamPlayer(home_data.youtubeUrl): FakeLiveStreamPlayer()}
           <div className="w-full grid-item-live-broadcast flex justify-end ">
-            <Image src={liveStreamsetup.SideBannerImage} alt="Pastor" className="rounded-lg " />
+            <img src={home_data.liveBannerImage} alt="Pastor" className="rounded-lg " />
           </div>
+
+          <div>
+          <Link
+                href={home_data.butonLiveLink}
+                target="_blak"
+                className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+              >
+                {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
+              </Link>
+          </div>
+
         </div>
       </Section>
 
@@ -275,10 +276,10 @@ export default function Home() {
 
         <div className="relative">
           <div className="hidden lg:flex">
-            <SmedCard items={items} />
+            <SmedCard items={smeds} />
           </div>
           <div className="flex lg:hidden">
-            <Carousel items={items} />
+            <Carousel items={smeds} />
           </div>
         </div>
       </Section>
@@ -289,6 +290,18 @@ export default function Home() {
   );
 }
 
+
+const portableTextStyle: PortableTextComponents = {
+
+  list: {
+    bullet: ({ children }) => (
+      <ul className="flex gap-3 flex-wrap justify-center  lg:block">{children}</ul>
+    ),
+  },
+  listItem: ({ children }) => (
+    <li className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:rounded-full before:bg-teal-400"><p className="!text-left">{children}</p></li>
+  ),
+}
 
 
 function LiveStreamPlayer(liveEmbedLink:string){
@@ -303,7 +316,7 @@ function LiveStreamPlayer(liveEmbedLink:string){
   {/* Iframe do YouTube centralizado */}
   <iframe
     className="w-full h-full rounded-lg"
-    src={`${liveEmbedLink}?autoplay=1&mute=1&controls=1`}
+    src={`${liveEmbedLink}?autoplay=0&mute=1&controls=1`}
     title="Culto Online"
     frameBorder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
