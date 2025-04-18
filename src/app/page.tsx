@@ -116,8 +116,6 @@ export default async function Home() {
 
   const home_data: HomePage = await sanityClient.fetch(homePageQuery)
 
-  console.log(home_data.descriptionLive)
-
   return (
     <section className="flex flex-col items-center">
       {/* Hero Section */}
