@@ -116,21 +116,13 @@ export default async function Home() {
 
   const home_data: HomePage = await sanityClient.fetch(homePageQuery)
 
-  const defaultHomeData:Partial<HomePage> = {
-    heroImage: bannerFallback.src,
-  }
-  
-  const resolvedHomeData = {
-    ...defaultHomeData,
-    ...home_data,
-  }
 
   return (
     <section className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="h-screen w-full absolute top-0 left-0">
         <Image
-          src={resolvedHomeData.heroImage}
+          src={home_data.heroImage? home_data.heroImage: bannerFallback}
           alt="Banner Monte Sião Linhares"
           fill
           className="object-cover brightness-50"
@@ -141,21 +133,21 @@ export default async function Home() {
         <div className="absolute w-full h-screen pt-6 md:pt-7">
           <Menu />
           <div className="flex flex-col justify-center items-center lg:items-start h-full max-w-4xl">
-           {resolvedHomeData.heroHeadline && <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
+           {home_data.heroHeadline && <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
               
-              <PortableText value={resolvedHomeData.heroHeadline} />
+              <PortableText value={home_data.heroHeadline} />
               
             </h1>}
-           {resolvedHomeData.heroDescription && <p className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
-              {resolvedHomeData.heroDescription}
+           {home_data.heroDescription && <p className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
+              {home_data.heroDescription}
             </p>}
 
-            {resolvedHomeData.heroButtonTitle && 
+            {home_data.heroButtonTitle && 
             <Link
-              href={resolvedHomeData.heroButtonLink && "#"}
+              href={home_data.heroButtonLink && "#"}
               className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
             >
-              {resolvedHomeData.heroButtonTitle}
+              {home_data.heroButtonTitle}
             </Link>
             }
 
@@ -186,7 +178,7 @@ export default async function Home() {
       >
         <div className="text-lg">
 
-        <PortableText value={resolvedHomeData.dividerText}/>
+        <PortableText value={home_data.dividerText}/>
             
         </div>
       </Section>
@@ -197,45 +189,45 @@ export default async function Home() {
           <div className="grid-item-live-broadcast">
             <h2 className="  w-full text-xl md:text-3xl font-bold mb-4">
               <p className="hidden px-3 lg:flex text-center">
-               {resolvedHomeData.titleLive}
+               {home_data.titleLive}
               </p>
               <p className="flex text-center justify-center lg:hidden">
-              {resolvedHomeData.titleLive}
+              {home_data.titleLive}
               </p>
             </h2>
             <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-7 lg:w-auto">
               <div className=" flex flex-col justify-center gap-2">
               
-                <PortableText components={portableTextStyle} value={resolvedHomeData.descriptionLive} />
+                <PortableText components={portableTextStyle} value={home_data.descriptionLive} />
               </div>
 
-              {resolvedHomeData.buttonLiveText && 
+              {home_data.buttonLiveText && 
               <Link
-                href={resolvedHomeData.butonLiveLink}
+                href={home_data.butonLiveLink}
                 target="_blak"
                 className="bg-[#179389] hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
               >
-                {resolvedHomeData.buttonLiveText} <ChevronRight className="h-4 w-4" />
+                {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
               </Link>
               }
             </div>
           </div>
 
           {/* live player */}
-          {resolvedHomeData.youtubeUrl ? LiveStreamPlayer(resolvedHomeData.youtubeUrl): FakeLiveStreamPlayer()}
+          {home_data.youtubeUrl ? LiveStreamPlayer(home_data.youtubeUrl): FakeLiveStreamPlayer()}
           <div className="w-full grid-item-live-broadcast flex justify-end ">
 
-           { resolvedHomeData.liveBannerImage && <img src={resolvedHomeData.liveBannerImage} alt="Pastor" className="rounded-lg " />}
+           { home_data.liveBannerImage && <img src={home_data.liveBannerImage} alt="Pastor" className="rounded-lg " />}
 
           </div>
 
           <div>
           <Link
-                href={resolvedHomeData.butonLiveLink}
+                href={home_data.butonLiveLink}
                 target="_blak"
                 className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
               >
-                {resolvedHomeData.buttonLiveText} <ChevronRight className="h-4 w-4" />
+                {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
               </Link>
           </div>
 
