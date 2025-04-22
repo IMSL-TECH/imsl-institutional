@@ -3,9 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Section from "@/components/section";
 
-import Instagram from "@/components/icons/instagram";
-import YouTube from "@/components/icons/youtube";
-import { Facebook } from "@/components/icons/facebook";
+import {Instagram,YouTube,Facebook,Default} from "@/components/icons";
 import Maps from "@/components/maps";
 
 import { sanityClient } from '@/lib/sanityClient'
@@ -17,30 +15,38 @@ export default async function Footer() {
 
   const footer_data: FooterData = await sanityClient.fetch(footerQuery)
 
+
+  function getSocialIconByName(name:string){
+    
+    if(name==="instagram") return <Instagram className="text-white w-7 h-7" />
+    if(name==="youtube") return <YouTube className="text-white w-7 h-7" />
+    if(name==="facebook") return <Facebook className="text-white w-7 h-7" />
+    
+    return <Default className="text-white w-7 h-7" />
+
+  }
+
   return (
     <React.Fragment>
+
+
+
       <Section
         backgroundColor="bg-[#179389]"
         className="py-8 flex justify-center gap-6"
-      >
-        <Link
-          href="#"
-          className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
         >
-          <Instagram className="text-white w-7 h-7" />
-        </Link>
-        <Link
-          href="#"
-          className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
-        >
-          <YouTube className="text-white w-7 h-7" />
-        </Link>
-        <Link
-          href="#"
-          className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
-        >
-          <Facebook className="text-white w-7 h-7" />
-        </Link>
+        {footer_data.socialLinks.map(socialLink =>
+          <Link
+            key={socialLink._key}
+            href={socialLink.url}
+            className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
+          >
+           {getSocialIconByName(socialLink.platform)}
+  
+          </Link>
+  
+        )}
+     
       </Section>
       <Section backgroundColor="bg-[#0F2E2F]" className="text-white mt-20">
         <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8">
@@ -69,9 +75,9 @@ export default async function Footer() {
                 <div className="w-2 min-w-2 h-2 bg-teal-400 rounded-full"></div>
                 <div>
                   <p className="hidden lg:block">
-                    {footer_data.location.split(",")[0]+","+footer_data.location.split(",")[1]}
+                    {footer_data.location.split(",")[0] + "," + footer_data.location.split(",")[1]}
                   </p>
-                  <p className="hidden lg:block">{footer_data.location.split(",")[2]+","+footer_data.location.split(",")[3]}</p>
+                  <p className="hidden lg:block">{footer_data.location.split(",")[2] + "," + footer_data.location.split(",")[3]}</p>
                   <p className="block lg:hidden">
                     {footer_data.location}
                   </p>
