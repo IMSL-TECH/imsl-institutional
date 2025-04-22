@@ -27,3 +27,26 @@ export const footerQuery = `*[_type == "footer"][0]{
     "liveBannerImage": liveBannerImage.asset->url
   }
 `;
+
+
+export const contactPageQuery = `
+*[_type == "contactPage"][0]{
+  _id,
+  title,
+  "bannerImage": bannerImage.asset->url,
+  description,
+  address {
+    street,
+    number,
+    district,
+    city,
+    state,
+    zip
+  },
+  phone,
+  DefaultSocial,
+  DefaultSocialLink,
+  email,
+  whatsApp,
+  AvailableHours
+}`;
