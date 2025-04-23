@@ -8,9 +8,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 })
   }
 
+  const body = await req.json()
+  const docType = body?._type
+
   try {
 
-    revalidatePath('/')
+      if (docType === 'contactPage') {
+        revalidatePath('/contat')
+      }
+
+      if (docType === 'footer') {
+        revalidatePath('/')
+        revalidatePath('/about')
+        revalidatePath('/events')
+        revalidatePath('/contact')
+      }
+
+      if (docType === 'homePage') {
+        revalidatePath('/')
+      }
+
+      if (docType === 'address') {
+        revalidatePath('/')
+        revalidatePath('/about')
+        revalidatePath('/events')
+        revalidatePath('/contact')
+      }
 
     return NextResponse.json({ revalidated: true })
   } catch (err) {
