@@ -7,7 +7,14 @@ export const footerQuery = `*[_type == "footer"][0]{
     helpTitle,
     helpPhone,
     locationTitle,
-    location,
+    address-> {
+      street,
+      number,
+      district,
+      city,
+      state,
+      zip
+    },
     mapEmbedUrl,
   }`
 
@@ -30,23 +37,23 @@ export const footerQuery = `*[_type == "footer"][0]{
 
 
 export const contactPageQuery = `
-*[_type == "contactPage"][0]{
-  _id,
-  title,
-  "bannerImage": bannerImage.asset->url,
-  description,
-  address {
-    street,
-    number,
-    district,
-    city,
-    state,
-    zip
-  },
-  phone,
-  DefaultSocial,
-  DefaultSocialLink,
-  email,
-  whatsApp,
-  AvailableHours
-}`;
+  *[_type == "contactPage"][0]{
+    _id,
+    title,
+    "bannerImage": bannerImage.asset->url,
+    description,
+    address-> {
+      street,
+      number,
+      district,
+      city,
+      state,
+      zip
+    },
+    phone,
+    DefaultSocial,
+    DefaultSocialLink,
+    email,
+    whatsApp,
+    AvailableHours
+  }`;

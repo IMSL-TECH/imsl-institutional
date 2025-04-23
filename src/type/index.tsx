@@ -11,6 +11,14 @@ export type FooterData = {
     helpPhone: string
     locationTitle: string
     location: string
+    address: {
+      street: string
+      number: string
+      district: string
+      city: string
+      state: string
+      zip: string
+    }
     mapEmbedUrl: string
   }
 

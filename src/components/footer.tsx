@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Section from "@/components/section";
 
-import {Instagram,YouTube,Facebook,Default} from "@/components/icons";
+import { Instagram, YouTube, Facebook, Default } from "@/components/icons";
 import Maps from "@/components/maps";
 
 import { sanityClient } from '@/lib/sanityClient'
@@ -16,12 +16,12 @@ export default async function Footer() {
   const footer_data: FooterData = await sanityClient.fetch(footerQuery)
 
 
-  function getSocialIconByName(name:string){
-    
-    if(name==="instagram") return <Instagram className="text-white w-7 h-7" />
-    if(name==="youtube") return <YouTube className="text-white w-7 h-7" />
-    if(name==="facebook") return <Facebook className="text-white w-7 h-7" />
-    
+  function getSocialIconByName(name: string) {
+
+    if (name === "instagram") return <Instagram className="text-white w-7 h-7" />
+    if (name === "youtube") return <YouTube className="text-white w-7 h-7" />
+    if (name === "facebook") return <Facebook className="text-white w-7 h-7" />
+
     return <Default className="text-white w-7 h-7" />
 
   }
@@ -34,19 +34,19 @@ export default async function Footer() {
       <Section
         backgroundColor="bg-[#179389]"
         className="py-8 flex justify-center gap-6"
-        >
+      >
         {footer_data.socialLinks.map(socialLink =>
           <Link
             key={socialLink._key}
             href={socialLink.url}
             className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
           >
-           {getSocialIconByName(socialLink.platform)}
-  
+            {getSocialIconByName(socialLink.platform)}
+
           </Link>
-  
+
         )}
-     
+
       </Section>
       <Section backgroundColor="bg-[#0F2E2F]" className="text-white mt-20">
         <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8">
@@ -74,13 +74,19 @@ export default async function Footer() {
               <div className="flex items-center gap-2">
                 <div className="w-2 min-w-2 h-2 bg-teal-400 rounded-full"></div>
                 <div>
-                  <p className="hidden lg:block">
+                  <p>
+                    {footer_data.address.street}, {footer_data.address.number}
+                    <br />
+                    {footer_data.address.district}, {footer_data.address.city} - {footer_data.address.state}
+                    <br />
+                  </p>
+                  {/* <p className="hidden lg:block">
                     {footer_data.location.split(",")[0] + "," + footer_data.location.split(",")[1]}
                   </p>
                   <p className="hidden lg:block">{footer_data.location.split(",")[2] + "," + footer_data.location.split(",")[3]}</p>
                   <p className="block lg:hidden">
                     {footer_data.location}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
