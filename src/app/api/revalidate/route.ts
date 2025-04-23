@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   try {
 
       if (docType === 'contactPage') {
-        revalidatePath('/contat')
+        revalidatePath('/contact')
       }
 
       if (docType === 'footer') {
