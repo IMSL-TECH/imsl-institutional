@@ -9,6 +9,8 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { motion } from "framer-motion"
+
 type Item = {
   title: string;
   image: string;
@@ -16,7 +18,12 @@ type Item = {
 };
 export default function Carousel({items}: {items: Item[]}) {
   return (
-    <div className="w-full max-w-2xl mx-auto overflow-hidden">
+    <motion.div 
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.9 }}
+    viewport={{ once: true }}
+    className="w-full max-w-2xl mx-auto overflow-hidden">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={10}
@@ -53,6 +60,6 @@ export default function Carousel({items}: {items: Item[]}) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </motion.div>
   );
 }

@@ -8,6 +8,8 @@ import { Menu, X } from "lucide-react";
 import logoMS from "@/assets/logo/Logo nav Bar.svg";
 import { usePathname } from "next/navigation";
 
+import { motion } from "framer-motion";
+
 const menuList = [
   { label: "Home", link: "/" },
   { label: "Resumo da palavra", link: "" },
@@ -40,7 +42,13 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center justify-between w-full py-4 text-white">
+    <motion.nav
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="flex items-center justify-between w-full py-4 text-white"
+    >
       <Link href="/">
         <Image src={logoMS} alt="Banner Monte Sião Linhares" />
       </Link>
@@ -94,6 +102,6 @@ export default function Navbar() {
           </ul>
         </div>
       </section>
-    </nav>
+    </motion.nav>
   );
 }

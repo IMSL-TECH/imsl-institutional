@@ -6,6 +6,8 @@ import Image, { StaticImageData } from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { motion } from "framer-motion"
+
 interface SmedCardType {
   title: string;
   link: string;
@@ -16,7 +18,12 @@ export default function SmedCard({ items }: {items: SmedCardType[] }) {
   const [isSelect, setIsSelect] = useState(0);
 
   return (
-    <ul className="w-full lg:h-[400px] flex flex-col lg:flex-row gap-2">
+    <motion.ul 
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="w-full lg:h-[400px] flex flex-col lg:flex-row gap-2">
       {items.map(({ title, link, image }, idx) => (
         <Item 
         isSelect={isSelect === idx ? "w-full lg:w-[47.22%]" : "w-full lg:w-[26.39%]"}
@@ -49,6 +56,6 @@ export default function SmedCard({ items }: {items: SmedCardType[] }) {
 
         </Item>
       ))}
-    </ul>
+    </motion.ul>
   );
 }

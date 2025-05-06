@@ -1,3 +1,5 @@
+"use client"
+
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { Play, ChevronRight, Volume2, Pause } from "lucide-react";
@@ -14,21 +16,23 @@ import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
 
-
+import { motion } from "framer-motion"
+import BlogCard from "@/components/blog-cards";
+import { FakeLiveStreamPlayer, LiveStreamPlayer } from "@/components/live-stream-setup";
 
 const heroSetup = {
   // heroImage: "https://picsum.photos/1920/1080?random=25",
   heroImage: bannerHome,
-  headline:"",
-  subtext:"",
-  CTA_hero_title:"",
-  CTA_hero_link:"",
-}
+  headline: "",
+  subtext: "",
+  CTA_hero_title: "",
+  CTA_hero_link: "",
+};
 
-const liveStreamsetup  = {
+const liveStreamsetup = {
   moreInfoLink: "https://www.youtube.com/c/MonteSi%C3%A3oLinhares",
-  LiveEmbedLink:"https://www.youtube.com/embed/mgQWqqWoS94",
-  SideBannerImage:livesMobile
+  LiveEmbedLink: "https://www.youtube.com/embed/mgQWqqWoS94",
+  SideBannerImage: livesMobile,
 };
 
 const items = [
@@ -62,40 +66,9 @@ const items = [
     image: "https://picsum.photos/800/600?random=6",
     link: "#",
   },
-]
-
-const blogPosts = [
-  {
-    title: "Suspire por Jesus",
-    author: "Pr. Daniel Santos",
-    date: "Maio 15, 2023",
-    image: "https://picsum.photos/800/600?random=7",
-  },
-  {
-    title: "Mantenha a fé firme",
-    author: "Pr. Gustavo Ramos",
-    date: "Maio 10, 2023",
-    image: "https://picsum.photos/800/600?random=8",
-  },
-  {
-    title: "Em meio às tempestades, pesca abundante",
-    author: "Pr. Gabriel Rocha",
-    date: "Abril 28, 2023",
-    image: "https://picsum.photos/800/600?random=9",
-  },
-  {
-    title: "Por que você não obedece",
-    author: "Pr. Matheus Oliveira",
-    date: "Abril 20, 2023",
-    image: "https://picsum.photos/800/600?random=10",
-  },
-  {
-    title: "Conecte-se com Deus",
-    author: "Pr. Gustavo Ramos",
-    date: "Abril 15, 2023",
-    image: "https://picsum.photos/800/600?random=11",
-  },
 ];
+
+
 
 const events = [
   {
@@ -225,9 +198,15 @@ export default function Home() {
           </div>
 
           {/* live player */}
-          {liveStreamsetup.LiveEmbedLink != "" ? LiveStreamPlayer(liveStreamsetup.LiveEmbedLink): FakeLiveStreamPlayer()}
+          {liveStreamsetup.LiveEmbedLink != ""
+            ? LiveStreamPlayer(liveStreamsetup.LiveEmbedLink)
+            : FakeLiveStreamPlayer()}
           <div className="w-full grid-item-live-broadcast flex justify-end ">
-            <Image src={liveStreamsetup.SideBannerImage} alt="Pastor" className="rounded-lg " />
+            <Image
+              src={liveStreamsetup.SideBannerImage}
+              alt="Pastor"
+              className="rounded-lg "
+            />
           </div>
         </div>
       </Section>
@@ -247,17 +226,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid-word-summary">
-          {blogPosts.map((post, index) => (
-            <BlogCard
-              key={index}
-              title={post.title}
-              author={post.author}
-              date={post.date}
-              image={post.image}
-            />
-          ))}
-        </div>
+        <BlogCard />
       </Section>
 
       {/* SMEDs Section */}
@@ -291,107 +260,4 @@ export default function Home() {
 
 
 
-function LiveStreamPlayer(liveEmbedLink:string){
-  return(
 
-  <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
-  {/* Selo LIVE no canto superior direito */}
-  <div className="absolute right-0 top-0 bg-red-500 text-white font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
-    LIVE
-  </div>
-
-  {/* Iframe do YouTube centralizado */}
-  <iframe
-    className="w-full h-full rounded-lg"
-    src={`${liveEmbedLink}?autoplay=1&mute=1&controls=1`}
-    title="Culto Online"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  ></iframe>
-</div>
-  )
-} 
-
-function FakeLiveStreamPlayer(){
-  return(
-  <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
-            
-            <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
-              OFFILNE
-            </div>
-            <Button className="rounded-full w-16 h-16 flex items-center justify-center">
-              <Play className="h-6 w-6 ml-1" />
-            </Button>
-
-            <div className=" absolute bottom-4 left-4 right-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Play className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Pause className="h-4 w-4" />
-                </Button>
-                <div className="h-1 bg-white/20 flex-1 rounded-full overflow-hidden">
-                  <div className="h-full w-1/3 bg-white rounded-full"></div>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Volume2 className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-  )
-}
-
-
-function BlogCard({
-  title,
-  author,
-  date,
-  image,
-}: {
-  title: string;
-  author: string;
-  date: string;
-  image: string | StaticImageData;
-}) {
-  return (
-    <div
-      className={`rounded-lg overflow-hidden relative text-white grid-item-word-summary`}
-    >
-      <Image
-        src={image || "/placeholder.svg"}
-        alt={title}
-        fill
-        priority
-        className="w-full object-cover"
-      />
-      <div className="absolute inset-0"></div>
-      <div className="absolute bg-linear-to-b from-transparent from-0% to-black to-100% pt-10 bottom-0 left-0 right-0 px-3 py-4">
-        <h3 className="text-xl font-bold mb-2 !text-start">{title}</h3>
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 min-w-10 rounded-full bg-gray-300"></div>
-          <div className="w-[calc(100%-52px)]">
-            <p className="text-xs truncate lg:text-sm">{author}</p>
-            <p className="text-[10px] lg:text-xs text-gray-300 truncate">
-              {date}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
