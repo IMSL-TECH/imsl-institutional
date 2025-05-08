@@ -50,10 +50,11 @@ export const contactPageQuery = `
       state,
       zip
     },
-    phone,
-    DefaultSocial,
-    DefaultSocialLink,
-    email,
-    whatsApp,
+    "phone": phone->number,
+    "email": email->email,
+    "DefaultSocial": DefaultSocial->socialUserName,
+    "DefaultSocialLink": DefaultSocial->url,
+    "whatsApp": WhatsPhone->number,
+
     AvailableHours
   }`;

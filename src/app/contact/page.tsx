@@ -6,10 +6,12 @@ import Link from "next/link";
 import { contactPageQuery } from "@/lib/queries";
 import { sanityClient } from "@/lib/sanityClient";
 import { ContactPage } from "@/type";
+import { phoneFormat } from "@/lib/utils";
 
 export default async function Contact() {
 
    const contact_page_data: ContactPage = await sanityClient.fetch(contactPageQuery)
+   console.log(contact_page_data)
 
   return (
     <>
@@ -42,7 +44,7 @@ export default async function Contact() {
                 {contact_page_data.email}
               </a>{" "}
               <br />
-              Telefone: {contact_page_data.phone} | {contact_page_data.AvailableHours}
+              Telefone: {phoneFormat(contact_page_data.phone)} | {contact_page_data.AvailableHours}
             </p>
 
             <Link
@@ -58,4 +60,5 @@ export default async function Contact() {
       <Footer />
     </>
   );
+  
 }
