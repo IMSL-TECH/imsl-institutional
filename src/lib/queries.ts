@@ -1,12 +1,17 @@
 
 export const footerQuery = `*[_type == "footer"][0]{
-    socialLinks[],
     "logo":logo.asset->url,
     programmingTitle,
     programmingText,
     helpTitle,
-    helpPhone,
+    "helpPhone": helpPhone->number,
     locationTitle,
+    socialLinks[]-> {
+      "_key":_id,
+      url,
+      "plataform":type->title,
+      "icon": type->icon.asset->url
+      },
     address-> {
       street,
       number,

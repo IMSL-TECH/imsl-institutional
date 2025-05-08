@@ -11,7 +11,7 @@ import { phoneFormat } from "@/lib/utils";
 export default async function Contact() {
 
    const contact_page_data: ContactPage = await sanityClient.fetch(contactPageQuery)
-   console.log(contact_page_data)
+
 
   return (
     <>

@@ -3,12 +3,13 @@ import React from "react";
 import Link from "next/link";
 import Section from "@/components/section";
 
-import { Instagram, YouTube, Facebook, Default } from "@/components/icons";
+import { getSocialIconByName } from "@/components/icons";
 import Maps from "@/components/maps";
 
 import { sanityClient } from '@/lib/sanityClient'
 import { footerQuery } from '@/lib/queries'
 import { FooterData } from "@/type";
+import { phoneFormat } from "@/lib/utils";
 
 export default async function Footer() {
 
@@ -16,32 +17,22 @@ export default async function Footer() {
   const footer_data: FooterData = await sanityClient.fetch(footerQuery)
 
 
-  function getSocialIconByName(name: string) {
-
-    if (name === "instagram") return <Instagram className="text-white w-7 h-7" />
-    if (name === "youtube") return <YouTube className="text-white w-7 h-7" />
-    if (name === "facebook") return <Facebook className="text-white w-7 h-7" />
-
-    return <Default className="text-white w-7 h-7" />
-
-  }
 
   return (
     <React.Fragment>
-
-
 
       <Section
         backgroundColor="bg-[#179389]"
         className="py-8 flex justify-center gap-6"
       >
-        {footer_data.socialLinks.map(socialLink =>
+        {footer_data.socialLinks.map((socialLink,idx) =>
           <Link
-            key={socialLink._key}
+            key={idx}
             href={socialLink.url}
             className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
           >
-            {getSocialIconByName(socialLink.platform)}
+            {getSocialIconByName(socialLink.plataform)}
+
 
           </Link>
 
@@ -67,7 +58,7 @@ export default async function Footer() {
               <h3 className="font-bold mt-6">{footer_data.helpTitle}</h3>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <p>{footer_data.helpPhone}</p>
+                <p>{phoneFormat(footer_data.helpPhone)}</p>
               </div>
 
               <h3 className="font-bold mt-6">{footer_data.locationTitle}</h3>

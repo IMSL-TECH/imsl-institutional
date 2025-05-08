@@ -3,7 +3,7 @@ import {PortableTextBlock} from '@portabletext/types'
 export type IconProps = React.HTMLAttributes<HTMLDivElement>;
 
 export type FooterData = {
-    socialLinks: {_key:string, platform: string; url: string }[]
+    socialLinks: {_key:string, plataform: string; url: string, icon:string}[]
     logo: string
     programmingTitle: string
     programmingText: string
