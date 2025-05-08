@@ -51,7 +51,7 @@ export const contactPageQuery = `
       zip
     },
     "phone": phone->number,
-    "email": email->email,
+    "email": email->address,
     "DefaultSocial": DefaultSocial->socialUserName,
     "DefaultSocialLink": DefaultSocial->url,
     "whatsApp": WhatsPhone->number,
