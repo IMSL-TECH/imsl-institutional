@@ -2,6 +2,12 @@ import {PortableTextBlock} from '@portabletext/types'
 
 export type IconProps = React.HTMLAttributes<HTMLDivElement>;
 
+export type HeaderType = {
+  _id:string
+  label:string,
+  link:string
+}[]
+
 export type FooterData = {
     socialLinks: {_key:string, plataform: string; url: string, icon:string}[]
     logo: string

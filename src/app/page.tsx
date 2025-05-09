@@ -12,9 +12,9 @@ import { PortableText, PortableTextComponents } from '@portabletext/react'
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
-import { HomePage } from "@/type";
+import { HeaderType, HomePage } from "@/type";
 import { sanityClient } from "@/lib/sanityClient";
-import { homePageQuery } from "@/lib/queries";
+import { headerQuery, homePageQuery } from "@/lib/queries";
 
 import bannerFallback from "@/assets/banners/banner.png"
 
@@ -116,6 +116,7 @@ export default async function Home() {
 
   const home_data: HomePage = await sanityClient.fetch(homePageQuery)
 
+  const header_links_data: HeaderType = (await sanityClient.fetch(headerQuery)).items;
 
   return (
     <section className="flex flex-col items-center">
@@ -131,7 +132,7 @@ export default async function Home() {
       </section>
       <Section className="h-screen flex relative justify-center">
         <div className="absolute w-full h-screen pt-6 md:pt-7">
-          <Menu />
+          <Menu menuList={header_links_data}/>
           <div className="flex flex-col justify-center items-center lg:items-start h-full max-w-4xl">
            {home_data.heroHeadline && <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
               

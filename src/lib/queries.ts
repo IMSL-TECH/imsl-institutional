@@ -1,3 +1,12 @@
+export const headerQuery = `
+  *[_type == "header"][0]{
+    items[]{
+      _id,
+      label,
+      link
+    }
+  }
+`
 
 export const footerQuery = `*[_type == "footer"][0]{
     "logo":logo.asset->url,
