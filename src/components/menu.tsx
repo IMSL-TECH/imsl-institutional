@@ -37,7 +37,7 @@ function MenuList({
 }
 
 
-export default function Navbar({menuList}:{menuList:HeaderType}) {  
+export default function Navbar({menuList}:{menuList?:HeaderType}) {  
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
