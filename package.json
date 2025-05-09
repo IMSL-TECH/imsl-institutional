@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^3.2.1",
+    "@portabletext/types": "^2.0.13",
     "@radix-ui/react-slot": "^1.1.2",
+    "@sanity/client": "^6.29.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.5.0",
+    "groq": "^3.85.1",
     "lucide-react": "^0.479.0",
     "next": "15.2.2",
+    "next-sanity": "^9.10.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "swiper": "^11.2.5",

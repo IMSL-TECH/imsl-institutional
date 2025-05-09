@@ -7,12 +7,13 @@ import { Menu, X } from "lucide-react";
 
 import logoMS from "@/assets/logo/Logo nav Bar.svg";
 import { usePathname } from "next/navigation";
+import { HeaderType } from "@/type";
 
 const menuList = [
   { label: "Home", link: "/" },
+  { label: "Eventos", link: "/events" },
   { label: "Resumo da palavra", link: "" },
   { label: "Sobre", link: "/about" },
-  { label: "Eventos", link: "/events" },
   { label: "Contatos", link: "/contact" },
 ];
 
@@ -35,9 +36,12 @@ function MenuList({
   );
 }
 
-export default function Navbar() {
+
+export default function Navbar({menuList}:{menuList?:HeaderType}) {  
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+
+  if(!menuList) return null // solução temporariria- levar o menu para o layout é a solução definitiva
 
   return (
     <nav className="flex items-center justify-between w-full py-4 text-white">
