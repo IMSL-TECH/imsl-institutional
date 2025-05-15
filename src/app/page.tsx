@@ -17,6 +17,7 @@ import { sanityClient } from "@/lib/sanityClient";
 import { headerQuery, homePageQuery } from "@/lib/queries";
 
 import bannerFallback from "@/assets/banners/banner.png"
+import BlogCard from "@/components/blog-card";
 
 const smeds = [
   {
@@ -90,7 +91,7 @@ const events = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     location: "Monte Sião Linhares",
-    date: "Sexta-feira, 20",
+    date: "Sexta-feira, 20/05",
     time: "19h30 - 21h30",
     image: "https://picsum.photos/800/600?random=12",
   },
@@ -98,7 +99,7 @@ const events = [
     title: "Culto de Adoração",
     description: "Venha participar de uma noite de louvor e adoração.",
     location: "Igreja Central",
-    date: "Domingo, 22",
+    date: "Sexta-feira, 20/05",
     time: "18h00 - 20h00",
     image: "https://picsum.photos/800/600?random=13",
   },
@@ -106,7 +107,7 @@ const events = [
     title: "Estudo Bíblico",
     description: "Aprofunde seu conhecimento na Palavra de Deus.",
     location: "Sala 3",
-    date: "Quarta-feira, 25",
+    date: "Sexta-feira, 20/05",
     time: "19h00 - 20h30",
     image: "https://picsum.photos/800/600?random=14",
   },
@@ -251,13 +252,14 @@ export default async function Home() {
         </div>
 
         <div className="grid-word-summary">
-          {blogPosts.map((post, index) => (
+          {blogPosts.map((post, idx) => (
             <BlogCard
-              key={index}
+              key={idx}
               title={post.title}
               author={post.author}
               date={post.date}
               image={post.image}
+              className="grid-item-word-summary"
             />
           ))}
         </div>
@@ -369,44 +371,4 @@ function FakeLiveStreamPlayer(){
             </div>
           </div>
   )
-}
-
-
-function BlogCard({
-  title,
-  author,
-  date,
-  image,
-}: {
-  title: string;
-  author: string;
-  date: string;
-  image: string | StaticImageData;
-}) {
-  return (
-    <div
-      className={`rounded-lg overflow-hidden relative text-white grid-item-word-summary`}
-    >
-      <Image
-        src={image || "/placeholder.svg"}
-        alt={title}
-        fill
-        priority
-        className="w-full object-cover"
-      />
-      <div className="absolute inset-0"></div>
-      <div className="absolute bg-linear-to-b from-transparent from-0% to-black to-100% pt-10 bottom-0 left-0 right-0 px-3 py-4">
-        <h3 className="text-xl font-bold mb-2 !text-start">{title}</h3>
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 min-w-10 rounded-full bg-gray-300"></div>
-          <div className="w-[calc(100%-52px)]">
-            <p className="text-xs truncate lg:text-sm">{author}</p>
-            <p className="text-[10px] lg:text-xs text-gray-300 truncate">
-              {date}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 }
