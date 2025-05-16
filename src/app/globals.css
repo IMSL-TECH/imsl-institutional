@@ -188,6 +188,11 @@ body {
   color: var(--black);
   text-align: justify;
 }
+
+.grid-item-word-summary {
+  display: block; /* evita colapso */
+}
+
 /* Colocar media query para todos */
 .grid-word-summary {
   display: grid;
@@ -327,6 +332,12 @@ h2, .h2 {
 h3, .h3 {
   font-size: 21px;
   line-height: 1.167;
+}
+
+@media (max-width: 1023px) {
+  h3, .h3 {
+    font-size: 16px;
+  }
 }
 
 .open-sans {

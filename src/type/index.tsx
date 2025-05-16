@@ -43,7 +43,6 @@ export type FooterData = {
     buttonLiveText: string
     butonLiveLink: string
     liveBannerImage: string
-    
   }
   
   export type ContactPage = {
