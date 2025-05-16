@@ -58,30 +58,35 @@ const blogPosts = [
     author: "Pr. Daniel Santos",
     date: "Maio 15, 2023",
     image: "https://picsum.photos/800/600?random=7",
+    panelist: "https://picsum.photos/800/600?random=17"
   },
   {
     title: "Mantenha a fé firme",
     author: "Pr. Gustavo Ramos",
     date: "Maio 10, 2023",
     image: "https://picsum.photos/800/600?random=8",
+    panelist: "https://picsum.photos/800/600?random=17"
   },
   {
     title: "Em meio às tempestades, pesca abundante",
     author: "Pr. Gabriel Rocha",
     date: "Abril 28, 2023",
     image: "https://picsum.photos/800/600?random=9",
+    panelist: "https://picsum.photos/800/600?random=17"
   },
   {
     title: "Por que você não obedece",
     author: "Pr. Matheus Oliveira",
     date: "Abril 20, 2023",
     image: "https://picsum.photos/800/600?random=10",
+    panelist: "https://picsum.photos/800/600?random=17"
   },
   {
     title: "Conecte-se com Deus",
     author: "Pr. Gustavo Ramos",
     date: "Abril 15, 2023",
     image: "https://picsum.photos/800/600?random=11",
+    panelist: "https://picsum.photos/800/600?random=17"
   },
 ];
 
@@ -253,12 +258,13 @@ export default async function Home() {
 
         <div className="grid-word-summary">
           {blogPosts.map((post, idx) => (
-            <BlogCard
+            <BlogCard 
               key={idx}
               title={post.title}
               author={post.author}
               date={post.date}
               image={post.image}
+              panelist={post.panelist}
               className="grid-item-word-summary"
             />
           ))}
