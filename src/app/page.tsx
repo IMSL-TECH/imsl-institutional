@@ -7,7 +7,7 @@ import Menu from "@/components/menu";
 import EventCard from "@/components/event-card";
 import Section from "@/components/section";
 import SmedCard from "@/components/smed-card";
-import { PortableText, PortableTextComponents } from '@portabletext/react'
+import { PortableText, PortableTextComponents } from "@portabletext/react";
 
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
@@ -16,7 +16,7 @@ import { HeaderType, HomePage } from "@/type";
 import { sanityClient } from "@/lib/sanityClient";
 import { headerQuery, homePageQuery } from "@/lib/queries";
 
-import bannerFallback from "@/assets/banners/banner.png"
+import bannerFallback from "@/assets/banners/banner.png";
 import BlogCard from "@/components/blog-card";
 
 const smeds = [
@@ -50,7 +50,7 @@ const smeds = [
     image: "https://picsum.photos/800/600?random=6",
     link: "#",
   },
-]
+];
 
 const blogPosts = [
   {
@@ -58,35 +58,35 @@ const blogPosts = [
     author: "Pr. Daniel Santos",
     date: "Maio 15, 2023",
     image: "https://picsum.photos/800/600?random=7",
-    panelist: "https://picsum.photos/800/600?random=17"
+    panelist: "https://picsum.photos/800/600?random=17",
   },
   {
     title: "Mantenha a fé firme",
     author: "Pr. Gustavo Ramos",
     date: "Maio 10, 2023",
     image: "https://picsum.photos/800/600?random=8",
-    panelist: "https://picsum.photos/800/600?random=17"
+    panelist: "https://picsum.photos/800/600?random=17",
   },
   {
     title: "Em meio às tempestades, pesca abundante",
     author: "Pr. Gabriel Rocha",
     date: "Abril 28, 2023",
     image: "https://picsum.photos/800/600?random=9",
-    panelist: "https://picsum.photos/800/600?random=17"
+    panelist: "https://picsum.photos/800/600?random=17",
   },
   {
     title: "Por que você não obedece",
     author: "Pr. Matheus Oliveira",
     date: "Abril 20, 2023",
     image: "https://picsum.photos/800/600?random=10",
-    panelist: "https://picsum.photos/800/600?random=17"
+    panelist: "https://picsum.photos/800/600?random=17",
   },
   {
     title: "Conecte-se com Deus",
     author: "Pr. Gustavo Ramos",
     date: "Abril 15, 2023",
     image: "https://picsum.photos/800/600?random=11",
-    panelist: "https://picsum.photos/800/600?random=17"
+    panelist: "https://picsum.photos/800/600?random=17",
   },
 ];
 
@@ -119,45 +119,52 @@ const events = [
 ];
 
 export default async function Home() {
+  const home_data: HomePage = await sanityClient.fetch(homePageQuery);
 
-  const home_data: HomePage = await sanityClient.fetch(homePageQuery)
-
-  const header_links_data: HeaderType = (await sanityClient.fetch(headerQuery)).items;
+  const header_links_data: HeaderType = (await sanityClient.fetch(headerQuery))
+    .items;
 
   return (
     <section className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="h-screen w-full absolute top-0 left-0">
         <Image
-          src={home_data.heroImage? home_data.heroImage: bannerFallback}
+          src={home_data.heroImage ? home_data.heroImage : bannerFallback}
           alt="Banner Monte Sião Linhares"
           fill
-          className="object-cover brightness-50"
+          className={`object-cover ${
+            home_data.heroHeadline && home_data.heroDescription && home_data.heroButtonTitle
+              ? "brightness-50"
+              : ""
+          }`}
           priority
         />
       </section>
+
+      <Menu menuList={header_links_data} />
+
       <Section className="h-screen flex relative justify-center">
-        <div className="absolute w-full h-screen pt-6 md:pt-7">
-          <Menu menuList={header_links_data}/>
+        <div className="absolute w-full h-screen pt-6 md:pt-10">
           <div className="flex flex-col justify-center items-center lg:items-start h-full max-w-4xl">
-           {home_data.heroHeadline && <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
-              
-              <PortableText value={home_data.heroHeadline} />
-              
-            </h1>}
-           {home_data.heroDescription && <p className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
-              {home_data.heroDescription}
-            </p>}
+            {home_data.heroHeadline && (
+              <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
+                <PortableText value={home_data.heroHeadline} />
+              </h1>
+            )}
+            {home_data.heroDescription && (
+              <div className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
+                <PortableText value={home_data.heroDescription} />
+              </div>
+            )}
 
-            {home_data.heroButtonTitle && 
-            <Link
-              href={home_data.heroButtonLink && "#"}
-              className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
-            >
-              {home_data.heroButtonTitle}
-            </Link>
-            }
-
+            {home_data.heroButtonTitle && (
+              <Link
+                href={home_data.heroButtonLink && "#"}
+                className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
+              >
+                {home_data.heroButtonTitle}
+              </Link>
+            )}
           </div>
         </div>
       </Section>
@@ -184,60 +191,66 @@ export default async function Home() {
         className=" text-white py-8 text-center"
       >
         <div className="text-lg">
-
-        <PortableText value={home_data.dividerText}/>
-            
+          <PortableText value={home_data.dividerText} />
         </div>
       </Section>
 
       {/* Live Transmission Section */}
-      <Section backgroundColor="bg-[#0F2E2F]" className="text-white py-24">
+      <Section backgroundColor="bg-[#0F2E2F]" className="text-white pt-24">
         <div className="grid-live-broadcast items-center">
           <div className="grid-item-live-broadcast">
             <h2 className="  w-full text-xl md:text-3xl font-bold mb-4">
               <p className="hidden px-3 lg:flex text-center">
-               {home_data.titleLive}
+                {home_data.titleLive}
               </p>
               <p className="flex text-center justify-center lg:hidden">
-              {home_data.titleLive}
+                {home_data.titleLive}
               </p>
             </h2>
             <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-7 lg:w-auto">
               <div className=" flex flex-col justify-center gap-2">
-              
-                <PortableText components={portableTextStyle} value={home_data.descriptionLive} />
+                <PortableText
+                  components={portableTextStyle}
+                  value={home_data.descriptionLive}
+                />
               </div>
 
-              {home_data.buttonLiveText && 
-              <Link
-                href={home_data.butonLiveLink}
-                target="_blak"
-                className="bg-[#179389] hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
-              >
-                {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
-              </Link>
-              }
+              {home_data.buttonLiveText && (
+                <Link
+                  href={home_data.butonLiveLink}
+                  target="_blak"
+                  className="bg-[#179389] hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
+                >
+                  {home_data.buttonLiveText}{" "}
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
+              )}
             </div>
           </div>
 
           {/* live player */}
-          {home_data.youtubeUrl ? LiveStreamPlayer(home_data.youtubeUrl): FakeLiveStreamPlayer()}
+          {home_data.youtubeUrl
+            ? LiveStreamPlayer(home_data.youtubeUrl)
+            : FakeLiveStreamPlayer()}
           <div className="w-full grid-item-live-broadcast flex justify-end ">
-
-           { home_data.liveBannerImage && <img src={home_data.liveBannerImage} alt="Pastor" className="rounded-lg " />}
-
+            {home_data.liveBannerImage && (
+              <img
+                src={home_data.liveBannerImage}
+                alt="Pastor"
+                className="rounded-lg "
+              />
+            )}
           </div>
 
           <div>
-          <Link
-                href={home_data.butonLiveLink}
-                target="_blak"
-                className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
-              >
-                {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
-              </Link>
+            <Link
+              href={home_data.butonLiveLink}
+              target="_blak"
+              className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+            >
+              {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
+            </Link>
           </div>
-
         </div>
       </Section>
 
@@ -248,7 +261,7 @@ export default async function Home() {
             Resumo de Palavra
           </h2>
           <Link
-            href="#"
+            href="/sermon-summary"
             className=" h-10 px-3 rounded-md flex items-center gap-2 bg-white text-black hover:bg-white/90 uppercase"
           >
             <p className="hidden md:flex">Ver mais</p>{" "}
@@ -258,7 +271,7 @@ export default async function Home() {
 
         <div className="grid-word-summary">
           {blogPosts.map((post, idx) => (
-            <BlogCard 
+            <BlogCard
               key={idx}
               title={post.title}
               author={post.author}
@@ -300,81 +313,68 @@ export default async function Home() {
   );
 }
 
-
 const portableTextStyle: PortableTextComponents = {
-
   list: {
     bullet: ({ children }) => (
-      <ul className="flex gap-3 flex-wrap justify-center  lg:block">{children}</ul>
+      <ul className="flex gap-3 flex-wrap justify-center  lg:block">
+        {children}
+      </ul>
     ),
   },
   listItem: ({ children }) => (
-    <li className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:rounded-full before:bg-teal-400"><p className="!text-left">{children}</p></li>
+    <li className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:rounded-full before:bg-teal-400">
+      <p className="!text-left">{children}</p>
+    </li>
   ),
+};
+
+function LiveStreamPlayer(liveEmbedLink: string) {
+  return (
+    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
+      {/* Selo LIVE no canto superior direito */}
+      <div className="absolute right-0 top-0 bg-red-500 text-white font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
+        LIVE
+      </div>
+
+      {/* Iframe do YouTube centralizado */}
+      <iframe
+        className="w-full h-full rounded-lg"
+        src={`${liveEmbedLink}?autoplay=0&mute=1&controls=1`}
+        title="Culto Online"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </div>
+  );
 }
 
+function FakeLiveStreamPlayer() {
+  return (
+    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
+      <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
+        OFFILNE
+      </div>
+      <Button className="rounded-full w-16 h-16 flex items-center justify-center">
+        <Play className="h-6 w-6 ml-1" />
+      </Button>
 
-function LiveStreamPlayer(liveEmbedLink:string){
-  return(
-
-  <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
-  {/* Selo LIVE no canto superior direito */}
-  <div className="absolute right-0 top-0 bg-red-500 text-white font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
-    LIVE
-  </div>
-
-  {/* Iframe do YouTube centralizado */}
-  <iframe
-    className="w-full h-full rounded-lg"
-    src={`${liveEmbedLink}?autoplay=0&mute=1&controls=1`}
-    title="Culto Online"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  ></iframe>
-</div>
-  )
-} 
-
-function FakeLiveStreamPlayer(){
-  return(
-  <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
-            
-            <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
-              OFFILNE
-            </div>
-            <Button className="rounded-full w-16 h-16 flex items-center justify-center">
-              <Play className="h-6 w-6 ml-1" />
-            </Button>
-
-            <div className=" absolute bottom-4 left-4 right-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Play className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Pause className="h-4 w-4" />
-                </Button>
-                <div className="h-1 bg-white/20 flex-1 rounded-full overflow-hidden">
-                  <div className="h-full w-1/3 bg-white rounded-full"></div>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-white"
-                >
-                  <Volume2 className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
+      <div className=" absolute bottom-4 left-4 right-4">
+        <div className="flex items-center gap-2 mb-2">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-white">
+            <Play className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-white">
+            <Pause className="h-4 w-4" />
+          </Button>
+          <div className="h-1 bg-white/20 flex-1 rounded-full overflow-hidden">
+            <div className="h-full w-1/3 bg-white rounded-full"></div>
           </div>
-  )
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-white">
+            <Volume2 className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
 }
