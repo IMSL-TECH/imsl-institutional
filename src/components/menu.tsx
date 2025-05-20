@@ -27,15 +27,19 @@ function MenuList({
   link: string;
   className: string;
 }) {
+  const isExternal = link.startsWith("http");
+
   return (
     <Link
       href={link}
       className={`px-2.5 py-1.5 uppercase opacity-100 rounded-md ${className}`}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {label}
     </Link>
   );
 }
+
 
 export default function Navbar({ menuList }: { menuList?: HeaderType }) {
   const [isOpen, setIsOpen] = useState(false);
