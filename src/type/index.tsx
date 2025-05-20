@@ -32,7 +32,7 @@ export type FooterData = {
     _id: string
     _type: 'homePage'
     heroHeadline: PortableTextBlock
-    heroDescription: string
+    heroDescription: PortableTextBlock
     heroButtonTitle: string
     heroButtonLink: string
     heroImage: string

@@ -21,7 +21,7 @@ export default async function Contact() {
           {contact_page_data.description}
         </p>
 
-        <div className="grid w-full grid-cols-2 gap-10 mt-10">
+        <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
           <div>
             <h3>Onde estamos</h3>
             
