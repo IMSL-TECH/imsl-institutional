@@ -7,6 +7,7 @@ import { contactPageQuery } from "@/lib/queries";
 import { sanityClient } from "@/lib/sanityClient";
 import { ContactPage } from "@/type";
 import { phoneFormat } from "@/lib/utils";
+import { PortableText } from "@portabletext/react";
 
 export default async function Contact() {
 
@@ -17,9 +18,9 @@ export default async function Contact() {
     <>
       <PageHeader imgSrc={contact_page_data.bannerImage? contact_page_data.bannerImage: bannerFallback.src}>{contact_page_data.title?contact_page_data.title:""}</PageHeader>
       <Section className="my-20">
-        <p>
-          {contact_page_data.description}
-        </p>
+        <div>
+          <PortableText value={contact_page_data.description} />
+        </div>
 
         <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
           <div>

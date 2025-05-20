@@ -50,7 +50,7 @@ export type FooterData = {
     _type: 'contactPage'
     title?: string
     bannerImage:string
-    description: string
+    description: PortableTextBlock
     address: {
       street: string
       number: string
