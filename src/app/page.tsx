@@ -12,9 +12,9 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
-import { HeaderType, HomePage } from "@/type";
+import { HeaderQueryResult, HomePageQueryResult } from "sanity-shared/types";
+import { headerQuery, homePageQuery } from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
-import { headerQuery, homePageQuery } from "@/lib/queries";
 
 import bannerFallback from "@/assets/banners/banner.png";
 import BlogCard from "@/components/blog-card";
@@ -119,21 +119,20 @@ const events = [
 ];
 
 export default async function Home() {
-  const home_data: HomePage = await sanityClient.fetch(homePageQuery);
+  const home_data: HomePageQueryResult = await sanityClient.fetch(homePageQuery);
 
-  const header_links_data: HeaderType = (await sanityClient.fetch(headerQuery))
-    .items;
+  const header_links_data: HeaderQueryResult = (await sanityClient.fetch(headerQuery))
 
   return (
     <section className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="h-screen w-full absolute top-0 left-0">
         <Image
-          src={home_data.heroImage ? home_data.heroImage : bannerFallback}
+          src={home_data?.heroImage ? home_data.heroImage : bannerFallback}
           alt="Banner Monte Sião Linhares"
           fill
           className={`object-cover ${
-            home_data.heroHeadline && home_data.heroDescription && home_data.heroButtonTitle
+            home_data?.heroHeadline && home_data.heroDescription && home_data.heroButtonTitle
               ? "brightness-50"
               : ""
           }`}
@@ -141,25 +140,25 @@ export default async function Home() {
         />
       </section>
 
-      <Menu menuList={header_links_data} />
+      <Menu headerData={header_links_data} />
 
       <Section className="h-screen flex relative justify-center">
         <div className="absolute w-full h-screen pt-6 md:pt-10">
           <div className="flex flex-col justify-center items-center lg:items-start h-full max-w-4xl">
-            {home_data.heroHeadline && (
+            {home_data?.heroHeadline && (
               <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
                 <PortableText value={home_data.heroHeadline} />
               </h1>
             )}
-            {home_data.heroDescription && (
+            {home_data?.heroDescription && (
               <div className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
                 <PortableText value={home_data.heroDescription} />
               </div>
             )}
 
-            {home_data.heroButtonTitle && (
+            {home_data?.heroButtonTitle && home_data.heroButtonLink && (
               <Link
-                href={home_data.heroButtonLink && "#"}
+                href={home_data.heroButtonLink}
                 className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
               >
                 {home_data.heroButtonTitle}
@@ -191,7 +190,7 @@ export default async function Home() {
         className=" text-white py-8 text-center"
       >
         <div className="text-lg">
-          <PortableText value={home_data.dividerText} />
+          { home_data?.dividerText && <PortableText value={home_data?.dividerText} />}
         </div>
       </Section>
 
@@ -201,23 +200,23 @@ export default async function Home() {
           <div className="grid-item-live-broadcast">
             <h2 className="  w-full text-xl md:text-3xl font-bold mb-4">
               <p className="hidden px-3 lg:flex text-center">
-                {home_data.titleLive}
+                {home_data?.titleLive}
               </p>
               <p className="flex text-center justify-center lg:hidden">
-                {home_data.titleLive}
+                {home_data?.titleLive}
               </p>
             </h2>
             <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-7 lg:w-auto">
               <div className=" flex flex-col justify-center gap-2">
-                <PortableText
+                { home_data?.descriptionLive && <PortableText
                   components={portableTextStyle}
-                  value={home_data.descriptionLive}
-                />
+                  value={home_data?.descriptionLive}
+                />}
               </div>
 
-              {home_data.buttonLiveText && (
+              {home_data?.buttonLiveText && (
                 <Link
-                  href={home_data.butonLiveLink}
+                  href={home_data.butonLiveLink || "#"}
                   target="_blak"
                   className="bg-[#179389] hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
                 >
@@ -229,11 +228,11 @@ export default async function Home() {
           </div>
 
           {/* live player */}
-          {home_data.youtubeUrl
+          {home_data?.youtubeUrl
             ? LiveStreamPlayer(home_data.youtubeUrl)
             : FakeLiveStreamPlayer()}
           <div className="w-full grid-item-live-broadcast flex justify-end ">
-            {home_data.liveBannerImage && (
+            {home_data?.liveBannerImage && (
               <img
                 src={home_data.liveBannerImage}
                 alt="Pastor"
@@ -243,13 +242,13 @@ export default async function Home() {
           </div>
 
           <div>
-            <Link
-              href={home_data.butonLiveLink}
+            { home_data?.butonLiveLink && <Link
+              href={home_data?.butonLiveLink}
               target="_blak"
               className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
             >
               {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
-            </Link>
+            </Link>}
           </div>
         </div>
       </Section>

@@ -49,7 +49,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 
-export function phoneFormat(phone: string): string {
+export function phoneFormat(phone: string|null|undefined): string {
+
+
+  if(!phone) return ""
 
   const digits = phone.replace(/\D/g, '');
 

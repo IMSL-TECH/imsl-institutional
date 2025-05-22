@@ -1,18 +1,16 @@
 import Image from "next/image";
 import Menu from "@/components/menu";
 import { ComponentPropsWithoutRef } from "react";
-import Section from "./section";
-import { HeaderType } from "@/type";
+import { HeaderQueryResult } from "sanity-shared/types";
 import { sanityClient } from "@/lib/sanityClient";
-import { headerQuery } from "@/lib/queries";
+import { headerQuery } from "sanity-shared/queries";
 
 interface Props extends ComponentPropsWithoutRef<"section"> {
   imgSrc: string;
 }
 export default async function PageHeader({ children, imgSrc }: Props) {
 
-  const header_links_data: HeaderType = (await sanityClient.fetch(headerQuery))
-  .items;
+  const header_links_data: HeaderQueryResult = (await sanityClient.fetch(headerQuery))
 
   return (
     <section className="h-[60vh] relative">
@@ -27,7 +25,7 @@ export default async function PageHeader({ children, imgSrc }: Props) {
       <p className="text-3xl md:text-5xl absolute w-full h-[60vh] top-0 font-bold text-white flex items-center justify-center">
         {children}
       </p>
-      <Menu menuList={header_links_data}/>
+      <Menu headerData={header_links_data}/>
     </section>
   );
 }
