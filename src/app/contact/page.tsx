@@ -6,7 +6,7 @@ import Link from "next/link";
 import { contactPageQuery } from "@/lib/queries";
 import { sanityClient } from "@/lib/sanityClient";
 import { ContactPage } from "@/type";
-import { phoneFormat } from "@/lib/utils";
+import { phoneFormat } from "@/utils";
 import { PortableText } from "@portabletext/react";
 
 export default async function Contact() {
