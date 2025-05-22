@@ -23,32 +23,32 @@ const smeds = [
   {
     title: "Intercessão",
     image: "https://picsum.photos/800/600?random=1",
-    link: "#",
+    link: "/smeds",
   },
   {
     title: "Cura Interior",
     image: "https://picsum.photos/800/600?random=2",
-    link: "#",
+    link: "/smeds",
   },
   {
     title: "Homens e Mulheres",
     image: "https://picsum.photos/800/600?random=3",
-    link: "#",
+    link: "/smeds",
   },
   {
     title: "Jovens",
     image: "https://picsum.photos/800/600?random=4",
-    link: "#",
+    link: "/smeds",
   },
   {
     title: "Infaltil",
     image: "https://picsum.photos/800/600?random=5",
-    link: "#",
+    link: "/smeds",
   },
   {
     title: "Casais",
     image: "https://picsum.photos/800/600?random=6",
-    link: "#",
+    link: "/smeds",
   },
 ];
 
@@ -160,7 +160,7 @@ export default async function Home() {
             {home_data.heroButtonTitle && (
               <Link
                 href={home_data.heroButtonLink && "#"}
-                className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
+                className="bg-white hover:bg-white/90 rounded-md py-2 text-black w-fit px-6 uppercase"
               >
                 {home_data.heroButtonTitle}
               </Link>
