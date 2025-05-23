@@ -6,8 +6,10 @@ import Link from "next/link";
 import { contactPageQuery } from "sanity-shared/queries";
 import { ContactPageQueryResult } from "sanity-shared/types";
 import { sanityClient } from "@/lib/sanityClient";
+
 import { phoneFormat } from "@/utils";
 import { PortableText } from "@portabletext/react";
+
 
 export default async function Contact() {
 
@@ -19,7 +21,9 @@ export default async function Contact() {
       <PageHeader imgSrc={contact_page_data?.bannerImage? contact_page_data.bannerImage: bannerFallback.src}>{contact_page_data?.title?contact_page_data.title:""}</PageHeader>
       <Section className="my-20">
         <div>
+
           {contact_page_data?.description&&<PortableText value={contact_page_data.description} />}
+
         </div>
 
         <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
