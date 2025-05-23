@@ -24,6 +24,7 @@
     "next-sanity": "^9.10.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sanity-shared": "github:prmarcos/sanity-shared",
     "swiper": "^11.2.5",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"
