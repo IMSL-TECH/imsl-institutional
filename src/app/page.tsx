@@ -12,114 +12,18 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
-import { HeaderQueryResult, HomePageQueryResult } from "sanity-shared/types";
-import { headerQuery, homePageQuery } from "sanity-shared/queries";
+import { HeaderQueryResult, HomePageEventsQueryResult, HomePageQueryResult, HomePageSermonsQueryResult, HomePageSmedsQueryResult } from "sanity-shared/types";
+import { headerQuery, homePageEventsQuery, homePageQuery, homePageSermonsQuery, homePageSmedsQuery } from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
 
 import bannerFallback from "@/assets/banners/banner.png";
 import BlogCard from "@/components/blog-card";
 
-const smeds = [
-  {
-    title: "Intercessão",
-    image: "https://picsum.photos/800/600?random=1",
-    link: "/smeds",
-  },
-  {
-    title: "Cura Interior",
-    image: "https://picsum.photos/800/600?random=2",
-    link: "/smeds",
-  },
-  {
-    title: "Homens e Mulheres",
-    image: "https://picsum.photos/800/600?random=3",
-    link: "/smeds",
-  },
-  {
-    title: "Jovens",
-    image: "https://picsum.photos/800/600?random=4",
-    link: "/smeds",
-  },
-  {
-    title: "Infaltil",
-    image: "https://picsum.photos/800/600?random=5",
-    link: "/smeds",
-  },
-  {
-    title: "Casais",
-    image: "https://picsum.photos/800/600?random=6",
-    link: "/smeds",
-  },
-];
-
-const blogPosts = [
-  {
-    title: "Suspire por Jesus",
-    author: "Pr. Daniel Santos",
-    date: "Maio 15, 2023",
-    image: "https://picsum.photos/800/600?random=7",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-  {
-    title: "Mantenha a fé firme",
-    author: "Pr. Gustavo Ramos",
-    date: "Maio 10, 2023",
-    image: "https://picsum.photos/800/600?random=8",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-  {
-    title: "Em meio às tempestades, pesca abundante",
-    author: "Pr. Gabriel Rocha",
-    date: "Abril 28, 2023",
-    image: "https://picsum.photos/800/600?random=9",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-  {
-    title: "Por que você não obedece",
-    author: "Pr. Matheus Oliveira",
-    date: "Abril 20, 2023",
-    image: "https://picsum.photos/800/600?random=10",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-  {
-    title: "Conecte-se com Deus",
-    author: "Pr. Gustavo Ramos",
-    date: "Abril 15, 2023",
-    image: "https://picsum.photos/800/600?random=11",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-];
-
-const events = [
-  {
-    title: "Ceia do Senhor",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    location: "Monte Sião Linhares",
-    date: "Sexta-feira, 20/05",
-    time: "19h30 - 21h30",
-    image: "https://picsum.photos/800/600?random=12",
-  },
-  {
-    title: "Culto de Adoração",
-    description: "Venha participar de uma noite de louvor e adoração.",
-    location: "Igreja Central",
-    date: "Sexta-feira, 20/05",
-    time: "18h00 - 20h00",
-    image: "https://picsum.photos/800/600?random=13",
-  },
-  {
-    title: "Estudo Bíblico",
-    description: "Aprofunde seu conhecimento na Palavra de Deus.",
-    location: "Sala 3",
-    date: "Sexta-feira, 20/05",
-    time: "19h00 - 20h30",
-    image: "https://picsum.photos/800/600?random=14",
-  },
-];
-
 export default async function Home() {
   const home_data: HomePageQueryResult = await sanityClient.fetch(homePageQuery);
+   const home_events_data: HomePageEventsQueryResult = await sanityClient.fetch(homePageEventsQuery);
+   const home_sermon_data: HomePageSermonsQueryResult = await sanityClient.fetch(homePageSermonsQuery);
+   const home_smeds_data: HomePageSmedsQueryResult = await sanityClient.fetch(homePageSmedsQuery);
 
   const header_links_data: HeaderQueryResult = (await sanityClient.fetch(headerQuery))
 
@@ -183,7 +87,7 @@ export default async function Home() {
           </Link>
         </div>
 
-        <EventCard items={events} />
+        <EventCard  items={home_events_data} />
       </Section>
 
       {/* Social Media Follow Section */}
@@ -271,16 +175,17 @@ export default async function Home() {
         </div>
 
         <div className="grid-word-summary">
-          {blogPosts.map((post, idx) => (
+          {home_sermon_data.map((post, idx) => (
+            <a key={idx} href={`/sermon-summary/${post.slug?.current}`}>
             <BlogCard
-              key={idx}
               title={post.title}
-              author={post.author}
+              author={`${post.speaker?.titleAbbreviation}${post.speaker?.name}`}
               date={post.date}
-              image={post.image}
-              panelist={post.panelist}
+              background={post.background}
+              panelist={post.speaker?.photo}
               className="grid-item-word-summary"
             />
+            </a>
           ))}
         </div>
       </Section>
@@ -290,7 +195,7 @@ export default async function Home() {
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Nossos SMEDs</h2>
           <Link
-            href="#"
+            href="/smeds"
             className=" h-10 px-3 text-white rounded-md flex items-center gap-2 bg-[#179389] hover:bg-teal-700 uppercase"
           >
             <p className="hidden md:flex">Ver mais</p>{" "}
@@ -300,10 +205,10 @@ export default async function Home() {
 
         <div className="relative">
           <div className="hidden lg:flex">
-            <SmedCard items={smeds} />
+            <SmedCard items={home_smeds_data} />
           </div>
           <div className="flex lg:hidden">
-            <Carousel items={smeds} />
+            <Carousel items={home_smeds_data} />
           </div>
         </div>
       </Section>

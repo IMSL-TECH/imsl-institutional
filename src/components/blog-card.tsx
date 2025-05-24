@@ -1,27 +1,32 @@
 import Image, { StaticImageData } from "next/image";
 
+import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png"
+import imagePlaceholder from "@/assets/thumbs/placeholder-image-square.png"
+import { formatDateBr } from "@/utils";
+
 export default function BlogCard({
   title,
   author,
   date,
-  image,
+  background,
   className,
   panelist,
 }: {
-  title: string;
+  title: string | null;
   author: string;
-  date: string;
-  image: string | StaticImageData;
+  date: string | null;
+  background: string | null;
   className?: string;
-  panelist: string;
+  panelist: string | null | undefined;
 }) {
+
   return (
     <div
       className={`overflow-hidden rounded-lg relative text-white ${className}`}
     >
       <Image
-        src={image || "/placeholder.svg"}
-        alt={title}
+        src={background || imagePlaceholder}
+        alt={title || ""}
         fill
         priority
         className="w-full object-cover"
@@ -37,14 +42,14 @@ export default function BlogCard({
               fill
               priority
               className="w-full object-cover"
-              src={panelist}
+              src={panelist || userPlaceholder}
               alt={`Palestrante da palavra ${author}`}
             />
           </div>
           <div className="w-[calc(100%-52px)]">
             <p className="text-xs truncate lg:text-sm">{author}</p>
             <p className="text-[10px] lg:text-xs text-gray-300 truncate">
-              {date}
+              {date && formatDateBr(date).ddmmmmaaaa}
             </p>
           </div>
         </div>

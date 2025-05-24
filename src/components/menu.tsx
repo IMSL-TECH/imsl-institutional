@@ -36,7 +36,6 @@ function MenuList({
 
 export default function Navbar({ headerData }: { headerData: HeaderQueryResult }) {
   const menuList = headerData?.items;
-  console.log(headerData)
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
