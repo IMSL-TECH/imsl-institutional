@@ -1,75 +1,23 @@
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 import Section from "@/components/section";
+import { sanityClient } from "@/lib/sanityClient";
 import Image from "next/image";
 import Link from "next/link";
+import { SmedsPageQuery,getSmedListQuery } from "sanity-shared/queries";
+import { GetSmedListQueryResult, SmedsPageQueryResult } from "sanity-shared/types";
+import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png"
+import { PortableText } from "@portabletext/react";
 
-const pageHeaderImage = "https://picsum.photos/2000/1000?random=30";
-
-const smeds_list = [
-  {
-    image: "https://picsum.photos/800/600?random=1",
-    title: "Cura",
-    content_button: undefined,
-    link: "#",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha ",
-  },
-  {
-    image: "https://picsum.photos/800/600?random=2",
-    title: "Cura",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha ",
-  },
-  {
-    image: "https://picsum.photos/800/600?random=3",
-    title: "Cura",
-    content_button: "Entre em contato",
-    link: "#",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha ",
-  },
-  {
-    image: "https://picsum.photos/800/600?random=4",
-    title: "Cura",
-    content_button: "Entre em contato",
-    link: "#",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha ",
-  },
-  {
-    image: "https://picsum.photos/800/600?random=5",
-    title: "Cura",
-    content_button: "Entre em contato",
-    link: "#",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha ",
-  },
-  {
-    image: "https://picsum.photos/800/600?random=6",
-    title: "Cura",
-    content_button: "Entre em contato",
-    link: "#",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha ",
-  },
-];
 
 function SmedsList({
   pair,
-  image,
-  title,
-  content,
-  content_button,
-  link,
+ smedItem
 }: {
   pair: boolean;
-  image: string;
-  title: string;
-  content: string;
-  content_button?: string;
-  link?: string;
-}) {
+  smedItem: GetSmedListQueryResult [number]
+}) {  
+
   return (
     <Section
       className={`lg:h-[300px] flex gap-2 lg:gap-8 flex-col rounded-xl ${pair ? "lg:flex-row-reverse" : "lg:border-green-200 lg:flex-row"}`}
@@ -77,28 +25,28 @@ function SmedsList({
     >
       <div className="w-full lg:w-[53%] rounded-t-xl lg:rounded-none overflow-hidden h-[250px] lg:h-full relative">
         <Image
-          src={image}
+          src={smedItem.bannerHorizontal || imagePlaceholderSquare}
           fill
-          className={`rounded-none lg:rounded-xl ${pair ? "" : "border"}`}
+          className={`object-cover rounded-none lg:rounded-xl ${pair ? "" : "border"}`}
           alt="Banner Monte Sião Linhares"
         />
       </div>
       <div
         className={`w-full lg:w-[47%] p-4 flex flex-col gap-4 justify-center ${pair ? "text-white" : ""}`}
       >
-        <h1>{title}</h1>
-        <div>{content}</div>
-        {content_button && link ? (
+        <h1>{smedItem.title}</h1>
+        <div> {smedItem.smedDescription && <PortableText value={smedItem.smedDescription} />}</div>
+        {smedItem.smedButton?.contentButton && smedItem.smedButton.linktButton ? (
           <Link
-            href={link}
+            href={smedItem.smedButton.linktButton}
             target="_black"
-            className={`py-2 px-3 uppercase rounded-md flex items-center gap-2 flex justify-center ${
+            className={`py-2 px-3 uppercase rounded-md items-center gap-2 flex justify-center ${
               pair
                 ? "bg-white hover:bg-white/90 text-black"
                 : "bg-[#179389] hover:bg-teal-700 text-white"
             }  uppercase`}
           >
-            <p className="">{content_button}</p>{" "}
+            <p className="">{smedItem.smedButton.contentButton}</p>{" "}
           </Link>
         ) : null}
       </div>
@@ -106,37 +54,31 @@ function SmedsList({
   );
 }
 
-export default function Smeds() {
+export default async function Smeds() {
+
+      const smeds_data: GetSmedListQueryResult = await sanityClient.fetch(getSmedListQuery);
+      const smeds_page_data: SmedsPageQueryResult = await sanityClient.fetch(SmedsPageQuery);
+
   return (
     <>
-      <PageHeader imgSrc={pageHeaderImage}>Smeds</PageHeader>
+      <PageHeader imgSrc={smeds_page_data?.bannerImage || imagePlaceholderSquare.src }>{smeds_page_data?.title}</PageHeader>
       <Section className="py-20">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s. Lorem Ipsum is simply dummy text of the printing and
-        typesetting industry. Lorem Ipsum ha
+       {smeds_page_data?.description && <PortableText value={smeds_page_data?.description} />}
       </Section>
-      {smeds_list.map(
-        ({ image, title, content, content_button, link }, idx) => {
+      {smeds_data.map(
+        (item, idx) => {
           const pair = idx % 2 === 0;
           return (
             <SmedsList
               pair={pair}
-              image={image}
-              title={title}
-              content={content}
-              content_button={content_button}
-              link={link}
+              smedItem={item}
               key={idx}
             />
           );
         }
       )}
       <Section className="py-20">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s. Lorem Ipsum is simply dummy text of the printing and
-        typesetting industry. Lorem Ipsum ha
+        {smeds_page_data?.conclusion && <PortableText value={smeds_page_data?.conclusion} />}
       </Section>
       <Footer />
     </>
