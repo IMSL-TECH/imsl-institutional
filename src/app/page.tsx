@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { Play, ChevronRight, Volume2, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -176,8 +176,10 @@ export default async function Home() {
 
         <div className="grid-word-summary">
           {home_sermon_data.map((post, idx) => (
-            <a key={idx} href={`/sermon-summary/${post.slug?.current}`}>
+
             <BlogCard
+              key={idx}
+              cardLink={`/sermon-summary/${post.slug}`}
               title={post.title}
               author={`${post.speaker?.titleAbbreviation}${post.speaker?.name}`}
               date={post.date}
@@ -185,7 +187,6 @@ export default async function Home() {
               panelist={post.speaker?.photo}
               className="grid-item-word-summary"
             />
-            </a>
           ))}
         </div>
       </Section>

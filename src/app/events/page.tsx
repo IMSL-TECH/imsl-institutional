@@ -1,7 +1,4 @@
 import Footer from "@/components/footer";
-// import PageHeader from "@/components/PageHeader";
-// import PageContent from "@/components/pageContent";
-
 import PageHeader from "@/components/page-header";
 import Section from "@/components/section";
 
@@ -10,7 +7,6 @@ import { PaginationCustom } from "@/components/pagination";
 import Image from "next/image";
 import SearchInput from "@/components/search";
 import { DatePicker } from "@/components/date-picker";
-import { link } from "fs";
 import Link from "next/link";
 import { daysOfWeek, shortMonths } from "@/utils";
 

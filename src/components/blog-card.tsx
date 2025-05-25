@@ -11,6 +11,7 @@ export default function BlogCard({
   background,
   className,
   panelist,
+  cardLink
 }: {
   title: string | null;
   author: string;
@@ -18,12 +19,13 @@ export default function BlogCard({
   background: string | null;
   className?: string;
   panelist: string | null | undefined;
+  cardLink:string
 }) {
-
   return (
     <div
       className={`overflow-hidden rounded-lg relative text-white ${className}`}
     >
+      <a href={cardLink}>
       <Image
         src={background || imagePlaceholder}
         alt={title || ""}
@@ -54,6 +56,7 @@ export default function BlogCard({
           </div>
         </div>
       </div>
+      </a>
     </div>
   );
 }

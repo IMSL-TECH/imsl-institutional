@@ -4,9 +4,10 @@ import { ComponentPropsWithoutRef } from "react";
 import { HeaderQueryResult } from "sanity-shared/types";
 import { sanityClient } from "@/lib/sanityClient";
 import { headerQuery } from "sanity-shared/queries";
+import placeholderImageSquare from "@/assets/thumbs/placeholder-image-square.png"
 
 interface Props extends ComponentPropsWithoutRef<"section"> {
-  imgSrc: string;
+  imgSrc: string | null | undefined;
 }
 export default async function PageHeader({ children, imgSrc }: Props) {
 
@@ -19,7 +20,7 @@ export default async function PageHeader({ children, imgSrc }: Props) {
         fill
         className="object-cover brightness-50 -z-10"
         priority
-        src={imgSrc}
+        src={imgSrc || placeholderImageSquare }
       />
       <div className="absolute h-[60vh] w-full bg-black opacity-30 -z-10"></div>
       <p className="text-3xl md:text-5xl absolute w-full h-[60vh] top-0 font-bold text-white flex items-center justify-center">
