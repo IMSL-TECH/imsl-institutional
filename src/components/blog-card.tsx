@@ -51,7 +51,7 @@ export default function BlogCard({
           <div className="w-[calc(100%-52px)]">
             <p className="text-xs truncate lg:text-sm">{author}</p>
             <p className="text-[10px] lg:text-xs text-gray-300 truncate">
-              {date && formatDateBr(date).ddmmmmaaaa}
+              {date && `${formatDateBr(date).dd} de ${formatDateBr(date).month}, ${formatDateBr(date).aaaa}`}
             </p>
           </div>
         </div>
