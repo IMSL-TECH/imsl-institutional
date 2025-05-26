@@ -7,16 +7,9 @@ import { Menu, X } from "lucide-react";
 
 import logoMS from "@/assets/logo/Logo nav Bar.svg";
 import { usePathname } from "next/navigation";
-import { HeaderType } from "@/type";
+import { HeaderQueryResult } from "sanity-shared/types";
 import Section from "./section";
 
-const menuList = [
-  { label: "Home", link: "/" },
-  { label: "Eventos", link: "/events" },
-  { label: "Resumo da palavra", link: "" },
-  { label: "Sobre", link: "/about" },
-  { label: "Contatos", link: "/contact" },
-];
 
 function MenuList({
   label,
@@ -27,21 +20,24 @@ function MenuList({
   link: string;
   className: string;
 }) {
+  const isExternal = link.startsWith("http");
+
   return (
     <Link
       href={link}
       className={`px-2.5 py-1.5 uppercase opacity-100 rounded-md ${className}`}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {label}
     </Link>
   );
 }
 
-export default function Navbar({ menuList }: { menuList?: HeaderType }) {
+
+export default function Navbar({ headerData }: { headerData: HeaderQueryResult }) {
+  const menuList = headerData?.items;
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
-  if (!menuList) return null; // solução temporariria- levar o menu para o layout é a solução definitiva
 
   return (
     <Section
@@ -58,15 +54,17 @@ export default function Navbar({ menuList }: { menuList?: HeaderType }) {
 
           {/* Menu Desktop */}
           <section className="hidden lg:flex gap-4">
-            {menuList.map(({ label, link }, idx) => (
+
+            { menuList?.map(({ label, link }, idx) => (
+             
               <MenuList
-                label={label}
-                link={link}
+                label={label || "tstst"}
+                link={link || "Teste"}
                 key={idx}
                 className={`text-white hover:bg-teal-700 ${
                   pathname === link && "bg-[#179389] "
                 }`}
-              />
+              />       
             ))}
           </section>
 
@@ -92,10 +90,11 @@ export default function Navbar({ menuList }: { menuList?: HeaderType }) {
                 </div>
               </div>
               <ul className="px-4 flex flex-col gap-2 w-full">
-                {menuList.map(({ label, link }, idx) => (
-                  <MenuList
-                    label={label}
-                    link={link}
+                {menuList?.map(( {label,link}, idx) => (
+                  
+                                    <MenuList
+                    label={label || "ttt"}
+                    link={link || "gsdfg"}
                     key={idx}
                     className={`text-black flex items-center justify-center w-full ${
                       pathname === link && "bg-[#179389] text-white"
