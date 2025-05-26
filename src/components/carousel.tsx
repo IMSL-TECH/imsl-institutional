@@ -5,16 +5,13 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { HomePageSmedsQueryResult } from "sanity-shared/types";
 
-type Item = {
-  title: string;
-  image: string;
-  link: string;
-};
-export default function Carousel({items}: {items: Item[]}) {
+export default function Carousel({items}: {items: HomePageSmedsQueryResult}) {
   return (
     <div className="w-full max-w-2xl mx-auto overflow-hidden">
       <Swiper
@@ -30,9 +27,9 @@ export default function Carousel({items}: {items: Item[]}) {
             key={index}
             className="!transition-all relative duration-500 !h-[277px]"
           >
-            <Link className="w-full h-full" href={item.link}>
+            <Link className="w-full h-full" href={"/smeds"}>
             <Image
-              src={item?.image}
+              src={item?.banner || imagePlaceholderSquare}
               alt={`Slide ${index + 1}`}
               height={200}
               width={200}

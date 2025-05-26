@@ -7,14 +7,14 @@ import { getSocialIconByName } from "@/components/icons";
 import Maps from "@/components/maps";
 
 import { sanityClient } from '@/lib/sanityClient'
-import { footerQuery } from '@/lib/queries'
-import { FooterData } from "@/type";
-import { phoneFormat } from "@/lib/utils";
+import { footerQuery } from 'sanity-shared/queries'
+import { FooterQueryResult } from "sanity-shared/types";
+import { phoneFormat } from "@/utils";
 
 export default async function Footer() {
 
 
-  const footer_data: FooterData = await sanityClient.fetch(footerQuery)
+  const footer_data: FooterQueryResult = await sanityClient.fetch(footerQuery)
 
 
 
@@ -25,10 +25,10 @@ export default async function Footer() {
         backgroundColor="bg-[#179389]"
         className="py-8 flex justify-center gap-6"
       >
-        {footer_data.socialLinks.map((socialLink,idx) =>
+        { footer_data?.socialLinks && footer_data.socialLinks.map((socialLink,idx) =>
           <Link
             key={idx}
-            href={socialLink.url}
+            href={socialLink.url || "#"}
             className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
           >
             {getSocialIconByName(socialLink.plataform)}
@@ -44,47 +44,40 @@ export default async function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="rounded-full flex items-center justify-center">
-                <img src={footer_data.logo} alt="Logo" className="w-52" />
+                {footer_data?.logo && <img src={footer_data.logo} alt="Logo" className="w-52" />}
               </div>
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-bold">{footer_data.programmingTitle}</h3>
+              <h3 className="font-bold">{footer_data?.programmingTitle}</h3>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <p>{footer_data.programmingText}</p>
+                <p>{footer_data?.programmingText}</p>
               </div>
 
-              <h3 className="font-bold mt-6">{footer_data.helpTitle}</h3>
+              <h3 className="font-bold mt-6">{footer_data?.helpTitle}</h3>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <p>{phoneFormat(footer_data.helpPhone)}</p>
+                <p>{phoneFormat(footer_data?.helpPhone)}</p>
               </div>
 
-              <h3 className="font-bold mt-6">{footer_data.locationTitle}</h3>
+              <h3 className="font-bold mt-6">{footer_data?.locationTitle}</h3>
               <div className="flex items-center gap-2">
                 <div className="w-2 min-w-2 h-2 bg-teal-400 rounded-full"></div>
                 <div>
                   <p>
-                    {footer_data.address.street}, {footer_data.address.number}
+                    {footer_data?.address?.street}, {footer_data?.address?.number}
                     <br />
-                    {footer_data.address.district}, {footer_data.address.city} - {footer_data.address.state}
+                    {footer_data?.address?.district}, {footer_data?.address?.city} - {footer_data?.address?.state}
                     <br />
                   </p>
-                  {/* <p className="hidden lg:block">
-                    {footer_data.location.split(",")[0] + "," + footer_data.location.split(",")[1]}
-                  </p>
-                  <p className="hidden lg:block">{footer_data.location.split(",")[2] + "," + footer_data.location.split(",")[3]}</p>
-                  <p className="block lg:hidden">
-                    {footer_data.location}
-                  </p> */}
                 </div>
               </div>
             </div>
           </div>
 
           <div className="h-[300px] relative rounded-lg overflow-hidden">
-            <Maps placeUrl={footer_data.mapEmbedUrl} />
+            { footer_data?.mapEmbedUrl && <Maps placeUrl={footer_data.mapEmbedUrl} />}
           </div>
         </div>
 

@@ -1,15 +1,15 @@
-import Jucimar from "@/assets/avatars/pr-jucimar.jpg";
-import Berenice from "@/assets/avatars/pra-berenice.webp";
-import banner from "@/assets/header-bgs/header-br-template.jpg";
 import BackToTopButton from "@/components/back-to-top-button";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 
 import Section from "@/components/section";
+import { sanityClient } from "@/lib/sanityClient";
+import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-import Link from "next/link";
+import { aboutPageQuery } from "sanity-shared/queries";
+import { AboutPageQueryResult, GetPersonListQueryResult } from "sanity-shared/types";
 
-const pageHeaderImage = "https://picsum.photos/2000/1000?random=20"
+import imgaePlaceHolderSquare from "@/assets/thumbs/placeholder-image-square.png"
 
 const fundamentalBeliefs = [
   {
@@ -132,10 +132,12 @@ function FundamentalBeliefs({
   );
 }
 
-export default function About() {
+export default async function About() {
+
+  const about_page_data: AboutPageQueryResult = await sanityClient.fetch(aboutPageQuery);
   return (
     <>
-      <PageHeader imgSrc={pageHeaderImage}>Quem somos</PageHeader>
+      <PageHeader imgSrc={about_page_data?.bannerImage}>{about_page_data?.title}</PageHeader>
       <Section className="mt-20">
         <p className="mb-24">
           Em tempos de grande confusão no mundo, não há nada mais importante
@@ -216,65 +218,12 @@ export default function About() {
       </Section>
 
       <Section className="mb-20">
-        <h2>Nossa Liderança.</h2>
+        <h2 className="mb-5">Nossa Liderança.</h2>
         <div className="flex gap-10 flex-col lg:flex-row">
-          <div className="">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="">
-                <Image
-                  width={50}
-                  height={50}
-                  className="w-16 min-w-16 h-16 rounded-full"
-                  src={Jucimar.src}
-                  alt=""
-                />
-              </div>
-              <h3 className="!mb-0 gap-2">
-                <p>Jucimar Ramos</p>
-                <span className="block open-sans font-normal text-[14px]">Pastor Sênior</span>
-              </h3>
-            </div>
 
-            <p>
-              Pastor, palestrante e escritor com mais de 35 livros lançados.
-              Ministro de cura interior desde 1991, foi treinado pelo Ministério
-              REVER MAPI/CEPAL com certificação em Mestre em Cura Interior. É
-              pastor Sênior da igreja Linhares desde o ano 2000. É presidente
-              do Ministério Bálsamo de Gileade. É casado com a pastora Berenice
-              e tem dois filhos, Mhayza e Marcos, casado com Bruna, pais da
-              Karen, sua netinha. Para saber mais:{" "}
-              <Link target="_blank" href="https://instagram.com/prjucimarramos">@prjucimarramos</Link>
-            </p>
-          </div>
-
-          <div className="">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="">
-                <Image
-                  width={40}
-                  height={40}
-                  className="w-16 min-w-16 h-16 rounded-full"
-                  src={Berenice.src}
-                  alt=""
-                />
-              </div>
-              <h3 className="!mb-0 gap-2">
-                <p>Berenice Peres Ramos</p>
-                <span className="block open-sans font-normal text-[14px]">Pastora Sênior</span>
-              </h3>
-            </div>
-
-            <p>
-              Pastora, palestrante e ministra de cura interior, a pastora Berê,
-              carinhosamente chamada por seus discípulos, cuida da igreja local
-              e lidera diretamente o ministério de mulheres da igreja,
-              trabalhando assuntos importantes para este tempo, como
-              feminilidade, autocuidado, paternidade etc. Auxilia o pastor
-              Jucimar no Ministério Bálsamo de Gileade e é formada em
-              Assistência Social. Casada com o pastor Jucimar, tem dois filhos,
-              Mhayza e Marcos, casado com Bruna, pais da Karen, sua netinha.
-            </p>
-          </div>
+          {about_page_data?.leadership?.map((leader,idx)=>(
+            <LeadershipBlock leader={leader}  key={idx}/>
+          ))}
         </div>
       </Section>
 
@@ -282,4 +231,30 @@ export default function About() {
       <BackToTopButton />
     </>
   );
+}
+
+
+function LeadershipBlock({ leader }: {leader:GetPersonListQueryResult[number]}) {
+  return (
+    <div className="">
+      <div className="flex items-center gap-2 mb-4">
+        <div className="">
+          <Image
+            width={50}
+            height={50}
+            className="w-16 min-w-16 h-16 rounded-full"
+            src={leader.photo || imgaePlaceHolderSquare}
+            alt=""
+          />
+        </div>
+        <h3 className="!mb-0 gap-2">
+          <p>{`${leader.titleAbbreviation} ${leader.name}`}</p>
+          <span className="block open-sans font-normal text-[14px]">{leader.title}</span>
+        </h3>
+      </div>
+
+      <div>
+        {leader.bio &&  <PortableText value={leader.bio} /> }
+      </div>
+    </div>)
 }

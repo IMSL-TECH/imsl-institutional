@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { Play, ChevronRight, Volume2, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,128 +12,31 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
-import { HeaderType, HomePage } from "@/type";
+import { HeaderQueryResult, HomePageEventsQueryResult, HomePageQueryResult, HomePageSermonsQueryResult, HomePageSmedsQueryResult } from "sanity-shared/types";
+import { headerQuery, homePageEventsQuery, homePageQuery, homePageSermonsQuery, homePageSmedsQuery } from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
-import { headerQuery, homePageQuery } from "@/lib/queries";
 
 import bannerFallback from "@/assets/banners/banner.png";
 import BlogCard from "@/components/blog-card";
 
-const smeds = [
-  {
-    title: "Intercessão",
-    image: "https://picsum.photos/800/600?random=1",
-    link: "#",
-  },
-  {
-    title: "Cura Interior",
-    image: "https://picsum.photos/800/600?random=2",
-    link: "#",
-  },
-  {
-    title: "Homens e Mulheres",
-    image: "https://picsum.photos/800/600?random=3",
-    link: "#",
-  },
-  {
-    title: "Jovens",
-    image: "https://picsum.photos/800/600?random=4",
-    link: "#",
-  },
-  {
-    title: "Infaltil",
-    image: "https://picsum.photos/800/600?random=5",
-    link: "#",
-  },
-  {
-    title: "Casais",
-    image: "https://picsum.photos/800/600?random=6",
-    link: "#",
-  },
-];
-
-const blogPosts = [
-  {
-    title: "Suspire por Jesus",
-    author: "Pr. Daniel Santos",
-    date: "Maio 15, 2023",
-    image: "https://picsum.photos/800/600?random=7",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-  {
-    title: "Mantenha a fé firme",
-    author: "Pr. Gustavo Ramos",
-    date: "Maio 10, 2023",
-    image: "https://picsum.photos/800/600?random=8",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-  {
-    title: "Em meio às tempestades, pesca abundante",
-    author: "Pr. Gabriel Rocha",
-    date: "Abril 28, 2023",
-    image: "https://picsum.photos/800/600?random=9",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-  {
-    title: "Por que você não obedece",
-    author: "Pr. Matheus Oliveira",
-    date: "Abril 20, 2023",
-    image: "https://picsum.photos/800/600?random=10",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-  {
-    title: "Conecte-se com Deus",
-    author: "Pr. Gustavo Ramos",
-    date: "Abril 15, 2023",
-    image: "https://picsum.photos/800/600?random=11",
-    panelist: "https://picsum.photos/800/600?random=17",
-  },
-];
-
-const events = [
-  {
-    title: "Ceia do Senhor",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    location: "Monte Sião Linhares",
-    date: "Sexta-feira, 20/05",
-    time: "19h30 - 21h30",
-    image: "https://picsum.photos/800/600?random=12",
-  },
-  {
-    title: "Culto de Adoração",
-    description: "Venha participar de uma noite de louvor e adoração.",
-    location: "Igreja Central",
-    date: "Sexta-feira, 20/05",
-    time: "18h00 - 20h00",
-    image: "https://picsum.photos/800/600?random=13",
-  },
-  {
-    title: "Estudo Bíblico",
-    description: "Aprofunde seu conhecimento na Palavra de Deus.",
-    location: "Sala 3",
-    date: "Sexta-feira, 20/05",
-    time: "19h00 - 20h30",
-    image: "https://picsum.photos/800/600?random=14",
-  },
-];
-
 export default async function Home() {
-  const home_data: HomePage = await sanityClient.fetch(homePageQuery);
+  const home_data: HomePageQueryResult = await sanityClient.fetch(homePageQuery);
+   const home_events_data: HomePageEventsQueryResult = await sanityClient.fetch(homePageEventsQuery);
+   const home_sermon_data: HomePageSermonsQueryResult = await sanityClient.fetch(homePageSermonsQuery);
+   const home_smeds_data: HomePageSmedsQueryResult = await sanityClient.fetch(homePageSmedsQuery);
 
-  const header_links_data: HeaderType = (await sanityClient.fetch(headerQuery))
-    .items;
+  const header_links_data: HeaderQueryResult = (await sanityClient.fetch(headerQuery))
 
   return (
     <section className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="h-screen w-full absolute top-0 left-0">
         <Image
-          src={home_data.heroImage ? home_data.heroImage : bannerFallback}
+          src={home_data?.heroImage ? home_data.heroImage : bannerFallback}
           alt="Banner Monte Sião Linhares"
           fill
           className={`object-cover ${
-            home_data.heroHeadline && home_data.heroDescription && home_data.heroButtonTitle
+            home_data?.heroHeadline && home_data.heroDescription && home_data.heroButtonTitle
               ? "brightness-50"
               : ""
           }`}
@@ -141,23 +44,23 @@ export default async function Home() {
         />
       </section>
 
-      <Menu menuList={header_links_data} />
+      <Menu headerData={header_links_data} />
 
       <Section className="h-screen flex relative justify-center">
         <div className="absolute w-full h-screen pt-6 md:pt-10">
           <div className="flex flex-col justify-center items-center lg:items-start h-full max-w-4xl">
-            {home_data.heroHeadline && (
+            {home_data?.heroHeadline && (
               <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
                 <PortableText value={home_data.heroHeadline} />
               </h1>
             )}
-            {home_data.heroDescription && (
+            {home_data?.heroDescription && (
               <div className="text-white/80 text-center lg:text-start mb-8 max-w-xl leading-5">
                 <PortableText value={home_data.heroDescription} />
               </div>
             )}
 
-            {home_data.heroButtonTitle && (
+            {home_data?.heroButtonTitle && home_data.heroButtonLink && (
               <Link
                 href={home_data.heroButtonLink && "#"}
                 className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
@@ -182,7 +85,7 @@ export default async function Home() {
           </Link>
         </div>
 
-        <EventCard items={events} />
+        <EventCard  items={home_events_data} />
       </Section>
 
       {/* Social Media Follow Section */}
@@ -191,7 +94,7 @@ export default async function Home() {
         className=" text-white py-8 text-center"
       >
         <div className="text-lg">
-          <PortableText value={home_data.dividerText} />
+          { home_data?.dividerText && <PortableText value={home_data?.dividerText} />}
         </div>
       </Section>
 
@@ -201,23 +104,23 @@ export default async function Home() {
           <div className="grid-item-live-broadcast">
             <h2 className="  w-full text-xl md:text-3xl font-bold mb-4">
               <p className="hidden px-3 lg:flex text-center">
-                {home_data.titleLive}
+                {home_data?.titleLive}
               </p>
               <p className="flex text-center justify-center lg:hidden">
-                {home_data.titleLive}
+                {home_data?.titleLive}
               </p>
             </h2>
             <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-7 lg:w-auto">
               <div className=" flex flex-col justify-center gap-2">
-                <PortableText
+                { home_data?.descriptionLive && <PortableText
                   components={portableTextStyle}
-                  value={home_data.descriptionLive}
-                />
+                  value={home_data?.descriptionLive}
+                />}
               </div>
 
-              {home_data.buttonLiveText && (
+              {home_data?.buttonLiveText && (
                 <Link
-                  href={home_data.butonLiveLink}
+                  href={home_data.butonLiveLink || "#"}
                   target="_blak"
                   className="bg-[#179389] hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
                 >
@@ -229,11 +132,11 @@ export default async function Home() {
           </div>
 
           {/* live player */}
-          {home_data.youtubeUrl
+          {home_data?.youtubeUrl
             ? LiveStreamPlayer(home_data.youtubeUrl)
             : FakeLiveStreamPlayer()}
           <div className="w-full grid-item-live-broadcast flex justify-end ">
-            {home_data.liveBannerImage && (
+            {home_data?.liveBannerImage && (
               <img
                 src={home_data.liveBannerImage}
                 alt="Pastor"
@@ -243,13 +146,13 @@ export default async function Home() {
           </div>
 
           <div>
-            <Link
-              href={home_data.butonLiveLink}
+            { home_data?.butonLiveLink && <Link
+              href={home_data?.butonLiveLink}
               target="_blak"
               className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
             >
               {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
-            </Link>
+            </Link>}
           </div>
         </div>
       </Section>
@@ -270,14 +173,16 @@ export default async function Home() {
         </div>
 
         <div className="grid-word-summary">
-          {blogPosts.map((post, idx) => (
+          {home_sermon_data.map((post, idx) => (
+
             <BlogCard
               key={idx}
+              cardLink={`/sermon-summary/${post.slug}`}
               title={post.title}
-              author={post.author}
+              author={`${post.speaker?.titleAbbreviation}${post.speaker?.name}`}
               date={post.date}
-              image={post.image}
-              panelist={post.panelist}
+              background={post.background}
+              panelist={post.speaker?.photo}
               className="grid-item-word-summary"
             />
           ))}
@@ -289,7 +194,7 @@ export default async function Home() {
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Nossos SMEDs</h2>
           <Link
-            href="#"
+            href="/smeds"
             className=" h-10 px-3 text-white rounded-md flex items-center gap-2 bg-[#179389] hover:bg-teal-700 uppercase"
           >
             <p className="hidden md:flex">Ver mais</p>{" "}
@@ -299,10 +204,10 @@ export default async function Home() {
 
         <div className="relative">
           <div className="hidden lg:flex">
-            <SmedCard items={smeds} />
+            <SmedCard items={home_smeds_data} />
           </div>
           <div className="flex lg:hidden">
-            <Carousel items={smeds} />
+            <Carousel items={home_smeds_data} />
           </div>
         </div>
       </Section>

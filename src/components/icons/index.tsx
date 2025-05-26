@@ -8,7 +8,7 @@ import Default  from "./default";
 export {Facebook,Instagram,YouTube,Default}
 
 
-export function getSocialIconByName(name: string) {
+export function getSocialIconByName(name: string|null) {
 
     if (name === "instagram") return <Instagram className="text-white w-7 h-7" />
     if (name === "youtube") return <YouTube className="text-white w-7 h-7" />
