@@ -138,7 +138,7 @@ export default async function About() {
   return (
     <>
       <PageHeader imgSrc={about_page_data?.bannerImage}>{about_page_data?.title}</PageHeader>
-      <Section className="mt-20">
+      <Section>
         <p className="mb-24">
           Em tempos de grande confusão no mundo, não há nada mais importante
           para alguém que quer viver em serenidade do que saber quem é e o que
@@ -156,9 +156,9 @@ export default async function About() {
           ))}
         </div>
       </Section>
-      <Section className="mb-20">
+      <Section>
         <blockquote
-          className="my-16 pl-8 lg:p-16 border-l-4 border-[var(--green-default)] relative sm:p-12 xs:p-11"
+          className="pl-8 lg:p-16 border-l-4 border-[var(--green-default)] relative sm:p-12 xs:p-11"
           cite="https://www.bibliaonline.com.br/acf/is/4/5,6"
         >
           <p className="text-[16px] leading-[1.857] mb-6 lg:mb-8 lg:text-[24px] sm:text-[20px] font-medium text-justify">
@@ -172,7 +172,7 @@ export default async function About() {
           </cite>
         </blockquote>
       </Section>
-      <Section className="mb-20">
+      <Section>
         <h2 className="">Visão, Valores e Missão</h2>
         <p>
           Queremos ser uma igreja modelo de discipulado, relacionamento, e
@@ -201,7 +201,7 @@ export default async function About() {
       </Section>
 
       <Section>
-        <div className="mb-10">
+        <div>
           <h2 className="">Tomando posse da terra</h2>
           <p>
             Somos uma igreja que vive a prática do SMED – Sistema de
@@ -217,7 +217,7 @@ export default async function About() {
         </div>
       </Section>
 
-      <Section className="mb-20">
+      <Section>
         <h2 className="mb-5">Nossa Liderança.</h2>
         <div className="flex gap-10 flex-col lg:flex-row">
 
@@ -236,7 +236,7 @@ export default async function About() {
 
 function LeadershipBlock({ leader }: {leader:GetPersonListQueryResult[number]}) {
   return (
-    <div className="">
+    <div className="w-full lg:w-1/2">
       <div className="flex items-center gap-2 mb-4">
         <div className="">
           <Image

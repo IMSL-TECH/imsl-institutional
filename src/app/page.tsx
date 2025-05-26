@@ -46,8 +46,8 @@ export default async function Home() {
 
       <Menu headerData={header_links_data} />
 
-      <Section className="h-screen flex relative justify-center">
-        <div className="absolute w-full h-screen pt-6 md:pt-10">
+      <Section backgroundColor="!py-0" className="h-[calc(100vh-128px)] flex relative justify-center">
+        <div className="absolute w-full h-[calc(100vh-128px)]">
           <div className="flex flex-col justify-center items-center lg:items-start h-full max-w-4xl">
             {home_data?.heroHeadline && (
               <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
@@ -73,7 +73,7 @@ export default async function Home() {
       </Section>
 
       {/* Upcoming Events Section */}
-      <Section className="py-16">
+      <Section>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Próximos Eventos</h2>
           <Link
@@ -90,8 +90,8 @@ export default async function Home() {
 
       {/* Social Media Follow Section */}
       <Section
-        backgroundColor="bg-[#179389]"
-        className=" text-white py-8 text-center"
+        backgroundColor="bg-[#179389] !py-12"
+        className="text-white text-center"
       >
         <div className="text-lg">
           { home_data?.dividerText && <PortableText value={home_data?.dividerText} />}
@@ -99,7 +99,7 @@ export default async function Home() {
       </Section>
 
       {/* Live Transmission Section */}
-      <Section backgroundColor="bg-[#0F2E2F]" className="text-white pt-24">
+      <Section backgroundColor="bg-[#0F2E2F]" className="text-white">
         <div className="grid-live-broadcast items-center">
           <div className="grid-item-live-broadcast">
             <h2 className="  w-full text-xl md:text-3xl font-bold mb-4">
@@ -158,7 +158,7 @@ export default async function Home() {
       </Section>
 
       {/* Word Summary Section */}
-      <Section className="py-32" backgroundColor="bg-[#0F2E2F]">
+      <Section backgroundColor="bg-[#0F2E2F]">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-white">
             Resumo de Palavra
@@ -190,7 +190,7 @@ export default async function Home() {
       </Section>
 
       {/* SMEDs Section */}
-      <Section className="py-16">
+      <Section>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Nossos SMEDs</h2>
           <Link
@@ -258,7 +258,7 @@ function FakeLiveStreamPlayer() {
   return (
     <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
       <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
-        OFFILNE
+        OFFLINE
       </div>
       <Button className="rounded-full w-16 h-16 flex items-center justify-center">
         <Play className="h-6 w-6 ml-1" />

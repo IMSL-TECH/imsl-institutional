@@ -19,7 +19,7 @@ export default async function Contact() {
   return (
     <>
       <PageHeader imgSrc={contact_page_data?.bannerImage? contact_page_data.bannerImage: bannerFallback.src}>{contact_page_data?.title?contact_page_data.title:""}</PageHeader>
-      <Section className="my-20">
+      <Section>
         <div>
 
           {contact_page_data?.description&&<PortableText value={contact_page_data.description} />}

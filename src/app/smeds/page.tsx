@@ -55,14 +55,13 @@ function SmedsList({
 }
 
 export default async function Smeds() {
-
       const smeds_data: GetSmedListQueryResult = await sanityClient.fetch(getSmedListQuery);
       const smeds_page_data: SmedsPageQueryResult = await sanityClient.fetch(SmedsPageQuery);
 
   return (
     <>
       <PageHeader imgSrc={smeds_page_data?.bannerImage || imagePlaceholderSquare.src }>{smeds_page_data?.title}</PageHeader>
-      <Section className="py-20">
+      <Section>
        {smeds_page_data?.description && <PortableText value={smeds_page_data?.description} />}
       </Section>
       {smeds_data.map(
@@ -77,7 +76,7 @@ export default async function Smeds() {
           );
         }
       )}
-      <Section className="py-20">
+      <Section>
         {smeds_page_data?.conclusion && <PortableText value={smeds_page_data?.conclusion} />}
       </Section>
       <Footer />

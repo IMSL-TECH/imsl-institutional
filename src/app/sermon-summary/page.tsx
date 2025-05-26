@@ -5,7 +5,7 @@ import BlogCard from "@/components/blog-card";
 import SearchInput from "@/components/search";
 import Filters from "@/components/filters";
 import { DatePicker } from "@/components/date-picker";
-import { GetResumedSermonSumaryListQueryResult,GetAllTagsQueryResult, SermonSummaryPage, SermonSummaryPageQueryResult } from "sanity-shared/types";
+import { GetResumedSermonSumaryListQueryResult,GetAllTagsQueryResult, SermonSummaryPageQueryResult } from "sanity-shared/types";
 import { getResumedSermonSumaryListQuery,getAllTagsQuery, sermonSummaryPageQuery } from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
 
@@ -15,9 +15,7 @@ type FormatWordSummaryType = {
 };
 
 function formatWordSummary(data: GetResumedSermonSumaryListQueryResult) {
-  
   const itemsWithSpan: FormatWordSummaryType[] = [];
-
 
   for (let i = 0; i < data?.length; i++) {
     const indexInGroup = i % 10;
@@ -58,7 +56,7 @@ export default async function WordSummary({
   return (
     <div>
       <PageHeader imgSrc={sermon_page_data?.bannerImage}>{sermon_page_data?.title}</PageHeader>
-      <Section className="my-20">
+      <Section>
         <div className="flex items-center justify-between mb-4">
           <SearchInput />
           <DatePicker />

@@ -15,18 +15,11 @@ import { sanityClient } from "@/lib/sanityClient";
 import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { PortableText } from "@portabletext/react";
 
-function formatNumber(num: number): string {
-  return String(num).padStart(2, '0');
-}
-
 function EventsItem({ eventItem }: {eventItem:GetResumedEventListQueryResult[number]}) {
 
   const fristDate = getEventDateRange(eventItem.schedule).first?.date
   const starTime = getEventDateRange(eventItem.schedule).first?.startTime
   const endTime = getEventDateRange(eventItem.schedule).first?.endTime
-
-  const {} = eventItem;
-
 
   const {dayOfWeek,mm, shortMonth, dd} = formatDateBr(fristDate || "")
 
@@ -94,7 +87,7 @@ export default async function Event({
   return (
     <>
       <PageHeader imgSrc={events_page_data?.bannerImage}>{events_page_data?.title}</PageHeader>
-      <Section className="mt-20">
+      <Section>
         <div className="flex items-center justify-between mb-8">
           <SearchInput />
           <DatePicker />

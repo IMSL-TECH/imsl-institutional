@@ -6,45 +6,39 @@ import Section from "@/components/section";
 import { getSocialIconByName } from "@/components/icons";
 import Maps from "@/components/maps";
 
-import { sanityClient } from '@/lib/sanityClient'
-import { footerQuery } from 'sanity-shared/queries'
+import { sanityClient } from "@/lib/sanityClient";
+import { footerQuery } from "sanity-shared/queries";
 import { FooterQueryResult } from "sanity-shared/types";
 import { phoneFormat } from "@/utils";
 
 export default async function Footer() {
-
-
-  const footer_data: FooterQueryResult = await sanityClient.fetch(footerQuery)
-
-
+  const footer_data: FooterQueryResult = await sanityClient.fetch(footerQuery);
 
   return (
     <React.Fragment>
-
       <Section
-        backgroundColor="bg-[#179389]"
-        className="py-8 flex justify-center gap-6"
+        backgroundColor="bg-[#179389] !py-12"
+        className="flex justify-center gap-6"
       >
-        { footer_data?.socialLinks && footer_data.socialLinks.map((socialLink,idx) =>
-          <Link
-            key={idx}
-            href={socialLink.url || "#"}
-            className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
-          >
-            {getSocialIconByName(socialLink.plataform)}
-
-
-          </Link>
-
-        )}
-
+        {footer_data?.socialLinks &&
+          footer_data.socialLinks.map((socialLink, idx) => (
+            <Link
+              key={idx}
+              href={socialLink.url || "#"}
+              className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
+            >
+              {getSocialIconByName(socialLink.plataform)}
+            </Link>
+          ))}
       </Section>
-      <Section backgroundColor="bg-[#0F2E2F]" className="text-white mt-20">
-        <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8">
+      <Section backgroundColor="bg-[#0F2E2F]" className="text-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8">
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="rounded-full flex items-center justify-center">
-                {footer_data?.logo && <img src={footer_data.logo} alt="Logo" className="w-52" />}
+                {footer_data?.logo && (
+                  <img src={footer_data.logo} alt="Logo" className="w-52" />
+                )}
               </div>
             </div>
 
@@ -63,21 +57,28 @@ export default async function Footer() {
 
               <h3 className="font-bold mt-6">{footer_data?.locationTitle}</h3>
               <div className="flex items-center gap-2">
-                <div className="w-2 min-w-2 h-2 bg-teal-400 rounded-full"></div>
                 <div>
-                  <p>
-                    {footer_data?.address?.street}, {footer_data?.address?.number}
-                    <br />
-                    {footer_data?.address?.district}, {footer_data?.address?.city} - {footer_data?.address?.state}
-                    <br />
+                  <div className="flex lg:items-center relative">
+                    <p className="w-2 top-3 min-w-2 h-2 bg-teal-400 rounded-full absolute"></p>{" "}
+                    <p className="pl-4">
+                      {footer_data?.address?.street},{" "}
+                      {footer_data?.address?.number}
+                    </p>
+                  </div>
+                  <p className="pl-4">
+                  {footer_data?.address?.district}, {footer_data?.address?.city}{" "}
+                  - {footer_data?.address?.state}
                   </p>
+                  
                 </div>
               </div>
             </div>
           </div>
 
           <div className="h-[300px] relative rounded-lg overflow-hidden">
-            { footer_data?.mapEmbedUrl && <Maps placeUrl={footer_data.mapEmbedUrl} />}
+            {footer_data?.mapEmbedUrl && (
+              <Maps placeUrl={footer_data.mapEmbedUrl} />
+            )}
           </div>
         </div>
 
