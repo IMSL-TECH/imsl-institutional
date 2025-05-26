@@ -55,28 +55,38 @@ export function cn(...inputs: ClassValue[]) {
 
 
 type FormattedDate = {
-  eeeeddmm: string     // "sábado, 24/05"
-  ddmmmmaaaa: string         // "maio 24, 2025"
-  ddmmmm: string            // "24 de maio"
-  ddmm: string
-  completo: string          // "sábado, 24 de maio de 2025"
-  dia: string
-  mes: string
-  ano: string
+  dd: string // 24
+  mm: string // 05
+  aa: string // 25
+  aaaa:string // 2025
+  shortMonth: string // Mai
+  month: string; // Maio
+  dayOfWeek:string // Sábado
 }
 
-export function formatDateBr(dataString: string): FormattedDate {
+export function formatDateBr(dataString: string ): FormattedDate{
+
+  if(dataString === "")  
+    return { dd: "",
+              mm:"",
+              aa: "",
+              aaaa:"",
+              shortMonth:"",
+              month: "",
+              dayOfWeek:"",
+            }
   const data = parseISO(dataString)
 
   return {
-    eeeeddmm: format(data, "EEEE, dd/MM", { locale: ptBR }),
-    ddmmmmaaaa: format(data, "dd 'de' MMMM, yyyy", { locale: ptBR }),
-    ddmmmm: format(data, "dd 'de' MMMM", { locale: ptBR }),
-    ddmm: format(data, "dd/MM", { locale: ptBR }),
-    completo: format(data, "EEEE, dd 'de' MMMM 'de' yyyy", { locale: ptBR }),
-    dia: format(data, "dd"),
-    mes: format(data, "MM"),
-    ano: format(data, "yyyy"),
+
+      dd: format(data, "dd"),
+      mm: format(data, "MM"),
+      aa: format(data, "yy"),
+      aaaa: format(data, "yyyy"),
+      shortMonth:format(data,"MMM",{ locale: ptBR }),
+      month: format(data,"MMMM",{ locale: ptBR }),
+      dayOfWeek:format(data, "EEEE", { locale: ptBR }),
+
   }
 }
 
@@ -146,10 +156,10 @@ export function formatDateEventCard(schedule: ScheduleItem[] | null): string {
 
   if (isOneDayEvent(first.date, last.date)) {
     const dataFormatada = formatDateBr(first.date)
-    return dataFormatada.eeeeddmm
+    return `${dataFormatada.dayOfWeek}, ${dataFormatada.dd}/${dataFormatada.mm}`
   }
 
-  const inicio = formatDateBr(first.date).ddmm
-  const fim = formatDateBr(last.date).ddmm
+  const inicio = `${formatDateBr(first.date).dd}/${formatDateBr(first.date).mm}`
+  const fim = `${formatDateBr(last.date).dd}/${formatDateBr(last.date).mm}`
   return `${inicio} - ${fim}`
 }
