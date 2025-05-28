@@ -24,6 +24,7 @@ export default async function Footer() {
           footer_data.socialLinks.map((socialLink, idx) => (
             <Link
               key={idx}
+              target="_blank"
               href={socialLink.url || "#"}
               className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
             >

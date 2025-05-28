@@ -46,6 +46,7 @@ export const shortWeekDays = ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa"];
 
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { PortableTextBlock } from '@/type';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -162,4 +163,54 @@ export function formatDateEventCard(schedule: ScheduleItem[] | null): string {
   const inicio = `${formatDateBr(first.date).dd}/${formatDateBr(first.date).mm}`
   const fim = `${formatDateBr(last.date).dd}/${formatDateBr(last.date).mm}`
   return `${inicio} - ${fim}`
+}
+
+
+
+export function limitPortableTextBlocks(
+  blocks: PortableTextBlock[] | null,
+  maxLength: number,
+  addEllipsis = true
+): PortableTextBlock[] {
+  if (!blocks) return [];
+
+  let charCount = 0;
+  const limitedBlocks: PortableTextBlock[] = [];
+
+  for (const block of blocks) {
+    if (block._type !== 'block' || !Array.isArray(block.children)) continue;
+
+    const newChildren: NonNullable<PortableTextBlock['children']> = [];
+
+    for (const child of block.children) {
+      if (!child.text) continue;
+
+      const remaining = maxLength - charCount;
+      if (remaining <= 0) break;
+
+      if (child.text.length <= remaining) {
+        newChildren.push(child);
+        charCount += child.text.length;
+      } else {
+        const truncatedText = child.text.slice(0, remaining);
+        newChildren.push({
+          ...child,
+          text: truncatedText + (addEllipsis ? '...' : '')
+        });
+        charCount += remaining;
+        break;
+      }
+    }
+
+    if (newChildren.length > 0) {
+      limitedBlocks.push({
+        ...block,
+        children: newChildren
+      });
+    }
+
+    if (charCount >= maxLength) break;
+  }
+
+  return limitedBlocks;
 }

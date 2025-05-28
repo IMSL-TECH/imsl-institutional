@@ -9,6 +9,7 @@ import { sanityClient } from "@/lib/sanityClient";
 
 import { phoneFormat } from "@/utils";
 import { PortableText } from "@portabletext/react";
+import BackToTopButton from "@/components/back-to-top-button";
 
 
 export default async function Contact() {
@@ -64,6 +65,7 @@ export default async function Contact() {
         </div>
       </Section>
       <Footer />
+      <BackToTopButton />
     </>
   );
   

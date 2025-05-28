@@ -174,7 +174,6 @@ export default async function Home() {
 
         <div className="grid-word-summary">
           {home_sermon_data.map((post, idx) => (
-
             <BlogCard
               key={idx}
               cardLink={`/sermon-summary/${post.slug}`}
@@ -244,6 +243,7 @@ function LiveStreamPlayer(liveEmbedLink: string) {
       {/* Iframe do YouTube centralizado */}
       <iframe
         className="w-full h-full rounded-lg"
+        // https://www.youtube.com/embed/8LbzB7tlxLE?si=VNgrfBZPvXURjo2J
         src={`${liveEmbedLink}?autoplay=0&mute=1&controls=1`}
         title="Culto Online"
         frameBorder="0"
@@ -258,7 +258,7 @@ function FakeLiveStreamPlayer() {
   return (
     <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
       <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
-        OFFLINE
+        OFF-LINE
       </div>
       <Button className="rounded-full w-16 h-16 flex items-center justify-center">
         <Play className="h-6 w-6 ml-1" />

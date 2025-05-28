@@ -8,6 +8,7 @@ import { DatePicker } from "@/components/date-picker";
 import { GetResumedSermonSumaryListQueryResult,GetAllTagsQueryResult, SermonSummaryPageQueryResult } from "sanity-shared/types";
 import { getResumedSermonSumaryListQuery,getAllTagsQuery, sermonSummaryPageQuery } from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
+import BackToTopButton from "@/components/back-to-top-button";
 
 type FormatWordSummaryType = {
   item: GetResumedSermonSumaryListQueryResult[number];
@@ -60,6 +61,7 @@ export default async function WordSummary({
         <div className="flex items-center justify-between mb-4">
           <SearchInput />
           <DatePicker />
+          
         </div>
         <Filters filterlist={all_tags_data} />
         <div className="grid-cols-2 lg:grid-cols-3 gap-2 grid">
@@ -80,6 +82,7 @@ export default async function WordSummary({
         </div>
       </Section>
       <Footer />
+      <BackToTopButton />
     </div>
   );
 }

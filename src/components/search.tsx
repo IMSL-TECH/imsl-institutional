@@ -8,15 +8,15 @@ export default function SearchInput() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const [query, setQuery] = useState(searchParams.get("find") || "");
+  const [query, setQuery] = useState(searchParams.get("findTitle") || "");
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       const params = new URLSearchParams(searchParams.toString());
       if (query) {
-        params.set("find", query);
+        params.set("findTitle", query);
       } else {
-        params.delete("find");
+        params.delete("findTitle");
       }
 
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });

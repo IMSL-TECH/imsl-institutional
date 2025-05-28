@@ -171,7 +171,7 @@ export function DatePicker({ className = "" }: DatePickerProps) {
       {/* Date Input */}
       <button
         type="button"
-        className="bg-teal-500 cursor-pointer text-white px-4 py-3 lg:py-2 rounded-lg flex items-center gap-2"
+        className="bg-[#179389] cursor-pointer text-white px-4 py-3 lg:py-2 rounded-lg flex items-center gap-2"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="hidden lg:block">Calendário</span>

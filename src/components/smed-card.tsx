@@ -13,9 +13,9 @@ export default function SmedCard({ items }: {items: HomePageSmedsQueryResult }) 
 
   return (
     <ul className="w-full lg:h-[400px] flex flex-col lg:flex-row gap-2">
-      {items.map(({ title, banner }, idx) => (
+      {items.map(({ title, banner, _id }, idx) => (
         <Item 
-        singleEventUrl="/smeds"
+        singleEventUrl={`/smeds#${_id}`}
         isSelect={isSelect === idx ? "w-full lg:w-[47.22%]" : "w-full lg:w-[26.39%]"}
           idx={idx} 
           setIsSelect={setIsSelect} 

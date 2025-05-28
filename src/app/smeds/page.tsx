@@ -8,6 +8,7 @@ import { SmedsPageQuery,getSmedListQuery } from "sanity-shared/queries";
 import { GetSmedListQueryResult, SmedsPageQueryResult } from "sanity-shared/types";
 import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { PortableText } from "@portabletext/react";
+import BackToTopButton from "@/components/back-to-top-button";
 
 
 function SmedsList({
@@ -23,7 +24,7 @@ function SmedsList({
       className={`lg:h-[300px] flex gap-2 lg:gap-8 flex-col rounded-xl ${pair ? "lg:flex-row-reverse" : "lg:border-green-200 lg:flex-row"}`}
       backgroundColor={`py-16 ${pair ? "bg-[#0F2E2F]" : ""}`}
     >
-      <div className="w-full lg:w-[53%] rounded-t-xl lg:rounded-none overflow-hidden h-[250px] lg:h-full relative">
+      <div id={smedItem._id} className="w-full lg:w-[53%] rounded-t-xl lg:rounded-none overflow-hidden h-[250px] lg:h-full relative">
         <Image
           src={smedItem.bannerHorizontal || imagePlaceholderSquare}
           fill
@@ -80,6 +81,7 @@ export default async function Smeds() {
         {smeds_page_data?.conclusion && <PortableText value={smeds_page_data?.conclusion} />}
       </Section>
       <Footer />
+      <BackToTopButton />
     </>
   );
 }
