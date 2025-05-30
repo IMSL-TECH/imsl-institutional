@@ -4,7 +4,7 @@ import Schedule from "@/components/schedule";
 import Section from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { sanityClient } from "@/lib/sanityClient";
-import { formatDateBr } from "@/utils";
+import { formatDateBr, isOneDayEvent } from "@/utils";
 import { PortableText } from "@portabletext/react";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
@@ -88,6 +88,8 @@ export default async function Event({ params }: EventProps) {
   const formatFirstDate = formatDateBr(first?.date || "");
   const formatEndDate = formatDateBr(last?.date || "");
 
+
+
   const firstSession = getFirstSessionOfDay({
     sessions: first?.sessions || [],
   });
@@ -97,28 +99,49 @@ export default async function Event({ params }: EventProps) {
       <PageHeader imgSrc={event_data?.banner} />
       <Section className="flex flex-col items-center">
         <h2 className="mb-4 text-center">{event_data?.title}</h2>
-        <h3 className="text-gray-600 !text-sm text-center !font-medium mt-1">
+        <h3 className="text-gray-600 !text-sm text-justify !font-medium mt-1">
           {shortDescription && <PortableText value={shortDescription} />}
         </h3>
 
-        <div className="mt-10 mb-4 w-full max-w-xs lg:max-w-md flex justify-between gap-2">
+        <div className="mt-10 mb-4 w-full lg:max-w-md flex justify-between gap-2">
           <div>
-            <p className="font-semibold flex gap-1 flex-wrap text-gray-800">
-              De{" "}
-              <p className="capitalize">
-                {formatFirstDate.dd}/{formatFirstDate.shortMonth}
-              </p>{" "}
-              a{" "}
-              <p className="capitalize">
-                {formatEndDate.dd}/{formatEndDate.shortMonth}
-              </p>
-            </p>
-            <div className="!text-base/6">
-              <p className="text-gray-700 text-start">No primeiro dia, das:</p>
-              <p className="text-gray-700">
-                {firstSession?.starTime} às {firstSession?.endTime}
-              </p>
-            </div>
+            {first === last ?
+            //mostra uma data só
+              <>
+                <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
+                  Data:{" "}
+                  <p className="capitalize">
+                    {formatFirstDate.dd}/{formatFirstDate.shortMonth}
+                  </p>
+                </div>
+                <div className="!text-base/6">
+                  <p className="text-gray-700 text-start">{firstSession?.starTime} às {firstSession?.endTime} </p>
+            
+                </div>
+              </>
+              :
+                // mostras duas datas
+             <>
+                <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
+                  De{" "}
+                  <p className="capitalize">
+                    {formatFirstDate.dd}/{formatFirstDate.shortMonth}
+                  </p>{" "}
+                  a{" "}
+                  <p className="capitalize">
+                    {formatEndDate.dd}/{formatEndDate.shortMonth}
+                  </p>
+                </div>
+                <div className="!text-base/6">
+                  <p className="text-gray-700 text-start">No primeiro dia, das:</p>
+                  <p className="text-gray-700">
+                    {firstSession?.starTime} às {firstSession?.endTime}
+                  </p>
+                </div>
+              </>
+
+            }
+
           </div>
 
           {/* Location Card */}
@@ -140,12 +163,11 @@ export default async function Event({ params }: EventProps) {
           </Link>
         </div>
         {/* adicionar o link para a inscrição e remover se não tiver */}
-        <div className="mb-16 w-full flex justify-center">
-          <Button className="w-full h-16 lg:h-20 bg-[#179389] sm:max-w-xs lg:max-w-md w-full hover:bg-teal-700 text-white text-xl py-6 rounded-xl font-medium">
+        {/* <div className="mb-16 w-full flex justify-center">
+          <Button className="h-16 lg:h-20 bg-[#179389] sm:max-w-xs lg:max-w-md w-full hover:bg-teal-700 text-white text-xl py-6 rounded-xl font-medium">
             Faça sua inscrição
           </Button>
-        </div>
-
+        </div> */}
         {teaser && (
           <div className="w-full flex flex-col">
             <h2 className="mb-5 text-center">Teaser do evento</h2>
@@ -162,15 +184,15 @@ export default async function Event({ params }: EventProps) {
           </div>
         )}
 
-        <div className="w-full flex flex-col items-center mt-20">
+        <div className="w-full flex flex-col items-center mt-10">
           <h2 className="mb-5">Sobre o Evento</h2>
-          <div className="w-full">
+          <div className="w-full text-justify">
             {about && <PortableText value={about} />}
           </div>
         </div>
 
         {event_data?.speakers && (
-          <div className="w-full flex flex-col items-center justify-center mt-20">
+          <div className="w-full flex flex-col items-center justify-center mt-10">
             <h2 className="mb-10">Palestrante</h2>
             <div className="w-full flex flex-wrap gap-10 justify-center">
               {event_data?.speakers?.map(
@@ -198,7 +220,7 @@ export default async function Event({ params }: EventProps) {
         )}
 
         {schedule && schedule?.[0].sessions && (
-          <div className="w-full flex flex-col items-center mt-20">
+          <div className="w-full flex flex-col items-center mt-10">
             <h2 className="mb-5">Programação</h2>
             <div className="w-full">
               <Schedule scheduleData={schedule} />
