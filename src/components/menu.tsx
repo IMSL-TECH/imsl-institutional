@@ -10,7 +10,6 @@ import { usePathname } from "next/navigation";
 import { HeaderQueryResult } from "sanity-shared/types";
 import Section from "./section";
 
-
 function MenuList({
   label,
   link,
@@ -33,8 +32,22 @@ function MenuList({
   );
 }
 
+function splitPath(path: string): string[] {
+  return path.split("/").filter(Boolean);
+}
 
-export default function Navbar({ headerData }: { headerData: HeaderQueryResult }) {
+function isActiveLink(pathname: string, link: string): boolean {
+  const currentPath = splitPath(pathname)[0];
+  const linkPath = splitPath(link)[0];
+
+  return currentPath === linkPath;
+}
+
+export default function Navbar({
+  headerData,
+}: {
+  headerData: HeaderQueryResult;
+}) {
   const menuList = headerData?.items;
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
@@ -54,18 +67,19 @@ export default function Navbar({ headerData }: { headerData: HeaderQueryResult }
 
           {/* Menu Desktop */}
           <section className="hidden lg:flex gap-4">
-
-            { menuList?.map(({ label, link }, idx) => (
-             
-              <MenuList
-                label={label || "tstst"}
-                link={link || "Teste"}
-                key={idx}
-                className={`text-white hover:bg-teal-700 ${
-                  pathname === link && "bg-[#179389] "
-                }`}
-              />       
-            ))}
+            {menuList?.map(({ label, link }, idx) => {
+              const activePage = isActiveLink(pathname, link || "")
+              return (
+                <MenuList
+                  label={label || "tstst"}
+                  link={link || "Teste"}
+                  key={idx}
+                  className={`text-white hover:bg-teal-700 ${
+                    activePage && "bg-[#179389]"
+                  }`}
+                />
+              );
+            })}
           </section>
 
           {/* Botão Menu Mobile */}
@@ -90,9 +104,8 @@ export default function Navbar({ headerData }: { headerData: HeaderQueryResult }
                 </div>
               </div>
               <ul className="px-4 flex flex-col gap-2 w-full">
-                {menuList?.map(( {label,link}, idx) => (
-                  
-                                    <MenuList
+                {menuList?.map(({ label, link }, idx) => (
+                  <MenuList
                     label={label || "ttt"}
                     link={link || "gsdfg"}
                     key={idx}

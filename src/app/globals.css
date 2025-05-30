@@ -345,3 +345,36 @@ h3, .h3 {
 .open-sans {
   font-family: "Open Sans", sans-serif;
 }
+
+.montserrat{
+  font-family: "Montserrat", sans-serif;
+}
+
+.tabRightCurve::after{
+  content: "";
+  position: absolute;
+  top: 25px;
+  right: -20px;
+  width: 20px;
+  height: 20px;
+  background: #e5e7eb00;
+  border-radius: 0px 0px 0px 15px;
+  box-shadow: -6px 3px 0px 0 #179389;
+  border: 1px solid #e5e7eb;
+  border-right: none;
+  border-top: none;
+}
+
+.tabLeftCurve::before{
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: -20px;
+  width: 20px;
+  height: 20px;
+  background: #e5e7eb00;
+  border-radius: 0px 0px 15px 0px;
+  box-shadow: 6px 3px 0px 0 #179389;
+  border-right: none;
+  border-top: none;
+}

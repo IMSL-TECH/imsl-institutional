@@ -1,6 +1,7 @@
 import { Poppins, Montserrat, Open_Sans, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
+import { MetaPixel } from '@/components/MetaPixel'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${montserrat.variable} ${openSans.variable} ${sourceCodePro.variable} antialiased`}
       >
+        <MetaPixel/>
         {children}
       </body>
     </html>

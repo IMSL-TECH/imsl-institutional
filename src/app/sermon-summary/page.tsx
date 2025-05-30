@@ -9,6 +9,8 @@ import { GetResumedSermonSumaryListQueryResult,GetAllTagsQueryResult, SermonSumm
 import { getResumedSermonSumaryListQuery,getAllTagsQuery, sermonSummaryPageQuery } from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
 import BackToTopButton from "@/components/back-to-top-button";
+import { formatDate, normalizeText } from "@/utils";
+import ClearSearch from "@/components/clear-search";
 
 type FormatWordSummaryType = {
   item: GetResumedSermonSumaryListQueryResult[number];
@@ -43,29 +45,50 @@ export default async function WordSummary({
 }: {
   searchParams: Promise<Record<string, string | undefined>>;
 }) {
-   const sermon_list_data: GetResumedSermonSumaryListQueryResult = await sanityClient.fetch(getResumedSermonSumaryListQuery);
-   const all_tags_data: GetAllTagsQueryResult = await sanityClient.fetch(getAllTagsQuery);
-   const sermon_page_data: SermonSummaryPageQueryResult = await sanityClient.fetch(sermonSummaryPageQuery);
+   const [
+    sermon_list_data,
+    all_tags_data,
+    sermon_page_data
+  ]: [
+    GetResumedSermonSumaryListQueryResult,
+    GetAllTagsQueryResult,
+    SermonSummaryPageQueryResult
+  ] = await Promise.all([
+    sanityClient.fetch<GetResumedSermonSumaryListQueryResult>(getResumedSermonSumaryListQuery),
+    sanityClient.fetch<GetAllTagsQueryResult>(getAllTagsQuery),
+    sanityClient.fetch<SermonSummaryPageQueryResult>(sermonSummaryPageQuery),
+  ]);
 
-  const res_searchParams = await searchParams;
   const blogPostList: FormatWordSummaryType[] = formatWordSummary(sermon_list_data);
 
-  const findDate = res_searchParams?.findDate || ""
-  const find = res_searchParams?.find || ""
-  const filters = res_searchParams?.filters || ""
+  const { findDate = "", findTitle = "", filters = "" } = await searchParams;
+
+  const filteredSermons = blogPostList.filter(({item}) => {
+    const sermonDate = item?.date || "";
+    const titleMatch = normalizeText(item.title).includes(normalizeText(findTitle));
+    const dateMatch = findDate ? sermonDate === formatDate(findDate) : true;
+
+    const tagMatch = filters
+      ? item.tags?.some((tag) =>
+          normalizeText(tag._id).includes(normalizeText(filters))
+        )
+      : true;
+
+    return titleMatch && dateMatch && tagMatch;
+  })
 
   return (
     <div>
       <PageHeader imgSrc={sermon_page_data?.bannerImage}>{sermon_page_data?.title}</PageHeader>
       <Section>
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between gap-2 mb-4">
           <SearchInput />
           <DatePicker />
-          
+          <ClearSearch local="sermon-summary"/>
         </div>
         <Filters filterlist={all_tags_data} />
         <div className="grid-cols-2 lg:grid-cols-3 gap-2 grid">
-          {blogPostList.map(({ item, expanded }, idx) => {
+          {filteredSermons.map(({ item, expanded }, idx) => {
             return (
               <BlogCard
                 cardLink={`/sermon-summary/${item.slug}`}

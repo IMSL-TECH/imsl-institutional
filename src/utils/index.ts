@@ -214,3 +214,16 @@ export function limitPortableTextBlocks(
 
   return limitedBlocks;
 }
+
+export function normalizeText(text: string | null): string {
+  return (text || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+export function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  const pad = (n: number) => (n < 10 ? `0${n}` : `${n}`);
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}

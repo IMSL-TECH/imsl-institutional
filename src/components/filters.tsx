@@ -29,7 +29,7 @@ export default function Filters({
 
   const extendedFilterList = [
     {
-      _id: "1",
+      _id: "",
       title: "Todos",
       slug: "",
     },
@@ -39,12 +39,12 @@ export default function Filters({
   return (
     <div className="flex gap-2 w-full">
       <div className={`flex gap-1 mb-4 w-[calc(100%-40px)] flex-wrap overflow-hidden ${expanded ? "h-auto" : "h-[50px]"}`}>
-        {extendedFilterList.map(({ title, slug }, idx) => {
+        {extendedFilterList.map(({ title, _id }, idx) => {
           return (
             <button
-              className={`px-3 py-1 rounded-full whitespace-nowrap ${filtersParams === slug ? "bg-[#179389] hover:bg-teal-700 text-white" : "hover:bg-gray-100"}`}
+              className={`px-3 py-1 rounded-full whitespace-nowrap ${filtersParams === _id ? "bg-[#179389] hover:bg-teal-700 text-white" : "hover:bg-gray-100"}`}
               key={idx}
-              onClick={() => handleFilterClick(slug || "")}
+              onClick={() => handleFilterClick(_id || "")}
             >
               {title}
             </button>

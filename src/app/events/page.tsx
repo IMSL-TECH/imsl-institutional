@@ -8,9 +8,11 @@ import { PortableText } from "@portabletext/react";
 import { DatePicker } from "@/components/date-picker";
 import SearchInput from "@/components/search";
 import {
+  formatDate,
   formatDateBr,
   getEventDateRange,
   limitPortableTextBlocks,
+  normalizeText,
 } from "@/utils";
 import {
   EventPageQueryResult,
@@ -32,11 +34,14 @@ interface EventsItemProps {
 function EventsItem({ eventItem }: EventsItemProps) {
   const { first } = getEventDateRange(eventItem.schedule);
   const { dayOfWeek, mm, shortMonth, dd } = formatDateBr(first?.date || "");
-  const limitedContent = limitPortableTextBlocks(eventItem.shortDescription, 145);
+  const limitedContent = limitPortableTextBlocks(
+    eventItem.shortDescription,
+    145
+  );
 
   return (
     <Link href={`/events/${eventItem._id}`}>
-      <div className="bg-white rounded-lg overflow-hidden border flex flex-col lg:flex-row gap-2 lg:gap-5">
+      <div className="bg-white min-h-[213px] rounded-lg overflow-hidden border flex flex-col lg:flex-row gap-2 lg:gap-5">
         <div className="w-full lg:w-[30%] h-56 lg:h-auto relative">
           <Image
             src={eventItem.background || imagePlaceholderSquare}
@@ -84,25 +89,17 @@ function EventsItem({ eventItem }: EventsItemProps) {
   );
 }
 
-function normalizeText(text: string | null): string {
-  return (text || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") 
-    .toLowerCase();
-}
 
-function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
-  const pad = (n: number) => (n < 10 ? `0${n}` : `${n}`);
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-}
 
 interface EventProps {
   searchParams: Promise<Record<string, string | undefined>>;
 }
 
 export default async function Event({ searchParams }: EventProps) {
-  const [events_page_data, events_data]: [EventPageQueryResult, GetResumedEventListQueryResult] = await Promise.all([
+  const [events_page_data, events_data]: [
+    EventPageQueryResult,
+    GetResumedEventListQueryResult,
+  ] = await Promise.all([
     sanityClient.fetch(eventPageQuery),
     sanityClient.fetch(getResumedEventListQuery),
   ]);
@@ -111,7 +108,9 @@ export default async function Event({ searchParams }: EventProps) {
 
   const filteredEvents = events_data.filter((event) => {
     const eventDate = event?.schedule?.[0]?.date || "";
-    const titleMatch = normalizeText(event.title).includes(normalizeText(findTitle));
+    const titleMatch = normalizeText(event.title).includes(
+      normalizeText(findTitle)
+    );
     const dateMatch = findDate ? eventDate === formatDate(findDate) : true;
     return titleMatch && dateMatch;
   });
@@ -125,7 +124,7 @@ export default async function Event({ searchParams }: EventProps) {
         <div className="flex items-center gap-2 justify-between mb-8">
           <SearchInput />
           <DatePicker />
-          <ClearSearch />
+          <ClearSearch local="events"/>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
           {filteredEvents.map((item, idx) => (

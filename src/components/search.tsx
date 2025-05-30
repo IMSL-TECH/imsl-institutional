@@ -8,7 +8,8 @@ export default function SearchInput() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const [query, setQuery] = useState(searchParams.get("findTitle") || "");
+  const findTitle = searchParams.get("findTitle")
+  const [query, setQuery] = useState(findTitle || "");
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -23,7 +24,7 @@ export default function SearchInput() {
     }, 500); // debounce
 
     return () => clearTimeout(timeout);
-  }, [query]);
+  }, [query, findTitle]);
 
   return (
     <div className="relative flex-1 mr-4">
