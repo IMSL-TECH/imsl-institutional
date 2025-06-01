@@ -82,6 +82,7 @@ export default async function Event({ params }: EventProps) {
   const teaser = event_data?.teaser;
   const about = event_data?.about;
   const schedule = event_data?.schedule;
+  const registrtionLink = event_data?.registrtionLink;
 
   const { first, last } = getFirstAndLastScheduleDate(event_data);
 
@@ -172,12 +173,17 @@ export default async function Event({ params }: EventProps) {
         </div>
       </Section>
       {/* adicionar o link para a inscrição e remover se não tiver */}
-      {/* <div className="mb-16 w-full flex justify-center">
-          <Button className="h-16 lg:h-20 bg-[#179389] sm:max-w-xs lg:max-w-md w-full hover:bg-teal-700 text-white text-xl py-6 rounded-xl font-medium">
+      {registrtionLink &&
+        <div className="mb-10 w-full flex justify-center">
+          <Link
+            href={registrtionLink}
+            target="_blank"
+            className="bg-[#179389] whitespace-nowrap w-auto h-15 text-xl px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+          >
             Faça sua inscrição
-          </Button>
-        </div> */}
-      <Section className="flex flex-col items-center">
+          </Link>
+        </div>}
+      {teaser && <Section className="flex flex-col items-center">
         {teaser && (
           <div className="w-full flex flex-col">
             <h2 className="mb-5 text-center">Teaser do evento</h2>
@@ -193,7 +199,7 @@ export default async function Event({ params }: EventProps) {
             </div>
           </div>
         )}
-      </Section>
+      </Section>}
       <Section className="flex flex-col items-center">
         <div className="w-full flex flex-col items-center">
           <h2 className="mb-5">Sobre o Evento</h2>
@@ -204,7 +210,7 @@ export default async function Event({ params }: EventProps) {
           )}
         </div>
       </Section>
-      <Section className="flex flex-col items-center">
+      {event_data?.speakers && <Section className="flex flex-col items-center">
         {event_data?.speakers && (
           <div className="w-full flex flex-col items-center justify-center">
             <h2 className="mb-10">Palestrante</h2>
@@ -235,7 +241,7 @@ export default async function Event({ params }: EventProps) {
             </div>
           </div>
         )}
-      </Section>
+      </Section>}
       <Section className="flex flex-col items-center">
         {schedule && schedule?.[0].sessions && (
           <div className="w-full flex flex-col items-center">
