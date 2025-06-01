@@ -1,6 +1,7 @@
 "use client";
 
 import { formatDateBr, shortMonths } from "@/utils";
+import { PortableText } from "@portabletext/react";
 import { useState } from "react";
 import { FindOneEventByIdQueryResult } from "sanity-shared/types";
 
@@ -15,102 +16,43 @@ interface ScheduleDay {
   events: Event[];
 }
 
-const scheduleData: ScheduleDay[] = [
-  {
-    date: "Thu May 22 2025 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
-    events: [
-      {
-        time: "17:30h",
-        title: "Credenciamento",
-        type: "credenciamento",
-      },
-      {
-        time: "18:00h",
-        title: "Liberação das Oficinas totalmente online",
-        type: "oficina",
-      },
-      {
-        time: "19h30 - Pr. Jucimar Ramos",
-        title: "Plenária I | Abertura",
-        type: "abertura",
-      },
-    ],
-  },
-  {
-    date: "Thu May 23 2025 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
-    events: [
-      {
-        time: "09:00h",
-        title: "Sessão Matinal",
-        type: "oficina",
-      },
-      {
-        time: "14:00h",
-        title: "Plenária II",
-        type: "abertura",
-      },
-    ],
-  },
-  {
-    date: "Thu May 24 2025 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
-    events: [
-      {
-        time: "09:00h",
-        title: "Sessão Matinal",
-        type: "oficina",
-      },
-      {
-        time: "14:00h",
-        title: "Plenária II",
-        type: "abertura",
-      },
-    ],
-  },
-  {
-    date: "Thu May 25 2025 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
-    events: [
-      {
-        time: "10:00h",
-        title: "Encerramento",
-        type: "abertura",
-      },
-    ],
-  },
-];
-
 const animationTabs = [
   "tabRightCurve",
   "tabRightCurve tabLeftCurve",
   "tabLeftCurve",
 ];
 
-type ScheduleType = NonNullable<NonNullable<FindOneEventByIdQueryResult>["schedule"]>[number];
-
-function formatData(data: ScheduleType){
-
-  return 
-}
+type ScheduleType = NonNullable<
+  NonNullable<FindOneEventByIdQueryResult>["schedule"]
+>[number];
 
 
-export default function Schedule({scheduleData}: {scheduleData: ScheduleType[]}) {
+export default function Schedule({
+  scheduleData,
+}: {
+  scheduleData: ScheduleType[];
+}) {
   const [activeTab, setActiveTab] = useState(0);
 
-  const session = scheduleData?.[activeTab]?.sessions || []
+  const session = scheduleData?.[activeTab]?.sessions || [];
 
   return (
     <div className="w-full mb-10">
       <div className="flex relative h-[45px]">
         <div className="absolute bg-gray-200 w-full rounded-t-xl h-20 z-0 flex">
-          {scheduleData.map(({date}, idx) => {
-            const {dd, shortMonth} = formatDateBr(date || "");
+          {scheduleData.map(({ date }, idx) => {
+            const { dd, shortMonth } = formatDateBr(date || "");
             const isActive = activeTab === idx;
 
             let animationClass = "";
             if (isActive) {
               if (idx === 0) animationClass = animationTabs[0];
-              else if (idx === scheduleData.length - 1) animationClass = animationTabs[2];
+              else if (idx === scheduleData.length - 1)
+                animationClass = animationTabs[2];
               else animationClass = animationTabs[1];
             }
+
+            const length = scheduleData?.[1];
 
             return (
               <button
@@ -118,7 +60,7 @@ export default function Schedule({scheduleData}: {scheduleData: ScheduleType[]})
                 onClick={() => setActiveTab(idx)}
                 className={`pb-7 h-full w-full relative z-10 capitalize ${
                   isActive
-                    ? `bg-[#179389] rounded-t-xl text-white ${animationClass}`
+                    ? `bg-[#179389] rounded-t-xl text-white ${length && animationClass}`
                     : ""
                 }`}
               >
@@ -131,9 +73,13 @@ export default function Schedule({scheduleData}: {scheduleData: ScheduleType[]})
       <div className="flex flex-col gap-2 w-full z-10 relative bg-[#179389] p-3 rounded-xl">
         {session.map((item, idx) => (
           <div key={idx} className="bg-white rounded-xl p-2">
-            <p className="text-lg font-bold montserrat">{item.starTime}</p>
+            <p className="text-lg font-bold montserrat">{item.starTime}-{item.endTime}</p>
             <p className="text-start montserrat">{item.title}</p>
-            <p className="text-sm montserrat">{item.description}</p>
+            {item.description && (
+              <div className="text-sm montserrat">
+                <PortableText value={item.description} />
+              </div>
+            )}
           </div>
         ))}
       </div>

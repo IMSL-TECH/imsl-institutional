@@ -11,6 +11,7 @@ import {
   formatDate,
   formatDateBr,
   getEventDateRange,
+  getFirstValidSession,
   limitPortableTextBlocks,
   normalizeText,
 } from "@/utils";
@@ -53,7 +54,7 @@ function EventsItem({ eventItem }: EventsItemProps) {
         <div className="hidden lg:flex w-[57px] flex-col items-center justify-center">
           <p className="text-5xl font-bold">{dd}</p>
           <hr className="w-full border-2 border-black" />
-          <p className="text-2xl font-bold">{shortMonth}</p>
+          <p className="text-2xl font-bold capitalize">{shortMonth}</p>
         </div>
         <div className="py-4 md:py-6 pr-4 md:pr-6 pl-4 md:pl-6 lg:pl-0 flex-1 flex flex-col justify-between">
           <div>
@@ -113,7 +114,13 @@ export default async function Event({ searchParams }: EventProps) {
     );
     const dateMatch = findDate ? eventDate === formatDate(findDate) : true;
     return titleMatch && dateMatch;
-  });
+  })  .sort((a, b) => {
+    const afirst = getEventDateRange(a.schedule);
+    const bfirst = getEventDateRange(b.schedule);
+    const dateA = new Date(afirst.first?.date || "").getTime();
+    const dateB = new Date(bfirst.first?.date || "").getTime();
+    return  dateA - dateB; // Mais recente primeiro
+  });;
 
   return (
     <>

@@ -248,8 +248,8 @@ function LeadershipBlock({ leader }: {leader:GetPersonListQueryResult[number]}) 
           />
         </div>
         <h3 className="!mb-0 gap-2">
-          <p>{`${leader.titleAbbreviation} ${leader.name}`}</p>
-          <span className="block open-sans font-normal text-[14px]">{leader.title}</span>
+          <p>{`${leader.titleAbbreviation && `${leader.titleAbbreviation} `}${leader.name}`}</p>
+          {leader.title && <span className="block open-sans font-normal text-[14px]">{leader.title}</span>}
         </h3>
       </div>
 

@@ -46,7 +46,7 @@ export const shortWeekDays = ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa"];
 
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { PortableTextBlock } from '@/type';
+import { PortableTextBlock, ScheduleType } from '@/type';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -226,4 +226,30 @@ export function formatDate(dateStr: string): string {
   const date = new Date(dateStr);
   const pad = (n: number) => (n < 10 ? `0${n}` : `${n}`);
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+export function getFirstValidSession(schedule: ScheduleType) {
+  if (!schedule) {
+    return {
+      starTime: "",
+      endTime: "",
+    };
+  }
+
+  const validItems = schedule.filter(
+    (item) => !!item.date && !isNaN(new Date(item.date).getTime())
+  );
+
+  if (validItems.length === 0) {
+    return { starTime: "", endTime: "" };
+  }
+
+  const sorted = [...validItems].sort((a, b) => {
+    return new Date(a.date!).getTime() - new Date(b.date!).getTime();
+  });
+
+  const filterSessionList = sorted?.[0].sessions?.sort((a, b) => {
+    return new Date(a.starTime!).getTime() - new Date(b.starTime!).getTime();
+  });
+  return filterSessionList?.[0];
 }

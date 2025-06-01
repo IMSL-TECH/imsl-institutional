@@ -21,6 +21,7 @@ export default function BlogCard({
   panelist: string | null | undefined;
   cardLink:string
 }) {
+  // console.log(author)
   return (
     <div
       className={`overflow-hidden rounded-lg relative text-white ${className}`}
@@ -35,9 +36,10 @@ export default function BlogCard({
       />
       <div className="absolute inset-0"></div>
       <div className="absolute bg-linear-to-b from-transparent from-0% to-black to-100% pt-10 bottom-0 left-0 right-0 px-3 py-4">
-        <h3 className="lg:text-xl text-base font-bold mb-2 !text-start">
+        {title && <h3 className="lg:text-xl text-base font-bold mb-2 !text-start">
           {title}
-        </h3>
+        </h3>}
+        
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 min-w-10 overflow-hidden relative rounded-full bg-gray-300">
             <Image

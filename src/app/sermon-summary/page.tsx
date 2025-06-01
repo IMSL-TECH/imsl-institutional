@@ -63,7 +63,8 @@ export default async function WordSummary({
 
   const { findDate = "", findTitle = "", filters = "" } = await searchParams;
 
-  const filteredSermons = blogPostList.filter(({item}) => {
+  const filteredSermons = blogPostList
+  .filter(({ item }) => {
     const sermonDate = item?.date || "";
     const titleMatch = normalizeText(item.title).includes(normalizeText(findTitle));
     const dateMatch = findDate ? sermonDate === formatDate(findDate) : true;
@@ -76,6 +77,11 @@ export default async function WordSummary({
 
     return titleMatch && dateMatch && tagMatch;
   })
+  .sort((a, b) => {
+    const dateA = new Date(a.item?.date || "").getTime();
+    const dateB = new Date(b.item?.date || "").getTime();
+    return dateB - dateA; // Mais recente primeiro
+  });
 
   return (
     <div>
@@ -89,12 +95,13 @@ export default async function WordSummary({
         <Filters filterlist={all_tags_data} />
         <div className="grid-cols-2 lg:grid-cols-3 gap-2 grid">
           {filteredSermons.map(({ item, expanded }, idx) => {
+            console.log(item.date)
             return (
               <BlogCard
                 cardLink={`/sermon-summary/${item.slug}`}
                 key={idx}
                 title={item.title}
-                author={item.speaker?.name || ""}
+                author={`${item.speaker?.titleAbbreviation ? item.speaker?.titleAbbreviation : ""}${item.speaker?.name}`}
                 date={item.date}
                 background={item.background}
                 panelist={item.speaker?.photo}

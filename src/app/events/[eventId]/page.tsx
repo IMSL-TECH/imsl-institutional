@@ -88,8 +88,6 @@ export default async function Event({ params }: EventProps) {
   const formatFirstDate = formatDateBr(first?.date || "");
   const formatEndDate = formatDateBr(last?.date || "");
 
-
-
   const firstSession = getFirstSessionOfDay({
     sessions: first?.sessions || [],
   });
@@ -98,15 +96,24 @@ export default async function Event({ params }: EventProps) {
     <>
       <PageHeader imgSrc={event_data?.banner} />
       <Section className="flex flex-col items-center">
-        <h2 className="mb-4 text-center">{event_data?.title}</h2>
-        <h3 className="text-gray-600 !text-sm text-justify !font-medium mt-1">
-          {shortDescription && <PortableText value={shortDescription} />}
-        </h3>
+        <h2 className="text-center">{event_data?.title}</h2>
+        {shortDescription && (
+          <div className="text-gray-600 !text-sm text-justify !font-medium mt-1">
+            <PortableText
+              value={shortDescription}
+              components={{
+                block: {
+                  normal: ({ children }) => <p>{children}</p>,
+                },
+              }}
+            />
+          </div>
+        )}
 
-        <div className="mt-10 mb-4 w-full lg:max-w-md flex justify-between gap-2">
+        <div className="mt-10 w-full lg:max-w-md flex justify-between gap-2">
           <div>
-            {first === last ?
-            //mostra uma data só
+            {first === last ? (
+              //mostra uma data só
               <>
                 <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
                   Data:{" "}
@@ -115,13 +122,14 @@ export default async function Event({ params }: EventProps) {
                   </p>
                 </div>
                 <div className="!text-base/6">
-                  <p className="text-gray-700 text-start">{firstSession?.starTime} às {firstSession?.endTime} </p>
-            
+                  <p className="text-gray-700 text-start">
+                    {firstSession?.starTime} às {firstSession?.endTime}{" "}
+                  </p>
                 </div>
               </>
-              :
-                // mostras duas datas
-             <>
+            ) : (
+              // mostras duas datas
+              <>
                 <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
                   De{" "}
                   <p className="capitalize">
@@ -133,15 +141,15 @@ export default async function Event({ params }: EventProps) {
                   </p>
                 </div>
                 <div className="!text-base/6">
-                  <p className="text-gray-700 text-start">No primeiro dia, das:</p>
+                  <p className="text-gray-700 text-start">
+                    No primeiro dia, das:
+                  </p>
                   <p className="text-gray-700">
                     {firstSession?.starTime} às {firstSession?.endTime}
                   </p>
                 </div>
               </>
-
-            }
-
+            )}
           </div>
 
           {/* Location Card */}
@@ -162,12 +170,14 @@ export default async function Event({ params }: EventProps) {
             </div>
           </Link>
         </div>
-        {/* adicionar o link para a inscrição e remover se não tiver */}
-        {/* <div className="mb-16 w-full flex justify-center">
+      </Section>
+      {/* adicionar o link para a inscrição e remover se não tiver */}
+      {/* <div className="mb-16 w-full flex justify-center">
           <Button className="h-16 lg:h-20 bg-[#179389] sm:max-w-xs lg:max-w-md w-full hover:bg-teal-700 text-white text-xl py-6 rounded-xl font-medium">
             Faça sua inscrição
           </Button>
         </div> */}
+      <Section className="flex flex-col items-center">
         {teaser && (
           <div className="w-full flex flex-col">
             <h2 className="mb-5 text-center">Teaser do evento</h2>
@@ -183,22 +193,29 @@ export default async function Event({ params }: EventProps) {
             </div>
           </div>
         )}
-
-        <div className="w-full flex flex-col items-center mt-10">
+      </Section>
+      <Section className="flex flex-col items-center">
+        <div className="w-full flex flex-col items-center">
           <h2 className="mb-5">Sobre o Evento</h2>
-          <div className="w-full text-justify">
-            {about && <PortableText value={about} />}
-          </div>
+          {about && (
+            <div className="w-full text-justify">
+              <PortableText value={about} />
+            </div>
+          )}
         </div>
-
+      </Section>
+      <Section className="flex flex-col items-center">
         {event_data?.speakers && (
-          <div className="w-full flex flex-col items-center justify-center mt-10">
+          <div className="w-full flex flex-col items-center justify-center">
             <h2 className="mb-10">Palestrante</h2>
             <div className="w-full flex flex-wrap gap-10 justify-center">
               {event_data?.speakers?.map(
                 ({ image, titleAbbreviation, name, title }, idx) => {
                   return (
-                    <div key={idx} className="flex flex-col items-center">
+                    <div
+                      key={idx}
+                      className="flex max-w-[230px] flex-col items-center"
+                    >
                       <Image
                         src={image || ""}
                         alt="Palestrante do evento"
@@ -206,11 +223,11 @@ export default async function Event({ params }: EventProps) {
                         height={200}
                         width={200}
                       />
-                      <h2>
+                      <h2 className="text-center">
                         {titleAbbreviation}
                         {name}
                       </h2>
-                      <p>{title}</p>
+                      <p className="text-center">{title}</p>
                     </div>
                   );
                 }
@@ -218,9 +235,10 @@ export default async function Event({ params }: EventProps) {
             </div>
           </div>
         )}
-
+      </Section>
+      <Section className="flex flex-col items-center">
         {schedule && schedule?.[0].sessions && (
-          <div className="w-full flex flex-col items-center mt-10">
+          <div className="w-full flex flex-col items-center">
             <h2 className="mb-5">Programação</h2>
             <div className="w-full">
               <Schedule scheduleData={schedule} />
