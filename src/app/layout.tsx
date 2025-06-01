@@ -1,7 +1,6 @@
 import { Poppins, Montserrat, Open_Sans, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
-import { getPixelId } from "@/lib/getPixelId";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -37,9 +36,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
-  const PixelID = await getPixelId();
 
   return (
     <html lang="pt-br">
