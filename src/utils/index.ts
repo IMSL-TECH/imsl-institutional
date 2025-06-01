@@ -101,9 +101,12 @@ export function isOneDayEvent(dataInicio: string, dataFim: string): boolean {
 
 
 type ScheduleItem = {
-  date: string | null; // formato esperado: 'YYYY-MM-DD'
-  startTime?: string | null;
+  date: string | null;
+  sessions:{
+   startTime?: string | null;
   endTime?: string | null;
+  }[] | null
+ 
 };
 
 export function getEventDateRange(schedule: ScheduleItem[] | null) {
