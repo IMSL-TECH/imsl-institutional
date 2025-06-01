@@ -183,7 +183,7 @@ export default async function Home() {
             {home_data?.butonLiveLink && (
               <Link
                 href={home_data?.butonLiveLink}
-                target="_blak"
+                target="_blank"
                 className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
               >
                 {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />

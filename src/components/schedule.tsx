@@ -73,8 +73,7 @@ export default function Schedule({
       <div className="flex flex-col gap-2 w-full z-10 relative bg-[#179389] p-3 rounded-xl">
         {session.map((item, idx) => (
           <div key={idx} className="bg-white rounded-xl p-2">
-            <p className="text-lg font-bold montserrat">{item.starTime}-{item.endTime}</p>
-            <p className="text-start montserrat">{item.title}</p>
+            <p className="text-md montserrat">  <strong>{item.title}</strong> {item.title&&"-"} {item.starTime}</p>
             {item.description && (
               <div className="text-sm montserrat">
                 <PortableText value={item.description} />

@@ -21,7 +21,6 @@ export default function BlogCard({
   panelist: string | null | undefined;
   cardLink:string
 }) {
-  // console.log(author)
   return (
     <div
       className={`overflow-hidden rounded-lg relative text-white ${className}`}
