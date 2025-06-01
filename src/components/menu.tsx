@@ -104,16 +104,20 @@ export default function Navbar({
                 </div>
               </div>
               <ul className="px-4 flex flex-col gap-2 w-full">
-                {menuList?.map(({ label, link }, idx) => (
-                  <MenuList
-                    label={label || "ttt"}
-                    link={link || "gsdfg"}
-                    key={idx}
-                    className={`text-black flex items-center justify-center w-full ${
-                      pathname === link && "bg-[#179389] text-white"
-                    }`}
-                  />
-                ))}
+                {menuList?.map(({ label, link }, idx) => 
+                {
+                  const activePage = isActiveLink(pathname, link || "")
+                  return (
+                    <MenuList
+                      label={label || "ttt"}
+                      link={link || "gsdfg"}
+                      key={idx}
+                      className={`text-black flex items-center justify-center w-full ${
+                        activePage && "bg-[#179389] text-white"
+                      }`}
+                    />
+                  )
+                 })}
               </ul>
             </div>
           </section>
