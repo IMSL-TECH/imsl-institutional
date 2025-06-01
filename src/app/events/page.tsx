@@ -12,6 +12,7 @@ import {
   formatDateBr,
   getEventDateRange,
   getFirstValidSession,
+  isOneDayEvent,
   limitPortableTextBlocks,
   normalizeText,
 } from "@/utils";
@@ -33,12 +34,16 @@ interface EventsItemProps {
 }
 
 function EventsItem({ eventItem }: EventsItemProps) {
-  const { first } = getEventDateRange(eventItem.schedule);
+  const { first,last } = getEventDateRange(eventItem.schedule);
   const { dayOfWeek, mm, shortMonth, dd } = formatDateBr(first?.date || "");
   const limitedContent = limitPortableTextBlocks(
     eventItem.shortDescription,
     145
   );
+
+  const oneDayEvent = isOneDayEvent(first?.date || "",last?.date || "")
+
+  const eventFristSession = getFirstValidSession(eventItem.schedule);
 
   return (
     <Link href={`/events/${eventItem._id}`}>
@@ -72,8 +77,7 @@ function EventsItem({ eventItem }: EventsItemProps) {
                   {dayOfWeek}, {dd}/{mm}
                 </span>
                 <span className="text-gray-700">
-                  {first?.startTime}-{first?.endTime}
-                </span>
+                  {eventFristSession?.starTime} {!oneDayEvent? "" : ` - ${eventFristSession?.endTime}`} </span>
               </div>
               <span className="bg-gray-800 text-white px-3 py-2 rounded-full text-xs flex items-center gap-1">
                 <MapPin className="w-5 h-5" />

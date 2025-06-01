@@ -11,6 +11,7 @@ import {
   formatDateEventCard,
   getEventDateRange,
   getFirstValidSession,
+  isOneDayEvent,
   limitPortableTextBlocks,
 } from "@/utils";
 
@@ -36,6 +37,9 @@ export default function EventCard({
         ) => {
           const limitedContent = limitPortableTextBlocks(shortDescription, 150);
           const date = getFirstValidSession(schedule);
+          const { first,last } = getEventDateRange(schedule);
+
+          const oneDayEvent = isOneDayEvent(first?.date||"",last?.date ||"")
 
           return (
             <EventItem
@@ -78,7 +82,7 @@ export default function EventCard({
                       {formatDateEventCard(schedule)}
                     </p>
                     {date?.starTime && date?.endTime ? (
-                      <p className="!text-left">{`${date?.starTime} à ${date?.endTime} `}</p>
+                      <p className="!text-left">{date?.starTime}{!oneDayEvent ? "":` - ${date?.endTime}`}</p>
                     ) : null}
                   </div>
                   <span
