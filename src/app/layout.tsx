@@ -1,7 +1,7 @@
 import { Poppins, Montserrat, Open_Sans, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
-import { MetaPixel } from '@/components/MetaPixel'
+import { getPixelId } from "@/lib/getPixelId";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -32,17 +32,22 @@ export const metadata: Metadata = {
   description: 'Tomando posse da terra',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
+  const PixelID = await getPixelId();
+
   return (
-    <html lang="en">
+    <html lang="pt-br">
+      <head>
+      </head>
       <body
         className={`${poppins.variable} ${montserrat.variable} ${openSans.variable} ${sourceCodePro.variable} antialiased`}
       >
-        <MetaPixel/>
         {children}
       </body>
     </html>
