@@ -35,7 +35,7 @@ export default function EventCard({
           { title, shortDescription, address, schedule, background, _id },
           idx
         ) => {
-          const limitedContent = limitPortableTextBlocks(shortDescription, 150);
+          const limitedContent = limitPortableTextBlocks(shortDescription, 200);
           const date = getFirstValidSession(schedule);
           const { first,last } = getEventDateRange(schedule);
 
@@ -58,7 +58,7 @@ export default function EventCard({
                   src={background}
                   alt="Banner monte sião linhares"
                   fill
-                  className={`${isSelect === idx ? "lg:grayscale-0" : "lg:grayscale-100"} brightness-[0.2] lg:brightness-50 transition-all duration-300 object-cover rounded-xl`}
+                  className={`${isSelect === idx ? "lg:grayscale-0" : "lg:grayscale-100"} brightness-[0.4] lg:brightness-50 transition-all duration-300 object-cover rounded-xl`}
                   priority
                 />
               )}

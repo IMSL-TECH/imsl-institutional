@@ -92,7 +92,7 @@ export default async function Home() {
 
             {home_data?.heroButtonTitle && home_data.heroButtonLink && (
               <Link
-                href={home_data.heroButtonLink && "#"}
+                href={home_data.heroButtonLink || "#"}
                 className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
               >
                 {home_data.heroButtonTitle}

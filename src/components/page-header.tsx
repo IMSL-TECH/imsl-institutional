@@ -18,7 +18,7 @@ export default async function PageHeader({ children, imgSrc }: Props) {
       <Image
         alt="Banner Monte Sião Linhares"
         fill
-        className="object-cover brightness-50 -z-10"
+        className={`object-cover ${children && "brightness-50"}  -z-10`}
         priority
         src={imgSrc || placeholderImageSquare }
       />

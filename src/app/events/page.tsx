@@ -38,7 +38,7 @@ function EventsItem({ eventItem }: EventsItemProps) {
   const { dayOfWeek, mm, shortMonth, dd } = formatDateBr(first?.date || "");
   const limitedContent = limitPortableTextBlocks(
     eventItem.shortDescription,
-    145
+    200
   );
 
   const oneDayEvent = isOneDayEvent(first?.date || "",last?.date || "")
@@ -50,7 +50,7 @@ function EventsItem({ eventItem }: EventsItemProps) {
       <div className="bg-white min-h-[213px] rounded-lg overflow-hidden border flex flex-col lg:flex-row gap-2 lg:gap-5">
         <div className="w-full lg:w-[30%] h-56 lg:h-auto relative">
           <Image
-            src={eventItem.background || imagePlaceholderSquare}
+            src={eventItem.banner || imagePlaceholderSquare}
             alt="Imagem do evento"
             fill
             className="object-cover"

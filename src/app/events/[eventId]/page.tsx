@@ -1,10 +1,11 @@
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
+import { portableTextComponents } from "@/components/portableTextComponents";
 import Schedule from "@/components/schedule";
 import Section from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { sanityClient } from "@/lib/sanityClient";
-import { formatDateBr, isOneDayEvent } from "@/utils";
+import { formatDateBr, isOneDayEvent, phoneFormat } from "@/utils";
 import { PortableText } from "@portabletext/react";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
@@ -83,7 +84,10 @@ export default async function Event({ params }: EventProps) {
   const about = event_data?.about;
   const schedule = event_data?.schedule;
   const registrtionLink = event_data?.registrtionLink;
-
+  const organizer =  event_data?.organizer?.description
+  const organizerEmail =  event_data?.organizer?.email
+  const organizerPhone =  event_data?.organizer?.phone
+  
   const { first, last } = getFirstAndLastScheduleDate(event_data);
 
   const formatFirstDate = formatDateBr(first?.date || "");
@@ -205,7 +209,7 @@ export default async function Event({ params }: EventProps) {
           <h2 className="mb-5">Sobre o Evento</h2>
           {about && (
             <div className="w-full text-justify">
-              <PortableText value={about} />
+              <PortableText value={about} components={portableTextComponents}/>
             </div>
           )}
         </div>
@@ -251,6 +255,23 @@ export default async function Event({ params }: EventProps) {
             </div>
           </div>
         )}
+      </Section>
+      <Section>
+        <div className="w-full flex gap-2 flex-col items-center">
+          <h2 className="mb-5">Organização:</h2>
+          <div className="flex flex-col">
+            <p className="mb-3 text-xl text-center"> {organizer}</p>
+            <div className="flex flex-col  items-center justify-center">
+            
+              <p>Tel: <strong> {phoneFormat(organizerPhone?.number)} </strong> </p>
+              {organizerEmail?.address && <p>Email: <strong> {organizerEmail?.address}</strong></p>}
+                
+            </div>
+
+          </div>
+          
+        </div>
+
       </Section>
       <Footer />
     </>
