@@ -31,7 +31,7 @@ export default function BackToTopButton(){
         
             <Button
               onClick={scrollToTop}
-              className={`fixed bottom-5 right-5 transition-all duration-300 ${isVisible ? "opacity-100" : "translate-y-20 opacity-0"} `}
+              className={`fixed bottom-5 right-5 z-40 transition-all duration-300 ${isVisible ? "opacity-100" : "translate-y-20 opacity-0"} `}
               aria-label="Voltar ao topo"
             >
               ↑

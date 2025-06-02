@@ -1,3 +1,4 @@
+import BackToTopButton from "@/components/back-to-top-button";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 import { portableTextComponents } from "@/components/portableTextComponents";
@@ -115,7 +116,7 @@ export default async function Event({ params }: EventProps) {
           </div>
         )}
 
-        <div className="mt-10 w-full lg:max-w-md flex justify-between gap-2">
+        <div className="mt-10 w-full !text-sm lg:max-w-md flex justify-between gap-2">
           <div>
             {first === last ? (
               //mostra uma data só
@@ -135,7 +136,7 @@ export default async function Event({ params }: EventProps) {
             ) : (
               // mostras duas datas
               <>
-                <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
+                <div className="font-semibold !text-sm flex gap-1 flex-wrap text-gray-800">
                   De{" "}
                   <p className="capitalize">
                     {formatFirstDate.dd}/{formatFirstDate.shortMonth}
@@ -145,11 +146,11 @@ export default async function Event({ params }: EventProps) {
                     {formatEndDate.dd}/{formatEndDate.shortMonth}
                   </p>
                 </div>
-                <div className="!text-base/6">
+                <div className="!text-sm">
                   <p className="text-gray-700 text-start">
                     No primeiro dia, das:
                   </p>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 !text-sm">
                     {firstSession?.starTime} às {firstSession?.endTime}
                   </p>
                 </div>
@@ -274,6 +275,7 @@ export default async function Event({ params }: EventProps) {
 
       </Section>
       <Footer />
+      <BackToTopButton />
     </>
   );
 }

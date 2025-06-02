@@ -59,12 +59,12 @@ export default async function WordSummary({
     sanityClient.fetch<SermonSummaryPageQueryResult>(sermonSummaryPageQuery),
   ]);
 
-  const blogPostList: FormatWordSummaryType[] = formatWordSummary(sermon_list_data);
+  
 
   const { findDate = "", findTitle = "", filters = "" } = await searchParams;
 
-  const filteredSermons = blogPostList
-  .filter(({ item }) => {
+  const filteredSermons = sermon_list_data
+  .filter((item) => {
     const sermonDate = item?.date || "";
     const titleMatch = normalizeText(item.title).includes(normalizeText(findTitle));
     const dateMatch = findDate ? sermonDate === formatDate(findDate) : true;
@@ -78,10 +78,12 @@ export default async function WordSummary({
     return titleMatch && dateMatch && tagMatch;
   })
   .sort((a, b) => {
-    const dateA = new Date(a.item?.date || "").getTime();
-    const dateB = new Date(b.item?.date || "").getTime();
+    const dateA = new Date(a?.date || "").getTime();
+    const dateB = new Date(b?.date || "").getTime();
     return dateB - dateA; // Mais recente primeiro
   });
+
+  const blogPostList: FormatWordSummaryType[] = formatWordSummary(filteredSermons);
 
   return (
     <div>
@@ -94,7 +96,7 @@ export default async function WordSummary({
         </div>
         <Filters filterlist={all_tags_data} />
         <div className="grid-cols-2 lg:grid-cols-3 gap-2 grid">
-          {filteredSermons.map(({ item, expanded }, idx) => {
+          {blogPostList.map(({ item, expanded }, idx) => {
             return (
               <BlogCard
                 cardLink={`/sermon-summary/${item.slug}`}

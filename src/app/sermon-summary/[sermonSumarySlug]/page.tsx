@@ -9,6 +9,7 @@ import { portableTextComponents } from '@/components/portableTextComponents'
 import Link from "next/link";
 import { findOneSermonBySlugQuery } from "sanity-shared/queries";
 import { FindOneSermonBySlugQueryResult } from "sanity-shared/types";
+import BackToTopButton from "@/components/back-to-top-button";
 
 interface SermonSummaryPageProps {
     params: Promise<{ sermonSumarySlug: string }>;
@@ -44,6 +45,7 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
                 {content && <PortableText value={content} components={portableTextComponents} />}
             </Section>
             <Footer />
+            <BackToTopButton />
         </>
     )
 
