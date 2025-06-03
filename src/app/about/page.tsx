@@ -23,7 +23,7 @@ const fundamentalBeliefs = [
   {
     title: "Somos Apostólica",
     content: `Porque a palavra “Apostólica” significa que acreditamos na
-              doutrina Apostólica e buscamos viver a vida prática como igreja
+              doutrina apostólica e buscamos viver a vida prática como igreja
               na forma que os Apóstolos de Jesus ensinaram e viveram. Somos
               Apostólica porque rejeitamos a religiosidade e o tradicionalismo
               como base para vida cristã, e buscamos praticar de forma efetiva
