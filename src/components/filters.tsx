@@ -38,11 +38,11 @@ export default function Filters({
 
   return (
     <div className="flex gap-2 w-full">
-      <div className={`flex gap-1 mb-4 w-[calc(100%-40px)] flex-wrap overflow-hidden ${expanded ? "h-auto" : "h-[50px]"}`}>
+      <div className={`flex gap-1 mb-4 w-[calc(100%-40px)] flex-wrap overflow-hidden ${expanded ? "h-auto" : "h-[30px] lg:h-[45px]"}`}>
         {extendedFilterList.map(({ title, _id }, idx) => {
           return (
             <button
-              className={`px-3 py-1 rounded-full whitespace-nowrap ${filtersParams === _id ? "bg-[#179389] hover:bg-teal-700 text-white" : "hover:bg-gray-100"}`}
+              className={`px-3 py-1 rounded-full text-sm lg:text-base whitespace-nowrap ${filtersParams === _id ? "bg-[#179389] hover:bg-teal-700 text-white" : "hover:bg-gray-100"}`}
               key={idx}
               onClick={() => handleFilterClick(_id || "")}
             >
@@ -51,7 +51,7 @@ export default function Filters({
           );
         })}
       </div>
-      <Button onClick={() => handleExpanded()} className="w-10 h-10 bg-[#179389]">
+      <Button onClick={() => handleExpanded()} className="w-10 h-10 bg-[#179389] hover:bg-teal-700">
         {expanded ? <ChevronUp /> : <ChevronDown />}
         </Button>
     </div>

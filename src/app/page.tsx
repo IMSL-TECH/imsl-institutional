@@ -273,15 +273,15 @@ const portableTextStyle: PortableTextComponents = {
 
 function LiveStreamPlayer(liveEmbedLink: string) {
   return (
-    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
+    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-xl flex items-center justify-center relative">
       {/* Selo LIVE no canto superior direito */}
-      <div className="absolute right-0 top-0 bg-red-500 text-white font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
+      <div className="absolute right-0 top-0 bg-red-500 text-white font-bold px-4 py-2 rounded-tr-xl rounded-bl-xl">
         LIVE
       </div>
 
       {/* Iframe do YouTube centralizado */}
       <iframe
-        className="w-full h-full rounded-lg"
+        className="w-full h-full rounded-xl"
         // https://www.youtube.com/embed/8LbzB7tlxLE?si=VNgrfBZPvXURjo2J
         src={`${liveEmbedLink}?autoplay=0&mute=1&controls=1`}
         title="Culto Online"
@@ -295,8 +295,8 @@ function LiveStreamPlayer(liveEmbedLink: string) {
 
 function FakeLiveStreamPlayer() {
   return (
-    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
-      <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
+    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-xl flex items-center justify-center relative">
+      <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-xl rounded-bl-xl">
         OFF-LINE
       </div>
       <Button className="rounded-full w-16 h-16 flex items-center justify-center">

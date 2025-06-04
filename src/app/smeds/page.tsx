@@ -21,10 +21,11 @@ function SmedsList({
 
   return (
     <Section
+      background_id={smedItem._id}
       className={`lg:h-[300px] flex gap-2 lg:gap-8 flex-col rounded-xl ${pair ? "lg:flex-row-reverse" : "lg:border-green-200 lg:flex-row"}`}
       backgroundColor={`py-16 ${pair ? "bg-[#0F2E2F]" : ""}`}
     >
-      <div id={smedItem._id} className="w-full lg:w-[53%] rounded-t-xl lg:rounded-none overflow-hidden h-[250px] lg:h-full relative">
+      <div className="w-full lg:w-[53%] rounded-t-xl lg:rounded-none overflow-hidden h-[250px] lg:h-full relative">
         <Image
           src={smedItem.bannerHorizontal || imagePlaceholderSquare}
           fill

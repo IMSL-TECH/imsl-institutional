@@ -79,6 +79,7 @@ export default async function Event({ params }: EventProps) {
     { id }
   );
 
+  const title = event_data?.title
   const shortDescription = event_data?.shortDescription;
   const teaser = event_data?.teaser;
   const about = event_data?.about;
@@ -111,7 +112,7 @@ export default async function Event({ params }: EventProps) {
     <>
       <PageHeader imgSrc={event_data?.banner} />
       <Section className="flex flex-col items-center">
-        <h2 className="text-center">{event_data?.title}</h2>
+        <h2 className="text-center">{title}</h2>
         {shortDescription && (
           <div className="text-gray-600 !text-sm text-justify !font-medium mt-1">
             <PortableText
@@ -203,9 +204,9 @@ export default async function Event({ params }: EventProps) {
           {teaser && (
             <div className="w-full flex flex-col">
               <h2 className="mb-5 text-center">Teaser do evento</h2>
-              <div className="w-full aspect-video bg-black/20 relative">
+              <div className="w-full aspect-video bg-black/20 rounded-2xl relative">
                 <iframe
-                  className="w-full h-full absolute top-0 left-0 rounded-lg"
+                  className="w-full h-full absolute top-0 left-0 rounded-2xl"
                   src={teaser}
                   title="Teaser do Evento"
                   frameBorder="0"
@@ -264,38 +265,28 @@ export default async function Event({ params }: EventProps) {
       <Section className="flex flex-col items-center">
         {schedule && schedule?.[0].sessions && (
           <div className="w-full flex flex-col items-center">
-            <h2 className="mb-5">Programação</h2>
             <div className="w-full">
               <Schedule scheduleData={schedule} />
             </div>
           </div>
         )}
-      </Section>
-      <Section className="flex gap-2 flex-col items-center">
-        <h2 className="mb-5">Organização:</h2>
-
-        <div className="p-4 border w-full max-w-[330px] rounded-lg flex flex-col lg:flex-row gap-6">
-          <div className="w-full flex flex-col gap-8">
-            <div className="flex flex-col items-center justify-center">
-              <h3 className="mb-5">{organizer}</h3>
-              <div className="flex gap-2 w-full">
-                <Phone className="h-4 w-4" />
-                <p className="text-sm">Contato</p>
-              </div>
+        <div className="w-full flex gap-2 flex-col items-center mt-5">
+        <div className="p-4 w-full  rounded-2xl flex flex-col lg:flex-row gap-6">
+          <div className="w-full flex flex-col justify-center gap-4">
+            <div className="flex flex-col items-center gap-1">
+              <h2>{organizer}</h2>
+              <h3 className="mb-3">Coordenação</h3>
+              <div className="flex gap-2 justify-center items-center w-full"><Phone className="h-4 w-4" /><p>{phoneFormat(organizerPhone)}</p></div>
+              
             </div>
-
-            <div className="flex flex-col gap-2">
-              <h3>{organizerName}</h3>
-              <p className="text-sm">{phoneFormat(organizerPhone)}</p>
-            </div>
-            <div className="flex gap-2">
+            <div className="w-full flex items-center justify-center">
+            <div className="flex gap-2 max-w-[330px] w-full items-center">
               <Link
-                href={`https://wa.me/${organizerPhone}`}
+                href={`https://wa.me/${organizerPhone}?text=Olá, gostaria de saber mais sobre o evento: ${title}`}
                 target="_blank"
-                className={`${organizerEmail ? "w-2/3" : "w-full"} h-9  bg-[#15A34A] text-white rounded-lg flex items-center justify-center gap-2`}
+                className={`${organizerEmail ? "w-2/3" : "w-full"} h-9 font-bold bg-[#179389] text-white rounded-lg flex items-center justify-center gap-2`}
               >
-                <MessageCircle />
-                Whatsapp
+                Tirar dúvidas
               </Link>
               {organizerEmail && (
                 <Link
@@ -308,7 +299,10 @@ export default async function Event({ params }: EventProps) {
                 </Link>
               )}
             </div>
+            </div>
+            
           </div>
+        </div>
         </div>
       </Section>
       <Footer />

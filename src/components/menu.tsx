@@ -55,7 +55,7 @@ export default function Navbar({
   return (
     <Section
       backgroundColor={
-        "bg-gradient-to-b from-black/60 via-black/20 to-transparent !py-0 z-10"
+        "bg-gradient-to-b from-black/60 via-black/40 to-transparent !py-0 z-10"
       }
       className="relative h-32"
     >
