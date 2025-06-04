@@ -18,11 +18,11 @@ export default async function PageHeader({ children, imgSrc }: Props) {
       <Image
         alt="Banner Monte Sião Linhares"
         fill
-        className="object-cover brightness-50 -z-10"
+        className={`object-cover ${children && "brightness-50"}  -z-10`}
         priority
         src={imgSrc || placeholderImageSquare }
       />
-      <div className="absolute h-[60vh] w-full bg-black opacity-30 -z-10"></div>
+      {children && <div className="absolute h-[60vh] w-full bg-black opacity-30 -z-10"></div>}
       <p className="text-3xl md:text-5xl absolute w-full h-[60vh] top-0 font-bold text-white flex items-center justify-center">
         {children}
       </p>

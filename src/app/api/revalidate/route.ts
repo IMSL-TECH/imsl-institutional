@@ -13,15 +13,17 @@ export async function POST(req: NextRequest) {
   if (secret !== process.env.REVALIDATE_SECRET_TOKEN) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 })
   }
+  
 
   const body = await req.json()
   const docType = body?._type
 
+
   const toRevalidate = [
     "address", 
-    "email",  
+    "emailEntry",  
     "person", 
-    "phone",  
+    "phoneEntry",  
     "sermonTag", 
     "smed", 
     "supportedSocialMidia", 

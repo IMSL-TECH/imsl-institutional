@@ -46,6 +46,7 @@ export const shortWeekDays = ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa"];
 
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { PortableTextBlock, ScheduleType } from '@/type';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -100,9 +101,12 @@ export function isOneDayEvent(dataInicio: string, dataFim: string): boolean {
 
 
 type ScheduleItem = {
-  date: string | null; // formato esperado: 'YYYY-MM-DD'
-  startTime?: string | null;
+  date: string | null;
+  sessions:{
+   startTime?: string | null;
   endTime?: string | null;
+  }[] | null
+ 
 };
 
 export function getEventDateRange(schedule: ScheduleItem[] | null) {
@@ -162,4 +166,93 @@ export function formatDateEventCard(schedule: ScheduleItem[] | null): string {
   const inicio = `${formatDateBr(first.date).dd}/${formatDateBr(first.date).mm}`
   const fim = `${formatDateBr(last.date).dd}/${formatDateBr(last.date).mm}`
   return `${inicio} - ${fim}`
+}
+
+
+
+export function limitPortableTextBlocks(
+  blocks: PortableTextBlock[] | null,
+  maxLength: number,
+  addEllipsis = true
+): PortableTextBlock[] {
+  if (!blocks) return [];
+
+  let charCount = 0;
+  const limitedBlocks: PortableTextBlock[] = [];
+
+  for (const block of blocks) {
+    if (block._type !== 'block' || !Array.isArray(block.children)) continue;
+
+    const newChildren: NonNullable<PortableTextBlock['children']> = [];
+
+    for (const child of block.children) {
+      if (!child.text) continue;
+
+      const remaining = maxLength - charCount;
+      if (remaining <= 0) break;
+
+      if (child.text.length <= remaining) {
+        newChildren.push(child);
+        charCount += child.text.length;
+      } else {
+        const truncatedText = child.text.slice(0, remaining);
+        newChildren.push({
+          ...child,
+          text: truncatedText + (addEllipsis ? '...' : '')
+        });
+        charCount += remaining;
+        break;
+      }
+    }
+
+    if (newChildren.length > 0) {
+      limitedBlocks.push({
+        ...block,
+        children: newChildren
+      });
+    }
+
+    if (charCount >= maxLength) break;
+  }
+
+  return limitedBlocks;
+}
+
+export function normalizeText(text: string | null): string {
+  return (text || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+export function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  const pad = (n: number) => (n < 10 ? `0${n}` : `${n}`);
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+export function getFirstValidSession(schedule: ScheduleType) {
+  if (!schedule) {
+    return {
+      starTime: "",
+      endTime: "",
+    };
+  }
+
+  const validItems = schedule.filter(
+    (item) => !!item.date && !isNaN(new Date(item.date).getTime())
+  );
+
+  if (validItems.length === 0) {
+    return { starTime: "", endTime: "" };
+  }
+
+  const sorted = [...validItems].sort((a, b) => {
+    return new Date(a.date!).getTime() - new Date(b.date!).getTime();
+  });
+
+  const filterSessionList = sorted?.[0].sessions?.sort((a, b) => {
+    return new Date(a.starTime!).getTime() - new Date(b.starTime!).getTime();
+  });
+  return filterSessionList?.[0];
 }

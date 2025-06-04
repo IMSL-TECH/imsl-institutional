@@ -6,6 +6,7 @@ import Image, { StaticImageData } from "next/image";
 import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { ArrowRight } from "lucide-react";
 import { HomePageSmedsQueryResult } from "sanity-shared/types";
+import { urlFor } from "@/lib/sanityImage";
 
 
 export default function SmedCard({ items }: {items: HomePageSmedsQueryResult }) {
@@ -13,16 +14,16 @@ export default function SmedCard({ items }: {items: HomePageSmedsQueryResult }) 
 
   return (
     <ul className="w-full lg:h-[400px] flex flex-col lg:flex-row gap-2">
-      {items.map(({ title, banner }, idx) => (
+      {items.map(({ title, banner, _id }, idx) => (
         <Item 
-        singleEventUrl="/smeds"
+        singleEventUrl={`/smeds#${_id}`}
         isSelect={isSelect === idx ? "w-full lg:w-[47.22%]" : "w-full lg:w-[26.39%]"}
           idx={idx} 
           setIsSelect={setIsSelect} 
           key={idx}
         >
           <Image
-            src={banner || imagePlaceholderSquare}
+            src={ urlFor(banner).url() || imagePlaceholderSquare}
             alt="Banner Monte Sião Linhares"
             fill
             className={`${isSelect === idx ? "" : "lg:grayscale-100 brightness-50"} transition-all duration-300 object-cover  rounded-xl`}

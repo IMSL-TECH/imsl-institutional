@@ -31,13 +31,16 @@ export const metadata: Metadata = {
   description: 'Tomando posse da terra',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
+    <html lang="pt-br">
+      <head>
+      </head>
       <body
         className={`${poppins.variable} ${montserrat.variable} ${openSans.variable} ${sourceCodePro.variable} antialiased`}
       >

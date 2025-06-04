@@ -12,20 +12,45 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Carousel from "@/components/carousel";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
-import { HeaderQueryResult, HomePageEventsQueryResult, HomePageQueryResult, HomePageSermonsQueryResult, HomePageSmedsQueryResult } from "sanity-shared/types";
-import { headerQuery, homePageEventsQuery, homePageQuery, homePageSermonsQuery, homePageSmedsQuery } from "sanity-shared/queries";
+import {
+  HeaderQueryResult,
+  HomePageEventsQueryResult,
+  HomePageQueryResult,
+  HomePageSermonsQueryResult,
+  HomePageSmedsQueryResult,
+} from "sanity-shared/types";
+import {
+  headerQuery,
+  homePageEventsQuery,
+  homePageQuery,
+  homePageSermonsQuery,
+  homePageSmedsQuery,
+} from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
 
 import bannerFallback from "@/assets/banners/banner.png";
 import BlogCard from "@/components/blog-card";
 
 export default async function Home() {
-  const home_data: HomePageQueryResult = await sanityClient.fetch(homePageQuery);
-   const home_events_data: HomePageEventsQueryResult = await sanityClient.fetch(homePageEventsQuery);
-   const home_sermon_data: HomePageSermonsQueryResult = await sanityClient.fetch(homePageSermonsQuery);
-   const home_smeds_data: HomePageSmedsQueryResult = await sanityClient.fetch(homePageSmedsQuery);
-
-  const header_links_data: HeaderQueryResult = (await sanityClient.fetch(headerQuery))
+  const [
+    home_data,
+    home_events_data,
+    home_sermon_data,
+    home_smeds_data,
+    header_links_data
+  ]: [
+    HomePageQueryResult,
+    HomePageEventsQueryResult,
+    HomePageSermonsQueryResult,
+    HomePageSmedsQueryResult,
+    HeaderQueryResult
+  ] = await Promise.all([
+    sanityClient.fetch(homePageQuery),
+    sanityClient.fetch(homePageEventsQuery),
+    sanityClient.fetch(homePageSermonsQuery),
+    sanityClient.fetch(homePageSmedsQuery),
+    sanityClient.fetch(headerQuery)
+  ]);
 
   return (
     <section className="flex flex-col items-center">
@@ -36,7 +61,9 @@ export default async function Home() {
           alt="Banner Monte Sião Linhares"
           fill
           className={`object-cover ${
-            home_data?.heroHeadline && home_data.heroDescription && home_data.heroButtonTitle
+            home_data?.heroHeadline &&
+            home_data.heroDescription &&
+            home_data.heroButtonTitle
               ? "brightness-50"
               : ""
           }`}
@@ -46,8 +73,11 @@ export default async function Home() {
 
       <Menu headerData={header_links_data} />
 
-      <Section className="h-screen flex relative justify-center">
-        <div className="absolute w-full h-screen pt-6 md:pt-10">
+      <Section
+        backgroundColor="!py-0"
+        className="h-[calc(100vh-128px)] flex relative justify-center"
+      >
+        <div className="absolute w-full h-[calc(100vh-128px)]">
           <div className="flex flex-col justify-center items-center lg:items-start h-full max-w-4xl">
             {home_data?.heroHeadline && (
               <h1 className="text-center lg:text-start text-5xl md:text-5xl font-bold text-white mb-4">
@@ -62,7 +92,7 @@ export default async function Home() {
 
             {home_data?.heroButtonTitle && home_data.heroButtonLink && (
               <Link
-                href={home_data.heroButtonLink && "#"}
+                href={home_data.heroButtonLink || "#"}
                 className="bg-white rounded-md py-2 text-black hover:bg-white/90 w-fit px-6 uppercase"
               >
                 {home_data.heroButtonTitle}
@@ -73,7 +103,7 @@ export default async function Home() {
       </Section>
 
       {/* Upcoming Events Section */}
-      <Section className="py-16">
+      <Section>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Próximos Eventos</h2>
           <Link
@@ -85,21 +115,23 @@ export default async function Home() {
           </Link>
         </div>
 
-        <EventCard  items={home_events_data} />
+        <EventCard items={home_events_data} />
       </Section>
 
       {/* Social Media Follow Section */}
       <Section
-        backgroundColor="bg-[#179389]"
-        className=" text-white py-8 text-center"
+        backgroundColor="bg-[#179389] !py-12"
+        className="text-white text-center"
       >
         <div className="text-lg">
-          { home_data?.dividerText && <PortableText value={home_data?.dividerText} />}
+          {home_data?.dividerText && (
+            <PortableText value={home_data?.dividerText} />
+          )}
         </div>
       </Section>
 
       {/* Live Transmission Section */}
-      <Section backgroundColor="bg-[#0F2E2F]" className="text-white pt-24">
+      <Section backgroundColor="bg-[#0F2E2F]" className="text-white">
         <div className="grid-live-broadcast items-center">
           <div className="grid-item-live-broadcast">
             <h2 className="  w-full text-xl md:text-3xl font-bold mb-4">
@@ -112,10 +144,12 @@ export default async function Home() {
             </h2>
             <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-7 lg:w-auto">
               <div className=" flex flex-col justify-center gap-2">
-                { home_data?.descriptionLive && <PortableText
-                  components={portableTextStyle}
-                  value={home_data?.descriptionLive}
-                />}
+                {home_data?.descriptionLive && (
+                  <PortableText
+                    components={portableTextStyle}
+                    value={home_data?.descriptionLive}
+                  />
+                )}
               </div>
 
               {home_data?.buttonLiveText && (
@@ -146,19 +180,21 @@ export default async function Home() {
           </div>
 
           <div>
-            { home_data?.butonLiveLink && <Link
-              href={home_data?.butonLiveLink}
-              target="_blak"
-              className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
-            >
-              {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
-            </Link>}
+            {home_data?.butonLiveLink && (
+              <Link
+                href={home_data?.butonLiveLink}
+                target="_blank"
+                className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+              >
+                {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
+              </Link>
+            )}
           </div>
         </div>
       </Section>
 
       {/* Word Summary Section */}
-      <Section className="py-32" backgroundColor="bg-[#0F2E2F]">
+      <Section backgroundColor="bg-[#0F2E2F]">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-white">
             Resumo de Palavra
@@ -173,24 +209,26 @@ export default async function Home() {
         </div>
 
         <div className="grid-word-summary">
-          {home_sermon_data.map((post, idx) => (
+          {home_sermon_data.map((post, idx) => {
 
-            <BlogCard
-              key={idx}
-              cardLink={`/sermon-summary/${post.slug}`}
-              title={post.title}
-              author={`${post.speaker?.titleAbbreviation}${post.speaker?.name}`}
-              date={post.date}
-              background={post.background}
-              panelist={post.speaker?.photo}
-              className="grid-item-word-summary"
-            />
-          ))}
+            return (
+              <BlogCard
+                key={idx}
+                cardLink={`/sermon-summary/${post.slug}`}
+                title={post.title}
+                author={`${post.speaker?.titleAbbreviation ? post.speaker?.titleAbbreviation : ""}${post.speaker?.name}`}
+                date={post.date}
+                background={post.background}
+                panelist={post.speaker?.photo}
+                className="grid-item-word-summary"
+              />
+            );
+          })}
         </div>
       </Section>
 
       {/* SMEDs Section */}
-      <Section className="py-16">
+      <Section>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Nossos SMEDs</h2>
           <Link
@@ -235,15 +273,16 @@ const portableTextStyle: PortableTextComponents = {
 
 function LiveStreamPlayer(liveEmbedLink: string) {
   return (
-    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
+    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-xl flex items-center justify-center relative">
       {/* Selo LIVE no canto superior direito */}
-      <div className="absolute right-0 top-0 bg-red-500 text-white font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
+      <div className="absolute right-0 top-0 bg-red-500 text-white font-bold px-4 py-2 rounded-tr-xl rounded-bl-xl">
         LIVE
       </div>
 
       {/* Iframe do YouTube centralizado */}
       <iframe
-        className="w-full h-full rounded-lg"
+        className="w-full h-full rounded-xl"
+        // https://www.youtube.com/embed/8LbzB7tlxLE?si=VNgrfBZPvXURjo2J
         src={`${liveEmbedLink}?autoplay=0&mute=1&controls=1`}
         title="Culto Online"
         frameBorder="0"
@@ -256,9 +295,9 @@ function LiveStreamPlayer(liveEmbedLink: string) {
 
 function FakeLiveStreamPlayer() {
   return (
-    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-lg flex items-center justify-center relative">
-      <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-lg rounded-bl-lg">
-        OFFILNE
+    <div className="grid-item-live-broadcast aspect-video md:col-span-1 bg-black/20 rounded-xl flex items-center justify-center relative">
+      <div className="absolute right-0 top-0 bg-white text-black font-bold px-4 py-2 rounded-tr-xl rounded-bl-xl">
+        OFF-LINE
       </div>
       <Button className="rounded-full w-16 h-16 flex items-center justify-center">
         <Play className="h-6 w-6 ml-1" />

@@ -9,6 +9,7 @@ import { sanityClient } from "@/lib/sanityClient";
 
 import { phoneFormat } from "@/utils";
 import { PortableText } from "@portabletext/react";
+import BackToTopButton from "@/components/back-to-top-button";
 
 
 export default async function Contact() {
@@ -19,7 +20,7 @@ export default async function Contact() {
   return (
     <>
       <PageHeader imgSrc={contact_page_data?.bannerImage? contact_page_data.bannerImage: bannerFallback.src}>{contact_page_data?.title?contact_page_data.title:""}</PageHeader>
-      <Section className="my-20">
+      <Section>
         <div>
 
           {contact_page_data?.description&&<PortableText value={contact_page_data.description} />}
@@ -64,6 +65,7 @@ export default async function Contact() {
         </div>
       </Section>
       <Footer />
+      <BackToTopButton />
     </>
   );
   
