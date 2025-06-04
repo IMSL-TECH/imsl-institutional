@@ -3,6 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png"
 import imagePlaceholder from "@/assets/thumbs/placeholder-image-square.png"
 import { formatDateBr } from "@/utils";
+import { urlFor } from "@/lib/sanityImage";
 
 export default function BlogCard({
   title,
@@ -16,9 +17,9 @@ export default function BlogCard({
   title: string | null;
   author: string;
   date: string | null;
-  background: string | null;
+  background: any;
   className?: string;
-  panelist: string | null | undefined;
+  panelist: any;
   cardLink:string
 }) {
   return (
@@ -27,7 +28,7 @@ export default function BlogCard({
     >
       <a href={cardLink}>
       <Image
-        src={background || imagePlaceholder}
+        src={urlFor(background).url() || imagePlaceholder}
         alt={title || ""}
         fill
         priority
@@ -45,7 +46,7 @@ export default function BlogCard({
               fill
               priority
               className="w-full object-cover"
-              src={panelist || userPlaceholder}
+              src={urlFor(panelist).url() || userPlaceholder}
               alt={`Palestrante da palavra ${author}`}
             />
           </div>

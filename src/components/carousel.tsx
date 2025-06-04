@@ -10,6 +10,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { HomePageSmedsQueryResult } from "sanity-shared/types";
+import { urlFor } from "@/lib/sanityImage";
 
 export default function Carousel({
   items,
@@ -34,7 +35,7 @@ export default function Carousel({
             >
               <Link className="w-full h-full" href={`/smeds#${item._id}`}>
                 <Image
-                  src={item?.banner || imagePlaceholderSquare}
+                  src={urlFor(item?.banner).url() || imagePlaceholderSquare}
                   alt={`Slide ${index + 1}`}
                   height={200}
                   width={200}

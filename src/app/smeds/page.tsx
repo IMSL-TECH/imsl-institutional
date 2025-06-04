@@ -9,6 +9,7 @@ import { GetSmedListQueryResult, SmedsPageQueryResult } from "sanity-shared/type
 import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
+import { urlFor } from "@/lib/sanityImage";
 
 
 function SmedsList({
@@ -27,7 +28,7 @@ function SmedsList({
     >
       <div className="w-full lg:w-[53%] rounded-t-xl lg:rounded-none overflow-hidden h-[250px] lg:h-full relative">
         <Image
-          src={smedItem.bannerHorizontal || imagePlaceholderSquare}
+          src={urlFor(smedItem.bannerHorizontal).auto('format').url() || imagePlaceholderSquare}
           fill
           className={`object-cover rounded-none lg:rounded-xl ${pair ? "" : "border"}`}
           alt="Banner Monte Sião Linhares"
