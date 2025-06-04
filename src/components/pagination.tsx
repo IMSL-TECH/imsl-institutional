@@ -10,7 +10,7 @@ import {
   
   export function PaginationCustom() {
     return (
-      <Pagination className="mt-20 mb-20">
+      <Pagination className="mt-20">
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious href="#" />

@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 import type { IconProps } from "@/type";
 
-export function Facebook({ className, ...props }: IconProps) {
+export default function Facebook({ className, ...props }: IconProps) {
     return (
       <div className={cn("flex items-center", className)} {...props}>
         <span className="sr-only">Facebook</span>
@@ -21,3 +21,5 @@ export function Facebook({ className, ...props }: IconProps) {
       </div>
     );
   }
+
+

@@ -3,30 +3,27 @@
 import { useState } from "react";
 import Item from "./item";
 import Image, { StaticImageData } from "next/image";
+import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { HomePageSmedsQueryResult } from "sanity-shared/types";
+import { urlFor } from "@/lib/sanityImage";
 
-interface SmedCardType {
-  title: string;
-  link: string;
-  image: string | StaticImageData;
-}
 
-export default function SmedCard({ items }: {items: SmedCardType[] }) {
+export default function SmedCard({ items }: {items: HomePageSmedsQueryResult }) {
   const [isSelect, setIsSelect] = useState(0);
 
   return (
     <ul className="w-full lg:h-[400px] flex flex-col lg:flex-row gap-2">
-      {items.map(({ title, link, image }, idx) => (
+      {items.map(({ title, banner, _id }, idx) => (
         <Item 
+        singleEventUrl={`/smeds#${_id}`}
         isSelect={isSelect === idx ? "w-full lg:w-[47.22%]" : "w-full lg:w-[26.39%]"}
           idx={idx} 
           setIsSelect={setIsSelect} 
           key={idx}
         >
-          <Link href={link}>
           <Image
-            src={image}
+            src={ urlFor(banner).url() || imagePlaceholderSquare}
             alt="Banner Monte Sião Linhares"
             fill
             className={`${isSelect === idx ? "" : "lg:grayscale-100 brightness-50"} transition-all duration-300 object-cover  rounded-xl`}
@@ -45,7 +42,6 @@ export default function SmedCard({ items }: {items: SmedCardType[] }) {
               <h3 className={`text-xl font-bold mb-2 text-left`}>{title}</h3>
             </div>
           </div>
-          </Link>
 
         </Item>
       ))}
