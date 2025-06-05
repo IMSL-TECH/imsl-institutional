@@ -12,19 +12,23 @@ export default function SearchInput() {
   const [query, setQuery] = useState(findTitle || "");
 
   useEffect(() => {
+    setQuery(findTitle || "")
+  }, [findTitle])
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
       const params = new URLSearchParams(searchParams.toString());
+
       if (query) {
         params.set("findTitle", query);
       } else {
         params.delete("findTitle");
       }
-
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }, 500); // debounce
 
     return () => clearTimeout(timeout);
-  }, [query, findTitle]);
+  }, [query]);
 
   return (
     <div className="relative flex-1 mr-4">
