@@ -26,6 +26,7 @@
     "next": "15.2.2",
     "next-sanity": "^9.10.2",
     "react": "^19.0.0",
+    "react-cookie-consent": "^9.0.0",
     "react-dom": "^19.0.0",
     "react-facebook-pixel": "^1.0.4",
     "sanity-shared": "github:prmarcos/sanity-shared",
