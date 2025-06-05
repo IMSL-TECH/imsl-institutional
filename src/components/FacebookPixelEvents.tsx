@@ -1,13 +1,31 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 const FacebookPixelEvents = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [hasConsent, setHasConsent] = useState(false);
 
   useEffect(() => {
+    const checkConsent = () => {
+      const consent = localStorage.getItem('cookie_consent');
+      if (consent === 'granted') setHasConsent(true);
+    };
+
+    checkConsent();
+    window.addEventListener('cookieConsentGranted', checkConsent);
+
+    return () => {
+      window.removeEventListener('cookieConsentGranted', checkConsent);
+    };
+  }, []);
+
+  useEffect(() => {
+
+    if (!hasConsent) return;
+
     const fetchAndInitPixel = async () => {
       try {
         const res = await fetch('/api/pixel-id');
@@ -25,7 +43,7 @@ const FacebookPixelEvents = () => {
     };
 
     fetchAndInitPixel();
-  }, [pathname, searchParams]);
+  }, [hasConsent, pathname, searchParams]);
 
   return null;
 };
