@@ -10,6 +10,8 @@ import { sanityClient } from "@/lib/sanityClient";
 import { footerQuery } from "sanity-shared/queries";
 import { FooterQueryResult } from "sanity-shared/types";
 import { phoneFormat } from "@/utils";
+import ResetCookieLink from "./btnResetcookie";
+
 
 export default async function Footer() {
   const footer_data: FooterQueryResult = await sanityClient.fetch(footerQuery);
@@ -87,7 +89,10 @@ export default async function Footer() {
           © Copyright Igreja Apostólica Monte Sião Linhares 2024 - Design by
           Redeem™ | Desenvolvido por{" "}
           <Link href={"https://www.reijanlopes.com/"}>Reijan Lopes</Link>
+          <br />
+          <ResetCookieLink/>
         </div>
+        
       </Section>
     </React.Fragment>
   );
