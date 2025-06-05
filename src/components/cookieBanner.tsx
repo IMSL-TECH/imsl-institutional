@@ -52,7 +52,7 @@ const CookieBanner = () => {
             onDecline={() => saveConsent('denied')}
         >
             Utilizamos cookies para melhorar sua experiência e analisar dados de navegação. Consulte nossa{" "}
-            <a href="/politica-de-privacidade" style={{ color: "#a6e1fa", textDecoration: "underline" }}>
+            <a href="/privacy-policy" style={{ color: "#a6e1fa", textDecoration: "underline" }}>
                 Política de Privacidade
             </a>.
         </CookieConsent>
