@@ -197,7 +197,7 @@ export default async function Home() {
       <Section backgroundColor="bg-[#0F2E2F]">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-white">
-            Resumo de Palavra
+            Resumo da Palavra
           </h2>
           <Link
             href="/sermon-summary"
