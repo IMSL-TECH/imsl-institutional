@@ -79,7 +79,7 @@ export default async function Event({ params }: EventProps) {
     { id }
   );
 
-  const title = event_data?.title
+  const title = event_data?.title;
   const shortDescription = event_data?.shortDescription;
   const teaser = event_data?.teaser;
   const about = event_data?.about;
@@ -111,80 +111,85 @@ export default async function Event({ params }: EventProps) {
   return (
     <>
       <PageHeader imgSrc={event_data?.banner} />
-      <Section className="flex flex-col items-center">
-        <h2 className="text-center">{title}</h2>
-        {shortDescription && (
-          <div className="text-gray-600 !text-sm text-justify !font-medium mt-1">
-            <PortableText
-              value={shortDescription}
-              components={{
-                block: {
-                  normal: ({ children }) => <p>{children}</p>,
-                },
-              }}
-            />
-          </div>
-        )}
-
-        <div className="mt-10 w-full !text-sm lg:max-w-md flex justify-between gap-2">
-          <div>
-            {first === last ? (
-              //mostra uma data só
-              <>
-                <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
-                  Data:{" "}
-                  <p className="capitalize">
-                    {formatFirstDate.dd}/{formatFirstDate.shortMonth}
-                  </p>
-                </div>
-                <div className="!text-base/6">
-                  <p className="text-gray-700 text-start">
-                    {firstSession?.starTime} às {firstSession?.endTime}{" "}
-                  </p>
-                </div>
-              </>
-            ) : (
-              // mostras duas datas
-              <>
-                <div className="font-semibold !text-sm flex gap-1 flex-wrap text-gray-800">
-                  De{" "}
-                  <p className="capitalize">
-                    {formatFirstDate.dd}/{formatFirstDate.shortMonth}
-                  </p>{" "}
-                  a{" "}
-                  <p className="capitalize">
-                    {formatEndDate.dd}/{formatEndDate.shortMonth}
-                  </p>
-                </div>
-                <div className="!text-sm">
-                  <p className="text-gray-700 text-start">
-                    No primeiro dia, das:
-                  </p>
-                  <p className="text-gray-700 !text-sm">
-                    {firstSession?.starTime} às {firstSession?.endTime}
-                  </p>
-                </div>
-              </>
-            )}
-          </div>
-
-          {/* Location Card */}
-
-          <Link
-            target="_blank"
-            href={googleMapsUrl}
-            className="bg-gray-800 flex max-w-[135px] md:max-w-[160px] flex-col text-white px-4 py-2 rounded-lg"
-          >
-            <div className="text-center">
-              <p className="font-semibold truncate">
-                {event_data?.address?.city}, {event_data?.address?.state}
-              </p>
-              <div className="flex gap-1">
-                <MapPin className="w-5 h-5 min-w-5" />
-                <p className="text-sm truncate">{event_data?.address?.title}</p>
-              </div>
+      <Section className="flex !max-w-3xl flex-col items-center justify-center gap-4 lg:gap-8 lg:flex-row items-center">
+        <div className="lg:w-1/2 w-full">
+          <h2 className="text-center">{title}</h2>
+          {shortDescription && (
+            <div className="text-gray-600 !text-sm text-justify !font-medium mt-1">
+              <PortableText
+                value={shortDescription}
+                components={{
+                  block: {
+                    normal: ({ children }) => <p>{children}</p>,
+                  },
+                }}
+              />
             </div>
-          </Link>
+          )}
+        </div>
+        <div className="lg:w-1/2 w-full">
+          <div className="w-full !text-sm lg:max-w-md flex justify-between gap-2">
+            <div>
+              {first === last ? (
+                //mostra uma data só
+                <>
+                  <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
+                    Data:{" "}
+                    <p className="capitalize">
+                      {formatFirstDate.dd}/{formatFirstDate.shortMonth}
+                    </p>
+                  </div>
+                  <div className="!text-base/6">
+                    <p className="text-gray-700 text-start">
+                      {firstSession?.starTime} às {firstSession?.endTime}{" "}
+                    </p>
+                  </div>
+                </>
+              ) : (
+                // mostras duas datas
+                <>
+                  <div className="font-semibold !text-sm flex gap-1 flex-wrap text-gray-800">
+                    De{" "}
+                    <p className="capitalize">
+                      {formatFirstDate.dd}/{formatFirstDate.shortMonth}
+                    </p>{" "}
+                    a{" "}
+                    <p className="capitalize">
+                      {formatEndDate.dd}/{formatEndDate.shortMonth}
+                    </p>
+                  </div>
+                  <div className="!text-sm">
+                    <p className="text-gray-700 text-start">
+                      No primeiro dia, das:
+                    </p>
+                    <p className="text-gray-700 !text-sm">
+                      {firstSession?.starTime} às {firstSession?.endTime}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Location Card */}
+
+            <Link
+              target="_blank"
+              href={googleMapsUrl}
+              className="bg-gray-800 flex max-w-[135px] md:max-w-[160px] flex-col text-white px-4 py-2 rounded-lg"
+            >
+              <div className="text-center">
+                <p className="font-semibold truncate">
+                  {event_data?.address?.city}, {event_data?.address?.state}
+                </p>
+                <div className="flex gap-1">
+                  <MapPin className="w-5 h-5 min-w-5" />
+                  <p className="text-sm truncate">
+                    {event_data?.address?.title}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
       </Section>
       {/* adicionar o link para a inscrição e remover se não tiver */}
@@ -218,7 +223,7 @@ export default async function Event({ params }: EventProps) {
           )}
         </Section>
       )}
-      <Section className="flex flex-col items-center">
+      <Section className="flex !max-w-3xl flex-col items-center">
         <div className="w-full flex flex-col items-center">
           <h2 className="mb-5">Sobre o Evento</h2>
           {about && (
@@ -229,7 +234,7 @@ export default async function Event({ params }: EventProps) {
         </div>
       </Section>
       {event_data?.speakers && (
-        <Section className="flex flex-col items-center">
+        <Section className="flex flex-col !max-w-3xl items-center">
           {event_data?.speakers && (
             <div className="w-full flex flex-col items-center justify-center">
               <h2 className="mb-10">Palestrante</h2>
@@ -262,7 +267,7 @@ export default async function Event({ params }: EventProps) {
           )}
         </Section>
       )}
-      <Section className="flex flex-col items-center">
+      <Section className="flex !max-w-3xl flex-col items-center">
         {schedule && schedule?.[0].sessions && (
           <div className="w-full flex flex-col items-center">
             <div className="w-full">
@@ -271,38 +276,39 @@ export default async function Event({ params }: EventProps) {
           </div>
         )}
         <div className="w-full flex gap-2 flex-col items-center mt-5">
-        <div className="p-4 w-full  rounded-2xl flex flex-col lg:flex-row gap-6">
-          <div className="w-full flex flex-col justify-center gap-4">
-            <div className="flex flex-col items-center gap-1">
-              <h2>{organizer}</h2>
-              <h3 className="mb-3">Coordenação</h3>
-              <div className="flex gap-2 justify-center items-center w-full"><Phone className="h-4 w-4" /><p>{phoneFormat(organizerPhone)}</p></div>
-              
+          <div className="p-4 w-full  rounded-2xl flex flex-col lg:flex-row gap-6">
+            <div className="w-full flex flex-col justify-center gap-4">
+              <div className="flex flex-col items-center gap-1">
+                <h2>{organizer}</h2>
+                <h3 className="mb-3">Coordenação</h3>
+                <div className="flex gap-2 justify-center items-center w-full">
+                  <Phone className="h-4 w-4" />
+                  <p>{phoneFormat(organizerPhone)}</p>
+                </div>
+              </div>
+              <div className="w-full flex items-center justify-center">
+                <div className="flex gap-2 max-w-[330px] w-full items-center">
+                  <Link
+                    href={`https://wa.me/${organizerPhone}?text=Olá, gostaria de saber mais sobre o evento: ${title}`}
+                    target="_blank"
+                    className={`${organizerEmail ? "w-2/3" : "w-full"} h-9 font-bold bg-[#179389] text-white rounded-lg flex items-center justify-center gap-2`}
+                  >
+                    Tirar dúvidas
+                  </Link>
+                  {organizerEmail && (
+                    <Link
+                      href={EmailLink}
+                      target="_blank"
+                      className="h-9 w-1/3 border flex gap-2 rounded-lg items-center justify-center"
+                    >
+                      <Mail className="w-5 h-5" />
+                      Email
+                    </Link>
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="w-full flex items-center justify-center">
-            <div className="flex gap-2 max-w-[330px] w-full items-center">
-              <Link
-                href={`https://wa.me/${organizerPhone}?text=Olá, gostaria de saber mais sobre o evento: ${title}`}
-                target="_blank"
-                className={`${organizerEmail ? "w-2/3" : "w-full"} h-9 font-bold bg-[#179389] text-white rounded-lg flex items-center justify-center gap-2`}
-              >
-                Tirar dúvidas
-              </Link>
-              {organizerEmail && (
-                <Link
-                  href={EmailLink}
-                  target="_blank"
-                  className="h-9 w-1/3 border flex gap-2 rounded-lg items-center justify-center"
-                >
-                  <Mail className="w-5 h-5" />
-                  Email
-                </Link>
-              )}
-            </div>
-            </div>
-            
           </div>
-        </div>
         </div>
       </Section>
       <Footer />

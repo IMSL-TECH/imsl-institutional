@@ -33,10 +33,10 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
   return (
     <>
       <PageHeader imgSrc={sermonSummaryData?.background} />
-      <Section className="flex flex-col items-center">
+      <Section className="flex !max-w-3xl flex-col items-center">
         <h2 className="text-center mb-5">{title}</h2>
         <div className="flex flex-col text-sm gap-4 justify-center items-center font-normal">
-          <div className="grid gap-4">
+          <div className="grid lg:grid-cols-2 gap-8">
             <div className="flex items-center space-x-3">
               <div className="flex-shrink-0">
                 <Calendar className="h-5 w-5 text-blue-600" />
@@ -64,7 +64,7 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
           {videoLink && <Link target="_blank" className="bg-[#179389] text-white h-auto text-base px-4 py-2 rounded-lg" href={videoLink}>Palavra completa</Link>}
         </div>
       </Section>
-      <Section className="text-justify">
+      <Section className="text-justify !max-w-3xl">
         {content && (
           <PortableText value={content} components={portableTextComponents} />
         )}
