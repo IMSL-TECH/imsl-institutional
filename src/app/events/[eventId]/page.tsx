@@ -111,94 +111,94 @@ export default async function Event({ params }: EventProps) {
   return (
     <>
       <PageHeader imgSrc={event_data?.banner} />
-      <Section className="flex !max-w-3xl flex-col items-center justify-center gap-4 lg:gap-8 lg:flex-row items-center">
-        <div className="lg:w-1/2 w-full">
-          <h2 className="text-center">{title}</h2>
-          {shortDescription && (
-            <div className="text-gray-600 !text-sm text-justify !font-medium mt-1">
-              <PortableText
-                value={shortDescription}
-                components={{
-                  block: {
-                    normal: ({ children }) => <p>{children}</p>,
-                  },
-                }}
-              />
-            </div>
-          )}
-        </div>
-        <div className="lg:w-1/2 w-full">
-          <div className="w-full !text-sm lg:max-w-md flex justify-between gap-2">
-            <div>
-              {first === last ? (
-                //mostra uma data só
-                <>
-                  <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
-                    Data:{" "}
-                    <p className="capitalize">
-                      {formatFirstDate.dd}/{formatFirstDate.shortMonth}
-                    </p>
-                  </div>
-                  <div className="!text-base/6">
-                    <p className="text-gray-700 text-start">
-                      {firstSession?.starTime} às {firstSession?.endTime}{" "}
-                    </p>
-                  </div>
-                </>
-              ) : (
-                // mostras duas datas
-                <>
-                  <div className="font-semibold !text-sm flex gap-1 flex-wrap text-gray-800">
-                    De{" "}
-                    <p className="capitalize">
-                      {formatFirstDate.dd}/{formatFirstDate.shortMonth}
-                    </p>{" "}
-                    a{" "}
-                    <p className="capitalize">
-                      {formatEndDate.dd}/{formatEndDate.shortMonth}
-                    </p>
-                  </div>
-                  <div className="!text-sm">
-                    <p className="text-gray-700 text-start">
-                      No primeiro dia, das:
-                    </p>
-                    <p className="text-gray-700 !text-sm">
-                      {firstSession?.starTime} às {firstSession?.endTime}
-                    </p>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Location Card */}
-
-            <Link
-              target="_blank"
-              href={googleMapsUrl}
-              className="bg-gray-800 flex max-w-[135px] md:max-w-[160px] flex-col text-white px-4 py-2 rounded-lg"
-            >
-              <div className="text-center">
-                <p className="font-semibold truncate">
-                  {event_data?.address?.city}, {event_data?.address?.state}
-                </p>
-                <div className="flex gap-1">
-                  <MapPin className="w-5 h-5 min-w-5" />
-                  <p className="text-sm truncate">
-                    {event_data?.address?.title}
-                  </p>
-                </div>
+      <Section className="!max-w-3xl">
+        <div className="w-full flex flex-col lg:flex-row justify-center gap-4 lg:gap-8">
+          <div className="lg:w-1/2 w-full">
+            <h2 className="text-center">{title}</h2>
+            {shortDescription && (
+              <div className="text-gray-600 !text-sm text-justify !font-medium mt-1">
+                <PortableText
+                  value={shortDescription}
+                  components={{
+                    block: {
+                      normal: ({ children }) => <p>{children}</p>,
+                    },
+                  }}
+                />
               </div>
-            </Link>
+            )}
+          </div>
+          <div className="lg:w-1/2 w-full">
+            <div className="w-full mt-2 !text-sm lg:max-w-md flex justify-between gap-2">
+              <div>
+                {first === last ? (
+                  //mostra uma data só
+                  <>
+                    <div className="font-semibold flex gap-1 flex-wrap text-gray-800">
+                      Data:{" "}
+                      <p className="capitalize">
+                        {formatFirstDate.dd}/{formatFirstDate.shortMonth}
+                      </p>
+                    </div>
+                    <div className="!text-base/6">
+                      <p className="text-gray-700 text-start">
+                        {firstSession?.starTime} às {firstSession?.endTime}{" "}
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  // mostras duas datas
+                  <>
+                    <div className="font-semibold !text-sm flex gap-1 flex-wrap text-gray-800">
+                      De{" "}
+                      <p className="capitalize">
+                        {formatFirstDate.dd}/{formatFirstDate.shortMonth}
+                      </p>{" "}
+                      a{" "}
+                      <p className="capitalize">
+                        {formatEndDate.dd}/{formatEndDate.shortMonth}
+                      </p>
+                    </div>
+                    <div className="!text-sm">
+                      <p className="text-gray-700 text-start">
+                        No primeiro dia, das:
+                      </p>
+                      <p className="text-gray-700 !text-sm">
+                        {firstSession?.starTime} às {firstSession?.endTime}
+                      </p>
+                    </div>
+                  </>
+                )}
+              </div>
+              <Link
+                target="_blank"
+                href={googleMapsUrl}
+                className="bg-gray-800 max-w-[150px] flex flex-col text-white px-4 py-2 rounded-lg"
+              >
+                <div className="text-center">
+                  <p className="font-semibold truncate">
+                    {event_data?.address?.city}, {event_data?.address?.state}
+                  </p>
+                  <div className="flex gap-1">
+                    <MapPin className="w-5 h-5 min-w-5" />
+                    <p className="text-sm truncate">
+                      {event_data?.address?.title}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+              {/* Location Card */}
+            </div>
           </div>
         </div>
       </Section>
       {/* adicionar o link para a inscrição e remover se não tiver */}
       {registrtionLink && (
-        <div className="mb-10 w-full flex justify-center">
+        <div className="w-full mt-4 flex justify-center">
           <Link
             href={registrtionLink}
             target="_blank"
-            className="bg-[#179389] whitespace-nowrap w-auto h-15 text-xl px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+            className="bg-[#179389] flex items-center justify-center w-full max-w-2xs whitespace-nowrap w-auto h-15 text-xl px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
           >
             Faça sua inscrição
           </Link>
@@ -277,34 +277,32 @@ export default async function Event({ params }: EventProps) {
         )}
         <div className="w-full flex gap-2 flex-col items-center mt-5">
           <div className="p-4 w-full  rounded-2xl flex flex-col lg:flex-row gap-6">
-            <div className="w-full flex flex-col justify-center gap-4">
-              <div className="flex flex-col items-center gap-1">
+            <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-4">
+              <div className="flex w-full lg:w-1/2 flex-col items-center gap-1">
                 <h2>{organizer}</h2>
-                <h3 className="mb-3">Coordenação</h3>
-                <div className="flex gap-2 justify-center items-center w-full">
-                  <Phone className="h-4 w-4" />
-                  <p>{phoneFormat(organizerPhone)}</p>
-                </div>
+                <h3 className="mb-3 text-gray-500">Coordenação</h3>
               </div>
-              <div className="w-full flex items-center justify-center">
+              <div className="border-t lg:border-t-none w-2/5 lg:w-1 lg:border-l h-px lg:h-4/5"></div>
+              <div className="w-full lg:w-1/2 flex flex-col gap-2 items-center justify-center">
+                <div className="text-xl">{organizerName}</div>
                 <div className="flex gap-2 max-w-[330px] w-full items-center">
                   <Link
                     href={`https://wa.me/${organizerPhone}?text=Olá, gostaria de saber mais sobre o evento: ${title}`}
                     target="_blank"
-                    className={`${organizerEmail ? "w-2/3" : "w-full"} h-9 font-bold bg-[#179389] text-white rounded-lg flex items-center justify-center gap-2`}
+                    className={`w-1/2 h-9 font-bold bg-[#179389] text-white rounded-lg flex items-center justify-center gap-2`}
                   >
                     Tirar dúvidas
                   </Link>
-                  {organizerEmail && (
+                  
                     <Link
-                      href={EmailLink}
+                      href={`tel:+${organizerPhone}`}
                       target="_blank"
-                      className="h-9 w-1/3 border flex gap-2 rounded-lg items-center justify-center"
+                      className="h-9 w-1/2 border flex gap-2 rounded-lg items-center justify-center"
                     >
-                      <Mail className="w-5 h-5" />
-                      Email
+                      <Phone className="w-5 h-5" />
+                      Ligar
                     </Link>
-                  )}
+                  
                 </div>
               </div>
             </div>
@@ -316,94 +314,3 @@ export default async function Event({ params }: EventProps) {
     </>
   );
 }
-
-// "use client"
-
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-// import { Button } from "@/components/ui/button"
-// import { Phone, Mail, MessageCircle } from "lucide-react"
-
-// interface ContactInfo {
-//   description: string
-//   email: string | null
-//   phone: {
-//     name: string
-//     number: string
-//   }
-// }
-
-// interface ContactInfoProps {
-//   contactInfo: ContactInfo
-// }
-
-// export default function Component({
-//   contactInfo = {
-//     description: "Monte Sião Linhares",
-//     email: "reijan.lj@gmail.com",
-//     phone: { name: "Tayna Dutra.", number: "5527999374701" },
-//   },
-// }: ContactInfoProps) {
-//   const handleWhatsAppClick = () => {
-//     const whatsappUrl = `https://wa.me/${contactInfo.phone.number}`
-//     window.open(whatsappUrl, "_blank")
-//   }
-
-//   const handleEmailClick = () => {
-//     if (contactInfo.email) {
-//       window.location.href = `mailto:${contactInfo.email}`
-//     }
-//   }
-
-//   const handlePhoneClick = () => {
-//     window.location.href = `tel:+${contactInfo.phone.number}`
-//   }
-
-//   return (
-//     <Card className="w-full max-w-md">
-//       <CardHeader>
-//         <CardTitle className="text-xl font-semibold text-center">{contactInfo.description}</CardTitle>
-//       </CardHeader>
-//       <CardContent className="space-y-4">
-//         {/* Phone Contact */}
-//         <div className="space-y-3">
-//           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-//             <Phone className="h-4 w-4" />
-//             <span>Telefone para ligações</span>
-//           </div>
-
-//           <div className="space-y-2">
-//             <p className="font-medium">{contactInfo.phone.name}</p>
-//             <p className="text-sm text-muted-foreground">{formatPhoneNumber(contactInfo.phone.number)}</p>
-//           </div>
-
-//           <div className="flex gap-2">
-//             <Button onClick={handleWhatsAppClick} className="flex-1 bg-green-600 hover:bg-green-700" size="sm">
-//               <MessageCircle className="h-4 w-4 mr-2" />
-//               WhatsApp
-//             </Button>
-
-//             <Button onClick={handlePhoneClick} variant="outline" size="sm">
-//               <Phone className="h-4 w-4 mr-2" />
-//               Ligar
-//             </Button>
-//           </div>
-//         </div>
-
-//         {/* Email Contact */}
-//         {contactInfo.email && (
-//           <div className="space-y-3 pt-4 border-t">
-//             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-//               <Mail className="h-4 w-4" />
-//               <span>Enviar mensagem por email</span>
-//             </div>
-
-//             <Button onClick={handleEmailClick} variant="outline" className="w-full" size="sm">
-//               <Mail className="h-4 w-4 mr-2" />
-//               Enviar Email
-//             </Button>
-//           </div>
-//         )}
-//       </CardContent>
-//     </Card>
-//   )
-// }
