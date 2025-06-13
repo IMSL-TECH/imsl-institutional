@@ -7,7 +7,7 @@ import { contactPageQuery } from "sanity-shared/queries";
 import { ContactPageQueryResult } from "sanity-shared/types";
 import { sanityClient } from "@/lib/sanityClient";
 
-import { phoneFormat } from "@/utils";
+import { formatPhone } from "@/utils";
 import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
 
@@ -51,7 +51,7 @@ export default async function Contact() {
                 {contact_page_data?.email}
               </a>{" "}
               <br />
-              Telefone: {phoneFormat(contact_page_data?.phone)} | {contact_page_data?.AvailableHours}
+              Telefone: {formatPhone(contact_page_data?.phone)} | {contact_page_data?.AvailableHours}
             </p>
 
             <Link

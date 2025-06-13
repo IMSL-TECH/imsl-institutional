@@ -2,7 +2,7 @@
 
 import { formatDateBr } from "@/utils";
 import { PortableText } from "@portabletext/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { FindOneEventByIdQueryResult } from "sanity-shared/types";
 
 type ScheduleType = NonNullable<
@@ -25,6 +25,50 @@ export default function Schedule({ scheduleData }: ScheduleProps) {
   const currentSessions = scheduleData[activeTab]?.sessions || [];
   const isShortList = scheduleData.length < 4;
 
+  const renderScheduleData = useMemo(() => {
+    return scheduleData?.map(({ date }, idx) => {
+      const { dd, shortMonth } = formatDateBr(date || "");
+      const isActive = activeTab === idx;
+  
+      const animationClass =
+        isActive && scheduleData.length > 1
+          ? animationTabs[
+              idx === 0 ? 0 : idx === scheduleData.length - 1 ? 2 : 1
+            ]
+          : "";
+  
+      return (
+        <button
+          key={idx}
+          onClick={() => setActiveTab(idx)}
+          className={`pb-7 pt-2 h-full w-full min-w-[80px] px-2 relative z-10 capitalize ${
+            isActive
+              ? `bg-[#179389] rounded-t-xl text-white ${animationClass}`
+              : "text-gray-700 hover:text-[#179389]"
+          }`}
+        >
+          {dd}/{shortMonth}
+        </button>
+      );
+    });
+  }, [scheduleData, activeTab, setActiveTab, animationTabs]);
+
+  const sessionsCurrentSession = useMemo(() => {
+    return currentSessions?.map((item, idx) => (
+      <div key={idx} className="bg-white rounded-xl p-3">
+        <p className="text-md montserrat">
+          <strong>{item.title}</strong>
+          {item.title && item.starTime ? " - " : ""} {item.starTime}
+        </p>
+        {item.description && (
+          <div className="text-sm montserrat">
+            <PortableText value={item.description} />
+          </div>
+        )}
+      </div>
+    ));
+  }, [currentSessions]);
+
   return (
     <div className="w-full mb-10">
       {/* Tabs */}
@@ -37,50 +81,14 @@ export default function Schedule({ scheduleData }: ScheduleProps) {
           }`}
         >
           <div className="flex w-full">
-            {scheduleData.map(({ date }, idx) => {
-              const { dd, shortMonth } = formatDateBr(date || "");
-              const isActive = activeTab === idx;
-
-              const animationClass =
-                isActive && scheduleData.length > 1
-                  ? animationTabs[
-                      idx === 0 ? 0 : idx === scheduleData.length - 1 ? 2 : 1
-                    ]
-                  : "";
-
-              return (
-                <button
-                  key={idx}
-                  onClick={() => setActiveTab(idx)}
-                  className={`pb-7 pt-2 h-full w-full min-w-[80px] px-2 relative z-10 capitalize ${
-                    isActive
-                      ? `bg-[#179389] rounded-t-xl text-white ${animationClass}`
-                      : "text-gray-700 hover:text-[#179389]"
-                  }`}
-                >
-                  {dd}/{shortMonth}
-                </button>
-              );
-            })}
+            {renderScheduleData}
           </div>
         </div>
       </div>
 
       {/* Sessions */}
       <div className="flex flex-col gap-2 w-full z-10 relative bg-[#179389] p-3 rounded-xl">
-        {currentSessions.map((item, idx) => (
-          <div key={idx} className="bg-white rounded-xl p-3">
-            <p className="text-md montserrat">
-              <strong>{item.title}</strong>
-              {item.title && item.starTime ? " - " : ""} {item.starTime}
-            </p>
-            {item.description && (
-              <div className="text-sm montserrat">
-                <PortableText value={item.description} />
-              </div>
-            )}
-          </div>
-        ))}
+        {sessionsCurrentSession}
       </div>
     </div>
   );

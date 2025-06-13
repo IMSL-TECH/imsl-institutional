@@ -1,41 +1,38 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "./ui/button";
 
-export default function BackToTopButton(){
-    const [isVisible, setIsVisible] = useState(false);
+export default function BackToTopButton() {
+  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const viewportHeight = window.innerHeight; // Altura do viewport
-    const toggleVisibility = () => {
-      if (window.scrollY > viewportHeight) { // Usa o threshold ou o tamanho do viewport
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+  const checkScrollPosition = useCallback(() => {
+    const scrolledPastThreshold = window.scrollY > window.innerHeight;
+    setIsVisible(scrolledPastThreshold);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  useEffect(() => {
+    window.addEventListener("scroll", checkScrollPosition, { passive: true });
+    checkScrollPosition();
 
-    return (
-        
-            <Button
-              onClick={scrollToTop}
-              className={`fixed bottom-5 right-5 z-40 transition-all duration-300 ${isVisible ? "opacity-100" : "translate-y-20 opacity-0"} `}
-              aria-label="Voltar ao topo"
-            >
-              ↑
-            </Button>
-          
-    )
+    return () => {
+      window.removeEventListener("scroll", checkScrollPosition);
+    };
+  }, [checkScrollPosition]);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  return (
+    <Button
+      onClick={scrollToTop}
+      aria-label="Voltar ao topo"
+      className={`fixed bottom-16 right-5 z-40 transition-all duration-300 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+      }`}
+    >
+      ↑
+    </Button>
+  );
 }

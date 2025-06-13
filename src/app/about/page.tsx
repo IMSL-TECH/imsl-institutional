@@ -133,8 +133,8 @@ function FundamentalBeliefs({
 }
 
 export default async function About() {
-
   const about_page_data: AboutPageQueryResult = await sanityClient.fetch(aboutPageQuery);
+  
   return (
     <>
       <PageHeader imgSrc={about_page_data?.bannerImage}>{about_page_data?.title}</PageHeader>

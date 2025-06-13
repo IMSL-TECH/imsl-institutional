@@ -10,7 +10,7 @@ import Link from "next/link";
 import { findOneSermonBySlugQuery } from "sanity-shared/queries";
 import { FindOneSermonBySlugQueryResult } from "sanity-shared/types";
 import BackToTopButton from "@/components/back-to-top-button";
-import { Calendar, User } from "lucide-react";
+import { Calendar } from "lucide-react";
 import Image from "next/image";
 
 interface SermonSummaryPageProps {
@@ -22,13 +22,14 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
 
   const sermonSummaryData: FindOneSermonBySlugQueryResult =
     await sanityClient.fetch(findOneSermonBySlugQuery, { slug });
+
   const content = sermonSummaryData?.content;
   const title = sermonSummaryData?.title;
   const videoLink = sermonSummaryData?.videoLink;
   const date = formatDateBr(sermonSummaryData?.date || "");
   const speaker = sermonSummaryData?.speaker?.name;
   const speakerTitle = sermonSummaryData?.speaker?.titleAbbreviation;
-  const imageSpeaker = sermonSummaryData?.speaker?.image
+  const imageSpeaker = sermonSummaryData?.speaker?.image;
 
   return (
     <>
@@ -44,24 +45,48 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
               <div>
                 <p className="text-sm font-medium text-gray-500">Data</p>
                 <p className="text-base font-semibold">
-                {`${date.dd} de ${date.month} de ${date.aaaa}`}
+                  {`${date.dd} de ${date.month} de ${date.aaaa}`}
                 </p>
               </div>
             </div>
 
             <div className="flex items-center space-x-3">
               <div className="flex-shrink-0 relative w-12 h-12 rounded-full border flex items-center justify-center">
-                
-                {imageSpeaker && <Image className="rounded-full" src={imageSpeaker} fill alt={`Pregador: ${speaker}`}/>}
+                {imageSpeaker && (
+                  <Image
+                    className="rounded-full"
+                    src={imageSpeaker}
+                    fill
+                    alt={`Pregador: ${speaker}`}
+                  />
+                )}
               </div>
               <div>
-                
+                {/* <Image
+              fill
+              priority
+              className="w-full object-cover"
+              src={urlFor(panelist).url() || userPlaceholder}
+              alt={`Palestrante da palavra ${author}`}
+            /> */}
+
                 <p className="text-sm font-medium text-gray-500">Pregador</p>
-                <p className="text-base font-semibold">{speakerTitle&&`${speakerTitle}`}{speaker}</p>
+                <p className="text-base font-semibold">
+                  {speakerTitle && `${speakerTitle}`}
+                  {speaker}
+                </p>
               </div>
             </div>
           </div>
-          {videoLink && <Link target="_blank" className="bg-[#179389] text-white h-auto text-base px-4 py-2 rounded-lg" href={videoLink}>Palavra completa</Link>}
+          {videoLink && (
+            <Link
+              target="_blank"
+              className="bg-[#179389] text-white h-auto text-base px-4 py-2 rounded-lg"
+              href={videoLink}
+            >
+              Palavra completa
+            </Link>
+          )}
         </div>
       </Section>
       <Section className="text-justify !max-w-3xl">

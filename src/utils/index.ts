@@ -132,7 +132,7 @@ export function getEventDateRange(schedule: ScheduleItem[] | null) {
 
 
 
-export function phoneFormat(phone: string|null|undefined): string {
+export function formatPhone(phone: string|null|undefined): string {
 
 
   if(!phone) return ""
