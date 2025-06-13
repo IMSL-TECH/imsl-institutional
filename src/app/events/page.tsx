@@ -138,7 +138,7 @@ export default async function Event({ searchParams }: EventProps) {
           <ClearSearch local="events"/>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
-          {filteredEvents.map((item, idx) => (
+          {filteredEvents?.map((item, idx) => (
             <EventsItem eventItem={item} key={idx} />
           ))}
         </div>
