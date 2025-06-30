@@ -1,4 +1,4 @@
-import { HomePageEventsQueryResult } from "sanity-shared/types";
+import { HomePageEventsQueryResult, internalGroqTypeReferenceTo, SanityImageCrop, SanityImageHotspot } from "sanity-shared/types";
 
 export type IconProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -24,3 +24,16 @@ export type ScheduleType = Array<
     >[number]
   >
 > | null;
+
+export type ImageType = {
+  asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  };
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  _type: "image";
+} | null | undefined;

@@ -29,6 +29,8 @@ import {
 import { sanityClient } from "@/lib/sanityClient";
 
 import bannerFallback from "@/assets/banners/banner.png";
+import { urlFor } from "@/lib/sanityImage";
+import imagePlaceholder from "@/assets/thumbs/placeholder-image-square.png";
 import BlogCard from "@/components/blog-card";
 
 export default async function Home() {
@@ -52,12 +54,19 @@ export default async function Home() {
     sanityClient.fetch(headerQuery)
   ]);
 
+  const banner = home_data?.heroImage
+  ? urlFor(home_data.heroImage).width(2560).height(1680).url()
+  : bannerFallback;
+const live_banner = home_data?.liveBannerImage
+  ? urlFor(home_data?.liveBannerImage).width(444).height(856).url()
+  : imagePlaceholder;
+
   return (
     <section className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="h-screen w-full absolute top-0 left-0">
         <Image
-          src={home_data?.heroImage ? home_data.heroImage : bannerFallback}
+          src={banner}
           alt="Banner Monte Sião Linhares"
           fill
           className={`object-cover ${
@@ -171,8 +180,9 @@ export default async function Home() {
             : FakeLiveStreamPlayer()}
           <div className="w-full grid-item-live-broadcast flex justify-end ">
             {home_data?.liveBannerImage && (
-              <img
-                src={home_data.liveBannerImage}
+              <Image
+                src={live_banner}
+                width={444} height={856}
                 alt="Pastor"
                 className="rounded-lg "
               />

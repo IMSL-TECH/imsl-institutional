@@ -19,7 +19,7 @@ export default async function Contact() {
 
   return (
     <>
-      <PageHeader imgSrc={contact_page_data?.bannerImage? contact_page_data.bannerImage: bannerFallback.src}>{contact_page_data?.title?contact_page_data.title:""}</PageHeader>
+      <PageHeader imgSrc={contact_page_data?.bannerImage}>{contact_page_data?.title?contact_page_data.title:""}</PageHeader>
       <Section>
         <div>
 
@@ -51,7 +51,7 @@ export default async function Contact() {
                 {contact_page_data?.email}
               </a>{" "}
               <br />
-              Telefone: {formatPhone(contact_page_data?.phone)} | {contact_page_data?.AvailableHours}
+              Telefone: {formatPhone(contact_page_data?.phone?.number)} | {contact_page_data?.AvailableHours}
             </p>
 
             <Link

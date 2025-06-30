@@ -13,6 +13,9 @@ import BackToTopButton from "@/components/back-to-top-button";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
 
+import { urlFor } from "@/lib/sanityImage";
+import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png"
+
 interface SermonSummaryPageProps {
   params: Promise<{ sermonSumarySlug: string }>;
 }
@@ -29,7 +32,7 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
   const date = formatDateBr(sermonSummaryData?.date || "");
   const speaker = sermonSummaryData?.speaker?.name;
   const speakerTitle = sermonSummaryData?.speaker?.titleAbbreviation;
-  const imageSpeaker = sermonSummaryData?.speaker?.image;
+  const imageSpeaker = sermonSummaryData?.speaker?.photo ? urlFor(sermonSummaryData?.speaker?.photo).width(96).height(96).url() : userPlaceholder
 
   return (
     <>
