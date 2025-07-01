@@ -1,12 +1,6 @@
 import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 
-
-function isInArray(item: string, array: string[]): boolean {
-  return array.includes(item);
-}
-
-
 export async function POST(req: NextRequest) {
   const secret = req.headers.get('secret')
 

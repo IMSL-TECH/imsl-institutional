@@ -96,7 +96,7 @@ export default async function WordSummary({
         </div>
         <Filters filterlist={all_tags_data} />
         <div className="grid-cols-2 lg:grid-cols-3 gap-2 grid">
-          {blogPostList.map(({ item, expanded }, idx) => {
+          {blogPostList?.map(({ item, expanded }, idx) => {
             return (
               <BlogCard
                 cardLink={`/sermon-summary/${item.slug}`}

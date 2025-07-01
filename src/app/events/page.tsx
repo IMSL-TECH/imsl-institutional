@@ -28,6 +28,7 @@ import { sanityClient } from "@/lib/sanityClient";
 import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png";
 import ClearSearch from "@/components/clear-search";
 import BackToTopButton from "@/components/back-to-top-button";
+import { urlFor } from "@/lib/sanityImage";
 
 interface EventsItemProps {
   eventItem: GetResumedEventListQueryResult[number];
@@ -44,13 +45,14 @@ function EventsItem({ eventItem }: EventsItemProps) {
   const oneDayEvent = isOneDayEvent(first?.date || "",last?.date || "")
 
   const eventFristSession = getFirstValidSession(eventItem.schedule);
+  const banner = eventItem.banner ? urlFor(eventItem.banner).width(740).height(422).url() : imagePlaceholderSquare
 
   return (
     <Link href={`/events/${eventItem._id}`}>
       <div className="bg-white min-h-[213px] rounded-lg overflow-hidden border flex flex-col lg:flex-row gap-2 lg:gap-5">
         <div className="w-full lg:w-[30%] h-56 lg:h-auto relative">
           <Image
-            src={eventItem.banner || imagePlaceholderSquare}
+            src={banner}
             alt="Imagem do evento"
             fill
             className="object-cover"
@@ -94,8 +96,6 @@ function EventsItem({ eventItem }: EventsItemProps) {
   );
 }
 
-
-
 interface EventProps {
   searchParams: Promise<Record<string, string | undefined>>;
 }
@@ -138,7 +138,7 @@ export default async function Event({ searchParams }: EventProps) {
           <ClearSearch local="events"/>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
-          {filteredEvents.map((item, idx) => (
+          {filteredEvents?.map((item, idx) => (
             <EventsItem eventItem={item} key={idx} />
           ))}
         </div>

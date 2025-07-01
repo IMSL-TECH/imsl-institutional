@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { Search } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, ChangeEvent } from "react";
 
 export default function SearchInput() {
   const router = useRouter();
@@ -30,13 +30,21 @@ export default function SearchInput() {
     return () => clearTimeout(timeout);
   }, [query]);
 
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setQuery(e.target.value);
+    },
+    [query]
+  );
+
+
   return (
     <div className="relative flex-1 mr-4">
       <input
         type="text"
         placeholder="Pesquisar..."
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleChange}
         className="w-full py-2 px-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"
       />
       <button className="absolute right-5 top-1/2 -translate-y-1/2">

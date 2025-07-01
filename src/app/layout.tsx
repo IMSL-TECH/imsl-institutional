@@ -1,7 +1,6 @@
 import { Poppins, Montserrat, Open_Sans, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
 import ClientWrapper from "@/components/ClientWrapper";
 import Script from "next/script";
 

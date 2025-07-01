@@ -1,19 +1,31 @@
 "use client"
 
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
-import { Brush, Eraser } from 'lucide-react';
+import { Eraser } from "lucide-react";
+import { useCallback, useTransition } from "react";
+import Loading from "./loading";
 
-export default function ClearSearch({local}: {local: string}){
-    const router = useRouter()
+export default function ClearSearch({ local }: { local: string }) {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
-    const handleClck = () => {
-        router.replace(local, { scroll: false });
-    }
+  const handleClick = useCallback(() => {
+    startTransition(() => {
+      router.replace(local, { scroll: false });
+    });
+  }, [router, local]);
 
-    return (
-        <Button className="w-11 h-11 bg-[#179389] hover:hover:bg-teal-700" onClick={() => handleClck()}>
-            <Eraser className="w-6 h-6" />
-        </Button>
-    )
+  console.log(isPending)
+
+  return (
+    <Button
+      className={`w-11 h-11 ${isPending ? "bg-teal-700 !cursor-progress" : "bg-[#179389]"}  hover:bg-teal-700 `}
+      onClick={handleClick}
+      aria-label="Limpar busca"
+      disabled={isPending}
+    >
+      {isPending ? <Loading /> : <Eraser className="w-6 h-6" />}
+    </Button>
+  );
 }
