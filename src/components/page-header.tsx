@@ -4,7 +4,6 @@ import { ComponentPropsWithoutRef } from "react";
 import { HeaderQueryResult } from "sanity-shared/types";
 import { sanityClient } from "@/lib/sanityClient";
 import { headerQuery } from "sanity-shared/queries";
-import placeholderImageSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { urlFor } from "@/lib/sanityImage";
 import bannerFallback from "@/assets/banners/banner.png";
 import { ImageType } from "@/type";

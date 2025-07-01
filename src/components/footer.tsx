@@ -12,8 +12,13 @@ import { FooterQueryResult } from "sanity-shared/types";
 import { formatPhone } from "@/utils";
 import ResetCookieLink from "./btnResetcookie";
 
+import { urlFor } from "@/lib/sanityImage";
+import imgaePlaceHolderSquare from "@/assets/thumbs/placeholder-image-square.png"
+import Image from "next/image";
+
 export default async function Footer() {
   const footer_data: FooterQueryResult = await sanityClient.fetch(footerQuery);
+  const logo = footer_data?.logo ? urlFor(footer_data.logo).width(832).height(208).url() : imgaePlaceHolderSquare
 
   return (
     <React.Fragment>
@@ -39,8 +44,7 @@ export default async function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <div className="rounded-full flex items-center justify-center">
                 {footer_data?.logo && (
-                  <img src={footer_data.logo} alt="Logo" className="w-52" />
-                )}
+                  <Image src={logo} alt="Logo" height={832} width={208} className="w-52" />                )}
               </div>
             </div>
 

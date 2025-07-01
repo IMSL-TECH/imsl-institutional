@@ -243,11 +243,11 @@ function LeadershipBlock({ leader }: {leader:GetPersonListQueryResult[number]}) 
       <div className="flex items-center gap-2 mb-4">
         <div className="">
           <Image
-            width={50}
-            height={50}
+            width={128}
+            height={128}
             className="w-16 min-w-16 h-16 rounded-full"
             src={phone}
-            alt=""
+            alt={`foto de ${leader.name}`}
           />
         </div>
         <h3 className="!mb-0 gap-2">

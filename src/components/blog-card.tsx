@@ -22,13 +22,16 @@ export default function BlogCard({
   panelist: any;
   cardLink:string
 }) {
+  const bg = background ? urlFor(background).width(1700).height(696).url() : imagePlaceholder
+  const userImage = panelist ? urlFor(panelist).width(80).height(80).url() : userPlaceholder
+
   return (
     <div
       className={`overflow-hidden rounded-lg relative text-white ${className}`}
     >
       <a href={cardLink}>
       <Image
-        src={urlFor(background).url() || imagePlaceholder}
+        src={bg}
         alt={title || ""}
         fill
         priority
@@ -46,7 +49,7 @@ export default function BlogCard({
               fill
               priority
               className="w-full object-cover"
-              src={urlFor(panelist).url() || userPlaceholder}
+              src={userImage}
               alt={`Palestrante da palavra ${author}`}
             />
           </div>

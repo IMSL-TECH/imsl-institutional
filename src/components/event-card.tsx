@@ -13,6 +13,9 @@ import {
   limitPortableTextBlocks,
 } from "@/utils";
 
+import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png";
+import { urlFor } from "@/lib/sanityImage";
+
 interface EventCardProps {
   items: HomePageEventsQueryResult;
 }
@@ -20,7 +23,6 @@ interface EventCardProps {
 export default function EventCard({ items }: EventCardProps) {
   const [isSelect, setIsSelect] = useState(0);
 
-  // Memoizar lista de eventos processados para evitar recálculo desnecessário
   const processedItems = useMemo(() => {
     if (!items) return [];
 
@@ -29,13 +31,14 @@ export default function EventCard({ items }: EventCardProps) {
       const date = getFirstValidSession(schedule);
       const { first, last } = getEventDateRange(schedule);
       const oneDayEvent = isOneDayEvent(first?.date || "", last?.date || "");
+      const bg = background ? urlFor(background).width(740).height(422).url() : imagePlaceholderSquare
 
       return {
         title,
         limitedContent,
         address,
         schedule,
-        background,
+        background: bg,
         _id,
         date,
         oneDayEvent,

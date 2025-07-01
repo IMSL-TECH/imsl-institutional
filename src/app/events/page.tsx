@@ -96,8 +96,6 @@ function EventsItem({ eventItem }: EventsItemProps) {
   );
 }
 
-
-
 interface EventProps {
   searchParams: Promise<Record<string, string | undefined>>;
 }

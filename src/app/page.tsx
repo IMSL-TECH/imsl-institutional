@@ -39,7 +39,7 @@ export default async function Home() {
     home_events_data,
     home_sermon_data,
     home_smeds_data,
-    header_links_data
+    header_links_data,
   ]: [
     HomePageQueryResult,
     HomePageEventsQueryResult,
@@ -51,7 +51,7 @@ export default async function Home() {
     sanityClient.fetch(homePageEventsQuery),
     sanityClient.fetch(homePageSermonsQuery),
     sanityClient.fetch(homePageSmedsQuery),
-    sanityClient.fetch(headerQuery)
+    sanityClient.fetch(headerQuery),
   ]);
 
   const banner = home_data?.heroImage
@@ -184,7 +184,7 @@ const live_banner = home_data?.liveBannerImage
                 src={live_banner}
                 width={444} height={856}
                 alt="Pastor"
-                className="rounded-lg "
+                className="rounded-lg w-56 h-[428px]"
               />
             )}
           </div>

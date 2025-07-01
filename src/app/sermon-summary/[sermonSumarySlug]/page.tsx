@@ -65,14 +65,6 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
                 )}
               </div>
               <div>
-                {/* <Image
-              fill
-              priority
-              className="w-full object-cover"
-              src={urlFor(panelist).url() || userPlaceholder}
-              alt={`Palestrante da palavra ${author}`}
-            /> */}
-
                 <p className="text-sm font-medium text-gray-500">Pregador</p>
                 <p className="text-base font-semibold">
                   {speakerTitle && `${speakerTitle}`}
