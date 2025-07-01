@@ -13,6 +13,9 @@ import BackToTopButton from "@/components/back-to-top-button";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
 
+import { urlFor } from "@/lib/sanityImage";
+import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png"
+
 interface SermonSummaryPageProps {
   params: Promise<{ sermonSumarySlug: string }>;
 }
@@ -29,7 +32,7 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
   const date = formatDateBr(sermonSummaryData?.date || "");
   const speaker = sermonSummaryData?.speaker?.name;
   const speakerTitle = sermonSummaryData?.speaker?.titleAbbreviation;
-  const imageSpeaker = sermonSummaryData?.speaker?.image;
+  const imageSpeaker = sermonSummaryData?.speaker?.photo ? urlFor(sermonSummaryData?.speaker?.photo).width(96).height(96).url() : userPlaceholder
 
   return (
     <>
@@ -62,14 +65,6 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
                 )}
               </div>
               <div>
-                {/* <Image
-              fill
-              priority
-              className="w-full object-cover"
-              src={urlFor(panelist).url() || userPlaceholder}
-              alt={`Palestrante da palavra ${author}`}
-            /> */}
-
                 <p className="text-sm font-medium text-gray-500">Pregador</p>
                 <p className="text-base font-semibold">
                   {speakerTitle && `${speakerTitle}`}

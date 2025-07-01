@@ -148,7 +148,7 @@ export function formatPhone(phone: string|null|undefined): string {
   const firstPart = digits.slice(4, 9); 
   const secondPart = digits.slice(9);  
 
-  return `(${ddd})${firstPart}-${secondPart}`;
+  return `(${ddd}) ${firstPart}-${secondPart}`;
 }
 
 export function formatDateEventCard(schedule: ScheduleItem[] | null): string {

@@ -5,15 +5,63 @@ import { portableTextComponents } from "@/components/portableTextComponents";
 import Schedule from "@/components/schedule";
 import Section from "@/components/section";
 import { sanityClient } from "@/lib/sanityClient";
-import { formatPhone } from "@/utils";
+import { formatDateBr, formatPhone } from "@/utils";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
 import { findOneEventByIdQuery } from "sanity-shared/queries";
 import { FindOneEventByIdQueryResult } from "sanity-shared/types";
 
+import { urlFor } from "@/lib/sanityImage";
+import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png";
+import { MapPin } from "lucide-react";
+import WhatsApp from "@/components/icons/whatsapp";
+
 interface EventProps {
   params: Promise<{ eventId: string }>;
+}
+
+function getFirstSessionOfEarliestDay(
+  data: NonNullable<FindOneEventByIdQueryResult>["schedule"]
+): {
+  date: string | null;
+  session: {
+    title: string | null;
+    description: any;
+    starTime: string | null;
+    endTime: string | null;
+  } | null;
+} | null {
+  if (!Array.isArray(data) || data.length === 0) {
+    return null;
+  }
+
+  const sortedDays = data.sort((a, b) => {
+    const dateA = a.date ? new Date(a.date) : new Date(0);
+    const dateB = b.date ? new Date(b.date) : new Date(0);
+    return dateA.getTime() - dateB.getTime();
+  });
+
+  const firstDay = sortedDays[0];
+
+  if (!firstDay.sessions || firstDay.sessions.length === 0) {
+    return null;
+  }
+
+  const toMinutes = (time: string | null) => {
+    if (!time) return Number.MAX_SAFE_INTEGER;
+    const [h, m = "00"] = time.replace("h", ":").split(":");
+    return parseInt(h) * 60 + parseInt(m);
+  };
+
+  const sortedSessions = firstDay.sessions.sort((a, b) => {
+    return toMinutes(a.starTime) - toMinutes(b.starTime);
+  });
+
+  return {
+    date: firstDay.date,
+    session: sortedSessions[0] || null,
+  };
 }
 
 export default async function Event({ params }: EventProps) {
@@ -24,20 +72,33 @@ export default async function Event({ params }: EventProps) {
   );
 
   const {
-    title,
-    showDetailSchedule,
-    teaser,
     about,
-    schedule,
-    registrtionLink,
-    organizer,
-    speakers,
+    title,
     banner,
+    teaser,
+    address,
     subTitle,
+    speakers,
+    schedule,
+    organizer,
+    registrtionLink,
+    showDetailSchedule,
   } = event_data || {};
 
+  const address_title = address?.title;
   const phoneNumber = organizer?.phone?.number;
-  const phoneName = organizer?.phone?.name;
+  const organizer_description = organizer?.description;
+
+  const query =
+    `${address?.title} ${address?.street}, ${address?.city}, ${address?.state}, ${address?.zip}`.replace(
+      /\s/g,
+      "+"
+    );
+
+  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${query}`;
+  const first_schedule = getFirstSessionOfEarliestDay(schedule ?? []);
+  const { dd, mm, aaaa } = formatDateBr(first_schedule?.date ?? "");
+  const date = `${dd}/${mm}/${aaaa}`;
 
   return (
     <>
@@ -54,23 +115,33 @@ export default async function Event({ params }: EventProps) {
 
           <div className="w-full mt-5 p-4 rounded-2xl flex flex-col lg:flex-row gap-6">
             <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-4">
-              <div className="flex w-full p-4 bg-gray-100 rounded-lg lg:w-1/2 flex-col items-center gap-1">
+              <Link
+                href={`https://wa.me/${phoneNumber}?text=Olá, gostaria de saber mais sobre o evento: ${title}`}
+                target="_blank"
+                className="flex w-full p-4 bg-gray-100 rounded-lg lg:w-1/2 flex-col items-center gap-1"
+              >
                 <h2>Coordenação</h2>
-                <h3 className="h-9 text-gray-500">{organizer?.description}</h3>
-              </div>
-              <div className="border-t lg:border-t-0 w-2/5 lg:w-1 lg:border-l h-px lg:h-4/5" />
-              <div className="w-full lg:w-1/2 p-4 bg-gray-100 rounded-lg flex flex-col gap-1 items-center justify-center">
-                <div className="text-xl">{phoneName}</div>
-                <div className="flex w-full justify-center">
-                  <Link
-                    href={`https://wa.me/${phoneNumber}?text=Olá, gostaria de saber mais sobre o evento: ${title}`}
-                    target="_blank"
-                    className="h-9"
-                  >
-                    {formatPhone(phoneNumber)}
-                  </Link>
+                <div className="flex w-full justify-center items-center gap-2">
+                  <WhatsApp className="w-5 h-5" />
+                  <strong className="h-7 flex items-center text-gray-500">{organizer_description}</strong>
                 </div>
-              </div>
+              </Link>
+              <div className="border-t lg:border-t-0 w-2/5 lg:w-1 lg:border-l h-px lg:h-4/5" />
+              <Link
+                href={mapsLink}
+                target="_blank"
+                className="w-full lg:w-1/2 p-4 bg-gray-100 rounded-lg flex flex-col gap-1 items-center justify-center"
+              >
+                <div className="text-xl flex gap-2">
+                  <strong>{date}</strong>
+                  <span>|</span>
+                  <div>{first_schedule?.session?.starTime}</div>
+                </div>
+                <div className="flex w-full justify-center items-center gap-2">
+                  <MapPin className="w-5 h-5 shrink-0" />
+                  <span className="truncate h-7">{address_title}</span>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -120,25 +191,30 @@ export default async function Event({ params }: EventProps) {
         <Section className="flex flex-col !max-w-3xl items-center">
           <h2 className="mb-10">Palestrante</h2>
           <div className="w-full flex flex-wrap gap-10 justify-center">
-            {speakers.map(({ image, titleAbbreviation, name, title }, idx) => (
-              <div
-                key={idx}
-                className="flex max-w-[230px] flex-col items-center"
-              >
-                <Image
-                  src={image || ""}
-                  alt="Palestrante do evento"
-                  className="h-40 w-40 rounded-full mb-5"
-                  height={200}
-                  width={200}
-                />
-                <h2 className="text-center">
-                  {titleAbbreviation}
-                  {name}
-                </h2>
-                <p className="text-center">{title}</p>
-              </div>
-            ))}
+            {speakers.map(({ image, titleAbbreviation, name, title }, idx) => {
+              const userImage = image
+                ? urlFor(image).width(320).height(320).url()
+                : userPlaceholder;
+              return (
+                <div
+                  key={idx}
+                  className="flex max-w-[230px] flex-col items-center"
+                >
+                  <Image
+                    src={userImage}
+                    alt="Palestrante do evento"
+                    className="h-40 w-40 rounded-full mb-5"
+                    height={200}
+                    width={200}
+                  />
+                  <h2 className="text-center">
+                    {titleAbbreviation}
+                    {name}
+                  </h2>
+                  <p className="text-center">{title}</p>
+                </div>
+              );
+            })}
           </div>
         </Section>
       )}

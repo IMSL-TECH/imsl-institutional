@@ -11,30 +11,33 @@ import { formatPhone } from "@/utils";
 import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
 
-
 export default async function Contact() {
-
-   const contact_page_data: ContactPageQueryResult = await sanityClient.fetch(contactPageQuery)
-
+  const contact_page_data: ContactPageQueryResult =
+    await sanityClient.fetch(contactPageQuery);
 
   return (
     <>
-      <PageHeader imgSrc={contact_page_data?.bannerImage? contact_page_data.bannerImage: bannerFallback.src}>{contact_page_data?.title?contact_page_data.title:""}</PageHeader>
+      <PageHeader imgSrc={contact_page_data?.bannerImage}>
+        {contact_page_data?.title ? contact_page_data.title : ""}
+      </PageHeader>
       <Section>
         <div>
-
-          {contact_page_data?.description&&<PortableText value={contact_page_data.description} />}
-
+          {contact_page_data?.description && (
+            <PortableText value={contact_page_data.description} />
+          )}
         </div>
 
         <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
           <div>
             <h3>Onde estamos</h3>
-            
+
             <p>
-              {contact_page_data?.address?.street}, {contact_page_data?.address?.number}
+              {contact_page_data?.address?.street},{" "}
+              {contact_page_data?.address?.number}
               <br />
-              {contact_page_data?.address?.district}, {contact_page_data?.address?.city} - {contact_page_data?.address?.state}
+              {contact_page_data?.address?.district},{" "}
+              {contact_page_data?.address?.city} -{" "}
+              {contact_page_data?.address?.state}
               <br />
             </p>
           </div>
@@ -42,16 +45,19 @@ export default async function Contact() {
           <div>
             <h3>Nossos canais</h3>
             <p>
-              <a target="blank" href={contact_page_data?.DefaultSocialLink || "#"}>
+              <a
+                target="blank"
+                href={contact_page_data?.DefaultSocialLink || "#"}
+              >
                 {contact_page_data?.DefaultSocial}
-              </a>
-              {" "}
+              </a>{" "}
               <br />
               <a target="blank" href={`mailto:${contact_page_data?.email}`}>
                 {contact_page_data?.email}
               </a>{" "}
               <br />
-              Telefone: {formatPhone(contact_page_data?.phone)} | {contact_page_data?.AvailableHours}
+              Telefone: {formatPhone(contact_page_data?.phone?.number)} |{" "}
+              {contact_page_data?.AvailableHours}
             </p>
 
             <Link
@@ -68,5 +74,4 @@ export default async function Contact() {
       <BackToTopButton />
     </>
   );
-  
 }

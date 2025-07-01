@@ -9,7 +9,8 @@ import Image from "next/image";
 import { aboutPageQuery } from "sanity-shared/queries";
 import { AboutPageQueryResult, GetPersonListQueryResult } from "sanity-shared/types";
 
-import imgaePlaceHolderSquare from "@/assets/thumbs/placeholder-image-square.png"
+import imagePlaceHolderSquare from "@/assets/thumbs/placeholder-image-square.png"
+import { urlFor } from "@/lib/sanityImage";
 
 const fundamentalBeliefs = [
   {
@@ -235,16 +236,18 @@ export default async function About() {
 
 
 function LeadershipBlock({ leader }: {leader:GetPersonListQueryResult[number]}) {
+  const phone = leader?.photo ? urlFor(leader?.photo).width(256).height(256).url() : imagePlaceHolderSquare
+
   return (
     <div className="w-full lg:w-1/2">
       <div className="flex items-center gap-2 mb-4">
         <div className="">
           <Image
-            width={50}
-            height={50}
+            width={128}
+            height={128}
             className="w-16 min-w-16 h-16 rounded-full"
-            src={leader.photo || imgaePlaceHolderSquare}
-            alt=""
+            src={phone}
+            alt={`foto de ${leader.name}`}
           />
         </div>
         <h3 className="!mb-0 gap-2">

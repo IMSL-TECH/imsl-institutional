@@ -21,18 +21,18 @@ function SmedsList({
   pair: boolean;
   smedItem: GetSmedListQueryResult[number];
 }) {
+  const img = smedItem.bannerHorizontal
+    ? urlFor(smedItem.bannerHorizontal).width(1324).height(728).url()
+    : imagePlaceholderSquare;
   return (
     <Section
       background_id={smedItem._id}
-      className={`lg:min-h-[300px] flex gap-2 lg:gap-8 flex-col rounded-xl ${pair ? "lg:flex-row-reverse" : "lg:border-green-200 lg:flex-row"}`}
+      className={`flex gap-2 lg:gap-8 flex-col rounded-xl ${pair ? "lg:flex-row-reverse" : "lg:border-green-200 lg:flex-row"}`}
       backgroundColor={`py-16 ${pair ? "bg-[#0F2E2F]" : ""}`}
     >
       <div className="w-full lg:w-[53%] rounded-t-xl lg:rounded-none overflow-hidden h-[250px] lg:h-full relative">
         <Image
-          src={
-            urlFor(smedItem.bannerHorizontal).auto("format").url() ||
-            imagePlaceholderSquare
-          }
+          src={img}
           fill
           className={`object-cover rounded-none lg:rounded-xl ${pair ? "" : "border"}`}
           alt="Banner Monte Sião Linhares"
@@ -78,9 +78,7 @@ export default async function Smeds() {
 
   return (
     <>
-      <PageHeader
-        imgSrc={smeds_page_data?.bannerImage || imagePlaceholderSquare.src}
-      >
+      <PageHeader imgSrc={smeds_page_data?.bannerImage}>
         {smeds_page_data?.title}
       </PageHeader>
       <Section>

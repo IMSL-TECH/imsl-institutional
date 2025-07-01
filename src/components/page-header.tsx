@@ -4,14 +4,17 @@ import { ComponentPropsWithoutRef } from "react";
 import { HeaderQueryResult } from "sanity-shared/types";
 import { sanityClient } from "@/lib/sanityClient";
 import { headerQuery } from "sanity-shared/queries";
-import placeholderImageSquare from "@/assets/thumbs/placeholder-image-square.png"
+import { urlFor } from "@/lib/sanityImage";
+import bannerFallback from "@/assets/banners/banner.png";
+import { ImageType } from "@/type";
 
 interface Props extends ComponentPropsWithoutRef<"section"> {
-  imgSrc: string | null | undefined;
+  imgSrc: ImageType;
 }
 export default async function PageHeader({ children, imgSrc }: Props) {
 
   const header_links_data: HeaderQueryResult = (await sanityClient.fetch(headerQuery))
+  const banner = imgSrc ? urlFor(imgSrc).width(2560).height(840).url() : bannerFallback
 
   return (
     <section className="h-[60vh] relative">
@@ -20,7 +23,7 @@ export default async function PageHeader({ children, imgSrc }: Props) {
         fill
         className={`object-cover ${children && "brightness-50"}  -z-10`}
         priority
-        src={imgSrc || placeholderImageSquare }
+        src={banner}
       />
       {children && <div className="absolute h-[60vh] w-full bg-black opacity-30 -z-10"></div>}
       <p className="text-3xl md:text-5xl absolute w-full h-[60vh] top-0 font-bold text-white flex items-center justify-center">
