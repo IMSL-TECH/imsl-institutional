@@ -123,7 +123,7 @@ export default async function Event({ params }: EventProps) {
                 <h2>Coordenação</h2>
                 <div className="flex w-full justify-center items-center gap-2">
                   <WhatsApp className="w-5 h-5" />
-                  <h3 className="h-7 flex items-center text-gray-500">{organizer_description}</h3>
+                  <strong className="h-7 flex items-center text-gray-500">{organizer_description}</strong>
                 </div>
               </Link>
               <div className="border-t lg:border-t-0 w-2/5 lg:w-1 lg:border-l h-px lg:h-4/5" />
