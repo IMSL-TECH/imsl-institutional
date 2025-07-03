@@ -15,10 +15,47 @@ import Image from "next/image";
 
 import { urlFor } from "@/lib/sanityImage";
 import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png"
+import { Metadata } from "next";
 
 interface SermonSummaryPageProps {
   params: Promise<{ sermonSumarySlug: string }>;
 }
+
+export async function generateMetadata({ params }: SermonSummaryPageProps): Promise<Metadata> {
+  const res_params = await params;
+  const slug = res_params.sermonSumarySlug;
+
+  const sermonSummaryData: FindOneSermonBySlugQueryResult =
+    await sanityClient.fetch(findOneSermonBySlugQuery, { slug });
+
+  const title = sermonSummaryData?.title ?? 'Evento';
+  const image = sermonSummaryData?.background
+    ? urlFor(sermonSummaryData.background).width(740).height(422).url()
+    : '';
+  const url = `https://www.montesiaolinhares.com.br/sermon-summary/${slug}`;
+  const {dd, mm, aaaa} = formatDateBr(sermonSummaryData?.date || "");
+  const date = `${dd}/${mm}/${aaaa}`
+
+  return {
+    title: 'Igreja Monte Sião Linhares',
+    description: title,
+    openGraph: {
+      title: title,
+      description: date,
+      url,
+      type: 'website',
+      images: image ? [
+        {
+          url: image,
+          width: 740,
+          height: 422,
+          alt: 'Banner do evento',
+        },
+      ] : undefined,
+    },
+  };
+}
+
 export default async function SermonSumary({ params }: SermonSummaryPageProps) {
   const res_params = await params;
   const slug = res_params.sermonSumarySlug;

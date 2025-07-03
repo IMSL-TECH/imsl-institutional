@@ -16,9 +16,48 @@ import { urlFor } from "@/lib/sanityImage";
 import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png";
 import { MapPin } from "lucide-react";
 import WhatsApp from "@/components/icons/whatsapp";
+import { Metadata } from "next";
 
 interface EventProps {
   params: Promise<{ eventId: string }>;
+}
+
+export async function generateMetadata({ params }: EventProps): Promise<Metadata> {
+  const { eventId } = await params;
+
+  const event_data: FindOneEventByIdQueryResult = await sanityClient?.fetch(
+    findOneEventByIdQuery,
+    { id: eventId }
+  );
+
+  const first_schedule = getFirstSessionOfEarliestDay(event_data?.schedule ?? []);
+  const { dd, mm, aaaa } = formatDateBr(first_schedule?.date ?? "");
+
+  const title = event_data?.title ?? 'Evento';
+  const date = `${dd}/${mm}/${aaaa} | ${first_schedule?.session?.starTime}`;
+  const image = event_data?.banner
+    ? urlFor(event_data.banner).width(740).height(422).url()
+    : '';
+  const url = `https://www.montesiaolinhares.com.br/events/${eventId}`;
+
+  return {
+    title: 'Igreja Monte Sião Linhares',
+    description: title,
+    openGraph: {
+      title: title,
+      description: date,
+      url,
+      type: 'website',
+      images: image ? [
+        {
+          url: image,
+          width: 740,
+          height: 422,
+          alt: 'Banner do evento',
+        },
+      ] : undefined,
+    },
+  };
 }
 
 function getFirstSessionOfEarliestDay(
