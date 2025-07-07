@@ -16,6 +16,7 @@ import Image from "next/image";
 import { urlFor } from "@/lib/sanityImage";
 import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png"
 import { Metadata } from "next";
+import Share from "@/components/share";
 
 interface SermonSummaryPageProps {
   params: Promise<{ sermonSumarySlug: string }>;
@@ -127,6 +128,7 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
         )}
       </Section>
       <Footer />
+      <Share />
       <BackToTopButton />
     </>
   );
