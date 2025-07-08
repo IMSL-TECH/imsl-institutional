@@ -128,7 +128,7 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
         )}
       </Section>
       <Footer />
-      <Share />
+      <Share title={title ?? ""}/>
       <BackToTopButton />
     </>
   );
