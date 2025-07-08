@@ -17,6 +17,7 @@ import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png";
 import { MapPin } from "lucide-react";
 import WhatsApp from "@/components/icons/whatsapp";
 import { Metadata } from "next";
+import Share from "@/components/share";
 
 interface EventProps {
   params: Promise<{ eventId: string }>;
@@ -268,6 +269,7 @@ export default async function Event({ params }: EventProps) {
       )}
 
       <Footer />
+      <Share title={title ?? ""}/>
       <BackToTopButton />
     </>
   );
