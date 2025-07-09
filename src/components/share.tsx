@@ -5,11 +5,6 @@ import { Share2 } from "lucide-react";
 
 export default function Share({title}: {title: string}) {
   const site_url = typeof window !== "undefined" ? window.location.href : "";
-  const string_url = `Click no link para mais detalhes 👇
-
-${site_url}`;
-
-  const url = encodeURIComponent(string_url);
 
   const handleShare = async () => {
     if (navigator.share) {
