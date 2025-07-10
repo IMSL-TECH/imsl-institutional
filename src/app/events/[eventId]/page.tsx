@@ -231,10 +231,11 @@ export default async function Event({ params }: EventProps) {
         <Section className="flex flex-col !max-w-3xl items-center">
           <h2 className="mb-10">Palestrante</h2>
           <div className="w-full flex flex-wrap gap-10 justify-center">
-            {speakers.map(({ image, titleAbbreviation, name, title }, idx) => {
-              const userImage = image
-                ? urlFor(image).width(320).height(320).url()
+            {speakers.map(({ photo, titleAbbreviation, name }, idx) => {
+              const userImage = photo
+                ? urlFor(photo).width(320).height(320).url()
                 : userPlaceholder;
+
               return (
                 <div
                   key={idx}
@@ -251,7 +252,6 @@ export default async function Event({ params }: EventProps) {
                     {titleAbbreviation}
                     {name}
                   </h2>
-                  <p className="text-center">{title}</p>
                 </div>
               );
             })}

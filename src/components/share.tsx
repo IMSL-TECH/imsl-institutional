@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Share2 } from "lucide-react";
+import { Send } from "lucide-react";
 
 export default function Share({title}: {title: string}) {
   const site_url = typeof window !== "undefined" ? window.location.href : "";
@@ -27,9 +27,9 @@ export default function Share({title}: {title: string}) {
   return (
     <Button
       onClick={() => handleShare()}
-      className="fixed z-40 bottom-28 right-5 z-40"
+      className="fixed z-40 bottom-28 right-5 z-40 min-w-9"
     >
-      <Share2 />
+      <Send />
     </Button>
   );
 }
