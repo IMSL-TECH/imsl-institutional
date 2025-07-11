@@ -113,7 +113,7 @@ export default function Navbar({ headerData }: { headerData: HeaderQueryResult }
           >
             {/* Overlay */}
             <div
-              className="bg-black/30 w-1/5 h-full"
+              className="w-1/5 h-full"
               onClick={handleCloseMenu}
               aria-hidden="true"
             ></div>
