@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: SermonSummaryPageProps): Prom
           url: image,
           width: 740,
           height: 422,
-          alt: 'Banner do evento',
+          alt: 'Banner do Resumo da palavra',
         },
       ] : undefined,
     },
