@@ -33,6 +33,8 @@ import { urlFor } from "@/lib/sanityImage";
 import imagePlaceholder from "@/assets/thumbs/placeholder-image-square.png";
 import BlogCard from "@/components/blog-card";
 
+import Qrcode from "@/assets/qrcode/QRCODE.jpg"
+
 export default async function Home() {
   const [
     home_data,
@@ -45,7 +47,7 @@ export default async function Home() {
     HomePageEventsQueryResult,
     HomePageSermonsQueryResult,
     HomePageSmedsQueryResult,
-    HeaderQueryResult
+    HeaderQueryResult,
   ] = await Promise.all([
     sanityClient.fetch(homePageQuery),
     sanityClient.fetch(homePageEventsQuery),
@@ -55,11 +57,11 @@ export default async function Home() {
   ]);
 
   const banner = home_data?.heroImage
-  ? urlFor(home_data.heroImage).width(2560).height(1680).url()
-  : bannerFallback;
-const live_banner = home_data?.liveBannerImage
-  ? urlFor(home_data?.liveBannerImage).width(444).height(856).url()
-  : imagePlaceholder;
+    ? urlFor(home_data.heroImage).width(2560).height(1680).url()
+    : bannerFallback;
+  const live_banner = home_data?.liveBannerImage
+    ? urlFor(home_data?.liveBannerImage).width(444).height(856).url()
+    : imagePlaceholder;
 
   return (
     <section className="flex flex-col items-center">
@@ -182,7 +184,8 @@ const live_banner = home_data?.liveBannerImage
             {home_data?.liveBannerImage && (
               <Image
                 src={live_banner}
-                width={444} height={856}
+                width={444}
+                height={856}
                 alt="Pastor"
                 className="rounded-lg w-56 h-[428px]"
               />
@@ -220,7 +223,6 @@ const live_banner = home_data?.liveBannerImage
 
         <div className="grid-word-summary">
           {home_sermon_data.map((post, idx) => {
-
             return (
               <BlogCard
                 key={idx}
@@ -258,6 +260,44 @@ const live_banner = home_data?.liveBannerImage
             <Carousel items={home_smeds_data} />
           </div>
         </div>
+      </Section>
+      <Section className="flex flex-col lg:flex-row items-center gap-4 lg:gap-10">
+        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start gap-8">
+          <div className="flex flex-col items-center lg:items-start">
+            <p className="text-8xl font-bold text-[#179389]">DIZIMOS</p>
+            <p className="text-8xl mb-4">OFERTAS</p>
+            <p className="max-w-[303px] text-center lg:text-start lg:max-w-[700px]">
+              Cada um dê conforme determinou em seu coração, não com pesar ou
+              por obrigação, pois Deus ama quem dá com alegria. <strong>2 Coríntios 9:7</strong>
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <p>Chave PIX:</p>
+            <h3 className="text-[#179389]">08.405.105/0001-32</h3>
+            <p>Igreja Apostólica Monte Sião Linhares</p>
+            <p className="font-semibold text-[#179389]">SICOOB CONEXÃO</p>
+            <Link
+              href="/sermon-summary"
+              className=" h-10 w-72 px-3 mt-2 flex items-center justify-center bg-[#179389] hover:bg-teal-700 rounded-md flex items-center gap-2 text-white uppercase"
+            >
+              <p className="">Copiar chave PIX</p>{" "}
+            </Link>
+          </div>
+        </div>
+        <div className="hidden lg:flex flex-col lg:w-1/2 items-center justify-center">
+          <div className="w-96 rounded-t-lg p-8 shadow-2xl">
+            <div className="w-full aspect-square relative p-4">
+              <Image src={Qrcode} alt="Qrcode oferta monte sião" fill/>
+            </div>
+            <div className="w-full flex flex-col items-center mt-2">
+              <p className="text-center">Igreja Apostólica Monte Sião Linhares</p>{" "}
+              <p className="font-bold">SICOOB CONEXÃO</p>
+            </div>
+          </div>
+          <div className="h-6 w-96 bg-[#179389] rounded-b-lg"></div>
+        </div>
+       
       </Section>
 
       <Footer />
