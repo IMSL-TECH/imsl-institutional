@@ -33,7 +33,8 @@ import { urlFor } from "@/lib/sanityImage";
 import imagePlaceholder from "@/assets/thumbs/placeholder-image-square.png";
 import BlogCard from "@/components/blog-card";
 
-import Qrcode from "@/assets/qrcode/QRCODE.jpg"
+import Qrcode from "@/assets/qrcode/QRCODE.png"
+import { CopyButton } from "@/components/copy-button";
 
 export default async function Home() {
   const [
@@ -264,8 +265,8 @@ export default async function Home() {
       <Section className="flex flex-col lg:flex-row items-center gap-4 lg:gap-10">
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start gap-8">
           <div className="flex flex-col items-center lg:items-start">
-            <p className="text-8xl font-bold text-[#179389]">DIZIMOS</p>
-            <p className="text-8xl mb-4">OFERTAS</p>
+            <p className="text-6xl lg:text-8xl font-bold text-[#179389]">DIZIMOS</p>
+            <p className="text-6xl lg:text-8xl mb-4">OFERTAS</p>
             <p className="max-w-[303px] text-center lg:text-start lg:max-w-[700px]">
               Cada um dê conforme determinou em seu coração, não com pesar ou
               por obrigação, pois Deus ama quem dá com alegria. <strong>2 Coríntios 9:7</strong>
@@ -277,12 +278,8 @@ export default async function Home() {
             <h3 className="text-[#179389]">08.405.105/0001-32</h3>
             <p>Igreja Apostólica Monte Sião Linhares</p>
             <p className="font-semibold text-[#179389]">SICOOB CONEXÃO</p>
-            <Link
-              href="/sermon-summary"
-              className=" h-10 w-72 px-3 mt-2 flex items-center justify-center bg-[#179389] hover:bg-teal-700 rounded-md flex items-center gap-2 text-white uppercase"
-            >
-              <p className="">Copiar chave PIX</p>{" "}
-            </Link>
+            <CopyButton textToCopy="00020126360014br.gov.bcb.pix0114084051050001325204000053039865802BR5925IGREJA APOSTOLICA MONTE S6008Linhares610929907-38062290525LUML32430233167035360241763047B4A" className=" h-10 w-72 px-3 mt-2 flex items-center justify-center bg-[#179389] hover:bg-teal-700 rounded-md flex items-center gap-2 text-white uppercase">Copiar chave PIX</CopyButton>
+
           </div>
         </div>
         <div className="hidden lg:flex flex-col lg:w-1/2 items-center justify-center">
