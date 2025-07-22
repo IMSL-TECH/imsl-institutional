@@ -13,7 +13,7 @@ export default function Share({title}: {title: string}) {
       try {
         await navigator.share({
           title: title,
-          text: `Click no link para mais detalhes 👇
+          text: `🌐 Click no link para mais detalhes:
           
 `,
           url: `${site_url}${pathname}`,
