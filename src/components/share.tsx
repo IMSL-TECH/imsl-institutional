@@ -29,7 +29,7 @@ export default function Share({title}: {title: string}) {
   return (
     <Button
       onClick={() => handleShare()}
-      className="fixed z-40 bottom-28 right-5 z-40 min-w-9 w-9 h-9"
+      className="fixed z-40 bottom-28 right-5 z-40 min-w-10 w-10 h-10"
     >
       <Send />
     </Button>
