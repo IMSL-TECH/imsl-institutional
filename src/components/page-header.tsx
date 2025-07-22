@@ -15,15 +15,23 @@ export default async function PageHeader({ children, imgSrc }: Props) {
 
   const header_links_data: HeaderQueryResult = (await sanityClient.fetch(headerQuery))
   const banner = imgSrc ? urlFor(imgSrc).width(2560).height(840).url() : bannerFallback
+  const banner_mobile = imgSrc ? urlFor(imgSrc).width(750).height(800).url() : bannerFallback
 
   return (
     <section className="h-[60vh] relative">
       <Image
         alt="Banner Monte Sião Linhares"
         fill
-        className={`object-cover ${children && "brightness-50"}  -z-10`}
+        className={`object-cover ${children && "brightness-50"} hidden lg:block -z-10`}
         priority
         src={banner}
+      />
+        <Image
+        alt="Banner Monte Sião Linhares"
+        fill
+        className={`object-cover ${children && "brightness-50"}  -z-10 block lg:hidden`}
+        priority
+        src={banner_mobile}
       />
       {children && <div className="absolute h-[60vh] w-full bg-black opacity-30 -z-10"></div>}
       <p className="text-3xl md:text-5xl absolute w-full h-[60vh] top-0 font-bold text-white flex items-center justify-center">

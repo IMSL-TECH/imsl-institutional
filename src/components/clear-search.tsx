@@ -16,8 +16,6 @@ export default function ClearSearch({ local }: { local: string }) {
     });
   }, [router, local]);
 
-  console.log(isPending)
-
   return (
     <Button
       className={`w-11 h-11 ${isPending ? "bg-teal-700 !cursor-progress" : "bg-[#179389]"}  hover:bg-teal-700 `}
