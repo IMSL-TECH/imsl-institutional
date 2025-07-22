@@ -14,8 +14,8 @@ export default function Share({title}: {title: string}) {
         await navigator.share({
           title: title,
           text: `Click no link para mais detalhes 👇
-
-`,
+          
+          `,
           url: `${site_url}${pathname}`,
         });
       } catch (error) {
