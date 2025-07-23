@@ -18,6 +18,7 @@ import { MapPin } from "lucide-react";
 import WhatsApp from "@/components/icons/whatsapp";
 import { Metadata } from "next";
 import Share from "@/components/share";
+import { redirect } from "next/navigation";
 
 interface EventProps {
   params: Promise<{ eventId: string }>;
@@ -110,6 +111,10 @@ export default async function Event({ params }: EventProps) {
     findOneEventByIdQuery,
     { id: eventId }
   );
+
+  if(!event_data){
+    redirect("/events")
+  }
 
   const {
     about,

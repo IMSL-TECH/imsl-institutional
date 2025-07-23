@@ -17,6 +17,7 @@ import { urlFor } from "@/lib/sanityImage";
 import userPlaceholder from "@/assets/thumbs/placeholder-image-user.png"
 import { Metadata } from "next";
 import Share from "@/components/share";
+import { redirect } from "next/navigation";
 
 interface SermonSummaryPageProps {
   params: Promise<{ sermonSumarySlug: string }>;
@@ -63,6 +64,10 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
 
   const sermonSummaryData: FindOneSermonBySlugQueryResult =
     await sanityClient.fetch(findOneSermonBySlugQuery, { slug });
+
+    if(!sermonSummaryData){
+      redirect("/sermon-summary")
+    }
 
   const content = sermonSummaryData?.content;
   const title = sermonSummaryData?.title;
