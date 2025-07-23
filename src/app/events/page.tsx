@@ -35,17 +35,19 @@ interface EventsItemProps {
 }
 
 function EventsItem({ eventItem }: EventsItemProps) {
-  const { first,last } = getEventDateRange(eventItem.schedule);
+  const { first, last } = getEventDateRange(eventItem.schedule);
   const { dayOfWeek, mm, shortMonth, dd } = formatDateBr(first?.date || "");
   const limitedContent = limitPortableTextBlocks(
     eventItem.shortDescription,
     200
   );
 
-  const oneDayEvent = isOneDayEvent(first?.date || "",last?.date || "")
+  const oneDayEvent = isOneDayEvent(first?.date || "", last?.date || "");
 
   const eventFristSession = getFirstValidSession(eventItem.schedule);
-  const banner = eventItem.banner ? urlFor(eventItem.banner).width(740).height(422).url() : imagePlaceholderSquare
+  const banner = eventItem.banner
+    ? urlFor(eventItem.banner).width(740).height(422).url()
+    : imagePlaceholderSquare;
 
   return (
     <Link href={`/events/${eventItem._id}`}>
@@ -79,12 +81,18 @@ function EventsItem({ eventItem }: EventsItemProps) {
                   {dayOfWeek}, {dd}/{mm}
                 </span>
                 <span className="text-gray-700">
-                  {eventFristSession?.starTime} {!oneDayEvent? "" : ` - ${eventFristSession?.endTime}`} </span>
+                  {eventFristSession?.starTime}{" "}
+                  {!oneDayEvent ? "" : ` - ${eventFristSession?.endTime}`}{" "}
+                </span>
               </div>
-              <span className="bg-gray-800 text-white px-3 py-2 rounded-full text-xs flex items-center gap-1">
-                <MapPin className="w-5 h-5" />
-                <p className="truncate max-w-20">{eventItem.address}</p>
-              </span>
+              {eventItem?.address !== "Monte Sião Linhares" && (
+                <span className="bg-gray-800 text-white px-3 py-2 rounded-full text-xs flex items-center gap-1">
+                  <MapPin className="w-5 h-5" />
+                  <p className="truncate max-w-20 lg:max-w-80">
+                    {eventItem.address}
+                  </p>
+                </span>
+              )}
             </div>
             <div className="hidden lg:flex w-10 h-10 min-w-10 cursor-pointer bg-teal-500 text-white rounded-full items-center justify-center">
               <ArrowRight className="h-5 w-5" />
@@ -111,20 +119,22 @@ export default async function Event({ searchParams }: EventProps) {
 
   const { findDate = "", findTitle = "" } = await searchParams;
 
-  const filteredEvents = events_data.filter((event) => {
-    const eventDate = event?.schedule?.[0]?.date || "";
-    const titleMatch = normalizeText(event.title).includes(
-      normalizeText(findTitle)
-    );
-    const dateMatch = findDate ? eventDate === formatDate(findDate) : true;
-    return titleMatch && dateMatch;
-  })  .sort((a, b) => {
-    const afirst = getEventDateRange(a.schedule);
-    const bfirst = getEventDateRange(b.schedule);
-    const dateA = new Date(afirst.first?.date || "").getTime();
-    const dateB = new Date(bfirst.first?.date || "").getTime();
-    return  dateA - dateB; // Mais recente primeiro
-  });;
+  const filteredEvents = events_data
+    .filter((event) => {
+      const eventDate = event?.schedule?.[0]?.date || "";
+      const titleMatch = normalizeText(event.title).includes(
+        normalizeText(findTitle)
+      );
+      const dateMatch = findDate ? eventDate === formatDate(findDate) : true;
+      return titleMatch && dateMatch;
+    })
+    .sort((a, b) => {
+      const afirst = getEventDateRange(a.schedule);
+      const bfirst = getEventDateRange(b.schedule);
+      const dateA = new Date(afirst.first?.date || "").getTime();
+      const dateB = new Date(bfirst.first?.date || "").getTime();
+      return dateA - dateB; // Mais recente primeiro
+    });
 
   return (
     <>
@@ -135,7 +145,7 @@ export default async function Event({ searchParams }: EventProps) {
         <div className="flex items-center gap-2 justify-between mb-8">
           <SearchInput />
           <DatePicker />
-          <ClearSearch local="events"/>
+          <ClearSearch local="events" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
           {filteredEvents?.map((item, idx) => (
