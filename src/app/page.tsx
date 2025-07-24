@@ -277,7 +277,7 @@ export default async function Home() {
             <p>Chave PIX:</p>
             <h3 className="text-[#179389]">08.405.105/0001-32</h3>
             <p>Igreja Apostólica Monte Sião Linhares</p>
-            <p className="font-semibold text-[#179389]">SICOOB CONEXÃO</p>
+            <p className="font-semibold text-[#179389]">SICOOB</p>
             <CopyButton textToCopy="00020126360014br.gov.bcb.pix0114084051050001325204000053039865802BR5925IGREJA APOSTOLICA MONTE S6008Linhares610929907-38062290525LUML32430233167035360241763047B4A" className=" h-10 w-72 px-3 mt-2 flex items-center justify-center bg-[#179389] hover:bg-teal-700 rounded-md flex items-center gap-2 text-white uppercase">Copiar chave PIX</CopyButton>
 
           </div>
@@ -289,7 +289,7 @@ export default async function Home() {
             </div>
             <div className="w-full flex flex-col items-center mt-2">
               <p className="text-center">Igreja Apostólica Monte Sião Linhares</p>{" "}
-              <p className="font-bold">SICOOB CONEXÃO</p>
+              <p className="font-bold">SICOOB</p>
             </div>
           </div>
           <div className="h-6 w-96 bg-[#179389] rounded-b-lg"></div>
