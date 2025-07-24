@@ -85,11 +85,11 @@ function EventsItem({ eventItem }: EventsItemProps) {
                   {!oneDayEvent ? "" : ` - ${eventFristSession?.endTime}`}{" "}
                 </span>
               </div>
-              {eventItem?.address !== "Monte Sião Linhares" && (
+              {eventItem?.address?._id !== "7f82de1d-bf3a-4c7d-8e2d-ad76e20cb7cc" && (
                 <span className="bg-gray-800 text-white px-3 py-2 rounded-full text-xs flex items-center gap-1">
                   <MapPin className="w-5 h-5" />
                   <p className="truncate max-w-20 lg:max-w-80">
-                    {eventItem.address}
+                    {eventItem.address?.title}
                   </p>
                 </span>
               )}
