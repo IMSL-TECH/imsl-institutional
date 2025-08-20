@@ -25,10 +25,10 @@ export const portableTextComponents: PortableTextComponents = {
     },
   },
   block: {
-    h1: ({ children }) => <h1 className="!text-4xl font-bold my-4">{children}</h1>,
-    h2: ({ children }) => <h2 className="!text-3xl font-semibold my-3">{children}</h2>,
-    h3: ({ children }) => <h3 className="!text-2xl font-medium my-2">{children}</h3>,
-    h4: ({ children }) => <h4 className="!text-xl font-medium my-2">{children}</h4>,
+    h1: ({ children }) => <h1 className="my-4">{children}</h1>,
+    h2: ({ children }) => <h2 className="my-3">{children}</h2>,
+    h3: ({ children }) => <h3 className="my-2">{children}</h3>,
+    h4: ({ children }) => <h4 className="my-2">{children}</h4>,
     blockquote: ({ children }) => (
       <blockquote className="border-l-4 border-[#179389] pl-4 italic my-4 text-gray-700">
         {children}

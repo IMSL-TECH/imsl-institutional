@@ -143,19 +143,13 @@ export default async function Home() {
       </Section>
 
       {/* Live Transmission Section */}
-      <Section backgroundColor="bg-[#0F2E2F]" className="text-white">
-        <div className="grid-live-broadcast items-center">
-          <div className="grid-item-live-broadcast">
-            <h2 className="  w-full text-xl md:text-3xl font-bold mb-4">
-              <p className="hidden px-3 lg:flex text-center">
+      <Section backgroundColor="bg-[#0F2E2F]" className="text-white grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16">
+          <div className="flex flex-col justify-center">
+            <h1 className="w-full text-xl md:text-3xl text-center lg:text-start font-bold mb-4">
                 {home_data?.titleLive}
-              </p>
-              <p className="flex text-center justify-center lg:hidden">
-                {home_data?.titleLive}
-              </p>
-            </h2>
-            <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-7 lg:w-auto">
-              <div className=" flex flex-col justify-center gap-2">
+            </h1>
+            <div className="w-full flex items-center mb-6 lg:mb-0 flex-col justify-center lg:items-start gap-7 lg:w-auto">
+              <div className="flex items-center gap-2">
                 {home_data?.descriptionLive && (
                   <PortableText
                     components={portableTextStyle}
@@ -168,7 +162,7 @@ export default async function Home() {
                 <Link
                   href={home_data.butonLiveLink || "#"}
                   target="_blak"
-                  className="bg-[#179389] hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
+                  className="bg-[#179389] hidden whitespace-nowrap max-w-[400px] w-auto h-10 lg:w-full px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center justify-center gap-2 uppercase"
                 >
                   {home_data.buttonLiveText}{" "}
                   <ChevronRight className="h-4 w-4" />
@@ -181,36 +175,24 @@ export default async function Home() {
           {home_data?.youtubeUrl
             ? LiveStreamPlayer(home_data.youtubeUrl)
             : FakeLiveStreamPlayer()}
-          <div className="w-full grid-item-live-broadcast flex justify-end ">
-            {home_data?.liveBannerImage && (
-              <Image
-                src={live_banner}
-                width={444}
-                height={856}
-                alt="Pastor"
-                className="rounded-lg w-56 h-[428px]"
-              />
-            )}
-          </div>
 
-          <div>
+          <div className="flex justify-center w-full">
             {home_data?.butonLiveLink && (
               <Link
                 href={home_data?.butonLiveLink}
                 target="_blank"
-                className="bg-[#179389] lg:hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center gap-2 uppercase"
+                className="bg-[#179389] max-w-[400px] lg:hidden whitespace-nowrap w-full h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center justify-center gap-2 uppercase"
               >
                 {home_data.buttonLiveText} <ChevronRight className="h-4 w-4" />
               </Link>
             )}
           </div>
-        </div>
       </Section>
 
       {/* Word Summary Section */}
       <Section backgroundColor="bg-[#0F2E2F]">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">
+          <h2 className="font-bold text-white">
             Resumo da Palavra
           </h2>
           <Link
@@ -306,7 +288,7 @@ export default async function Home() {
 const portableTextStyle: PortableTextComponents = {
   list: {
     bullet: ({ children }) => (
-      <ul className="flex gap-3 flex-wrap justify-center  lg:block">
+      <ul className="flex gap-3 flex-wrap justify-center">
         {children}
       </ul>
     ),

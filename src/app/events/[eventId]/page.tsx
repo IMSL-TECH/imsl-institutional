@@ -165,7 +165,7 @@ export default async function Event({ params }: EventProps) {
                 target="_blank"
                 className="flex w-full p-4 bg-gray-100 rounded-lg lg:w-1/2 flex-col items-center gap-1"
               >
-                <h2>Coordenação</h2>
+                <h3>Coordenação</h3>
                 <div className="flex w-full justify-center items-center gap-2">
                   <WhatsApp className="w-5 h-5" />
                   <strong className="h-7 flex items-center text-gray-500">{organizer_description}</strong>

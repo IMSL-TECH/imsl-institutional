@@ -85,7 +85,7 @@ export default function EventCard({ items }: EventCardProps) {
           )}
           <div className="relative flex flex-col pt-14 justify-between min-h-52 lg:h-full z-10 text-white">
             <div className="flex flex-col gap-2">
-              <h2 className="text-xl text-start font-bold">{title}</h2>
+              <h3 className="text-xl text-start font-bold">{title}</h3>
               <div
                 className={`${
                   isSelect === idx ? "block" : "lg:hidden"
