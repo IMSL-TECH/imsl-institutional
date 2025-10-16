@@ -256,8 +256,8 @@ export default async function Home() {
                 {home_data?.titleLive}
               </p>
             </h2>
-            <div className="w-full flex lg:flex-col items-center mb-6 justify-center lg:justify-start gap-7 lg:w-auto">
-              <div className=" flex flex-col justify-center gap-2">
+            <div className="w-full flex lg:flex-col items-center lg:items-start mb-6 justify-center lg:justify-start gap-7">
+              <div className="w-full flex justify-center lg:justify-start gap-2">
                 {home_data?.descriptionLive && (
                   <PortableText
                     components={portableTextStyle}
@@ -270,7 +270,7 @@ export default async function Home() {
                 <Link
                   href={home_data.butonLiveLink || "#"}
                   target="_blak"
-                  className="bg-[#179389] hidden whitespace-nowrap w-auto h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
+                  className="bg-[#179389] hidden whitespace-nowrap w-full h-10 lg:w-36 px-4 rounded-lg hover:bg-teal-700 text-white lg:flex items-center gap-2 uppercase"
                 >
                   {home_data.buttonLiveText}{" "}
                   <ChevronRight className="h-4 w-4" />
@@ -283,7 +283,7 @@ export default async function Home() {
           {home_data?.youtubeUrl
             ? LiveStreamPlayer(home_data.youtubeUrl)
             : FakeLiveStreamPlayer()}
-          <div className="w-full grid-item-live-broadcast flex justify-end ">
+          {/* <div className="w-full grid-item-live-broadcast flex justify-end ">
             {home_data?.liveBannerImage && (
               <Image
                 src={live_banner}
@@ -293,9 +293,9 @@ export default async function Home() {
                 className="rounded-lg w-56 h-[428px]"
               />
             )}
-          </div>
+          </div> */}
 
-          <div>
+         <div>
             {home_data?.butonLiveLink && (
               <Link
                 href={home_data?.butonLiveLink}
@@ -480,7 +480,7 @@ export default async function Home() {
 const portableTextStyle: PortableTextComponents = {
   list: {
     bullet: ({ children }) => (
-      <ul className="flex gap-3 flex-wrap justify-center  lg:block">
+      <ul className="flex gap-3 flex-wrap justify-center">
         {children}
       </ul>
     ),

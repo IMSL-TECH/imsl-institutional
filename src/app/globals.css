@@ -224,8 +224,8 @@ body {
 
 .grid-live-broadcast {
   display: grid;
-  grid-template-areas: "a b b c";
-  grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+  grid-template-areas: "a a b b";
+  grid-template-columns: 1fr 1fr 1.5fr 1fr;
   gap: 8px;
 }
 
@@ -320,11 +320,11 @@ h6,
 }
 
 h1, .h1{
-  font-size: 30px;
+  font-size: 38px;
 }
 
 h2, .h2 {
-  font-size: 24px;
+  font-size: 30px;
   line-height: 1.167;
 }
 
@@ -334,6 +334,9 @@ h3, .h3 {
 }
 
 @media (max-width: 1023px) {
+  h2, .h2 {
+    font-size: 26px;
+  }
   h3, .h3 {
     font-size: 16px;
   }

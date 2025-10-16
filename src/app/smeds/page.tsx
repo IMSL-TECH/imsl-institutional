@@ -41,7 +41,7 @@ function SmedsList({
       <div
         className={`w-full lg:w-[47%] flex py-4 flex-col gap-4 justify-center ${pair ? "text-white" : ""}`}
       >
-        <h1>{smedItem.title}</h1>
+        <h2>{smedItem.title}</h2>
         <div>
           {" "}
           {smedItem.smedDescription && (
