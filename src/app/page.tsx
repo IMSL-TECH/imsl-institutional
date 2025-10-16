@@ -1,6 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Play, ChevronRight, Volume2, Pause } from "lucide-react";
+import {
+  Play,
+  ChevronRight,
+  Volume2,
+  Pause,
+  Clock,
+  Calendar,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import Menu from "@/components/menu";
@@ -33,8 +40,101 @@ import { urlFor } from "@/lib/sanityImage";
 import imagePlaceholder from "@/assets/thumbs/placeholder-image-square.png";
 import BlogCard from "@/components/blog-card";
 
-import Qrcode from "@/assets/qrcode/QRCODE.png"
+import Qrcode from "@/assets/qrcode/QRCODE.png";
 import { CopyButton } from "@/components/copy-button";
+
+type Campaign = {
+  title: string;
+  subtitle: string;
+  content: string;
+  buttonCampaignText: string;
+  buttonCampaignLink: string;
+  startDate: string;
+  endDate: string;
+  image: string;
+  campaignActive?: boolean;
+};
+
+const campaigns: Campaign[] = [
+  {
+    title: "Campanha de Outubro",
+    subtitle: "Descontos exclusivos para novos clientes",
+    content:
+      "Durante todo o mês de outubro, oferecemos 20% de desconto em todos os nossos serviços de consultoria. Aproveite esta oportunidade para otimizar a gestão do seu negócio.",
+    buttonCampaignText: "Saiba mais",
+    buttonCampaignLink: "/campanhas/outubro",
+    startDate: "2025-10-01T00:00:00Z",
+    endDate: "2025-10-15T23:59:59Z",
+    image: "/images/campanha-outubro.jpg",
+  },
+  {
+    title: "Semana da Inovação",
+    subtitle: "Soluções inteligentes para sua empresa",
+    content:
+      "Participe da Semana da Inovação e descubra como a tecnologia pode transformar o seu negócio. Inscreva-se para receber conteúdos exclusivos e ofertas especiais.",
+    buttonCampaignText: "Participar agora",
+    buttonCampaignLink: "/campanhas/inovacao",
+    startDate: "2025-10-15T00:00:00Z",
+    endDate: "2025-10-19T23:59:59Z",
+    image: "/images/semana-inovacao.jpg",
+  },
+];
+
+function getActiveCampaign(campaigns: Campaign[]): Campaign | null {
+  const now = new Date();
+
+  // 1️⃣ Verifica se existe uma campanha ativa
+  const activeCampaign = campaigns.find((campaign) => {
+    const start = new Date(campaign.startDate);
+    const end = new Date(campaign.endDate);
+    return now >= start && now <= end;
+  });
+
+  // 2️⃣ Se tiver campanha ativa, retorna com os dias desde o início
+  if (activeCampaign) {
+    const startDate = new Date(activeCampaign.startDate);
+    const diffTime = now.getTime() - startDate.getTime();
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const endDate = new Date(activeCampaign.endDate).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+
+    return {
+      ...activeCampaign,
+      startDate: `${diffDays} dia${diffDays === 1 ? "" : "s"}`,
+      endDate,
+      campaignActive: true,
+    };
+  }
+
+  // 3️⃣ Se não houver campanha ativa, pega a mais próxima de começar
+  const upcomingCampaign = campaigns
+    .filter((campaign) => new Date(campaign.startDate) > now)
+    .sort(
+      (a, b) =>
+        new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+    )[0];
+
+  // 4️⃣ Caso não haja nenhuma futura (ou seja, todas já passaram)
+  if (!upcomingCampaign) {
+    return null;
+  }
+
+  // 5️⃣ Calcula quantos dias faltam para começar a próxima
+  const startDate = new Date(upcomingCampaign.startDate).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+
+  return {
+    ...upcomingCampaign,
+    startDate,
+    campaignActive: false,
+  };
+}
 
 export default async function Home() {
   const [
@@ -56,6 +156,8 @@ export default async function Home() {
     sanityClient.fetch(homePageSmedsQuery),
     sanityClient.fetch(headerQuery),
   ]);
+
+  const filteredCampaign = getActiveCampaign(campaigns);
 
   const banner = home_data?.heroImage
     ? urlFor(home_data.heroImage).width(2560).height(1680).url()
@@ -262,14 +364,81 @@ export default async function Home() {
           </div>
         </div>
       </Section>
+      {/* Companhas Section */}
+      {filteredCampaign?.title ? (
+        <Section backgroundColor="bg-[#0F2E2F]">
+          <h2 className="text-2xl md:text-3xl font-bold text-white">
+            {filteredCampaign?.title}
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+            <div className="flex justify-center relative">
+              <Image
+                src={filteredCampaign?.image || imagePlaceholder}
+                alt={filteredCampaign?.title || "Campanha"}
+                width={540}
+                height={303}
+                className="rounded-lg max-h-80 aspect-video object-cover"
+              />
+            </div>
+            <div className="flex flex-col justify-center gap-8 text-white">
+              <div>
+                <h3 className="text-xl font-semibold mb-2">
+                  {filteredCampaign?.subtitle}
+                </h3>
+                <p className="text-justify">{filteredCampaign?.content}</p>
+              </div>
+              <div className="flex gap-10">
+                {filteredCampaign.campaignActive ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-11 h-11 bg-[#179389] rounded-lg flex items-center justify-center">
+                      <Clock />
+                    </div>
+                    <div>
+                      <p className="text-sm font-light text-gray-300">
+                        Progresso
+                      </p>
+                      <p className="text-xl font-medium">
+                        {filteredCampaign.startDate}
+                      </p>
+                    </div>
+                  </div>
+                ) : null}
+
+                <div className="flex items-center gap-2">
+                  <div className="w-11 h-11 bg-[#179389] rounded-lg flex items-center justify-center">
+                    <Calendar />
+                  </div>
+                  <div>
+                    <p className="text-sm font-light text-gray-300">{filteredCampaign.campaignActive ? "Término" : "Início"}</p>
+                    <p className="text-xl font-medium">
+                      {filteredCampaign.campaignActive ? filteredCampaign.endDate : filteredCampaign.startDate}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <Link
+                href={filteredCampaign?.buttonCampaignLink || "#"}
+                className="bg-[#179389] w-full h-10 px-4 rounded-lg hover:bg-teal-700 text-white flex items-center justify-center gap-2 uppercase"
+              >
+                {filteredCampaign?.buttonCampaignText}
+              </Link>
+            </div>
+          </div>
+        </Section>
+      ) : null}
+
+      {/* Ofertas Section */}
       <Section className="flex flex-col lg:flex-row items-center gap-4 lg:gap-10">
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start gap-8">
           <div className="flex flex-col items-center lg:items-start">
-            <p className="text-6xl lg:text-8xl font-bold text-[#179389]">DIZIMOS</p>
+            <p className="text-6xl lg:text-8xl font-bold text-[#179389]">
+              DIZIMOS
+            </p>
             <p className="text-6xl lg:text-8xl mb-4">OFERTAS</p>
             <p className="max-w-[303px] text-center lg:text-start lg:max-w-[700px]">
               Cada um dê conforme determinou em seu coração, não com pesar ou
-              por obrigação, pois Deus ama quem dá com alegria. <strong>2 Coríntios 9:7</strong>
+              por obrigação, pois Deus ama quem dá com alegria.{" "}
+              <strong>2 Coríntios 9:7</strong>
             </p>
           </div>
 
@@ -278,23 +447,28 @@ export default async function Home() {
             <h3 className="text-[#179389]">08.405.105/0001-32</h3>
             <p>Igreja Apostólica Monte Sião Linhares</p>
             <p className="font-semibold text-[#179389]">SICOOB</p>
-            <CopyButton textToCopy="00020126360014br.gov.bcb.pix0114084051050001325204000053039865802BR5925IGREJA APOSTOLICA MONTE S6008Linhares610929907-38062290525LUML32430233167035360241763047B4A" className=" h-10 w-72 px-3 mt-2 flex items-center justify-center bg-[#179389] hover:bg-teal-700 rounded-md flex items-center gap-2 text-white uppercase">Copiar chave PIX</CopyButton>
-
+            <CopyButton
+              textToCopy="00020126360014br.gov.bcb.pix0114084051050001325204000053039865802BR5925IGREJA APOSTOLICA MONTE S6008Linhares610929907-38062290525LUML32430233167035360241763047B4A"
+              className=" h-10 w-72 px-3 mt-2 flex items-center justify-center bg-[#179389] hover:bg-teal-700 rounded-md flex items-center gap-2 text-white uppercase"
+            >
+              Copiar chave PIX
+            </CopyButton>
           </div>
         </div>
         <div className="hidden lg:flex flex-col lg:w-1/2 items-center justify-center">
           <div className="w-96 rounded-t-lg p-8 shadow-2xl">
             <div className="w-full aspect-square relative p-4">
-              <Image src={Qrcode} alt="Qrcode oferta monte sião" fill/>
+              <Image src={Qrcode} alt="Qrcode oferta monte sião" fill />
             </div>
             <div className="w-full flex flex-col items-center mt-2">
-              <p className="text-center">Igreja Apostólica Monte Sião Linhares</p>{" "}
+              <p className="text-center">
+                Igreja Apostólica Monte Sião Linhares
+              </p>{" "}
               <p className="font-bold">SICOOB</p>
             </div>
           </div>
           <div className="h-6 w-96 bg-[#179389] rounded-b-lg"></div>
         </div>
-       
       </Section>
 
       <Footer />
