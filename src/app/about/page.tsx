@@ -11,6 +11,7 @@ import { AboutPageQueryResult, GetPersonListQueryResult } from "sanity-shared/ty
 
 import imagePlaceHolderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { urlFor } from "@/lib/sanityImage";
+import Fallback from "@/components/ui/fallback";
 
 const fundamentalBeliefs = [
   {
@@ -134,8 +135,22 @@ function FundamentalBeliefs({
 }
 
 export default async function About() {
-  const about_page_data: AboutPageQueryResult = await sanityClient.fetch(aboutPageQuery);
+
+  let about_page_data: AboutPageQueryResult;
+
+  try {
+    about_page_data = await sanityClient.fetch(aboutPageQuery);
+    
+  } catch (error) {
+    about_page_data = null;
+    console.error("❌ Sanity fetch failed (about page)", error);
+  }
   
+
+  if (!about_page_data) {
+    return <Fallback />;
+  }
+
   return (
     <>
       <PageHeader imgSrc={about_page_data?.bannerImage}>{about_page_data?.title}</PageHeader>
@@ -200,7 +215,6 @@ export default async function About() {
           ))}
         </div>
       </Section>
-
       <Section>
         <div>
           <h2 className="">Tomando posse da terra</h2>
@@ -217,7 +231,6 @@ export default async function About() {
           </p>
         </div>
       </Section>
-
       <Section>
         <h2 className="mb-5">Nossa Liderança.</h2>
         <div className="flex gap-10 flex-col lg:flex-row">
@@ -227,7 +240,6 @@ export default async function About() {
           ))}
         </div>
       </Section>
-
       <Footer />
       <BackToTopButton />
     </>

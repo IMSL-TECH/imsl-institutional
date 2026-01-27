@@ -106,11 +106,20 @@ function getFirstSessionOfEarliestDay(
 }
 
 export default async function Event({ params }: EventProps) {
+
   const { eventId } = await params;
-  const event_data: FindOneEventByIdQueryResult = await sanityClient.fetch(
+  let event_data: FindOneEventByIdQueryResult
+
+  try {
+      event_data = await sanityClient.fetch(
     findOneEventByIdQuery,
     { id: eventId }
   );
+    
+  } catch (error) {
+   console.error("❌ Sanity fetch failed (Event Page)", error);
+    event_data = null;
+  }
 
   if(!event_data){
     redirect("/events")

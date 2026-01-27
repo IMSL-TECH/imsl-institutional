@@ -13,6 +13,7 @@ import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png
 import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
 import { urlFor } from "@/lib/sanityImage";
+import Fallback from "@/components/ui/fallback";
 
 function SmedsList({
   pair,
@@ -68,13 +69,31 @@ function SmedsList({
 }
 
 export default async function Smeds() {
-  const [smeds_data, smeds_page_data]: [
-    GetSmedListQueryResult,
-    SmedsPageQueryResult,
-  ] = await Promise.all([
-    sanityClient.fetch(getSmedListQuery),
-    sanityClient.fetch(SmedsPageQuery),
-  ]);
+
+  let fettchError = false;
+  let smeds_data: GetSmedListQueryResult;
+  let smeds_page_data: SmedsPageQueryResult;
+
+
+  try {
+    [smeds_data, smeds_page_data] = await Promise.all([
+      sanityClient.fetch(getSmedListQuery),
+      sanityClient.fetch(SmedsPageQuery),
+    ]);
+    
+  } catch (error) {
+    console.error("❌ Sanity fetch failed (Smeds Page)", error);
+
+    fettchError = true;
+    smeds_data = [];
+    smeds_page_data = null;
+
+  }
+
+
+if (fettchError) {
+  return <Fallback />;
+} 
 
   return (
     <>

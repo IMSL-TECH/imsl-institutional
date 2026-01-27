@@ -11,6 +11,7 @@ import { sanityClient } from "@/lib/sanityClient";
 import BackToTopButton from "@/components/back-to-top-button";
 import { formatDate, normalizeText } from "@/utils";
 import ClearSearch from "@/components/clear-search";
+import Fallback from "@/components/ui/fallback";
 
 type FormatWordSummaryType = {
   item: GetResumedSermonSumaryListQueryResult[number];
@@ -45,19 +46,41 @@ export default async function WordSummary({
 }: {
   searchParams: Promise<Record<string, string | undefined>>;
 }) {
-   const [
-    sermon_list_data,
-    all_tags_data,
-    sermon_page_data
-  ]: [
-    GetResumedSermonSumaryListQueryResult,
-    GetAllTagsQueryResult,
-    SermonSummaryPageQueryResult
-  ] = await Promise.all([
-    sanityClient.fetch<GetResumedSermonSumaryListQueryResult>(getResumedSermonSumaryListQuery),
-    sanityClient.fetch<GetAllTagsQueryResult>(getAllTagsQuery),
-    sanityClient.fetch<SermonSummaryPageQueryResult>(sermonSummaryPageQuery),
-  ]);
+   
+  let fettchError = false;
+
+  let sermon_list_data: GetResumedSermonSumaryListQueryResult;
+  let all_tags_data: GetAllTagsQueryResult;
+  let sermon_page_data: SermonSummaryPageQueryResult;
+  
+
+  try {
+    [
+      sermon_list_data, 
+      all_tags_data, 
+      sermon_page_data] = await Promise.all([
+        sanityClient.fetch<GetResumedSermonSumaryListQueryResult>(getResumedSermonSumaryListQuery),
+        sanityClient.fetch<GetAllTagsQueryResult>(getAllTagsQuery),
+        sanityClient.fetch<SermonSummaryPageQueryResult>(sermonSummaryPageQuery),
+      ]);
+    
+
+  } catch (error) {
+    console.error("❌ Sanity fetch failed (Sermon Sumary Page)", error);
+
+    fettchError = true;
+
+    sermon_list_data = [];
+    all_tags_data = [];
+    sermon_page_data = null;
+
+  }
+
+  if (fettchError) {
+    return <Fallback />;
+  }
+
+
 
   
 

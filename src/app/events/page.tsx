@@ -25,10 +25,11 @@ import {
   getResumedEventListQuery,
 } from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
-import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png";
+import imagePlaceholderSquare from "@/assets/thumbs/placeholder-square.png";
 import ClearSearch from "@/components/clear-search";
 import BackToTopButton from "@/components/back-to-top-button";
 import { urlFor } from "@/lib/sanityImage";
+import Fallback from "@/components/ui/fallback";
 
 interface EventsItemProps {
   eventItem: GetResumedEventListQueryResult[number];
@@ -109,13 +110,27 @@ interface EventProps {
 }
 
 export default async function Event({ searchParams }: EventProps) {
-  const [events_page_data, events_data]: [
-    EventPageQueryResult,
-    GetResumedEventListQueryResult,
-  ] = await Promise.all([
-    sanityClient.fetch(eventPageQuery),
-    sanityClient.fetch(getResumedEventListQuery),
-  ]);
+
+
+  let fettchError = false;
+  let events_page_data: EventPageQueryResult;
+  let events_data: GetResumedEventListQueryResult;
+
+  try {
+    [events_page_data, events_data] = await Promise.all([
+      sanityClient.fetch(eventPageQuery),
+      sanityClient.fetch(getResumedEventListQuery),
+    ]);
+  } catch (error) {
+    console.error("❌ Sanity fetch failed (Events Page)", error); 
+    fettchError = true;
+    events_page_data = null;
+    events_data = [];
+  }
+  if (fettchError) {
+    return <Fallback />;
+  }
+
 
   const { findDate = "", findTitle = "" } = await searchParams;
 

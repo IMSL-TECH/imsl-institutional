@@ -10,10 +10,25 @@ import { sanityClient } from "@/lib/sanityClient";
 import { formatPhone } from "@/utils";
 import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
+import Fallback from "@/components/ui/fallback";
 
 export default async function Contact() {
-  const contact_page_data: ContactPageQueryResult =
-    await sanityClient.fetch(contactPageQuery);
+
+  let contact_page_data: ContactPageQueryResult;
+
+try {
+  contact_page_data = await sanityClient.fetch(contactPageQuery);
+  
+} catch (error) {
+  contact_page_data = null;
+  console.error("❌ Sanity fetch failed (contact page)", error);
+}
+
+
+if (!contact_page_data) {
+  return <Fallback />;
+}
+  
 
   return (
     <>

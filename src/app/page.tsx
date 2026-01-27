@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { Play, ChevronRight, Volume2, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -35,36 +35,62 @@ import BlogCard from "@/components/blog-card";
 
 import Qrcode from "@/assets/qrcode/QRCODE.png"
 import { CopyButton } from "@/components/copy-button";
+import Fallback from "@/components/ui/fallback";
+
 
 export default async function Home() {
-  const [
+
+let home_data: HomePageQueryResult | null
+let home_events_data: HomePageEventsQueryResult | null
+let home_sermon_data: HomePageSermonsQueryResult | null
+let home_smeds_data: HomePageSmedsQueryResult | null
+let header_links_data: HeaderQueryResult | null
+
+let banner: string | StaticImageData
+let live_banner: string | StaticImageData
+
+try {
+  [
     home_data,
     home_events_data,
     home_sermon_data,
     home_smeds_data,
     header_links_data,
-  ]: [
-    HomePageQueryResult,
-    HomePageEventsQueryResult,
-    HomePageSermonsQueryResult,
-    HomePageSmedsQueryResult,
-    HeaderQueryResult,
   ] = await Promise.all([
     sanityClient.fetch(homePageQuery),
     sanityClient.fetch(homePageEventsQuery),
     sanityClient.fetch(homePageSermonsQuery),
     sanityClient.fetch(homePageSmedsQuery),
     sanityClient.fetch(headerQuery),
-  ]);
+  ])
 
-  const banner = home_data?.heroImage
+ banner = home_data?.heroImage
     ? urlFor(home_data.heroImage).width(2560).height(1680).url()
     : bannerFallback;
-  const live_banner = home_data?.liveBannerImage
+  live_banner = home_data?.liveBannerImage
     ? urlFor(home_data?.liveBannerImage).width(444).height(856).url()
     : imagePlaceholder;
 
+
+} catch (err) {
+  console.error('❌ Sanity fetch failed (home)', err)
+  
+
+  //inserir dados de fallback
+  home_data = null;
+  home_events_data = null;
+  home_sermon_data = null;
+  home_smeds_data = null;
+  header_links_data = null;
+  banner = bannerFallback;
+  live_banner = imagePlaceholder;
+
+} 
+
+
   return (
+    <>  
+    {(home_data && home_events_data && home_sermon_data && home_smeds_data && header_links_data) ? 
     <section className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="h-screen w-full absolute top-0 left-0">
@@ -278,7 +304,7 @@ export default async function Home() {
             <h3 className="text-[#179389]">08.405.105/0001-32</h3>
             <p>Igreja Apostólica Monte Sião Linhares</p>
             <p className="font-semibold text-[#179389]">SICOOB</p>
-            <CopyButton textToCopy="00020126360014br.gov.bcb.pix0114084051050001325204000053039865802BR5925IGREJA APOSTOLICA MONTE S6008Linhares610929907-38062290525LUML32430233167035360241763047B4A" className=" h-10 w-72 px-3 mt-2 flex items-center justify-center bg-[#179389] hover:bg-teal-700 rounded-md flex items-center gap-2 text-white uppercase">Copiar chave PIX</CopyButton>
+            <CopyButton textToCopy="00020126360014br.gov.bcb.pix0114084051050001325204000053039865802BR5925IGREJA APOSTOLICA MONTE S6008Linhares610929907-38062290525LUML32430233167035360241763047B4A" className=" h-10 w-72 px-3 mt-2 flex items-center justify-center bg-[#179389] hover:bg-teal-700 rounded-md gap-2 text-white uppercase">Copiar chave PIX</CopyButton>
 
           </div>
         </div>
@@ -300,7 +326,10 @@ export default async function Home() {
       <Footer />
       <BackToTopButton />
     </section>
+     : <Fallback /> }
+    </>
   );
+
 }
 
 const portableTextStyle: PortableTextComponents = {

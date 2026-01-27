@@ -62,8 +62,16 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
   const res_params = await params;
   const slug = res_params.sermonSumarySlug;
 
-  const sermonSummaryData: FindOneSermonBySlugQueryResult =
-    await sanityClient.fetch(findOneSermonBySlugQuery, { slug });
+let sermonSummaryData: FindOneSermonBySlugQueryResult; 
+
+try {
+  sermonSummaryData = await sanityClient.fetch(findOneSermonBySlugQuery, { slug });
+  
+} catch (error) {
+  sermonSummaryData = null;
+  console.error("❌ Sanity fetch failed (Sermon Sumary Page)", error);
+}
+
 
     if(!sermonSummaryData){
       redirect("/sermon-summary")
