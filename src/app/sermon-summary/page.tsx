@@ -11,7 +11,7 @@ import { sanityClient } from "@/lib/sanityClient";
 import BackToTopButton from "@/components/back-to-top-button";
 import { formatDate, normalizeText } from "@/utils";
 import ClearSearch from "@/components/clear-search";
-import Fallback from "@/components/ui/fallback";
+import Fallback from "@/components/ui/FallbackPage";
 
 type FormatWordSummaryType = {
   item: GetResumedSermonSumaryListQueryResult[number];

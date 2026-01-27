@@ -10,7 +10,7 @@ import { sanityClient } from "@/lib/sanityClient";
 import { formatPhone } from "@/utils";
 import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
-import Fallback from "@/components/ui/fallback";
+import Fallback from "@/components/ui/FallbackPage";
 
 export default async function Contact() {
 

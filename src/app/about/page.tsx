@@ -11,7 +11,8 @@ import { AboutPageQueryResult, GetPersonListQueryResult } from "sanity-shared/ty
 
 import imagePlaceHolderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { urlFor } from "@/lib/sanityImage";
-import Fallback from "@/components/ui/fallback";
+import Fallback from "@/components/ui/FallbackPage";
+
 
 const fundamentalBeliefs = [
   {

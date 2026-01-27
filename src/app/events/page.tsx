@@ -25,11 +25,11 @@ import {
   getResumedEventListQuery,
 } from "sanity-shared/queries";
 import { sanityClient } from "@/lib/sanityClient";
-import imagePlaceholderSquare from "@/assets/thumbs/placeholder-square.png";
+import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import ClearSearch from "@/components/clear-search";
 import BackToTopButton from "@/components/back-to-top-button";
 import { urlFor } from "@/lib/sanityImage";
-import Fallback from "@/components/ui/fallback";
+import Fallback from "@/components/ui/FallbackPage";
 
 interface EventsItemProps {
   eventItem: GetResumedEventListQueryResult[number];

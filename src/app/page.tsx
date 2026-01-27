@@ -35,7 +35,7 @@ import BlogCard from "@/components/blog-card";
 
 import Qrcode from "@/assets/qrcode/QRCODE.png"
 import { CopyButton } from "@/components/copy-button";
-import Fallback from "@/components/ui/fallback";
+import Fallback from "@/components/ui/FallbackPage";
 
 
 export default async function Home() {

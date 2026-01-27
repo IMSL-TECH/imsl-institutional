@@ -13,7 +13,7 @@ import imagePlaceholderSquare from "@/assets/thumbs/placeholder-image-square.png
 import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
 import { urlFor } from "@/lib/sanityImage";
-import Fallback from "@/components/ui/fallback";
+import Fallback from "@/components/ui/FallbackPage";
 
 function SmedsList({
   pair,
