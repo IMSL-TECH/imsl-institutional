@@ -14,6 +14,9 @@ import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
 import { urlFor } from "@/lib/sanityImage";
 import Fallback from "@/components/ui/FallbackPage";
+import Fallback_smeds_data from "@/lib/fallbackdata/getSmedListQuery.json"
+import Fallback_smeds_page_data from "@/lib/fallbackdata/SmedsPageQuery.json"
+
 
 function SmedsList({
   pair,
@@ -70,28 +73,27 @@ function SmedsList({
 
 export default async function Smeds() {
 
-  let fettchError = false;
+ 
   let smeds_data: GetSmedListQueryResult;
   let smeds_page_data: SmedsPageQueryResult;
 
 
   try {
     [smeds_data, smeds_page_data] = await Promise.all([
-      sanityClient.fetch(getSmedListQuery),
-      sanityClient.fetch(SmedsPageQuery),
+      sanityClient.fetch(getSmedListQuery,{},{next:{tags:["smed"]}}),
+      sanityClient.fetch(SmedsPageQuery,{},{next:{tags:["ourSmedsPage"]}}),
     ]);
     
   } catch (error) {
     console.error("❌ Sanity fetch failed (Smeds Page)", error);
 
-    fettchError = true;
-    smeds_data = [];
-    smeds_page_data = null;
+    smeds_data = Fallback_smeds_data as unknown as GetSmedListQueryResult;
+    smeds_page_data = Fallback_smeds_page_data as unknown as SmedsPageQueryResult;
 
   }
 
 
-if (fettchError) {
+if (smeds_data.length === 0 || !smeds_page_data) {
   return <Fallback />;
 } 
 

@@ -1,4 +1,4 @@
-import bannerFallback from "@/assets/header-bgs/header-br-template.jpg";
+
 import Section from "@/components/section";
 import PageHeader from "@/components/page-header";
 import Footer from "@/components/footer";
@@ -12,15 +12,17 @@ import { PortableText } from "@portabletext/react";
 import BackToTopButton from "@/components/back-to-top-button";
 import Fallback from "@/components/ui/FallbackPage";
 
+import FallbackContactPage from "@/lib/fallbackdata/contactPageQuery.json";
+
 export default async function Contact() {
 
   let contact_page_data: ContactPageQueryResult;
 
 try {
-  contact_page_data = await sanityClient.fetch(contactPageQuery);
+  contact_page_data = await sanityClient.fetch(contactPageQuery,{},{next:{tags:["contactPage"]}});
   
 } catch (error) {
-  contact_page_data = null;
+  contact_page_data = FallbackContactPage as unknown as ContactPageQueryResult;
   console.error("❌ Sanity fetch failed (contact page)", error);
 }
 

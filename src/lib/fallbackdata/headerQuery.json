@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "label": "Home",
+      "link": "/"
+    },
+    {
+      "label": "Sobre",
+      "link": "/about"
+    },
+    {
+      "label": "SMEDS",
+      "link": "/smeds"
+    },
+    {
+      "label": "Contato",
+      "link": "/contact"
+    }
+  ]
+}

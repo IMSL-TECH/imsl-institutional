@@ -1,0 +1,110 @@
+[
+  {
+    "_id": "c97c8705-22ab-4f59-a51c-b885bd2e5bc8",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7866197df50994be3e4dd5e347422123f439a0d1-3024x4032-jpg",
+        "_type": "reference"
+      }
+    },
+    "title": "Intercessão"
+  },
+  {
+    "_id": "5a758706-b9c7-4a13-a756-a17bcff550f8",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-db1113b854006c0aa4521a42f04770c87e90f24d-3024x4032-jpg",
+        "_type": "reference"
+      }
+    },
+    "title": "Cura Interior"
+  },
+  {
+    "_id": "19ee54dd-4f6b-48de-a402-d1d215355f11",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7270c6a2a20ca12558cd60e00e485095d4898751-3024x4032-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.3587231883967452,
+        "width": 0.45887009100925463,
+        "x": 0.49551568197880386,
+        "y": 0.35425555779590995
+      }
+    },
+    "title": "Infantil"
+  },
+  {
+    "_id": "371a638f-5f60-4d00-988f-5ab9bcffe478",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e3ad06a4c60c88a9c0533a60c146473e372671eb-477x757-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.15515662904979424,
+        "left": 0.007657688115664961,
+        "right": 0.23488977256925964,
+        "top": 0.11173788589476777
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.19551620808310255,
+        "width": 0.3139075292283044,
+        "x": 0.37572011512572745,
+        "y": 0.7470852669086545
+      }
+    },
+    "title": "Homens e Mulheres"
+  },
+  {
+    "_id": "9bc7e9b5-671d-4211-b66c-b0f54e11f5f1",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e75d1bed2a16f5b0b3d7594aad5bc32851c98bc9-3024x4032-jpg",
+        "_type": "reference"
+      }
+    },
+    "title": "Casais"
+  },
+  {
+    "_id": "e28e7d65-3ddf-4806-b8ae-4a255dc0cc59",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-a584579bf3af1d4e3ba2d4f7b75a15e34601c20f-772x1030-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.15696494716335757,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.3048696907833459,
+        "width": 0.43754773208528225,
+        "x": 0.4970085094355673,
+        "y": 0.27127963131128585
+      }
+    },
+    "title": "Jovens"
+  }
+]

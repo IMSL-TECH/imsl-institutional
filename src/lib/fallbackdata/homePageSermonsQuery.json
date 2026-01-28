@@ -1,0 +1,220 @@
+[
+  {
+    "_id": "461e21cc-ee22-4e2f-aea5-d980f640aeb2",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-46e6ab4aaa636cd6ee7f38f3101ad041a59b946f-1280x853-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2025-07-27",
+    "slug": "o-sacrificio-aceitavel-e-o-coracao-de-caim",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "title": " O Sacrifício Aceitável e o Coração de Caim"
+  },
+  {
+    "_id": "ec041775-f3b0-4c11-9e12-0149f3ecbef7",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-a5539268cd414ffa6e6e640c49837cb464107d55-1280x853-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2025-06-08",
+    "slug": "permanecendo-na-alianca",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "title": "Perseverança e Aliança"
+  },
+  {
+    "_id": "99ce5b4a-ee21-45f4-835c-57c9b0a64a0d",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-90835fae23def5a777e1902078ad9f7ddd3d91cc-1280x853-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.39333113822284016,
+        "width": 0.3045781178795218,
+        "x": 0.5187986421072148,
+        "y": 0.49551615243769387
+      }
+    },
+    "date": "2025-05-18",
+    "slug": "permanecendo-firme-na-alianca-com-deus",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "title": "Permanecendo Firme na Aliança com Deus"
+  },
+  {
+    "_id": "12741e9d-6352-4a3d-ae32-4a7dcc74f1d7",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-79135f1af9d022c6dbb2183cad83eb0659d5710d-1280x853-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2025-05-11",
+    "slug": "aplainando-o-caminho-para-a-gloria-de-deus",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "title": "Aplainando o Caminho para a Glória de Deus"
+  },
+  {
+    "_id": "8c79951d-7d01-40ba-a4f9-f9f49d2ab581",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-c607570b4bc093c7a4ab2c55ac95250ba256f4e5-1280x820-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0.004610563090135758
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.5569238799658424,
+        "width": 0.3664400251589558,
+        "x": 0.37124807211554156,
+        "y": 0.3887407128404837
+      }
+    },
+    "date": "2025-04-20",
+    "slug": "a-forca-da-conexao-com-deus-em-meio-as-provacoe",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "title": "A Força da Conexão com Deus em Meio às Provaçõe"
+  }
+]

@@ -31,6 +31,10 @@ import BackToTopButton from "@/components/back-to-top-button";
 import { urlFor } from "@/lib/sanityImage";
 import Fallback from "@/components/ui/FallbackPage";
 
+
+import Fallback_events_page_data from "@/lib/fallbackdata/eventPageQuery.json"
+import Fallback_events_data from "@/lib/fallbackdata/getResumedEventListQuery.json"
+
 interface EventsItemProps {
   eventItem: GetResumedEventListQueryResult[number];
 }
@@ -111,23 +115,21 @@ interface EventProps {
 
 export default async function Event({ searchParams }: EventProps) {
 
-
-  let fettchError = false;
   let events_page_data: EventPageQueryResult;
   let events_data: GetResumedEventListQueryResult;
 
   try {
     [events_page_data, events_data] = await Promise.all([
-      sanityClient.fetch(eventPageQuery),
-      sanityClient.fetch(getResumedEventListQuery),
+      sanityClient.fetch(eventPageQuery,{},{next:{tags:["eventsPage"]}}),
+      sanityClient.fetch(getResumedEventListQuery,{},{next:{tags:["event"]}}),
     ]);
   } catch (error) {
     console.error("❌ Sanity fetch failed (Events Page)", error); 
-    fettchError = true;
-    events_page_data = null;
-    events_data = [];
+
+    events_page_data = Fallback_events_page_data as unknown as EventPageQueryResult;
+    events_data = Fallback_events_data as unknown as GetResumedEventListQueryResult;
   }
-  if (fettchError) {
+  if (events_data.length === 0 || !events_page_data) {
     return <Fallback />;
   }
 

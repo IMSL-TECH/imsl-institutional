@@ -1,0 +1,116 @@
+{
+  "_id": "aboutPage",
+  "bannerImage": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-abe8cce68ac5ad538f59977071e28a13157c44b2-1920x1245-webp",
+      "_type": "reference"
+    },
+    "crop": {
+      "_type": "sanity.imageCrop",
+      "bottom": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0
+    },
+    "hotspot": {
+      "_type": "sanity.imageHotspot",
+      "height": 0.3223223321632273,
+      "width": 0.21490443164560952,
+      "x": 0.5673775939054054,
+      "y": 0.43900916500279924
+    }
+  },
+  "leadership": [
+    {
+      "_id": "299ce82a-9930-4474-8d5b-c0303cfbdba9",
+      "bio": [
+        {
+          "_key": "13f43e2974b5",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "b50500414d62",
+              "_type": "span",
+              "marks": [],
+              "text": "É pastor, palestrante e escritor com mais de 60 títulos lançados em livros, lives e DVDs. Sendo ministro de Cura Interior desde 1991, foi Treinado pelo Ministério REVER MAPI/SEPAL com certificação em Mestre em Cura interior. É pastor Sênior da Igreja Monte Sião de Linhares desde o ano 2000. É presidente do Ministério Bálsamo de Gileade, um ministério que presta assessoria a pastores, igrejas e comunidades, levantando e treinando ministérios de apoio emocional e espiritual, em vários estados do Brasil. O Pr. Jucimar Ramos é casado com a Pra. Berenice e tem dois filhos Marcos e Mhayza. Para saber mais: "
+            },
+            {
+              "_key": "b51a828539ea",
+              "_type": "span",
+              "marks": [
+                "4d80ef2be846",
+                "strong"
+              ],
+              "text": "@prjucimarramos"
+            }
+          ],
+          "markDefs": [
+            {
+              "_key": "4d80ef2be846",
+              "_type": "link",
+              "href": "https://instagram.com/prjucimarramos"
+            }
+          ],
+          "style": "normal"
+        }
+      ],
+      "birthDate": null,
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "title": "Pastor Sênior",
+      "titleAbbreviation": "Pr."
+    },
+    {
+      "_id": "efe96ade-0db0-4adb-904d-20922ed6c22a",
+      "bio": [
+        {
+          "_key": "4b6c0fd53fed",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "90073d8ab39a",
+              "_type": "span",
+              "marks": [],
+              "text": "Pastora, palestrante e ministra de cura interior, a pastora Berê, carinhosamente chamada por seus discípulos, cuida da igreja local e lidera diretamente o ministério de mulheres da igreja, trabalhando assuntos importantes para este tempo, como feminilidade, autocuidado, paternidade etc. Auxilia o pastor Jucimar no Ministério Bálsamo de Gileade e é formada em Assistência Social. Casada com o pastor Jucimar, tem dois filhos, Mhayza e Marcos, casado com Bruna, pais da Karen, sua netinha."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        }
+      ],
+      "birthDate": "1974-06-10",
+      "name": "Berenice Peres Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-19a86cb562bcf9c46476d1bc946869646fb9b2b7-1080x1080-webp",
+          "_type": "reference"
+        }
+      },
+      "title": "Pastora Sênior",
+      "titleAbbreviation": "Pra."
+    }
+  ],
+  "title": "Nossa Identidade"
+}

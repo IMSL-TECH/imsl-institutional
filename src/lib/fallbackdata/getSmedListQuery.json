@@ -1,0 +1,380 @@
+[
+  {
+    "_id": "c97c8705-22ab-4f59-a51c-b885bd2e5bc8",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7866197df50994be3e4dd5e347422123f439a0d1-3024x4032-jpg",
+        "_type": "reference"
+      }
+    },
+    "bannerHorizontal": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7866197df50994be3e4dd5e347422123f439a0d1-3024x4032-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.24446459666710532,
+        "left": 0,
+        "right": 0,
+        "top": 0.08072019219793367
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.17945853799078665,
+        "width": 0.21228799766762238,
+        "x": 0.36907196474987175,
+        "y": 0.35585736429456816
+      }
+    },
+    "smedButton": {
+      "contentButton": "Saber mais",
+      "linktButton": "https://chat.whatsapp.com/E58N7BKIQH4CeKSGdc2xvV"
+    },
+    "smedDescription": [
+      {
+        "_key": "b6b1c0393980",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "2cbfffd4663e",
+            "_type": "span",
+            "marks": [],
+            "text": "Nossa missão é formar discípulos que crescem em intimidade com Deus por meio da oração, adoração e compreensão do mundo espiritual. Nosso objetivo é desenvolver intercessores comprometidos, conscientes de seu papel no Corpo de Cristo e preparados para atuar com maturidade e discernimento, tanto no secreto quanto nas frentes ministeriais da igreja."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Intercessão"
+  },
+  {
+    "_id": "5a758706-b9c7-4a13-a756-a17bcff550f8",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-db1113b854006c0aa4521a42f04770c87e90f24d-3024x4032-jpg",
+        "_type": "reference"
+      }
+    },
+    "bannerHorizontal": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-db1113b854006c0aa4521a42f04770c87e90f24d-3024x4032-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.3206384058016273,
+        "left": 0,
+        "right": 0,
+        "top": 0.06950897598637093
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.37217668206427595,
+        "width": 0.46783963942560836,
+        "x": 0.5328865194453751,
+        "y": 0.36098196249311904
+      }
+    },
+    "smedButton": {
+      "contentButton": "Saber mais",
+      "linktButton": "https://chat.whatsapp.com/9PCb3oU4vWkKmSCOBAzgqA"
+    },
+    "smedDescription": [
+      {
+        "_key": "efe8c07d132d",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "2344ba651280",
+            "_type": "span",
+            "marks": [],
+            "text": "Nossa missão é promover um ambiente seguro e terapêutico, onde cada discípulo pode reconhecer suas feridas, ser restaurado em sua identidade e crescer em liberdade. Usando ferramentas do Programa de Cura do Ministério Bálsamo de Gileade, aprendemos a cuidar uns dos outros, e enquanto somos tratados, também nos tornamos instrumentos de cuidado, construindo juntos uma comunidade que cresce em amor, verdade e equilíbrio."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Cura Interior"
+  },
+  {
+    "_id": "19ee54dd-4f6b-48de-a402-d1d215355f11",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7270c6a2a20ca12558cd60e00e485095d4898751-3024x4032-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.3587231883967452,
+        "width": 0.45887009100925463,
+        "x": 0.49551568197880386,
+        "y": 0.35425555779590995
+      }
+    },
+    "bannerHorizontal": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7270c6a2a20ca12558cd60e00e485095d4898751-3024x4032-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.37669405918874554,
+        "left": 0,
+        "right": 0,
+        "top": 0.11435358423020459
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.18828610630949108,
+        "width": 0.250842759926768,
+        "x": 0.4769325634355171,
+        "y": 0.3299012203208039
+      }
+    },
+    "smedButton": {
+      "contentButton": "Saber mais",
+      "linktButton": "https://chat.whatsapp.com/DkBt3XIkaIU5GjnKPhELay"
+    },
+    "smedDescription": [
+      {
+        "_key": "04734b76434e",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "e23df86a605b",
+            "_type": "span",
+            "marks": [
+              "strong"
+            ],
+            "text": "“Ensina a criança no caminho em que deve andar, e ainda quando for velho não se desviará dele.” "
+          },
+          {
+            "_key": "4d6cf4d7c0ec",
+            "_type": "span",
+            "marks": [
+              "em"
+            ],
+            "text": "Provérbios 22:6"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "947716763964",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "49699122692b",
+            "_type": "span",
+            "marks": [],
+            "text": "Nosso desejo é criar um ambiente onde sejamos guiados pelo Espírito Santo, para que, por meio da nossa própria vida e testemunho, possamos ser exemplos vivos do caminho que ensinamos. Acreditamos que é nosso papel ser ferramenta nas mãos de Deus para que a nova geração cresça no caminho da fé e não se desvie."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Infantil"
+  },
+  {
+    "_id": "371a638f-5f60-4d00-988f-5ab9bcffe478",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e3ad06a4c60c88a9c0533a60c146473e372671eb-477x757-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.15515662904979424,
+        "left": 0.007657688115664961,
+        "right": 0.23488977256925964,
+        "top": 0.11173788589476777
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.19551620808310255,
+        "width": 0.3139075292283044,
+        "x": 0.37572011512572745,
+        "y": 0.7470852669086545
+      }
+    },
+    "bannerHorizontal": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e3ad06a4c60c88a9c0533a60c146473e372671eb-477x757-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.18734749298696113,
+        "left": 0,
+        "right": 0.007811114294915877,
+        "top": 0.16209555598113212
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.19866242225105255,
+        "width": 0.33710756122730967,
+        "x": 0.3896919246398705,
+        "y": 0.32627150776119895
+      }
+    },
+    "smedButton": {
+      "contentButton": "Saber mais",
+      "linktButton": "https://chat.whatsapp.com/HSK5PNCgwbvI3KUqqWlWRu"
+    },
+    "smedDescription": [
+      {
+        "_key": "ff150e8aaeb1",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "cd01718ccb21",
+            "_type": "span",
+            "marks": [],
+            "text": "Queremos gerar discípulos conscientes de sua missão no Corpo de Cristo e na sociedade. Buscamos desenvolver maturidade, caráter e sensibilidade espiritual em homens e mulheres que desejam servir com propósito. O foco é o crescimento integral — espiritual, emocional e prático — para que cada um esteja preparado para agir com responsabilidade em sua família, na igreja e nas ações sociais que impactam a comunidade."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Homens e Mulheres"
+  },
+  {
+    "_id": "9bc7e9b5-671d-4211-b66c-b0f54e11f5f1",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e75d1bed2a16f5b0b3d7594aad5bc32851c98bc9-3024x4032-jpg",
+        "_type": "reference"
+      }
+    },
+    "bannerHorizontal": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e75d1bed2a16f5b0b3d7594aad5bc32851c98bc9-3024x4032-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.26811679619128487,
+        "left": 0,
+        "right": 0,
+        "top": 0.013453322599252734
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.20848235396633036,
+        "width": 0.2929629271864382,
+        "x": 0.46953417267765396,
+        "y": 0.2888901926791059
+      }
+    },
+    "smedButton": {
+      "contentButton": "Saber mais",
+      "linktButton": "https://chat.whatsapp.com/EBDv4jvELKnKtRsW165vl1"
+    },
+    "smedDescription": [
+      {
+        "_key": "77d105400708",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "be43ff549cd5",
+            "_type": "span",
+            "marks": [],
+            "text": "Discipulado que tem como foco o crescimento pessoal de cada cônjuge como caminho para fortalecer o relacionamento conjugal. Acreditamos que quando cada um é tratado, curado e amadurecido em Cristo, o casamento se torna um reflexo desse processo, mais saudável, equilibrado e cheio de propósito. Afinal, lares fortes formam famílias saudáveis, e a família é o alicerce de uma sociedade transformada."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Casais"
+  },
+  {
+    "_id": "e28e7d65-3ddf-4806-b8ae-4a255dc0cc59",
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-a584579bf3af1d4e3ba2d4f7b75a15e34601c20f-772x1030-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.15696494716335757,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.3048696907833459,
+        "width": 0.43754773208528225,
+        "x": 0.4970085094355673,
+        "y": 0.27127963131128585
+      }
+    },
+    "bannerHorizontal": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-a584579bf3af1d4e3ba2d4f7b75a15e34601c20f-772x1030-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.5071246931678989,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.17735330652627568,
+        "width": 0.2648580303815665,
+        "x": 0.570500343574563,
+        "y": 0.2349554918142142
+      }
+    },
+    "smedButton": {
+      "contentButton": "Conheça nossa galera!",
+      "linktButton": "https://chat.whatsapp.com/CVsOATFQxxsKn9MhOH6xt4"
+    },
+    "smedDescription": [
+      {
+        "_key": "6dc391bd2898",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "22d74fc08052",
+            "_type": "span",
+            "marks": [],
+            "text": "Nós cremos que fomos chamados para  viver a fé de verdade e ser luz onde estivermos. Aqui, o foco é ajudar cada jovem a se conhecer melhor, crescer emocionalmente e fortalecer sua relação com Deus, para que possa enfrentar os desafios da vida com coragem e propósito. Acreditamos que Deus quer usar cada jovem para transformar seu ambiente, seja na escola, no trabalho, na família ou entre os amigos. "
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Jovens"
+  }
+]

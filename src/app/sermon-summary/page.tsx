@@ -59,9 +59,9 @@ export default async function WordSummary({
       sermon_list_data, 
       all_tags_data, 
       sermon_page_data] = await Promise.all([
-        sanityClient.fetch<GetResumedSermonSumaryListQueryResult>(getResumedSermonSumaryListQuery),
-        sanityClient.fetch<GetAllTagsQueryResult>(getAllTagsQuery),
-        sanityClient.fetch<SermonSummaryPageQueryResult>(sermonSummaryPageQuery),
+        sanityClient.fetch<GetResumedSermonSumaryListQueryResult>(getResumedSermonSumaryListQuery,{},{next:{tags:["sermonSummary"]}}),
+        sanityClient.fetch<GetAllTagsQueryResult>(getAllTagsQuery,{},{next:{tags:["sermonTag"]}}),
+        sanityClient.fetch<SermonSummaryPageQueryResult>(sermonSummaryPageQuery,{},{next:{tags:["sermonSummaryPage"]}}),
       ]);
     
 

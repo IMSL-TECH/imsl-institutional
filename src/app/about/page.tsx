@@ -12,7 +12,7 @@ import { AboutPageQueryResult, GetPersonListQueryResult } from "sanity-shared/ty
 import imagePlaceHolderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import { urlFor } from "@/lib/sanityImage";
 import Fallback from "@/components/ui/FallbackPage";
-
+import  FallbackAboutPageData  from "@/lib/fallbackData/aboutPageQuery.json";
 
 const fundamentalBeliefs = [
   {
@@ -140,10 +140,10 @@ export default async function About() {
   let about_page_data: AboutPageQueryResult;
 
   try {
-    about_page_data = await sanityClient.fetch(aboutPageQuery);
+    about_page_data = await sanityClient.fetch(aboutPageQuery,{},{next:{tags:["aboutPage"]}});
     
   } catch (error) {
-    about_page_data = null;
+    about_page_data = FallbackAboutPageData as AboutPageQueryResult;
     console.error("❌ Sanity fetch failed (about page)", error);
   }
   
@@ -249,6 +249,7 @@ export default async function About() {
 
 
 function LeadershipBlock({ leader }: {leader:GetPersonListQueryResult[number]}) {
+
   const phone = leader?.photo ? urlFor(leader?.photo).width(256).height(256).url() : imagePlaceHolderSquare
 
   return (

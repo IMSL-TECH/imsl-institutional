@@ -1,0 +1,43 @@
+{
+  "address": {
+    "city": "Linhares",
+    "district": "Três Barras",
+    "number": "3593",
+    "state": "ES",
+    "street": "Avenida Prefeito Samuel Batista Cruz",
+    "zip": "29907-380"
+  },
+  "helpPhone": "5527995280013",
+  "helpTitle": "Você precisa de ajuda?",
+  "locationTitle": "Localização:",
+  "logo": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-ffeb8a8d4a1a50ae642f3ed1e22b151c8913a349-295x73-webp",
+      "_type": "reference"
+    }
+  },
+  "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.812928913682!2d-40.069291117142!3d-19.377251177287768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb625d90ec2124f%3A0x1acfd1d9b825f1a6!2sIgreja%20Monte%20Si%C3%A3o%20Linhares!5e0!3m2!1spt-BR!2sbr!4v1741886781973!5m2!1spt-BR!2sbr",
+  "programmingText": "Culto aos domingos 18h",
+  "programmingTitle": "Programação fixa:",
+  "socialLinks": [
+    {
+      "_key": "a0ef8a80-5e5c-4f8d-8db9-857c441bbff6",
+      "icon": "https://cdn.sanity.io/images/129trp1f/production/cdcae5efc60d9a17d5a08f1ddddf9f9878be7682-98x98.png",
+      "plataform": "instagram",
+      "url": "https://www.instagram.com/montesiaolinhares"
+    },
+    {
+      "_key": "b6b96412-852c-4f62-8424-55db784625ad",
+      "icon": "https://cdn.sanity.io/images/129trp1f/production/cf787d52e2084a6335727fc70cb10e05d5a692b1-64x64.png",
+      "plataform": "youtube",
+      "url": "https://www.youtube.com/c/MonteSi%C3%A3oLinhares"
+    },
+    {
+      "_key": "1839fd52-9bd3-421e-9532-e5435f3519de",
+      "icon": "https://cdn.sanity.io/images/129trp1f/production/80b9163c06b977e3ba9c40b09d541a7d42067743-64x64.png",
+      "plataform": "facebook",
+      "url": "https://www.facebook.com/montesiao.linhares/"
+    }
+  ]
+}

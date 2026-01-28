@@ -1,0 +1,294 @@
+[
+  {
+    "_id": "236f20af-965d-4f78-812d-c8404e09a162",
+    "bio": null,
+    "birthDate": null,
+    "name": "Isaías da Silva",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-657dd135c72a8f2baec7c2ae22ab0f1487ca564a-566x590-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.3848580977923015,
+        "left": 0.24299684837252056,
+        "right": 0.2590441037543978,
+        "top": 0.13415058728018991
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.19063780070873507,
+        "width": 0.20533442614369338,
+        "x": 0.49006751421351746,
+        "y": 0.2706501674855212
+      }
+    },
+    "title": "Pastor",
+    "titleAbbreviation": "Pr."
+  },
+  {
+    "_id": "299ce82a-9930-4474-8d5b-c0303cfbdba9",
+    "bio": [
+      {
+        "_key": "13f43e2974b5",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "b50500414d62",
+            "_type": "span",
+            "marks": [],
+            "text": "É pastor, palestrante e escritor com mais de 60 títulos lançados em livros, lives e DVDs. Sendo ministro de Cura Interior desde 1991, foi Treinado pelo Ministério REVER MAPI/SEPAL com certificação em Mestre em Cura interior. É pastor Sênior da Igreja Monte Sião de Linhares desde o ano 2000. É presidente do Ministério Bálsamo de Gileade, um ministério que presta assessoria a pastores, igrejas e comunidades, levantando e treinando ministérios de apoio emocional e espiritual, em vários estados do Brasil. O Pr. Jucimar Ramos é casado com a Pra. Berenice e tem dois filhos Marcos e Mhayza. Para saber mais: "
+          },
+          {
+            "_key": "b51a828539ea",
+            "_type": "span",
+            "marks": [
+              "4d80ef2be846",
+              "strong"
+            ],
+            "text": "@prjucimarramos"
+          }
+        ],
+        "markDefs": [
+          {
+            "_key": "4d80ef2be846",
+            "_type": "link",
+            "href": "https://instagram.com/prjucimarramos"
+          }
+        ],
+        "style": "normal"
+      }
+    ],
+    "birthDate": null,
+    "name": "Jucimar Ramos",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.17013912363641112,
+        "left": 0.12337070393911403,
+        "right": 0.03828745984317327,
+        "top": 0.26655129369704406
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.20446956708694336,
+        "width": 0.3160466379748974,
+        "x": 0.5360704472049271,
+        "y": 0.4372198402262338
+      }
+    },
+    "title": "Pastor Sênior",
+    "titleAbbreviation": "Pr."
+  },
+  {
+    "_id": "4f6e6f04-4afd-427b-bdb1-5add1b92bd0d",
+    "bio": null,
+    "birthDate": null,
+    "name": "Iara Rocha",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-83d56c7221f330f980d031abfe93bcee08f0c1a7-640x800-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.22297275531852892,
+        "left": 0,
+        "right": 0.07525140499788119,
+        "top": 0.0490541082389034
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.7279731364425677,
+        "width": 0.9247485950021188,
+        "x": 0.4623742975010594,
+        "y": 0.4130406764601872
+      }
+    },
+    "title": "Pastora",
+    "titleAbbreviation": "Pra."
+  },
+  {
+    "_id": "c4cdda92-c51e-4a2d-91d5-8d4d492d2a1d",
+    "bio": null,
+    "birthDate": null,
+    "name": "Luzia Helmer",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-fb5aa6a01753c78a6167642e1ea63cd08d8ebedb-3265x4898-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.34241793276634813,
+        "left": 0.28276781129937567,
+        "right": 0.10839432766476051,
+        "top": 0.2607402607303387
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.1832232796399035,
+        "width": 0.29308047175156077,
+        "x": 0.570691952824844,
+        "y": 0.38062494087044746
+      }
+    },
+    "title": null,
+    "titleAbbreviation": null
+  },
+  {
+    "_id": "ca6418f6-26ea-4e55-aa39-2b629fbe605d",
+    "bio": null,
+    "birthDate": null,
+    "name": "Teka Santana",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-10ddd2cf4bc1cfe4b75c888088c2f9fd4e005a78-3024x4032-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.2829475054824561,
+        "left": 0.008982433296783625,
+        "right": 0.1227600740131579,
+        "top": 0.0920701411732456
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.6249823533442982,
+        "width": 0.8682574926900585,
+        "x": 0.44311117964181285,
+        "y": 0.40456131784539473
+      }
+    },
+    "title": "Pastora",
+    "titleAbbreviation": "Pra."
+  },
+  {
+    "_id": "cf1e9153-64e4-40a2-baf2-d76a248873c3",
+    "bio": null,
+    "birthDate": null,
+    "name": "Cleidson Miranda",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-de9cda41f97c034f38ee7eadbfb255698c4746c1-1536x2048-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.1390179519727418,
+        "left": 0.03886553410913998,
+        "right": 0.06577258270376969,
+        "top": 0.17040923761732282
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.16589173219164455,
+        "width": 0.19577907591370508,
+        "x": 0.4775773834733117,
+        "y": 0.41255327480364856
+      }
+    },
+    "title": null,
+    "titleAbbreviation": null
+  },
+  {
+    "_id": "e4fa6039-1890-491e-b420-03320663c052",
+    "bio": null,
+    "birthDate": null,
+    "name": "Margareth Serrat",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e79009daf605468a6f1e7dccdc4b3c2fc2e096fc-3265x4898-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.3998269405455661,
+        "left": 0.16165816378228726,
+        "right": 0.21270811023985198,
+        "top": 0.1758104277576248
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.19467481478765414,
+        "width": 0.26828410077491005,
+        "x": 0.46596670236162363,
+        "y": 0.34120348460601635
+      }
+    },
+    "title": "Patora",
+    "titleAbbreviation": "Pra."
+  },
+  {
+    "_id": "efe96ade-0db0-4adb-904d-20922ed6c22a",
+    "bio": [
+      {
+        "_key": "4b6c0fd53fed",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "90073d8ab39a",
+            "_type": "span",
+            "marks": [],
+            "text": "Pastora, palestrante e ministra de cura interior, a pastora Berê, carinhosamente chamada por seus discípulos, cuida da igreja local e lidera diretamente o ministério de mulheres da igreja, trabalhando assuntos importantes para este tempo, como feminilidade, autocuidado, paternidade etc. Auxilia o pastor Jucimar no Ministério Bálsamo de Gileade e é formada em Assistência Social. Casada com o pastor Jucimar, tem dois filhos, Mhayza e Marcos, casado com Bruna, pais da Karen, sua netinha."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "birthDate": "1974-06-10",
+    "name": "Berenice Peres Ramos",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-19a86cb562bcf9c46476d1bc946869646fb9b2b7-1080x1080-webp",
+        "_type": "reference"
+      }
+    },
+    "title": "Pastora Sênior",
+    "titleAbbreviation": "Pra."
+  },
+  {
+    "_id": "fd0b83ed-5943-45e9-9810-51239777c1bb",
+    "bio": null,
+    "birthDate": null,
+    "name": "Fernando Pires",
+    "photo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-582f8debb0eff65e3f95f04eb652869bddaadb39-853x1280-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0.40819290706800854,
+        "left": 0.14973073792890068,
+        "right": 0.15313444092005726,
+        "top": 0.1156547334174478
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.47615235951454365,
+        "width": 0.6971348211510421,
+        "x": 0.4982981485044217,
+        "y": 0.3537309131747196
+      }
+    },
+    "title": "Pastor",
+    "titleAbbreviation": "Pr."
+  }
+]

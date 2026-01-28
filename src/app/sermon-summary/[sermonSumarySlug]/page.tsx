@@ -58,6 +58,27 @@ export async function generateMetadata({ params }: SermonSummaryPageProps): Prom
   };
 }
 
+
+export async function generateStaticParams() {
+
+  let sermonSumary: {_id:string}[] = [];
+  try {
+    sermonSumary = await sanityClient.fetch<{_id:string}[]>(
+    `*[_type == "sermonSummary" && isActive == true]{ _id }`,
+    {},
+    { next: { tags: ["sermonSummary"] } }
+  );
+    
+  } catch (error) {
+    return [];
+  }
+
+  return sermonSumary.map((sermon) => ({ id: sermon._id }));
+}
+
+
+
+
 export default async function SermonSumary({ params }: SermonSummaryPageProps) {
   const res_params = await params;
   const slug = res_params.sermonSumarySlug;
@@ -65,7 +86,7 @@ export default async function SermonSumary({ params }: SermonSummaryPageProps) {
 let sermonSummaryData: FindOneSermonBySlugQueryResult; 
 
 try {
-  sermonSummaryData = await sanityClient.fetch(findOneSermonBySlugQuery, { slug });
+  sermonSummaryData = await sanityClient.fetch(findOneSermonBySlugQuery, { slug },{next:{tags:["sermonSummary"]}});
   
 } catch (error) {
   sermonSummaryData = null;

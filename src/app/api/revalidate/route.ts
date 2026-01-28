@@ -1,74 +1,43 @@
-import { revalidatePath } from 'next/cache'
-import { NextRequest, NextResponse } from 'next/server'
+
+
+import {revalidatePath, revalidateTag} from 'next/cache'
+import {type NextRequest, NextResponse} from 'next/server'
+import {parseBody} from 'next-sanity/webhook'
+
+type WebhookPayload = {
+  _type: string
+}
 
 export async function POST(req: NextRequest) {
-  const secret = req.headers.get('secret')
+  try {
+     const secret = req.headers.get('secret')
+
+    if (!process.env.REVALIDATE_SECRET_TOKEN) {
+      return new Response('Missing environment variable REVALIDATE_SECRET_TOKEN', {status: 500})
+    } 
 
   if (secret !== process.env.REVALIDATE_SECRET_TOKEN) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 })
   }
-  
 
-  const body = await req.json()
-  const docType = body?._type
+    const {isValidSignature, body} = await parseBody<WebhookPayload>(
+      req,
+      process.env.REVALIDATE_SECRET_TOKEN,
+    )
 
-
-  const toRevalidate = [
-    "address", 
-    "emailEntry",  
-    "person", 
-    "phoneEntry",  
-    "sermonTag", 
-    "smed", 
-    "supportedSocialMidia", 
-    "socialLink"
-  ]
-
-  try {
-
-    if (docType === 'contactPage') {
-      revalidatePath('/contact')
+    if (!isValidSignature) {
+      const message = 'Invalid signature'
+      return new Response(JSON.stringify({message, isValidSignature, body}), {status: 401})
+    } else if (!body?._type) {
+      const message = 'Bad Request'
+      return new Response(JSON.stringify({message, body}), {status: 400})
     }
 
-    if (docType === 'homePage') {
-      revalidatePath('/')
-    }
+    revalidateTag(body._type)
 
-    if (docType === 'aboutPage') {
-      revalidatePath('/about')
-    }
-
-    if (docType === 'ourSmedsPage') {
-      revalidatePath('/smeds')
-      revalidatePath('/')
-    }
-    if (docType === 'event') {
-      revalidatePath('/events')
-      revalidatePath('/')
-    }
-
-    if (docType === 'sermonSummary') {
-      revalidatePath('/sermon-summary')
-      revalidatePath('/')
-    }
-
-
-    if (toRevalidate.includes(docType)) {
-      revalidatePath('/')
-      revalidatePath('/about')
-      revalidatePath('/events')
-      revalidatePath('/contact')
-      revalidatePath('/smeds')
-      revalidatePath('/events')
-      revalidatePath('/sermon-summary')
-
-    }
-
-
-
-
-    return NextResponse.json({ revalidated: true })
-  } catch (err) {
-    return NextResponse.json({ message: 'Erro ao revalidar home' }, { status: 500 })
+    return NextResponse.json({body})
+  } catch ( err: any) {
+    console.error(err)
+    return new Response(err.message || "Erro desconhecido", {status: 500})
   }
 }

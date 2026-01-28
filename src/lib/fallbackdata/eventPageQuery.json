@@ -1,0 +1,25 @@
+{
+  "_id": "eventsPage",
+  "bannerImage": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-abe8cce68ac5ad538f59977071e28a13157c44b2-1920x1245-webp",
+      "_type": "reference"
+    },
+    "crop": {
+      "_type": "sanity.imageCrop",
+      "bottom": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0
+    },
+    "hotspot": {
+      "_type": "sanity.imageHotspot",
+      "height": 0.3720186686199059,
+      "width": 0.2647049655428424,
+      "x": 0.5556598146501687,
+      "y": 0.4254554737721893
+    }
+  },
+  "title": "Eventos"
+}

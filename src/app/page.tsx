@@ -36,6 +36,12 @@ import BlogCard from "@/components/blog-card";
 import Qrcode from "@/assets/qrcode/QRCODE.png"
 import { CopyButton } from "@/components/copy-button";
 import Fallback from "@/components/ui/FallbackPage";
+ import   home_data_Fallback from "@/lib/fallbackdata/homePageQuery.json"
+ import   home_events_data_Fallback from "@/lib/fallbackdata/homePageEventsQuery.json"
+ import   home_sermon_data_Fallback from "@/lib/fallbackdata/homePageSermonsQuery.json"
+ import   home_smeds_data_Fallback from "@/lib/fallbackdata/homePageSmedsQuery.json"
+ import   header_links_data_Fallback from "@/lib/fallbackdata/headerQuery.json"
+
 
 
 export default async function Home() {
@@ -57,11 +63,11 @@ try {
     home_smeds_data,
     header_links_data,
   ] = await Promise.all([
-    sanityClient.fetch(homePageQuery),
-    sanityClient.fetch(homePageEventsQuery),
-    sanityClient.fetch(homePageSermonsQuery),
-    sanityClient.fetch(homePageSmedsQuery),
-    sanityClient.fetch(headerQuery),
+    sanityClient.fetch(homePageQuery,{},{next:{tags:["homePage"]}}),
+    sanityClient.fetch(homePageEventsQuery,{},{next:{tags:["event"]}}),
+    sanityClient.fetch(homePageSermonsQuery,{},{next:{tags:["sermonSummary"]}}),
+    sanityClient.fetch(homePageSmedsQuery,{},{next:{tags:["smed"]}}),
+    sanityClient.fetch(headerQuery,{},{next:{tags:["header"]}}),
   ])
 
  banner = home_data?.heroImage
@@ -77,13 +83,21 @@ try {
   
 
   //inserir dados de fallback
-  home_data = null;
-  home_events_data = null;
-  home_sermon_data = null;
-  home_smeds_data = null;
-  header_links_data = null;
-  banner = bannerFallback;
-  live_banner = imagePlaceholder;
+  home_data = home_data_Fallback as unknown as HomePageQueryResult;
+  home_events_data = home_events_data_Fallback as unknown as HomePageEventsQueryResult;
+  home_sermon_data = home_sermon_data_Fallback as HomePageSermonsQueryResult;
+  home_smeds_data = home_smeds_data_Fallback as HomePageSmedsQueryResult;
+  header_links_data = header_links_data_Fallback as HeaderQueryResult;
+  // banner = bannerFallback;
+  // live_banner = imagePlaceholder;
+
+
+   banner = home_data?.heroImage
+    ? urlFor(home_data.heroImage).width(2560).height(1680).url()
+    : bannerFallback;
+  live_banner = home_data?.liveBannerImage
+    ? urlFor(home_data?.liveBannerImage).width(444).height(856).url()
+    : imagePlaceholder;
 
 } 
 
@@ -234,7 +248,7 @@ try {
       </Section>
 
       {/* Word Summary Section */}
-      <Section backgroundColor="bg-[#0F2E2F]">
+      {/* <Section backgroundColor="bg-[#0F2E2F]">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-white">
             Resumo da Palavra
@@ -264,7 +278,7 @@ try {
             );
           })}
         </div>
-      </Section>
+      </Section> */}
 
       {/* SMEDs Section */}
       <Section>

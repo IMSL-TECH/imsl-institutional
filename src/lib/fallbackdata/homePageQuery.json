@@ -1,0 +1,140 @@
+{
+  "butonLiveLink": "https://www.youtube.com/c/MonteSiaoLinhares",
+  "buttonLiveText": "Saiba mais",
+  "descriptionLive": [
+    {
+      "_key": "e7fd7e346765",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4b1b64217729",
+          "_type": "span",
+          "marks": [],
+          "text": "Todo domingo"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "d7b78bb13db5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "db94e87da4cf",
+          "_type": "span",
+          "marks": [],
+          "text": "Culto às 18h00"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "dividerText": [
+    {
+      "_key": "1eecac7ba6e2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ca39bba5ecbe",
+          "_type": "span",
+          "marks": [],
+          "text": "Não se esqueça de "
+        },
+        {
+          "_key": "55652c0cb510",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "seguir "
+        },
+        {
+          "_key": "d663368215a0",
+          "_type": "span",
+          "marks": [],
+          "text": "a nossa igreja nas "
+        },
+        {
+          "_key": "8ee0a47a6689",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "redes sociais"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "heroButtonLink": "/events",
+  "heroButtonTitle": "Programação",
+  "heroDescription": [
+    {
+      "_key": "ec2156e40a5a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "013e4248a3bc",
+          "_type": "span",
+          "marks": [],
+          "text": "\"Somos uma igreja comprometida com o discipulado, o relacionamento e o cuidado mútuo.\""
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "heroHeadline": [
+    {
+      "_key": "fd1437e82b20",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "38723402ef83",
+          "_type": "span",
+          "marks": [],
+          "text": "Conhecendo a Deus e"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ec1c3c814185",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8c619e268f24",
+          "_type": "span",
+          "marks": [],
+          "text": "Fazendo-o Conhecido "
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "heroImage": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-abe8cce68ac5ad538f59977071e28a13157c44b2-1920x1245-webp",
+      "_type": "reference"
+    }
+  },
+  "liveBannerImage": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-4e31a47463d9f5a20fa23023c19266de9a14c557-177x342-webp",
+      "_type": "reference"
+    }
+  },
+  "titleLive": "Participe do culto online",
+  "youtubeUrl": null
+}

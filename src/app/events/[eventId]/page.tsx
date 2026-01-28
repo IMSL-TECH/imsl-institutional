@@ -19,6 +19,9 @@ import WhatsApp from "@/components/icons/whatsapp";
 import { Metadata } from "next";
 import Share from "@/components/share";
 import { redirect } from "next/navigation";
+import "@/lib/fallbackdata/EventsFallBack"
+
+
 
 interface EventProps {
   params: Promise<{ eventId: string }>;
@@ -105,6 +108,26 @@ function getFirstSessionOfEarliestDay(
   };
 }
 
+
+export async function generateStaticParams() {
+
+  let events: {_id:string}[] = [];
+  try {
+    events = await sanityClient.fetch<{_id:string}[]>(
+    `*[_type == "event" && isActive == true]{ _id }`,
+    {},
+    { next: { tags: ["event"] } }
+  );
+    
+  } catch (error) {
+    return [];
+  }
+  
+  return events.map((event) => ({ id: event._id }));
+}
+
+
+
 export default async function Event({ params }: EventProps) {
 
   const { eventId } = await params;
@@ -113,13 +136,14 @@ export default async function Event({ params }: EventProps) {
   try {
       event_data = await sanityClient.fetch(
     findOneEventByIdQuery,
-    { id: eventId }
+    { id: eventId },{next:{tags:["event"]}}
   );
     
   } catch (error) {
-   console.error("❌ Sanity fetch failed (Event Page)", error);
-    event_data = null;
-  }
+    console.error("❌ Sanity fetch failed (Event Page)", error);
+    event_data = null
+}
+ 
 
   if(!event_data){
     redirect("/events")

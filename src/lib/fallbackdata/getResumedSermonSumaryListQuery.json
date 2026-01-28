@@ -1,0 +1,882 @@
+[
+  {
+    "_id": "0b6b4983-3f3b-4093-bb37-41842d5d685d",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-cd3ccc08673153a12f4a46baf901ed99aff4d2dc-1920x1280-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2024-05-19",
+    "slug": "nos-somos-aqueles-que-esperam",
+    "speaker": {
+      "name": "Iara Rocha",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-83d56c7221f330f980d031abfe93bcee08f0c1a7-640x800-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.22297275531852892,
+          "left": 0,
+          "right": 0.07525140499788119,
+          "top": 0.0490541082389034
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.7279731364425677,
+          "width": 0.9247485950021188,
+          "x": 0.4623742975010594,
+          "y": 0.4130406764601872
+        }
+      },
+      "titleAbbreviation": "Pra."
+    },
+    "tags": [
+      {
+        "_id": "d4333030-a11b-4749-9ec5-4d22e10af1ed",
+        "title": "Pentecostes"
+      },
+      {
+        "_id": "d19b61af-0148-4034-8577-b5a27c9352c8",
+        "title": "Perseverança"
+      },
+      {
+        "_id": "e03246a7-e046-48c9-97c9-1f85d3859581",
+        "title": "240h"
+      }
+    ],
+    "title": "Nós Somos Aqueles Que Esperam"
+  },
+  {
+    "_id": "11f41646-f2bc-40b5-8c34-b197fdbf8081",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-0efab35c5a206c946c6318fb2ef406fb8875b89d-1280x853-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.6260373565020654,
+        "width": 0.46321429337401493,
+        "x": 0.4679644293321701,
+        "y": 0.5022439108036573
+      }
+    },
+    "date": "2024-11-24",
+    "slug": "desfrutando-da-brisa-de-deus-em-meio-ao-medo-e-a-confusao",
+    "speaker": {
+      "name": "Cleidson Miranda",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-de9cda41f97c034f38ee7eadbfb255698c4746c1-1536x2048-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.1390179519727418,
+          "left": 0.03886553410913998,
+          "right": 0.06577258270376969,
+          "top": 0.17040923761732282
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.16589173219164455,
+          "width": 0.19577907591370508,
+          "x": 0.4775773834733117,
+          "y": 0.41255327480364856
+        }
+      },
+      "titleAbbreviation": null
+    },
+    "tags": [
+      {
+        "_id": "a488421d-d92a-4109-914d-9c44547b0ed4",
+        "title": "Cura de Elias"
+      },
+      {
+        "_id": "c246d09a-b534-4c96-b5cf-b26003f097ec",
+        "title": "Limitadores Emocionais"
+      }
+    ],
+    "title": "Desfrutando da Brisa de Deus em Meio ao Medo e à Confusão"
+  },
+  {
+    "_id": "12741e9d-6352-4a3d-ae32-4a7dcc74f1d7",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-79135f1af9d022c6dbb2183cad83eb0659d5710d-1280x853-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2025-05-11",
+    "slug": "aplainando-o-caminho-para-a-gloria-de-deus",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "ceb94ae6-9429-4b65-9e83-042df043b75d",
+        "title": "Autoavaliação"
+      },
+      {
+        "_id": "8192c20c-24da-4a76-abe8-544e0d52c943",
+        "title": "Relacionamento Com Deus"
+      },
+      {
+        "_id": "6239f16d-1e40-4915-84e8-3731aefc87a2",
+        "title": "Princípios"
+      }
+    ],
+    "title": "Aplainando o Caminho para a Glória de Deus"
+  },
+  {
+    "_id": "461e21cc-ee22-4e2f-aea5-d980f640aeb2",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-46e6ab4aaa636cd6ee7f38f3101ad041a59b946f-1280x853-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2025-07-27",
+    "slug": "o-sacrificio-aceitavel-e-o-coracao-de-caim",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "f818846b-3234-48c8-b20a-e8bacab9005e",
+        "title": "Obediência"
+      },
+      {
+        "_id": "4d8d1042-1fe4-4bd9-9002-5924daddf7c6",
+        "title": "pecado"
+      },
+      {
+        "_id": "f4520b34-0dc2-4d6b-8f8c-ca9e5bde8ef7",
+        "title": "Coração"
+      }
+    ],
+    "title": " O Sacrifício Aceitável e o Coração de Caim"
+  },
+  {
+    "_id": "55d2e1c6-9c79-4aef-b293-99363293509f",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-9079902cceff09987a8965f399f37667f75177e8-1280x853-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2024-11-17",
+    "slug": "a-porta-esta-aberta-mas-voce-precisa-entrar",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "6aff4da4-b173-4f10-8e63-32d8b5320f27",
+        "title": "Escatologia"
+      },
+      {
+        "_id": "1cd6b0d8-7284-473b-be95-077b651d0ada",
+        "title": "Autorresponsabilidade "
+      },
+      {
+        "_id": "644c886e-15a0-4dcf-acbe-828f6bba6c03",
+        "title": "Graça"
+      }
+    ],
+    "title": "A Porta Está Aberta, Mas Você Precisa Entrar"
+  },
+  {
+    "_id": "5689b40a-659f-41f2-8b0e-a7757b82b106",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-33799ce70583447eabb6b39d1d170392dd885bc7-1280x852-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2025-03-09",
+    "slug": "fe-que-libera-o-poder-de-deus",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "d39b79d0-7064-4645-941c-821a6f82a711",
+        "title": "Fé"
+      },
+      {
+        "_id": "6039951b-bde3-4e54-8482-b95d81b37edb",
+        "title": "Milagres"
+      }
+    ],
+    "title": "Fé que Libera o Poder de Deus"
+  },
+  {
+    "_id": "5d06bdda-d0dd-417c-ac0f-cf582573f705",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-504fce7f58de675cef020dc55a4d38fe425bc836-640x427-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2025-03-30",
+    "slug": "se-vazou-encha-de-novo",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "8192c20c-24da-4a76-abe8-544e0d52c943",
+        "title": "Relacionamento Com Deus"
+      }
+    ],
+    "title": "Se Vazou, Encha de Novo"
+  },
+  {
+    "_id": "7b61092f-f7bc-4456-97c4-9c6845de6e4d",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-030c176d84618d8ed2dc3367ca1af4dc8c1ef5f9-1280x857-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0.14912766128511426
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.6096363053234702,
+        "width": 0.39213087501120514,
+        "x": 0.43245899855914655,
+        "y": 0.6951818473382649
+      }
+    },
+    "date": "2024-12-22",
+    "slug": "milagres-acontecem-com-fe-sacrificio-e-determinacao",
+    "speaker": {
+      "name": "Isaías da Silva",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-657dd135c72a8f2baec7c2ae22ab0f1487ca564a-566x590-png",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.3848580977923015,
+          "left": 0.24299684837252056,
+          "right": 0.2590441037543978,
+          "top": 0.13415058728018991
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.19063780070873507,
+          "width": 0.20533442614369338,
+          "x": 0.49006751421351746,
+          "y": 0.2706501674855212
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "4c63f522-6f49-41e2-828a-5ff6ed108f8b",
+        "title": "Milagre"
+      },
+      {
+        "_id": "d39b79d0-7064-4645-941c-821a6f82a711",
+        "title": "Fé"
+      },
+      {
+        "_id": "d19b61af-0148-4034-8577-b5a27c9352c8",
+        "title": "Perseverança"
+      }
+    ],
+    "title": "Milagres Acontecem com Fé, Sacrifício e Determinação"
+  },
+  {
+    "_id": "7bfad420-84b8-4e15-9cb9-76ff7616a5e1",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-d93fe92ef8173a7ff9eca18eb71f2819b6474930-1280x854-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2024-08-11",
+    "slug": "a-bencao-que-enriquece-sem-desgosto",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "58cd13ee-ba43-4f1c-a520-a91faec40dd9",
+        "title": "Dependência"
+      },
+      {
+        "_id": "98a6cad0-d504-41f3-a1c3-21408c0d79bf",
+        "title": "Prosperidade"
+      }
+    ],
+    "title": "A Bênção que Enriquece sem Desgosto"
+  },
+  {
+    "_id": "89de1fa3-33b6-472a-a54a-2ee5e8eaabd9",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-ffaedad4488b8148f3e01bdc1f4189cc188dd08e-1267x1080-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.6083092444115439,
+        "width": 0.4084175103157353,
+        "x": 0.4962050592715797,
+        "y": 0.3712286392735008
+      }
+    },
+    "date": "2024-07-14",
+    "slug": "o-senhor-dos-exercitos-passa-revista-as-tropas",
+    "speaker": {
+      "name": "Isaías da Silva",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-657dd135c72a8f2baec7c2ae22ab0f1487ca564a-566x590-png",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.3848580977923015,
+          "left": 0.24299684837252056,
+          "right": 0.2590441037543978,
+          "top": 0.13415058728018991
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.19063780070873507,
+          "width": 0.20533442614369338,
+          "x": 0.49006751421351746,
+          "y": 0.2706501674855212
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "78061d95-db5d-4d9a-aa44-9cbf2c11d2a7",
+        "title": "Batalha Espiritual"
+      },
+      {
+        "_id": "ceb94ae6-9429-4b65-9e83-042df043b75d",
+        "title": "Autoavaliação"
+      }
+    ],
+    "title": "O Senhor dos Exércitos Passa Revista às Tropas"
+  },
+  {
+    "_id": "8c79951d-7d01-40ba-a4f9-f9f49d2ab581",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-c607570b4bc093c7a4ab2c55ac95250ba256f4e5-1280x820-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0.004610563090135758
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.5569238799658424,
+        "width": 0.3664400251589558,
+        "x": 0.37124807211554156,
+        "y": 0.3887407128404837
+      }
+    },
+    "date": "2025-04-20",
+    "slug": "a-forca-da-conexao-com-deus-em-meio-as-provacoe",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "f96dd673-c01a-4d79-950b-650f848ecdef",
+        "title": "Provação"
+      },
+      {
+        "_id": "d39b79d0-7064-4645-941c-821a6f82a711",
+        "title": "Fé"
+      },
+      {
+        "_id": "d19b61af-0148-4034-8577-b5a27c9352c8",
+        "title": "Perseverança"
+      }
+    ],
+    "title": "A Força da Conexão com Deus em Meio às Provaçõe"
+  },
+  {
+    "_id": "99ce5b4a-ee21-45f4-835c-57c9b0a64a0d",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-90835fae23def5a777e1902078ad9f7ddd3d91cc-1280x853-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.39333113822284016,
+        "width": 0.3045781178795218,
+        "x": 0.5187986421072148,
+        "y": 0.49551615243769387
+      }
+    },
+    "date": "2025-05-18",
+    "slug": "permanecendo-firme-na-alianca-com-deus",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "8192c20c-24da-4a76-abe8-544e0d52c943",
+        "title": "Relacionamento Com Deus"
+      },
+      {
+        "_id": "d19b61af-0148-4034-8577-b5a27c9352c8",
+        "title": "Perseverança"
+      }
+    ],
+    "title": "Permanecendo Firme na Aliança com Deus"
+  },
+  {
+    "_id": "ac3b93dc-eec8-4cca-bbee-378b3b7101bd",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-4961176f18604b0c580291a29d83349ae9b33fa7-1280x855-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2024-09-08",
+    "slug": "jesus-muito-alem-das-palavras-os-suspiros-de-joao",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "3860e5f4-d072-4dd6-870c-7726edd154ef",
+        "title": "Experiência Com Deus"
+      },
+      {
+        "_id": "ee296645-2068-41ba-b6db-7492d1f8e5d6",
+        "title": "Evangelho De João"
+      }
+    ],
+    "title": "Jesus Muito Além das Palavras: Os Suspiros de João"
+  },
+  {
+    "_id": "befd32e1-9b77-490e-8572-63e0b9231a1b",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-5621377ed260d2d34175ce608b48eedc36a0a0a1-1280x852-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2024-06-16",
+    "slug": "a-bencao-que-vem-do-trono-da-graca",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "644c886e-15a0-4dcf-acbe-828f6bba6c03",
+        "title": "Graça"
+      },
+      {
+        "_id": "10024a4d-a303-42ac-abfe-9988239842b7",
+        "title": "Bênção"
+      }
+    ],
+    "title": "A Bênção que Vem do Trono da Graça"
+  },
+  {
+    "_id": "d3fb389a-61b9-4dc6-932e-ab5b0006a38e",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-4ea31b69438161f969a73d9f8d08b8850ebaa682-1280x853-jpg",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.8469176458206513,
+        "width": 0.3225041012960393,
+        "x": 0.49854684905063035,
+        "y": 0.5262199473969986
+      }
+    },
+    "date": "2025-04-13",
+    "slug": "prepare-o-caminho-saia-do-vale-desca-do-monte",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "ceb94ae6-9429-4b65-9e83-042df043b75d",
+        "title": "Autoavaliação"
+      },
+      {
+        "_id": "d39b79d0-7064-4645-941c-821a6f82a711",
+        "title": "Fé"
+      }
+    ],
+    "title": "Prepare o Caminho: Saia do Vale, Desça do Monte"
+  },
+  {
+    "_id": "ec041775-f3b0-4c11-9e12-0149f3ecbef7",
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-a5539268cd414ffa6e6e640c49837cb464107d55-1280x853-jpg",
+        "_type": "reference"
+      }
+    },
+    "date": "2025-06-08",
+    "slug": "permanecendo-na-alianca",
+    "speaker": {
+      "name": "Jucimar Ramos",
+      "photo": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7f418bc0271db1919f850fc576ef3be5a328b0d5-3265x4898-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0.17013912363641112,
+          "left": 0.12337070393911403,
+          "right": 0.03828745984317327,
+          "top": 0.26655129369704406
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.20446956708694336,
+          "width": 0.3160466379748974,
+          "x": 0.5360704472049271,
+          "y": 0.4372198402262338
+        }
+      },
+      "titleAbbreviation": "Pr."
+    },
+    "tags": [
+      {
+        "_id": "d4333030-a11b-4749-9ec5-4d22e10af1ed",
+        "title": "Pentecostes"
+      },
+      {
+        "_id": "e03246a7-e046-48c9-97c9-1f85d3859581",
+        "title": "240h"
+      },
+      {
+        "_id": "bad4bef6-8883-452e-a214-a1f81eff65f6",
+        "title": "Aliança"
+      },
+      {
+        "_id": "d19b61af-0148-4034-8577-b5a27c9352c8",
+        "title": "Perseverança"
+      }
+    ],
+    "title": "Perseverança e Aliança"
+  }
+]

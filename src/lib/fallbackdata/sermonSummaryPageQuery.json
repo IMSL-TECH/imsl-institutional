@@ -1,0 +1,11 @@
+{
+  "_id": "sermonSummaryPage",
+  "bannerImage": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-abe8cce68ac5ad538f59977071e28a13157c44b2-1920x1245-webp",
+      "_type": "reference"
+    }
+  },
+  "title": "Resumos da Palavra"
+}

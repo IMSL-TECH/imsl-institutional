@@ -1,0 +1,365 @@
+[
+  {
+    "_id": "11de13e2-49a9-4377-884b-45c440cfaf1f",
+    "address": {
+      "_id": "7f82de1d-bf3a-4c7d-8e2d-ad76e20cb7cc",
+      "title": "Monte Sião Linhares"
+    },
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-c28ecbc35c206cbc4ccf84969c24554803360585-1920x1080-png",
+        "_type": "reference"
+      }
+    },
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e553da20cf2ea516d1d38023c95d3d41aa4c35ba-1920x1080-png",
+        "_type": "reference"
+      }
+    },
+    "schedule": [
+      {
+        "date": "2025-12-31",
+        "sessions": [
+          {
+            "endTime": "19h00",
+            "starTime": "18h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-01",
+        "sessions": [
+          {
+            "endTime": "19h00",
+            "starTime": "18h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-02",
+        "sessions": [
+          {
+            "endTime": "19h00",
+            "starTime": "18h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-03",
+        "sessions": [
+          {
+            "endTime": "19h00",
+            "starTime": "18h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-04",
+        "sessions": [
+          {
+            "endTime": "19h00",
+            "starTime": "18h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-05",
+        "sessions": [
+          {
+            "endTime": "19h00",
+            "starTime": "18h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-06",
+        "sessions": [
+          {
+            "endTime": "19h00",
+            "starTime": "18h00"
+          }
+        ]
+      }
+    ],
+    "shortDescription": [
+      {
+        "_key": "f5f8ed918b48",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "2c73fdb6e919",
+            "_type": "span",
+            "marks": [],
+            "text": "Consagre os primeiros dias do ano ao Senhor e declare, em fé, que todo 2026 será abençoado. De 31/12 a 06/01, às 18h, na Monte Sião."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Consagração das Primícias"
+  },
+  {
+    "_id": "554a9476-20e4-4149-ab27-ff50c2dacd71",
+    "address": {
+      "_id": "7f82de1d-bf3a-4c7d-8e2d-ad76e20cb7cc",
+      "title": "Monte Sião Linhares"
+    },
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-1f3602262906981d274ed2c9398ebdd16ae53b35-1920x1080-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.35271212864682855,
+        "width": 0.2303719406436692,
+        "x": 0.25135088950183077,
+        "y": 0.455268916109332
+      }
+    },
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-1f3602262906981d274ed2c9398ebdd16ae53b35-1920x1080-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.35271232939533764,
+        "width": 0.2155716268789746,
+        "x": 0.22470998596791286,
+        "y": 0.48684374571637457
+      }
+    },
+    "schedule": [
+      {
+        "date": "2026-01-08",
+        "sessions": [
+          {
+            "endTime": "22h00",
+            "starTime": "18h00"
+          }
+        ]
+      },
+      {
+        "date": "2027-02-08",
+        "sessions": [
+          {
+            "endTime": "22h00",
+            "starTime": "18h00"
+          }
+        ]
+      }
+    ],
+    "shortDescription": [
+      {
+        "_key": "a1f0c369a347",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "b238a43e3f3f",
+            "_type": "span",
+            "marks": [],
+            "text": "Em janeiro entramos em recesso, porque descansar também é fé. Cultos de domingo seguem, com cultos online e devocionais pra continuar buscando a Deus."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Recesso Monte Sião Linhares"
+  },
+  {
+    "_id": "812e0326-2a14-4d39-9390-48a859638b2d",
+    "address": {
+      "_id": "7f82de1d-bf3a-4c7d-8e2d-ad76e20cb7cc",
+      "title": "Monte Sião Linhares"
+    },
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-691480494951913e604676764d1b86035f7a3aa4-1920x1080-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.36171087805881125,
+        "width": 0.18568784700801963,
+        "x": 0.4666872301048736,
+        "y": 0.7006991568990335
+      }
+    },
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-892bcb2851650c46a5086fc380495cb473e6d686-1920x1080-png",
+        "_type": "reference"
+      },
+      "crop": {
+        "_type": "sanity.imageCrop",
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "hotspot": {
+        "_type": "sanity.imageHotspot",
+        "height": 0.20378367263006375,
+        "width": 0.2893275755706353,
+        "x": 0.4962985811227637,
+        "y": 0.4769689492083076
+      }
+    },
+    "schedule": [
+      {
+        "date": "2026-02-28",
+        "sessions": [
+          {
+            "endTime": "18h00",
+            "starTime": "16h30"
+          },
+          {
+            "endTime": "19h00",
+            "starTime": "18h00"
+          },
+          {
+            "endTime": "21h30",
+            "starTime": "19h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-01",
+        "sessions": [
+          {
+            "endTime": "12h00",
+            "starTime": "08h30"
+          }
+        ]
+      }
+    ],
+    "shortDescription": [
+      {
+        "_key": "ec35fcd60b96",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "b1ca28a36c55",
+            "_type": "span",
+            "marks": [],
+            "text": "“E eu pedirei ao Pai, e ele lhes dará outro Consolador, a fim de que esteja com vocês para sempre…”João 14. 16 NAA"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "Encontro de Líderes 2025"
+  },
+  {
+    "_id": "f9fd8ec9-0353-4398-88e0-10168179bcc3",
+    "address": {
+      "_id": "bf9a27e3-ae26-4789-9326-d8cf266b67fb",
+      "title": "Monte Sião VIX"
+    },
+    "background": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-c9f71b014ebd6156c8f976634b5348314ddb77f4-1920x1080-png",
+        "_type": "reference"
+      }
+    },
+    "banner": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-08dfa9380d127f6321d465f7018c3ab714cc58a6-1920x1080-png",
+        "_type": "reference"
+      }
+    },
+    "schedule": [
+      {
+        "date": "2026-02-14",
+        "sessions": [
+          {
+            "endTime": "22h00",
+            "starTime": "19h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-17",
+        "sessions": [
+          {
+            "endTime": "12h00",
+            "starTime": "09h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-16",
+        "sessions": [
+          {
+            "endTime": "22h00",
+            "starTime": "19h00"
+          },
+          {
+            "endTime": "15h30",
+            "starTime": "14h00"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-15",
+        "sessions": [
+          {
+            "endTime": "22h00",
+            "starTime": "18h00"
+          }
+        ]
+      }
+    ],
+    "shortDescription": [
+      {
+        "_key": "fb8cee776e2d",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "79c3b98dae33",
+            "_type": "span",
+            "marks": [],
+            "text": "🔥 Aviva Sião 2026 chegou! Um tempo de profundidade, alinhamento e transformação, aprofundando o princípio do tempo na presença de Deus. De 14 a 17/02."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "title": "AVIVA SIÃO 2026"
+  }
+]

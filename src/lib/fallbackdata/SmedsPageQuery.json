@@ -1,0 +1,128 @@
+{
+  "bannerImage": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-abe8cce68ac5ad538f59977071e28a13157c44b2-1920x1245-webp",
+      "_type": "reference"
+    },
+    "crop": {
+      "_type": "sanity.imageCrop",
+      "bottom": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0
+    },
+    "hotspot": {
+      "_type": "sanity.imageHotspot",
+      "height": 0.26359030208584244,
+      "width": 0.19146842613477363,
+      "x": 0.549800869147505,
+      "y": 0.4051251954397891
+    }
+  },
+  "conclusion": [
+    {
+      "_key": "c65c640dc741",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ba96f2cb8036",
+          "_type": "span",
+          "marks": [],
+          "text": "Na Monte Sião Linhares, acreditamos no crescimento saudável por meio de relacionamentos intencionais e cuidado genuíno. Por isso, adotamos o SMED como ferramenta para ajudar cada pessoa a crescer em Cristo com direção e propósito. Venha conhecer e viver esse processo com a gente!"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "description": [
+    {
+      "_key": "524ab33100ff",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8e64c9995cd0",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "“Antes, seguindo a verdade em amor, cresçamos em tudo naquele que é a cabeça, Cristo. Dele todo o corpo, ajustado e unido pelo auxílio de todas as juntas, cresce e edifica-se a si mesmo em amor, na medida em que cada parte realiza a sua função.”"
+        },
+        {
+          "_key": "f8e8abd917d2",
+          "_type": "span",
+          "marks": [],
+          "text": "\n"
+        },
+        {
+          "_key": "b8b2f880fb93",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Efésios 4.15-16"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "1d31e9ff54d2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0f386599fa7d",
+          "_type": "span",
+          "marks": [],
+          "text": ""
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "78bf6988a57f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "c4943391f732",
+          "_type": "span",
+          "marks": [],
+          "text": "SMED é a sigla para "
+        },
+        {
+          "_key": "0a5504ba3948",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Sistema de Mentoreamento e Discipulado"
+        },
+        {
+          "_key": "e0488ccabc87",
+          "_type": "span",
+          "marks": [],
+          "text": ", criado pelo Ministério Bálsamo de Gileade. Como igreja, adotamos essa ferramenta com o objetivo de organizar nossa comunidade sob um sistema saudável de discipulado e cuidado."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2365f537c64a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ecba03f0d825",
+          "_type": "span",
+          "marks": [],
+          "text": "O SMED tem nos ajudado a estruturar o acompanhamento de nossos membros de forma relacional e terapêutica, com foco no crescimento integral de cada discípulo. Temos percebido, assim como muitas outras igrejas, a importância de um modelo claro e funcional de mentoreamento — e o SMED tem sido essencial nesse processo."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "title": "SMEDS"
+}

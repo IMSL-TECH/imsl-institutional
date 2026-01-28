@@ -16,8 +16,27 @@ import { urlFor } from "@/lib/sanityImage";
 import imgaePlaceHolderSquare from "@/assets/thumbs/placeholder-image-square.png"
 import Image from "next/image";
 
+import footerDataFallback from "@/lib/fallbackdata/footerQuery.json";
+
 export default async function Footer() {
-  const footer_data: FooterQueryResult = await sanityClient.fetch(footerQuery);
+
+
+  let footer_data: FooterQueryResult
+  
+  try {
+    footer_data = await sanityClient.fetch(footerQuery);
+    
+  } catch (error) {
+    footer_data = footerDataFallback as FooterQueryResult;
+    console.error("❌ Sanity fetch failed (footer data)", error);
+  }
+
+  if (!footer_data) {
+    return null;
+  }
+  
+
+
   const logo = footer_data?.logo ? urlFor(footer_data.logo).width(832).height(208).url() : imgaePlaceHolderSquare
 
   return (

@@ -7,13 +7,29 @@ import { headerQuery } from "sanity-shared/queries";
 import { urlFor } from "@/lib/sanityImage";
 import bannerFallback from "@/assets/banners/banner.png";
 import { ImageType } from "@/type";
+import headerQueryFallback from "@/lib/fallbackdata/headerQuery.json";
 
 interface Props extends ComponentPropsWithoutRef<"section"> {
   imgSrc: ImageType;
 }
 export default async function PageHeader({ children, imgSrc }: Props) {
 
-  const header_links_data: HeaderQueryResult = (await sanityClient.fetch(headerQuery))
+  let header_links_data: HeaderQueryResult;
+  
+  try {
+    header_links_data = (await sanityClient.fetch(headerQuery))
+
+  } catch (error) {
+    console.error("❌ Sanity fetch failed (header links)", error);
+    header_links_data = headerQueryFallback;
+  }
+
+  if (!header_links_data) {
+    return null;
+  }
+  
+
+
   const banner = imgSrc ? urlFor(imgSrc).width(2560).height(840).url() : bannerFallback
   const banner_mobile = imgSrc ? urlFor(imgSrc).width(750).height(800).url() : bannerFallback
 

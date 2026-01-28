@@ -1,0 +1,59 @@
+{
+  "AvailableHours": "Horário para contato: das 13h30 às 17h30",
+  "DefaultSocial": "@montesiaolinhares",
+  "DefaultSocialLink": "https://www.instagram.com/montesiaolinhares",
+  "_id": "contactPage",
+  "address": {
+    "city": "Linhares",
+    "district": "Três Barras",
+    "number": "3593",
+    "state": "ES",
+    "street": "Avenida Prefeito Samuel Batista Cruz",
+    "zip": "29907-380"
+  },
+  "bannerImage": {
+    "_type": "image",
+    "asset": {
+      "_ref": "image-abe8cce68ac5ad538f59977071e28a13157c44b2-1920x1245-webp",
+      "_type": "reference"
+    },
+    "crop": {
+      "_type": "sanity.imageCrop",
+      "bottom": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0
+    },
+    "hotspot": {
+      "_type": "sanity.imageHotspot",
+      "height": 0.28617938533805837,
+      "width": 0.18853900925848693,
+      "x": 0.5483360489592711,
+      "y": 0.4119018687127509
+    }
+  },
+  "description": [
+    {
+      "_key": "234b9d24517d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "76f79ba0feb2",
+          "_type": "span",
+          "marks": [],
+          "text": "Estamos aqui para servir você! Se você deseja saber mais sobre a nossa igreja, tirar dúvidas, compartilhar um pedido de oração ou simplesmente conversar, não hesite em nos contatar. Acreditamos que cada pessoa é única e preciosa aos olhos de Deus, e queremos caminhar junto com você em sua caminhada de fé.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "email": "comunicacao.imsl@gmail.com",
+  "phone": {
+    "isWhats": true,
+    "name": "Comunicação IAMSL",
+    "number": "5527995280013"
+  },
+  "title": "Contato",
+  "whatsApp": "5527995280013"
+}
