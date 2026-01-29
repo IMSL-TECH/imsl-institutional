@@ -5,7 +5,7 @@ import { portableTextComponents } from "@/components/portableTextComponents";
 import Schedule from "@/components/schedule";
 import Section from "@/components/section";
 import { sanityClient } from "@/lib/sanityClient";
-import { formatDateBr, formatPhone } from "@/utils";
+import { formatDateBr } from "@/utils";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,7 +20,7 @@ import { Metadata } from "next";
 import Share from "@/components/share";
 import { redirect } from "next/navigation";
 import "@/lib/fallbackdata/EventsFallBack"
-
+import { events } from "@/lib/fallbackdata/EventsFallBack";
 
 
 interface EventProps {
@@ -135,7 +135,6 @@ export async function generateStaticParams() {
 }
 
 
-
 export default async function Event({ params }: EventProps) {
 
   const { eventId } = await params;
@@ -149,7 +148,8 @@ export default async function Event({ params }: EventProps) {
     
   } catch (error) {
     console.error("❌ Sanity fetch failed (Event Page)", error);
-    event_data = null
+    event_data = (events.find((event) => event._id === eventId) || null) as FindOneEventByIdQueryResult;
+
 }
  
 
