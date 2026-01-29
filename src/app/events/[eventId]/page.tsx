@@ -30,11 +30,19 @@ interface EventProps {
 export async function generateMetadata({ params }: EventProps): Promise<Metadata> {
   const { eventId } = await params;
 
-  const event_data: FindOneEventByIdQueryResult = await sanityClient?.fetch(
+  let event_data: FindOneEventByIdQueryResult = null;
+  try {
+    event_data = await sanityClient?.fetch(
     findOneEventByIdQuery,
     { id: eventId }
   );
 
+    
+  } catch (error) {
+    return {};
+  }
+
+  
   const first_schedule = getFirstSessionOfEarliestDay(event_data?.schedule ?? []);
   const { dd, mm, aaaa } = formatDateBr(first_schedule?.date ?? "");
 
