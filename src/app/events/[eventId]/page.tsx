@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: EventProps): Promise<Metadata
   try {
     event_data = await sanityClient?.fetch(
     findOneEventByIdQuery,
-    { id: eventId }
+    { id: eventId },{next:{tags:["event"]}}
   );
 
     

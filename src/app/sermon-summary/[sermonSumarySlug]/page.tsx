@@ -27,8 +27,13 @@ export async function generateMetadata({ params }: SermonSummaryPageProps): Prom
   const res_params = await params;
   const slug = res_params.sermonSumarySlug;
 
-  const sermonSummaryData: FindOneSermonBySlugQueryResult =
-    await sanityClient.fetch(findOneSermonBySlugQuery, { slug });
+  let sermonSummaryData: FindOneSermonBySlugQueryResult = null;
+  try {
+    sermonSummaryData = await sanityClient.fetch(findOneSermonBySlugQuery, { slug },{next:{tags:["sermonSummary"]}});
+    
+  } catch (error) {
+    return {};
+  }
 
   const title = sermonSummaryData?.title ?? 'Evento';
   const image = sermonSummaryData?.background
