@@ -1,11 +1,13 @@
 import { sanityClient } from '@/lib/sanityClient'
 import { NextResponse } from 'next/server'
 import PixelFallback from '@/lib/fallbackdata/getPixelId.json';
+import { networkInterfaces } from 'node:os';
+import next from 'next';
 
 export async function GET() {
 
   try {
-    const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ metaPixelId }`)
+    const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ metaPixelId }`,{},{next:{tags:["siteSettings"]}})
   return NextResponse.json({ metaPixelId: settings?.metaPixelId ?? null })
 
   } catch (error) {
