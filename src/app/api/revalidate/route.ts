@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     // }
 
     revalidateTag(body._type)
-    console.log(`Revalidating path for type: ${body._type}`)
+    // console.log(`Revalidating path for type: ${body._type}`)
 
     return NextResponse.json({body})
   } catch ( err: any) {
