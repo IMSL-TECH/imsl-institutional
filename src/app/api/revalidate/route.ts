@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     //   return new Response(JSON.stringify({message, body}), {status: 400})
     // }
 
-    // revalidateTag(body._type)
+    revalidateTag(body._type)
     console.log(`Revalidating path for type: ${body._type}`)
 
     return NextResponse.json({body})
